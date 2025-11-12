@@ -1,0 +1,13 @@
+# Normalize line endings
+* text=auto eol=lf
+
+# Treat common binary assets properly
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.psd binary
+*.fbx binary
+*.unity binary
+*.prefab binary
+*.anim binary
+*.meta merge=union

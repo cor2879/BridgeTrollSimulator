@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: fd3db6bb7725b234485744d7d52e3373
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 192928
+  packageName: Beautiful Interface Lite
+  packageVersion: 1.5
+  assetPath: Assets/Beautiful Interface/Elements/Scripts/Notification.cs
+  uploadId: 447726

@@ -1,0 +1,41 @@
+# Unity generated folders
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild*/
+[Bb]uilds*/
+[Ll]ogs/
+UserSettings/
+MemoryCaptures/
+
+# Visual Studio / VSCode
+.vscode/
+.idea/
+*.csproj
+*.sln
+*.user
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Auto-generated crash / analytics
+sysinfo.txt
+
+# Ignore build artifacts
+*.apk
+*.aab
+*.unitypackage
+*.exe
+*.dll
+
+# PlasticSCM / Unity Collab
+. PlasticSCM/
+.collabignore
+

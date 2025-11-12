@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 2f0602ee68788453c9bf9d9cad702979
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 192928
+  packageName: Beautiful Interface Lite
+  packageVersion: 1.5
+  assetPath: Assets/Beautiful Interface/Tweens/LocalEulerAnglesZTween.cs
+  uploadId: 447726

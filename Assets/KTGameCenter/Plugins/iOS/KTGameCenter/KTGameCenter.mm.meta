@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 634e15c3169f3468eb3ffac0bf76b84d
+DefaultImporter:
+  userData: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 14839
+  packageName: iOS Game Center Plugin for Unity
+  packageVersion: 1.71
+  assetPath: Assets/KTGameCenter/Plugins/iOS/KTGameCenter/KTGameCenter.mm
+  uploadId: 261968

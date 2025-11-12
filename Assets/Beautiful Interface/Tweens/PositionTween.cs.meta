@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 03b77faa6e08d4641abee7e4b6e02de3
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 192928
+  packageName: Beautiful Interface Lite
+  packageVersion: 1.5
+  assetPath: Assets/Beautiful Interface/Tweens/PositionTween.cs
+  uploadId: 447726

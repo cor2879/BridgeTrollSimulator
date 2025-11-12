@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 65761ed1b0cfb4f669ed5402122acc94
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 192928
+  packageName: Beautiful Interface Lite
+  packageVersion: 1.5
+  assetPath: Assets/Beautiful Interface/Tweens/SpriteRendererAlphaTween.cs
+  uploadId: 447726

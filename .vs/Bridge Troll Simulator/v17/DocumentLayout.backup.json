@@ -1,0 +1,1656 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Repos\\Bridge Troll Simulator\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|d:\\repos\\bridge troll simulator\\assets\\scripts\\components\\input\\keyboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\components\\input\\keyboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|d:\\repos\\bridge troll simulator\\assets\\scripts\\components\\stringcontent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\components\\stringcontent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|d:\\repos\\bridge troll simulator\\assets\\scripts\\components\\badge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\components\\badge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|d:\\repos\\bridge troll simulator\\assets\\scripts\\utilities\\inputaxes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\utilities\\inputaxes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\components\\direction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\components\\direction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\components\\inputextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\components\\inputextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\uiwindowbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\uiwindowbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\rules\\staticrules.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\rules\\staticrules.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\beautiful interface\\elements\\scripts\\textui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\beautiful interface\\elements\\scripts\\textui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\uisliderpanelbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\uisliderpanelbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\textlabelbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\textlabelbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\rules\\statisticrule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\rules\\statisticrule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\badgeearnedpanelbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\badgeearnedpanelbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\autoscrollbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\autoscrollbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\badgedisplaypanelbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\badgedisplaypanelbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\badgespanelbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\badgespanelbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\badgerowpanelbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\badgerowpanelbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\textbuttonbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\textbuttonbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\selectablestatebehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\selectablestatebehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\selectablebehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\selectablebehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\scrolltoviewbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\scrolltoviewbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\panelbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\panelbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\optionselectorbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\optionselectorbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\onselectscrollbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\onselectscrollbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\oldschoolgamespanelbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\oldschoolgamespanelbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\newgamemenubehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\newgamemenubehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\musicselectorbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\musicselectorbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\minimapbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\minimapbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\extensions\\mathfextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\extensions\\mathfextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\messageboxbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\messageboxbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\menupanelbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\menupanelbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\languageselectorbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\languageselectorbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\imageanimationbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\imageanimationbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\hoverablebehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\hoverablebehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\expandupbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\expandupbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\exitearlybehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\exitearlybehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\ui\\buttonspanelbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\ui\\buttonspanelbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\gameplaymanagement\\actionstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\gameplaymanagement\\actionstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\gameplaymanagement\\controlstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\gameplaymanagement\\controlstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\gameplaymanagement\\gameplaymenumanagerbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\gameplaymanagement\\gameplaymenumanagerbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\gameplaymanagement\\gameplaymenustate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\gameplaymanagement\\gameplaymenustate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\gameplaymanagement\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\gameplaymanagement\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\gameplaymanagement\\inventorystate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\gameplaymanagement\\inventorystate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\gameplaymanagement\\localemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\gameplaymanagement\\localemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\rules\\rule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\rules\\rule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\spawnerbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\spawnerbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\shakebehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\shakebehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\poolableprefablibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\poolableprefablibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\playerbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\playerbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\movementbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\movementbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\badgemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\badgemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\inventorybehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\inventorybehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\components\\path.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\components\\path.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\findableitembehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\findableitembehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\components\\objectpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\components\\objectpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\breathingbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\breathingbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\growbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\growbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\footstepbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\footstepbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\flyaroundbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\flyaroundbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\feedbackmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\feedbackmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\entitybehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\entitybehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\components\\killoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\components\\killoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\cameratargetbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\cameratargetbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\cameramanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\cameramanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\blinkronizer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\blinkronizer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\blinkbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\blinkbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\bleedbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\bleedbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\arcbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\arcbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\interfaces\\igamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\interfaces\\igamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\interfaces\\iscenemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\interfaces\\iscenemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\components\\playerprefsdatatype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\components\\playerprefsdatatype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\monobehaviours\\audiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\monobehaviours\\audiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\components\\settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\components\\settings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\components\\supportedlanguage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\components\\supportedlanguage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\components\\difficulty.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\components\\difficulty.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\components\\gameoversettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\components\\gameoversettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\components\\gameovercondition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\components\\gameovercondition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\rules\\endgamerule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\rules\\endgamerule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\rules\\multistatisticrule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\rules\\multistatisticrule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\platform\\steammanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\platform\\steammanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\components\\playerprefsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\components\\playerprefsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\platform\\gamecentermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\platform\\gamecentermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\platform\\platformmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\platform\\platformmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\extensions\\vector3extension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\extensions\\vector3extension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\extensions\\vector2extension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\extensions\\vector2extension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\utilities\\validator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\utilities\\validator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\utilities\\utility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\utilities\\utility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\components\\constants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\components\\constants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\extensions\\stackextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\extensions\\stackextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\components\\soundclips.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\components\\soundclips.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\attributes\\readonlyattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\attributes\\readonlyattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\extensions\\listextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\extensions\\listextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\extensions\\ienumerableextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\extensions\\ienumerableextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\utilities\\displayfieldtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\utilities\\displayfieldtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\utilities\\direction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\utilities\\direction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|D:\\Repos\\Bridge Troll Simulator\\assets\\scripts\\utilities\\datafielddefinitionlisteditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D331C2-2C33-CF03-52EE-A2A0F875D812}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\utilities\\datafielddefinitionlisteditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\U\\UIHelperBehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\U\\UIHelperBehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\U\\DataTableBehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\U\\DataTableBehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\U\\DataRowBehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\U\\DataRowBehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\U\\DataFieldBehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\U\\DataFieldBehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\U\\DataFieldDefinitionList.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\U\\DataFieldDefinitionList.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Keyboard.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\Input\\Keyboard.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Components\\Input\\Keyboard.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\Input\\Keyboard.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Components\\Input\\Keyboard.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-24T20:35:23.177Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StringContent.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\StringContent.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Components\\StringContent.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\StringContent.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Components\\StringContent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-24T20:29:47.056Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Badge.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\Badge.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Components\\Badge.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\Badge.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Components\\Badge.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAADwv0MAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-24T20:27:29.738Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "InputAxes.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Utilities\\InputAxes.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Utilities\\InputAxes.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Utilities\\InputAxes.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Utilities\\InputAxes.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T17:21:49.083Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Direction.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\Direction.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Components\\Direction.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\Direction.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Components\\Direction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T17:19:28.452Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "InputExtension.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\InputExtension.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Components\\InputExtension.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\InputExtension.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Components\\InputExtension.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAuwHUAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T17:17:28.519Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UIWindowBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\UIWindowBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\UIWindowBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\UIWindowBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\UIWindowBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T17:04:31.395Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TextUI.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Beautiful Interface\\Elements\\Scripts\\TextUI.cs",
+              "RelativeDocumentMoniker": "Assets\\Beautiful Interface\\Elements\\Scripts\\TextUI.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Beautiful Interface\\Elements\\Scripts\\TextUI.cs",
+              "RelativeToolTip": "Assets\\Beautiful Interface\\Elements\\Scripts\\TextUI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T16:42:46.083Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UISliderPanelBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\UISliderPanelBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\UISliderPanelBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\UISliderPanelBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\UISliderPanelBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-05T16:40:05.196Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TextLabelBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\TextLabelBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\TextLabelBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\TextLabelBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\TextLabelBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T20:50:45.283Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "OldSchoolGamesPanelBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\OldSchoolGamesPanelBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\OldSchoolGamesPanelBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\OldSchoolGamesPanelBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\OldSchoolGamesPanelBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T20:38:52.887Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "NewGameMenuBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\NewGameMenuBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\NewGameMenuBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\NewGameMenuBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\NewGameMenuBehaviour.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAcwIQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T20:35:56.856Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "MusicSelectorBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\MusicSelectorBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\MusicSelectorBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\MusicSelectorBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\MusicSelectorBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T20:34:57.933Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "MinimapBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\MinimapBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\MinimapBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\MinimapBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\MinimapBehaviour.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAACoAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T20:29:55.156Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "BadgeEarnedPanelBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\BadgeEarnedPanelBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\BadgeEarnedPanelBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\BadgeEarnedPanelBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\BadgeEarnedPanelBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAkwBgAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T19:58:50.355Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "BadgeDisplayPanelBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\BadgeDisplayPanelBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\BadgeDisplayPanelBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\BadgeDisplayPanelBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\BadgeDisplayPanelBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T19:57:46.821Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "BadgeRowPanelBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\BadgeRowPanelBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\BadgeRowPanelBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\BadgeRowPanelBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\BadgeRowPanelBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T20:01:27.549Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "BadgesPanelBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\BadgesPanelBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\BadgesPanelBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\BadgesPanelBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\BadgesPanelBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T20:02:28.578Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "StaticRules.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Rules\\StaticRules.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Rules\\StaticRules.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Rules\\StaticRules.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Rules\\StaticRules.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T20:34:43.133Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "TextButtonBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\TextButtonBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\TextButtonBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\TextButtonBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\TextButtonBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T20:49:56.765Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AutoScrollBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\AutoScrollBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\AutoScrollBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\AutoScrollBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\AutoScrollBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T19:56:20.363Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "StatisticRule.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Rules\\StatisticRule.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Rules\\StatisticRule.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Rules\\StatisticRule.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Rules\\StatisticRule.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T20:34:54.885Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "OnSelectScrollBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\OnSelectScrollBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\OnSelectScrollBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\OnSelectScrollBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\OnSelectScrollBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T20:40:44.201Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "OptionSelectorBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\OptionSelectorBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\OptionSelectorBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\OptionSelectorBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\OptionSelectorBehaviour.cs",
+              "ViewState": "AgIAAJsAAAAAAAAAAAAqwMoAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T20:41:29.938Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "PanelBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\PanelBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\PanelBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\PanelBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\PanelBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T20:44:56.362Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ScrollToViewBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\ScrollToViewBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\ScrollToViewBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\ScrollToViewBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\ScrollToViewBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T20:46:02.253Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "SelectableBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\SelectableBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\SelectableBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\SelectableBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\SelectableBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T20:46:38.315Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "SelectableStateBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\SelectableStateBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\SelectableStateBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\SelectableStateBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\SelectableStateBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T20:47:21.261Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "MenuPanelBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\MenuPanelBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\MenuPanelBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\MenuPanelBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\MenuPanelBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T20:26:25.701Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "LanguageSelectorBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\LanguageSelectorBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\LanguageSelectorBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\LanguageSelectorBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\LanguageSelectorBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T20:12:04.064Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "ImageAnimationBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\ImageAnimationBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\ImageAnimationBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\ImageAnimationBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\ImageAnimationBehaviour.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAowEIAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T20:09:56.586Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "HoverableBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\HoverableBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\HoverableBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\HoverableBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\HoverableBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T20:09:16.666Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "ExpandUpBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\ExpandUpBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\ExpandUpBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\ExpandUpBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\ExpandUpBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T20:07:53.586Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "ExitEarlyBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\ExitEarlyBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\ExitEarlyBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\ExitEarlyBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\ExitEarlyBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T20:06:45.557Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "ButtonsPanelBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\ButtonsPanelBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\ButtonsPanelBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\ButtonsPanelBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\ButtonsPanelBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T20:03:54.581Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "MathfExtension.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Extensions\\MathfExtension.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Extensions\\MathfExtension.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Extensions\\MathfExtension.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Extensions\\MathfExtension.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAYAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T19:15:26.47Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "MessageBoxBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\MessageBoxBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\UI\\MessageBoxBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\UI\\MessageBoxBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\UI\\MessageBoxBehaviour.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAgwGAAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T20:27:46.608Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "LocaleManager.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\LocaleManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\LocaleManager.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\LocaleManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\LocaleManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T19:01:35.909Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "InventoryState.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\InventoryState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\InventoryState.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\InventoryState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\InventoryState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T19:01:35.497Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "InputManager.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\InputManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\InputManager.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\InputManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\InputManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T19:01:35.231Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "GameplayMenuState.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\GameplayMenuState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\GameplayMenuState.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\GameplayMenuState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\GameplayMenuState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T19:01:34.993Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "GameplayMenuManagerBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\GameplayMenuManagerBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\GameplayMenuManagerBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\GameplayMenuManagerBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\GameplayMenuManagerBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T19:01:33.998Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "ControlState.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\ControlState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\ControlState.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\ControlState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\ControlState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T19:01:33.8Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "ActionState.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\ActionState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\ActionState.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\ActionState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\GameplayManagement\\ActionState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T19:01:33.361Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "SpawnerBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\SpawnerBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\SpawnerBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\SpawnerBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\SpawnerBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T15:35:00.762Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "PoolablePrefabLibrary.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\PoolablePrefabLibrary.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\PoolablePrefabLibrary.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\PoolablePrefabLibrary.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\PoolablePrefabLibrary.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T00:18:08.211Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "PlayerBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\PlayerBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\PlayerBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\PlayerBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\PlayerBehaviour.cs",
+              "ViewState": "AgIAACQBAAAAAAAAAAAwwFEBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T18:26:21.001Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "GameManager.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\GameManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\GameManager.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\GameManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\GameManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T17:31:30.73Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "MovementBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\MovementBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\MovementBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\MovementBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\MovementBehaviour.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAMwLkBAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T18:21:50.298Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "FindableItemBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\FindableItemBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\FindableItemBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\FindableItemBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\FindableItemBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T18:09:18.242Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "InventoryBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\InventoryBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\InventoryBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\InventoryBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\InventoryBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T18:05:25.32Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "BreathingBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\BreathingBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\BreathingBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\BreathingBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\BreathingBehaviour.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAQwD8AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T18:04:24.071Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "GrowBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\GrowBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\GrowBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\GrowBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\GrowBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T18:03:21.424Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "FootstepBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\FootstepBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\FootstepBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\FootstepBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\FootstepBehaviour.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAowH0AAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T17:29:45.001Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "FlyAroundBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\FlyAroundBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\FlyAroundBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\FlyAroundBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\FlyAroundBehaviour.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAQwFAAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-22T00:27:55.753Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "FeedbackManager.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\FeedbackManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\FeedbackManager.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\FeedbackManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\FeedbackManager.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAgwGUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-22T00:26:43.254Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "KillOptions.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\KillOptions.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Components\\KillOptions.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\KillOptions.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Components\\KillOptions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-22T00:25:05.856Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "Rule.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Rules\\Rule.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Rules\\Rule.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Rules\\Rule.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Rules\\Rule.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T20:34:31.073Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "ShakeBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\ShakeBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\ShakeBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\ShakeBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\ShakeBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T00:22:29.049Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "EntityBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\EntityBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\EntityBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\EntityBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\EntityBehaviour.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAkwHQAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-22T00:22:10.689Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "CameraTargetBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\CameraTargetBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\CameraTargetBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\CameraTargetBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\CameraTargetBehaviour.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAD0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-22T00:20:45.683Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "BadgeManager.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\BadgeManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\BadgeManager.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\BadgeManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\BadgeManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-22T00:12:05.644Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "Path.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\Path.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Components\\Path.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\Path.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Components\\Path.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-28T18:22:35.457Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "CameraManager.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\CameraManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\CameraManager.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\CameraManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\CameraManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-22T00:17:31.154Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 65,
+              "Title": "Blinkronizer.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\Blinkronizer.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\Blinkronizer.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\Blinkronizer.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\Blinkronizer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-22T00:16:18.795Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 66,
+              "Title": "BlinkBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\BlinkBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\BlinkBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\BlinkBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\BlinkBehaviour.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAgwFEAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-22T00:15:10.529Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 67,
+              "Title": "BleedBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\BleedBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\BleedBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\BleedBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\BleedBehaviour.cs",
+              "ViewState": "AgIAAJsAAAAAAAAAAAAAwLwAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-22T00:13:50.116Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "ObjectPool.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\ObjectPool.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Components\\ObjectPool.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\ObjectPool.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Components\\ObjectPool.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T19:15:54.882Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 68,
+              "Title": "ArcBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\ArcBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\ArcBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\ArcBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\ArcBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-22T00:09:18.514Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 71,
+              "Title": "PlayerPrefsDataType.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\PlayerPrefsDataType.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Components\\PlayerPrefsDataType.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\PlayerPrefsDataType.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Components\\PlayerPrefsDataType.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-22T00:07:10.306Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 70,
+              "Title": "ISceneManager.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Interfaces\\ISceneManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Interfaces\\ISceneManager.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Interfaces\\ISceneManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Interfaces\\ISceneManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-22T00:06:59.656Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 72,
+              "Title": "AudioManager.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\AudioManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MonoBehaviours\\AudioManager.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\MonoBehaviours\\AudioManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MonoBehaviours\\AudioManager.cs",
+              "ViewState": "AgIAAAABAAAAAAAAAAAQwBoAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T21:47:38.128Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 69,
+              "Title": "IGameManager.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Interfaces\\IGameManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Interfaces\\IGameManager.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Interfaces\\IGameManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Interfaces\\IGameManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T21:45:48.052Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 74,
+              "Title": "SupportedLanguage.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\SupportedLanguage.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Components\\SupportedLanguage.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\SupportedLanguage.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Components\\SupportedLanguage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T20:47:09.238Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 73,
+              "Title": "Settings.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\Settings.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Components\\Settings.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\Settings.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Components\\Settings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T20:44:29.608Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 75,
+              "Title": "Difficulty.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\Difficulty.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Components\\Difficulty.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\Difficulty.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Components\\Difficulty.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAQwEYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T20:39:16.907Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 77,
+              "Title": "GameOverCondition.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\GameOverCondition.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Components\\GameOverCondition.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\GameOverCondition.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Components\\GameOverCondition.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T20:37:46.325Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 76,
+              "Title": "GameOverSettings.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\GameOverSettings.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Components\\GameOverSettings.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\GameOverSettings.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Components\\GameOverSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T20:37:15.231Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 79,
+              "Title": "MultiStatisticRule.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Rules\\MultiStatisticRule.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Rules\\MultiStatisticRule.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Rules\\MultiStatisticRule.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Rules\\MultiStatisticRule.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T20:34:24.247Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 78,
+              "Title": "EndGameRule.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Rules\\EndGameRule.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Rules\\EndGameRule.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Rules\\EndGameRule.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Rules\\EndGameRule.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T20:34:14.392Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 81,
+              "Title": "PlayerPrefsManager.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\PlayerPrefsManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Components\\PlayerPrefsManager.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\PlayerPrefsManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Components\\PlayerPrefsManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T19:46:03.001Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 80,
+              "Title": "SteamManager.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Platform\\SteamManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Platform\\SteamManager.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Platform\\SteamManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Platform\\SteamManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T19:44:20.894Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 82,
+              "Title": "GameCenterManager.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Platform\\GameCenterManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Platform\\GameCenterManager.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Platform\\GameCenterManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Platform\\GameCenterManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T19:43:18.073Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 83,
+              "Title": "PlatformManager.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Platform\\PlatformManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Platform\\PlatformManager.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Platform\\PlatformManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Platform\\PlatformManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T19:41:59.606Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 84,
+              "Title": "Vector3Extension.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Extensions\\Vector3Extension.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Extensions\\Vector3Extension.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Extensions\\Vector3Extension.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Extensions\\Vector3Extension.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T19:40:46.237Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 85,
+              "Title": "Vector2Extension.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Extensions\\Vector2Extension.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Extensions\\Vector2Extension.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Extensions\\Vector2Extension.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Extensions\\Vector2Extension.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAABfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T19:40:01.488Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 86,
+              "Title": "Validator.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Utilities\\Validator.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Utilities\\Validator.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Utilities\\Validator.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Utilities\\Validator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T19:39:17.7Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 87,
+              "Title": "Utility.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Utilities\\Utility.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Utilities\\Utility.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Utilities\\Utility.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Utilities\\Utility.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T19:38:40.669Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 88,
+              "Title": "Constants.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\Constants.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Components\\Constants.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\Constants.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Components\\Constants.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T19:37:17.135Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 89,
+              "Title": "StackExtension.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Extensions\\StackExtension.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Extensions\\StackExtension.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Extensions\\StackExtension.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Extensions\\StackExtension.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T19:20:11.979Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 90,
+              "Title": "SoundClips.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\SoundClips.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Components\\SoundClips.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Components\\SoundClips.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Components\\SoundClips.cs",
+              "ViewState": "AgIAAPgAAAAAAAAAAAAQwP8AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T19:19:05.058Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 91,
+              "Title": "ReadOnlyAttribute.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Attributes\\ReadOnlyAttribute.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Attributes\\ReadOnlyAttribute.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Attributes\\ReadOnlyAttribute.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Attributes\\ReadOnlyAttribute.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T19:17:05.427Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 92,
+              "Title": "ListExtension.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Extensions\\ListExtension.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Extensions\\ListExtension.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Extensions\\ListExtension.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Extensions\\ListExtension.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T19:14:21.085Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 93,
+              "Title": "IEnumerableExtension.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Extensions\\IEnumerableExtension.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Extensions\\IEnumerableExtension.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Extensions\\IEnumerableExtension.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Extensions\\IEnumerableExtension.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T19:13:06.209Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 94,
+              "Title": "DisplayFieldType.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Utilities\\DisplayFieldType.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Utilities\\DisplayFieldType.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Utilities\\DisplayFieldType.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Utilities\\DisplayFieldType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T19:12:28.545Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 95,
+              "Title": "Direction.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Utilities\\Direction.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Utilities\\Direction.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Utilities\\Direction.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Utilities\\Direction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T19:10:33.179Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 96,
+              "Title": "DataFieldDefinitionListEditor.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Utilities\\DataFieldDefinitionListEditor.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Utilities\\DataFieldDefinitionListEditor.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\Utilities\\DataFieldDefinitionListEditor.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Utilities\\DataFieldDefinitionListEditor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T19:09:00.824Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 97,
+              "Title": "UIHelperBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\U\\UIHelperBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\U\\UIHelperBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\U\\UIHelperBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\U\\UIHelperBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T19:08:31.894Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 98,
+              "Title": "DataTableBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\U\\DataTableBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\U\\DataTableBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\U\\DataTableBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\U\\DataTableBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T19:07:10.808Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 99,
+              "Title": "DataRowBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\U\\DataRowBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\U\\DataRowBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\U\\DataRowBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\U\\DataRowBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T19:06:22.069Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 100,
+              "Title": "DataFieldBehaviour.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\U\\DataFieldBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\U\\DataFieldBehaviour.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\U\\DataFieldBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\U\\DataFieldBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T19:05:32.03Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 101,
+              "Title": "DataFieldDefinitionList.cs",
+              "DocumentMoniker": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\U\\DataFieldDefinitionList.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\U\\DataFieldDefinitionList.cs",
+              "ToolTip": "D:\\Repos\\Bridge Troll Simulator\\Assets\\Scripts\\U\\DataFieldDefinitionList.cs",
+              "RelativeToolTip": "Assets\\Scripts\\U\\DataFieldDefinitionList.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T19:04:37.866Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
