@@ -1,0 +1,591 @@
+fileFormatVersion: 2
+guid: 0e8796544dbefe5c48a9976ffde5d6df
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7059624558650287420
+    second: Troll.Dying.Right_0
+  - first:
+      213: 1352003791673971362
+    second: Troll.Dying.Right_1
+  - first:
+      213: -3125616762562589819
+    second: Troll.Dying.Right_2
+  - first:
+      213: 3700501272183979628
+    second: Troll.Dying.Right_3
+  - first:
+      213: -9154692422521160733
+    second: Troll.Dying.Right_4
+  - first:
+      213: 4132280893027525610
+    second: Troll.Dying.Right_5
+  - first:
+      213: -7779377073474433737
+    second: Troll.Dying.Right_6
+  - first:
+      213: 8757379203917564564
+    second: Troll.Dying.Right_7
+  - first:
+      213: -8420272561968527267
+    second: Troll.Dying.Right_8
+  - first:
+      213: 8214114164848131747
+    second: Troll.Dying.Right_9
+  - first:
+      213: 608531340833283789
+    second: Troll.Dying.Right_10
+  - first:
+      213: 5130021861280262746
+    second: Troll.Dying.Right_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: VisionOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Troll.Dying.Right_0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 124
+        width: 43
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 17.5, y: -3}
+        - {x: 19.5, y: 24}
+        - {x: 15.5, y: 28}
+        - {x: -7.5, y: 28}
+        - {x: -21.5, y: 20}
+        - {x: -21.5, y: -1}
+        - {x: -9.5, y: -27}
+        - {x: 19.5, y: -27}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3569f1f123d8f160800000000000000
+      internalID: 7059624558650287420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Dying.Right_1
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 124
+        width: 41
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 17.5, y: -24}
+        - {x: 20.5, y: -11}
+        - {x: 20.5, y: 20}
+        - {x: 12.5, y: 28}
+        - {x: -0.5, y: 28}
+        - {x: -14.5, y: 25}
+        - {x: -19.5, y: 19}
+        - {x: -19.5, y: 2}
+        - {x: -14.5, y: -12}
+        - {x: -8.5, y: -27}
+        - {x: 12.5, y: -27}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a255b9094843c210800000000000000
+      internalID: 1352003791673971362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Dying.Right_2
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 124
+        width: 41
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 20.5, y: 21}
+        - {x: 10.5, y: 28}
+        - {x: -10.5, y: 28}
+        - {x: -20.5, y: 22}
+        - {x: -20.5, y: -6}
+        - {x: -13.5, y: -27}
+        - {x: 20.5, y: -27}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58b437b5d149f94d0800000000000000
+      internalID: -3125616762562589819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Dying.Right_3
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 124
+        width: 41
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 20.5, y: 23}
+        - {x: 12.5, y: 28}
+        - {x: -12.5, y: 28}
+        - {x: -15.5, y: 27}
+        - {x: -20.5, y: 15}
+        - {x: -20.5, y: -7}
+        - {x: -8.5, y: -28}
+        - {x: 20.5, y: -28}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6e386b0d42da5330800000000000000
+      internalID: 3700501272183979628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Dying.Right_4
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 65
+        width: 51
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 25.5, y: -17.5}
+        - {x: 25.5, y: 19.5}
+        - {x: 20.5, y: 24.5}
+        - {x: -25.5, y: 24.5}
+        - {x: -25.5, y: -18.5}
+        - {x: -14.5, y: -23.5}
+        - {x: 17.5, y: -23.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3eb7aafcebff3f080800000000000000
+      internalID: -9154692422521160733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Dying.Right_5
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 65
+        width: 55
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 27.5, y: -15.5}
+        - {x: 27.5, y: -14.5}
+        - {x: 25.5, y: -8.5}
+        - {x: 23.5, y: 15.5}
+        - {x: 6.5, y: 23.5}
+        - {x: -20.5, y: 23.5}
+        - {x: -25.5, y: 14.5}
+        - {x: -25.5, y: -17.5}
+        - {x: -24.5, y: -22.5}
+        - {x: -15.5, y: -24.5}
+        - {x: 22.5, y: -24.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae32a05149fc85930800000000000000
+      internalID: 4132280893027525610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Dying.Right_6
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 65
+        width: 61
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 27.5, y: -15}
+        - {x: 30.5, y: -10}
+        - {x: 30.5, y: -5}
+        - {x: 29.5, y: -4}
+        - {x: 9.5, y: 20}
+        - {x: -2.5, y: 24}
+        - {x: -15.5, y: 24}
+        - {x: -26.5, y: 16}
+        - {x: -29.5, y: 11}
+        - {x: -29.5, y: -18}
+        - {x: -7.5, y: -24}
+        - {x: 21.5, y: -24}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73d0db1c4c91a0490800000000000000
+      internalID: -7779377073474433737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Dying.Right_7
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 64
+        width: 60
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 28, y: -14.5}
+        - {x: 29, y: -1.5}
+        - {x: 29, y: 3.5}
+        - {x: 26, y: 4.5}
+        - {x: 10, y: 19.5}
+        - {x: -6, y: 22.5}
+        - {x: -22, y: 22.5}
+        - {x: -29, y: 16.5}
+        - {x: -29, y: -19.5}
+        - {x: -20, y: -22.5}
+        - {x: 23, y: -22.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49a46e4ccf5788970800000000000000
+      internalID: 8757379203917564564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Dying.Right_8
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 7
+        width: 58
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 29, y: -12}
+        - {x: 29, y: 18}
+        - {x: -26, y: 18}
+        - {x: -28, y: 17}
+        - {x: -29, y: 9}
+        - {x: -29, y: -13}
+        - {x: -21, y: -18}
+        - {x: 26, y: -18}
+      - - {x: 19, y: -5}
+        - {x: 21, y: -4}
+        - {x: 20, y: -5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d58c5e7a7be252b80800000000000000
+      internalID: -8420272561968527267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Dying.Right_9
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 3
+        width: 59
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 27.5, y: -11.5}
+        - {x: 29.5, y: -7.5}
+        - {x: 29.5, y: 16.5}
+        - {x: -24.5, y: 16.5}
+        - {x: -29.5, y: 6.5}
+        - {x: -29.5, y: -5.5}
+        - {x: -21.5, y: -15.5}
+        - {x: 2.5, y: -15.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aef64c00556ef170800000000000000
+      internalID: 8214114164848131747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Dying.Right_10
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 0
+        width: 63
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 30.5, y: -12}
+        - {x: 30.5, y: 12}
+        - {x: 15.5, y: 15}
+        - {x: -31.5, y: 15}
+        - {x: -31.5, y: -4}
+        - {x: -26.5, y: -16}
+        - {x: 26.5, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: dce5f05c700f17800800000000000000
+      internalID: 608531340833283789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Dying.Right_11
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 62
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 26, y: -14}
+        - {x: 31, y: -8}
+        - {x: 31, y: 0}
+        - {x: 21, y: 14}
+        - {x: 11, y: 15}
+        - {x: -31, y: 15}
+        - {x: -31, y: -7}
+        - {x: -23, y: -16}
+        - {x: 18, y: -16}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5a299be3bf713740800000000000000
+      internalID: 5130021861280262746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 3bba273d83cefafa68dff51a859c584b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Troll.Dying.Right_0: 7059624558650287420
+      Troll.Dying.Right_1: 1352003791673971362
+      Troll.Dying.Right_10: 608531340833283789
+      Troll.Dying.Right_11: 5130021861280262746
+      Troll.Dying.Right_2: -3125616762562589819
+      Troll.Dying.Right_3: 3700501272183979628
+      Troll.Dying.Right_4: -9154692422521160733
+      Troll.Dying.Right_5: 4132280893027525610
+      Troll.Dying.Right_6: -7779377073474433737
+      Troll.Dying.Right_7: 8757379203917564564
+      Troll.Dying.Right_8: -8420272561968527267
+      Troll.Dying.Right_9: 8214114164848131747
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

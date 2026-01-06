@@ -1,0 +1,742 @@
+fileFormatVersion: 2
+guid: 638e997eaa267a8dc9b66fd1dd45caaa
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6457175683327299955
+    second: Troll.Whack.Right_0
+  - first:
+      213: 5180792607110188773
+    second: Troll.Whack.Right_1
+  - first:
+      213: -5277602821449590267
+    second: Troll.Whack.Right_2
+  - first:
+      213: -91877042168574974
+    second: Troll.Whack.Right_3
+  - first:
+      213: 4231805477662014494
+    second: Troll.Whack.Right_4
+  - first:
+      213: 4820247213212645456
+    second: Troll.Whack.Right_5
+  - first:
+      213: 8397628723776316347
+    second: Troll.Whack.Right_6
+  - first:
+      213: -1624519331387062006
+    second: Troll.Whack.Right_7
+  - first:
+      213: -4541673454492469002
+    second: Troll.Whack.Right_8
+  - first:
+      213: -5685603435626880748
+    second: Troll.Whack.Right_9
+  - first:
+      213: 37515060031534375
+    second: Troll.Whack.Right_10
+  - first:
+      213: 7869581048391275199
+    second: Troll.Whack.Right_11
+  - first:
+      213: -6717711191719813066
+    second: Troll.Whack.Right_12
+  - first:
+      213: 5662491100434803745
+    second: Troll.Whack.Right_13
+  - first:
+      213: 4180597560243015257
+    second: Troll.Whack.Right_14
+  - first:
+      213: -4865895072113133340
+    second: Troll.Whack.Right_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: VisionOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Troll.Whack.Right_0
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 198
+        width: 42
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 20, y: 21.5}
+        - {x: 16, y: 27.5}
+        - {x: -5, y: 27.5}
+        - {x: -21, y: 21.5}
+        - {x: -21, y: -6.5}
+        - {x: -9, y: -28.5}
+        - {x: 20, y: -28.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3719309821f7c9950800000000000000
+      internalID: 6457175683327299955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Whack.Right_1
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 198
+        width: 43
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 14.5, y: -27.5}
+        - {x: 21.5, y: -20.5}
+        - {x: 21.5, y: 22.5}
+        - {x: 15.5, y: 26.5}
+        - {x: -8.5, y: 26.5}
+        - {x: -15.5, y: 24.5}
+        - {x: -21.5, y: 9.5}
+        - {x: -21.5, y: -5.5}
+        - {x: -15.5, y: -17.5}
+        - {x: -3.5, y: -28.5}
+        - {x: 1.5, y: -28.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5eec5c95d6fd5e740800000000000000
+      internalID: 5180792607110188773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Whack.Right_2
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 198
+        width: 47
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 23.5, y: 18}
+        - {x: 15.5, y: 27}
+        - {x: -11.5, y: 27}
+        - {x: -23.5, y: 18}
+        - {x: -23.5, y: -24}
+        - {x: -22.5, y: -26}
+        - {x: -16.5, y: -28}
+        - {x: 23.5, y: -28}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50ad5e1223032c6b0800000000000000
+      internalID: -5277602821449590267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Whack.Right_3
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 198
+        width: 51
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 18.5, y: -19.5}
+        - {x: 16.5, y: -13.5}
+        - {x: 24.5, y: 1.5}
+        - {x: 25.5, y: 4.5}
+        - {x: 25.5, y: 16.5}
+        - {x: 9.5, y: 26.5}
+        - {x: -5.5, y: 26.5}
+        - {x: -21.5, y: 11.5}
+        - {x: -24.5, y: 7.5}
+        - {x: -25.5, y: 2.5}
+        - {x: -25.5, y: -15.5}
+        - {x: -21.5, y: -20.5}
+        - {x: -5.5, y: -26.5}
+        - {x: 20.5, y: -26.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20c4782215699bef0800000000000000
+      internalID: -91877042168574974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Whack.Right_4
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 133
+        width: 43
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 20.5, y: -18}
+        - {x: 21.5, y: -15}
+        - {x: 21.5, y: 19}
+        - {x: 10.5, y: 33}
+        - {x: -18.5, y: 33}
+        - {x: -20.5, y: 22}
+        - {x: -20.5, y: -31}
+        - {x: -14.5, y: -33}
+        - {x: 11.5, y: -33}
+      - - {x: -7.5, y: -26}
+        - {x: -8.5, y: -23}
+        - {x: -5.5, y: -22.25}
+        - {x: -5.5, y: -26}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1cb89e29a46aba30800000000000000
+      internalID: 4231805477662014494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Whack.Right_5
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 133
+        width: 55
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: -17.5, y: -24.5}
+        - {x: -11.5, y: -26.5}
+        - {x: 16.5, y: -26.5}
+        - {x: 27.5, y: -21.5}
+        - {x: 27.5, y: 25.5}
+        - {x: -7.5, y: 25.5}
+        - {x: -27.5, y: 15.5}
+        - {x: -27.5, y: -26.5}
+        - {x: -26.5, y: -26.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0583b193d45f4e240800000000000000
+      internalID: 4820247213212645456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Whack.Right_6
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 134
+        width: 57
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 28.5, y: 27}
+        - {x: 0.5, y: 27}
+        - {x: -28.5, y: 12}
+        - {x: -28.5, y: -21}
+        - {x: -6.5, y: -27}
+        - {x: 28.5, y: -27}
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb3ed4ce4de5a8470800000000000000
+      internalID: 8397628723776316347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Whack.Right_7
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 133
+        width: 65
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 31.5, y: -6}
+        - {x: 31.5, y: 20}
+        - {x: 24.5, y: 26}
+        - {x: -21.5, y: 26}
+        - {x: -32.5, y: 24}
+        - {x: -32.5, y: 8}
+        - {x: -18.5, y: -15}
+        - {x: -9.5, y: -27}
+        - {x: 26.5, y: -27}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a094be1764c8479e0800000000000000
+      internalID: -1624519331387062006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Whack.Right_8
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 68
+        width: 51
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 25.5, y: 1.5}
+        - {x: 25.5, y: 25.5}
+        - {x: 23.5, y: 26.5}
+        - {x: -5.5, y: 26.5}
+        - {x: -24.5, y: 3.5}
+        - {x: -24.5, y: -20.5}
+        - {x: -18.5, y: -26.5}
+        - {x: -11.5, y: -24.5}
+        - {x: -8.5, y: -27.5}
+        - {x: 16.5, y: -27.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f8b7235e0cb8f0c0800000000000000
+      internalID: -4541673454492469002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Whack.Right_9
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 68
+        width: 56
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 28, y: -3.5}
+        - {x: 28, y: 24.5}
+        - {x: -3, y: 24.5}
+        - {x: -28, y: 10.5}
+        - {x: -28, y: -16.5}
+        - {x: -22, y: -24.5}
+        - {x: -19, y: -25.5}
+        - {x: 19, y: -25.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41128b58ccda811b0800000000000000
+      internalID: -5685603435626880748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Whack.Right_10
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 68
+        width: 52
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: -11, y: -24.5}
+        - {x: -12, y: -21.5}
+        - {x: -11, y: -23.5}
+        - {x: -11, y: -26.5}
+        - {x: 10, y: -26.5}
+        - {x: 21, y: -23.5}
+        - {x: 26, y: -9.5}
+        - {x: 26, y: 22.5}
+        - {x: 21, y: 25.5}
+        - {x: -8, y: 25.5}
+        - {x: -26, y: -1.5}
+        - {x: -26, y: -18.5}
+        - {x: -21, y: -26.5}
+        - {x: -14, y: -26.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72538e29fb7458000800000000000000
+      internalID: 37515060031534375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Whack.Right_11
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 66
+        width: 43
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 10.5, y: -26.5}
+        - {x: 19.5, y: -3.5}
+        - {x: 21.5, y: 4.5}
+        - {x: 21.5, y: 23.5}
+        - {x: 17.5, y: 27.5}
+        - {x: -7.5, y: 27.5}
+        - {x: -21.5, y: 13.5}
+        - {x: -21.5, y: -23.5}
+        - {x: -15.5, y: -28.5}
+        - {x: 2.5, y: -28.5}
+      - - {x: -8.5, y: -19.5}
+        - {x: -9.5, y: -18.5}
+        - {x: -8.5, y: -18.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb21288c44e563d60800000000000000
+      internalID: 7869581048391275199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Whack.Right_12
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 0
+        width: 39
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 9.5, y: -28}
+        - {x: 12.5, y: -22}
+        - {x: 17.5, y: 4}
+        - {x: 19.5, y: 16}
+        - {x: 19.5, y: 19}
+        - {x: 14.5, y: 28}
+        - {x: -9.5, y: 28}
+        - {x: -18.5, y: 25}
+        - {x: -18.5, y: -28}
+        - {x: -15.5, y: -29}
+        - {x: 8.5, y: -29}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 630efd95345e5c2a0800000000000000
+      internalID: -6717711191719813066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Whack.Right_13
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 40
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 20, y: -17}
+        - {x: 20, y: 24}
+        - {x: 14, y: 28}
+        - {x: -4, y: 28}
+        - {x: -20, y: 25}
+        - {x: -20, y: -29}
+        - {x: 18, y: -29}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12c2a3997a5359e40800000000000000
+      internalID: 5662491100434803745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Whack.Right_14
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 0
+        width: 40
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 20, y: -1.5}
+        - {x: 20, y: 18.5}
+        - {x: 11, y: 27.5}
+        - {x: -9, y: 27.5}
+        - {x: -20, y: 20.5}
+        - {x: -20, y: -16.5}
+        - {x: -15, y: -28.5}
+        - {x: 17, y: -28.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95e462fc457740a30800000000000000
+      internalID: 4180597560243015257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Whack.Right_15
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 0
+        width: 42
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 21, y: 0.5}
+        - {x: 21, y: 14.5}
+        - {x: 20, y: 19.5}
+        - {x: 12, y: 27.5}
+        - {x: -4, y: 27.5}
+        - {x: -20, y: 19.5}
+        - {x: -20, y: -9.5}
+        - {x: -11, y: -28.5}
+        - {x: 17, y: -28.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e87f58663ed87cb0800000000000000
+      internalID: -4865895072113133340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 31ffc11516ef189d4825dbe2a2b851a6
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Troll.Whack.Right_0: 6457175683327299955
+      Troll.Whack.Right_1: 5180792607110188773
+      Troll.Whack.Right_10: 37515060031534375
+      Troll.Whack.Right_11: 7869581048391275199
+      Troll.Whack.Right_12: -6717711191719813066
+      Troll.Whack.Right_13: 5662491100434803745
+      Troll.Whack.Right_14: 4180597560243015257
+      Troll.Whack.Right_15: -4865895072113133340
+      Troll.Whack.Right_2: -5277602821449590267
+      Troll.Whack.Right_3: -91877042168574974
+      Troll.Whack.Right_4: 4231805477662014494
+      Troll.Whack.Right_5: 4820247213212645456
+      Troll.Whack.Right_6: 8397628723776316347
+      Troll.Whack.Right_7: -1624519331387062006
+      Troll.Whack.Right_8: -4541673454492469002
+      Troll.Whack.Right_9: -5685603435626880748
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,733 @@
+fileFormatVersion: 2
+guid: a866879aaa3449dfe83b03c47c502d4f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6958306681360171652
+    second: Troll.Punch.Left_0
+  - first:
+      213: 5061560176138375332
+    second: Troll.Punch.Left_1
+  - first:
+      213: 2498479467557724770
+    second: Troll.Punch.Left_2
+  - first:
+      213: -2557039921276937516
+    second: Troll.Punch.Left_3
+  - first:
+      213: -2230648188698597888
+    second: Troll.Punch.Left_4
+  - first:
+      213: 8990925220632413665
+    second: Troll.Punch.Left_5
+  - first:
+      213: 7484350475710557328
+    second: Troll.Punch.Left_6
+  - first:
+      213: -7487410785899082688
+    second: Troll.Punch.Left_7
+  - first:
+      213: 3835837614791773371
+    second: Troll.Punch.Left_8
+  - first:
+      213: -318880989491636951
+    second: Troll.Punch.Left_9
+  - first:
+      213: 1271854873371187093
+    second: Troll.Punch.Left_10
+  - first:
+      213: 3479316998809073136
+    second: Troll.Punch.Left_11
+  - first:
+      213: -4330155799929240888
+    second: Troll.Punch.Left_12
+  - first:
+      213: 2953010540073048118
+    second: Troll.Punch.Left_13
+  - first:
+      213: -4301891343048170482
+    second: Troll.Punch.Left_14
+  - first:
+      213: -7668682876050563510
+    second: Troll.Punch.Left_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: VisionOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Troll.Punch.Left_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 182
+        width: 45
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 21.5, y: 27}
+        - {x: 18.5, y: 29}
+        - {x: -13.5, y: 29}
+        - {x: -22.5, y: 22}
+        - {x: -22.5, y: -4}
+        - {x: -13.5, y: -22}
+        - {x: -6.5, y: -27}
+        - {x: 21.5, y: -27}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48243bc5f0fd09060800000000000000
+      internalID: 6958306681360171652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Punch.Left_1
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 183
+        width: 44
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 21, y: -20.5}
+        - {x: 22, y: -16.5}
+        - {x: 22, y: 18.5}
+        - {x: 6, y: 28.5}
+        - {x: -13, y: 28.5}
+        - {x: -22, y: 19.5}
+        - {x: -22, y: -4.5}
+        - {x: -16, y: -23.5}
+        - {x: -1, y: -29.5}
+        - {x: 12, y: -29.5}
+      - - {x: 5, y: -19.5}
+        - {x: 5, y: -17.5}
+        - {x: 6, y: -18.5}
+        - {x: 6, y: -20.5}
+        - {x: 5.6666718, y: -20.833328}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a0ddf3b9264e3640800000000000000
+      internalID: 5061560176138375332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Punch.Left_2
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 183
+        width: 42
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 21, y: -10.5}
+        - {x: 21, y: 23.5}
+        - {x: 6, y: 28.5}
+        - {x: -12, y: 28.5}
+        - {x: -21, y: 19.5}
+        - {x: -21, y: -16.5}
+        - {x: -16, y: -28.5}
+        - {x: 14, y: -28.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 262a26696d16ca220800000000000000
+      internalID: 2498479467557724770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Punch.Left_3
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 185
+        width: 41
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 20.5, y: 1}
+        - {x: 20.5, y: 16}
+        - {x: 6.5, y: 27}
+        - {x: -7.5, y: 27}
+        - {x: -18.5, y: 20}
+        - {x: -20.5, y: 12}
+        - {x: -20.5, y: -4}
+        - {x: -14.5, y: -29}
+        - {x: 10.5, y: -29}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4da9bc74db1938cd0800000000000000
+      internalID: -2557039921276937516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Punch.Left_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 123
+        width: 51
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 24.5, y: -22}
+        - {x: 24.5, y: 21}
+        - {x: 7.5, y: 27}
+        - {x: -15.5, y: 27}
+        - {x: -25.5, y: 21}
+        - {x: -25.5, y: -5}
+        - {x: -14.5, y: -27}
+        - {x: 17.5, y: -27}
+      - - {x: 10.5, y: -15}
+        - {x: 12.5, y: -17}
+        - {x: 12.100006, y: -17.399994}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00660c57a452b01e0800000000000000
+      internalID: -2230648188698597888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Punch.Left_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 123
+        width: 47
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 23.5, y: -22.5}
+        - {x: 23.5, y: 17.5}
+        - {x: 6.5, y: 27.5}
+        - {x: -16.5, y: 27.5}
+        - {x: -23.5, y: 22.5}
+        - {x: -23.5, y: -16.5}
+        - {x: -17.5, y: -27.5}
+        - {x: 15.5, y: -27.5}
+      - - {x: 9.5, y: -20.5}
+        - {x: 8.5, y: -19.5}
+        - {x: 8.5, y: -15}
+        - {x: 11.5, y: -16.5}
+        - {x: 10.5, y: -20.5}
+        - {x: 9.5, y: -21.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e545e92ade26cc70800000000000000
+      internalID: 8990925220632413665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Punch.Left_6
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 125
+        width: 48
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 24, y: 17.5}
+        - {x: 9, y: 26.5}
+        - {x: -16, y: 26.5}
+        - {x: -19, y: 23.5}
+        - {x: -24, y: 12.5}
+        - {x: -24, y: -0.5}
+        - {x: -14, y: -27.5}
+        - {x: 24, y: -27.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09ce0479a11cdd760800000000000000
+      internalID: 7484350475710557328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Punch.Left_7
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 124
+        width: 47
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 23.5, y: 26}
+        - {x: 15.5, y: 27}
+        - {x: -21.5, y: 27}
+        - {x: -23.5, y: 24}
+        - {x: -23.5, y: -13}
+        - {x: -19.5, y: -27}
+        - {x: 23.5, y: -27}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04c8e0b6f8f571890800000000000000
+      internalID: -7487410785899082688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Punch.Left_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 63
+        width: 45
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 22.5, y: 9.5}
+        - {x: 20.5, y: 20.5}
+        - {x: 14.5, y: 27.5}
+        - {x: -4.5, y: 27.5}
+        - {x: -21.5, y: 23.5}
+        - {x: -22.5, y: 21.5}
+        - {x: -22.5, y: -0.5}
+        - {x: -5.5, y: -28.5}
+        - {x: 22.5, y: -28.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbccebdccf1ab3530800000000000000
+      internalID: 3835837614791773371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Punch.Left_9
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 63
+        width: 41
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 20.5, y: -26}
+        - {x: 20.5, y: 25}
+        - {x: 13.5, y: 27}
+        - {x: -14.5, y: 27}
+        - {x: -20.5, y: 23}
+        - {x: -20.5, y: -16}
+        - {x: -15.5, y: -28}
+        - {x: 15.5, y: -28}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 925d9b7fd6b139bf0800000000000000
+      internalID: -318880989491636951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Punch.Left_10
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 63
+        width: 44
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 22, y: -27}
+        - {x: 22, y: 12}
+        - {x: 14, y: 27}
+        - {x: -11, y: 27}
+        - {x: -22, y: 22}
+        - {x: -22, y: -15}
+        - {x: -17, y: -28}
+        - {x: 21, y: -28}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 597932dc44986a110800000000000000
+      internalID: 1271854873371187093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Punch.Left_11
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 63
+        width: 48
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 24, y: 25}
+        - {x: 23, y: 27}
+        - {x: -24, y: 27}
+        - {x: -24, y: 8}
+        - {x: -22, y: 6}
+        - {x: -4, y: -24}
+        - {x: 3, y: -28}
+        - {x: 24, y: -28}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f53efe4064094030800000000000000
+      internalID: 3479316998809073136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Punch.Left_12
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 2
+        width: 42
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 21, y: -14}
+        - {x: 21, y: 20}
+        - {x: 6, y: 28}
+        - {x: -13, y: 28}
+        - {x: -18, y: 25}
+        - {x: -21, y: 17}
+        - {x: -21, y: -13}
+        - {x: -11, y: -29}
+        - {x: 14, y: -29}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c2ce1bfd3238e3c0800000000000000
+      internalID: -4330155799929240888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Punch.Left_13
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 2
+        width: 45
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 22.5, y: -18}
+        - {x: 22.5, y: 25}
+        - {x: 18.5, y: 28}
+        - {x: -9.5, y: 28}
+        - {x: -22.5, y: 18}
+        - {x: -22.5, y: -17}
+        - {x: -14.5, y: -29}
+        - {x: 18.5, y: -29}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 638d903c0733bf820800000000000000
+      internalID: 2953010540073048118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Punch.Left_14
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 2
+        width: 48
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 23, y: 23}
+        - {x: 16, y: 28}
+        - {x: -4, y: 28}
+        - {x: -23, y: 18}
+        - {x: -23, y: 4}
+        - {x: -21, y: 0}
+        - {x: -6, y: -25}
+        - {x: 0, y: -29}
+        - {x: 23, y: -29}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e04294bad9c9c44c0800000000000000
+      internalID: -4301891343048170482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Punch.Left_15
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 3
+        width: 48
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 23, y: 20}
+        - {x: 15, y: 27}
+        - {x: -4, y: 27}
+        - {x: -23, y: 23}
+        - {x: -23, y: 5}
+        - {x: -16, y: -3}
+        - {x: -3, y: -25}
+        - {x: 1, y: -28}
+        - {x: 23, y: -28}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4e92edfd8d539590800000000000000
+      internalID: -7668682876050563510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 4655c4bbf46f14824981080627211fa6
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Troll.Punch.Left_0: 6958306681360171652
+      Troll.Punch.Left_1: 5061560176138375332
+      Troll.Punch.Left_10: 1271854873371187093
+      Troll.Punch.Left_11: 3479316998809073136
+      Troll.Punch.Left_12: -4330155799929240888
+      Troll.Punch.Left_13: 2953010540073048118
+      Troll.Punch.Left_14: -4301891343048170482
+      Troll.Punch.Left_15: -7668682876050563510
+      Troll.Punch.Left_2: 2498479467557724770
+      Troll.Punch.Left_3: -2557039921276937516
+      Troll.Punch.Left_4: -2230648188698597888
+      Troll.Punch.Left_5: 8990925220632413665
+      Troll.Punch.Left_6: 7484350475710557328
+      Troll.Punch.Left_7: -7487410785899082688
+      Troll.Punch.Left_8: 3835837614791773371
+      Troll.Punch.Left_9: -318880989491636951
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

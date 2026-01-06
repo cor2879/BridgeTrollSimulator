@@ -1,0 +1,714 @@
+fileFormatVersion: 2
+guid: 4e648eb546d26610eb20fdcc45a07c89
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6818662560050886723
+    second: Troll.Jumping.Left_0
+  - first:
+      213: 4006889553687926995
+    second: Troll.Jumping.Left_1
+  - first:
+      213: -8002106756840800756
+    second: Troll.Jumping.Left_2
+  - first:
+      213: 4251450131864766728
+    second: Troll.Jumping.Left_3
+  - first:
+      213: -5394213083088301579
+    second: Troll.Jumping.Left_4
+  - first:
+      213: 3756434772007945124
+    second: Troll.Jumping.Left_5
+  - first:
+      213: -1268459015794298355
+    second: Troll.Jumping.Left_6
+  - first:
+      213: 8218058478898102711
+    second: Troll.Jumping.Left_7
+  - first:
+      213: -4719370538977554800
+    second: Troll.Jumping.Left_8
+  - first:
+      213: 3767715380625175956
+    second: Troll.Jumping.Left_9
+  - first:
+      213: 8991320809393787422
+    second: Troll.Jumping.Left_10
+  - first:
+      213: -2179341462194105157
+    second: Troll.Jumping.Left_11
+  - first:
+      213: 6726476988715377399
+    second: Troll.Jumping.Left_12
+  - first:
+      213: -537812026799342797
+    second: Troll.Jumping.Left_13
+  - first:
+      213: -7462373320066042274
+    second: Troll.Jumping.Left_14
+  - first:
+      213: -3813107521556052952
+    second: Troll.Jumping.Left_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: VisionOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Troll.Jumping.Left_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 209
+        width: 43
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 15.5, y: -25.5}
+        - {x: 21.5, y: -9.5}
+        - {x: 21.5, y: 22.5}
+        - {x: -5.5, y: 25.5}
+        - {x: -16.5, y: 25.5}
+        - {x: -21.5, y: 16.5}
+        - {x: -21.5, y: 0.5}
+        - {x: -20.5, y: -0.5}
+        - {x: -14.5, y: -23.5}
+        - {x: -10.5, y: -26.5}
+        - {x: 11.5, y: -26.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 348b617b871c0ae50800000000000000
+      internalID: 6818662560050886723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Jumping.Left_1
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 209
+        width: 42
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 13, y: -25.5}
+        - {x: 21, y: -7.5}
+        - {x: 21, y: 16.5}
+        - {x: 6, y: 26.5}
+        - {x: -12, y: 26.5}
+        - {x: -14, y: 25.5}
+        - {x: -21, y: 12.5}
+        - {x: -21, y: -14.5}
+        - {x: -20, y: -27.5}
+        - {x: 8, y: -27.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d8dac5d1d45b9730800000000000000
+      internalID: 4006889553687926995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Jumping.Left_2
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 208
+        width: 42
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 21, y: -11.5}
+        - {x: 21, y: 19.5}
+        - {x: 4, y: 27.5}
+        - {x: -15, y: 27.5}
+        - {x: -21, y: 22.5}
+        - {x: -21, y: -17.5}
+        - {x: -15, y: -28.5}
+        - {x: 11, y: -28.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0e30c73d4ec2f090800000000000000
+      internalID: -8002106756840800756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Jumping.Left_3
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 209
+        width: 42
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 12, y: -26.5}
+        - {x: 20, y: 1.5}
+        - {x: 20, y: 17.5}
+        - {x: 8, y: 26.5}
+        - {x: -9, y: 26.5}
+        - {x: -20, y: 20.5}
+        - {x: -20, y: -5.5}
+        - {x: -15, y: -28.5}
+        - {x: 10, y: -28.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 809461aae5f200b30800000000000000
+      internalID: 4251450131864766728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Jumping.Left_4
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 140
+        width: 39
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 19.5, y: 20}
+        - {x: 13.5, y: 34}
+        - {x: -19.5, y: 34}
+        - {x: -19.5, y: -34}
+        - {x: 19.5, y: -34}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f1d1cbd7c7e325b0800000000000000
+      internalID: -5394213083088301579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Jumping.Left_5
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 139
+        width: 39
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 19.5, y: 25}
+        - {x: 0.5, y: 31}
+        - {x: -19.5, y: 31}
+        - {x: -19.5, y: 2}
+        - {x: -10.5, y: -31}
+        - {x: 19.5, y: -31}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a3857fc589812430800000000000000
+      internalID: 3756434772007945124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Jumping.Left_6
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 139
+        width: 41
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 15.5, y: -27.5}
+        - {x: 19.5, y: -2.5}
+        - {x: 19.5, y: 19.5}
+        - {x: 17.5, y: 23.5}
+        - {x: 5.5, y: 26.5}
+        - {x: -8.5, y: 26.5}
+        - {x: -20.5, y: 14.5}
+        - {x: -20.5, y: -10.5}
+        - {x: -11.5, y: -28.5}
+        - {x: 14.5, y: -28.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d027077ee37856ee0800000000000000
+      internalID: -1268459015794298355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Jumping.Left_7
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 80
+        width: 45
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 22.5, y: -16}
+        - {x: 14.5, y: -9}
+        - {x: 14.5, y: 10}
+        - {x: -0.5, y: 26}
+        - {x: -7.5, y: 30}
+        - {x: -22.5, y: 30}
+        - {x: -22.5, y: -30}
+        - {x: 22.5, y: -30}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b1cb1a35a86c0270800000000000000
+      internalID: 8218058478898102711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Jumping.Left_8
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 138
+        width: 41
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 20.5, y: -9}
+        - {x: 20.5, y: 15}
+        - {x: 11.5, y: 26}
+        - {x: -10.5, y: 26}
+        - {x: -18.5, y: 19}
+        - {x: -20.5, y: 16}
+        - {x: -20.5, y: -16}
+        - {x: -13.5, y: -28}
+        - {x: 11.5, y: -28}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09e8cc4cf7d618eb0800000000000000
+      internalID: -4719370538977554800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Jumping.Left_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 75
+        width: 45
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 22.5, y: 16.5}
+        - {x: -5.5, y: 29.5}
+        - {x: -22.5, y: 29.5}
+        - {x: -22.5, y: -26.5}
+        - {x: -14.5, y: -29.5}
+        - {x: 22.5, y: -29.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49570fc2d2d994430800000000000000
+      internalID: 3767715380625175956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Jumping.Left_10
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 78
+        width: 46
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 23, y: 3.5}
+        - {x: 14, y: 18.5}
+        - {x: -8, y: 29.5}
+        - {x: -16, y: 29.5}
+        - {x: -23, y: 25.5}
+        - {x: -23, y: -20.5}
+        - {x: -15, y: -29.5}
+        - {x: 23, y: -29.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e129e7953a697cc70800000000000000
+      internalID: 8991320809393787422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Jumping.Left_11
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 78
+        width: 46
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 23, y: 10.5}
+        - {x: -5, y: 29.5}
+        - {x: -19, y: 29.5}
+        - {x: -23, y: 26.5}
+        - {x: -23, y: -22.5}
+        - {x: -17, y: -28.5}
+        - {x: 23, y: -28.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb4d3ad9c7c61c1e0800000000000000
+      internalID: -2179341462194105157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Jumping.Left_12
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 0
+        width: 40
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 20, y: -1}
+        - {x: 20, y: 17}
+        - {x: 12, y: 26}
+        - {x: -12, y: 26}
+        - {x: -20, y: 24}
+        - {x: -20, y: -17}
+        - {x: -15, y: -27}
+        - {x: 13, y: -27}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f2283ece2f395d50800000000000000
+      internalID: 6726476988715377399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Jumping.Left_13
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 0
+        width: 39
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 19.5, y: -8}
+        - {x: 19.5, y: 22}
+        - {x: 18.5, y: 26}
+        - {x: -19.5, y: 26}
+        - {x: -19.5, y: -15}
+        - {x: -16.5, y: -23}
+        - {x: -11.5, y: -27}
+        - {x: 11.5, y: -27}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33b31b2afce4988f0800000000000000
+      internalID: -537812026799342797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Jumping.Left_14
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 0
+        width: 42
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 21, y: -10}
+        - {x: 21, y: 25}
+        - {x: 14, y: 27}
+        - {x: -14, y: 27}
+        - {x: -20, y: 15}
+        - {x: -20, y: -18}
+        - {x: -10, y: -28}
+        - {x: 14, y: -28}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e567c14b003507890800000000000000
+      internalID: -7462373320066042274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Jumping.Left_15
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 2
+        width: 44
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 13, y: -26.5}
+        - {x: 21, y: 2.5}
+        - {x: 21, y: 11.5}
+        - {x: 20, y: 17.5}
+        - {x: 7, y: 26.5}
+        - {x: -22, y: 26.5}
+        - {x: -22, y: -27.5}
+        - {x: 12, y: -27.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 824084f69ee151bc0800000000000000
+      internalID: -3813107521556052952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: cab312f51154c05cebd12c7a64af5480
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Troll.Jumping.Left_0: 6818662560050886723
+      Troll.Jumping.Left_1: 4006889553687926995
+      Troll.Jumping.Left_10: 8991320809393787422
+      Troll.Jumping.Left_11: -2179341462194105157
+      Troll.Jumping.Left_12: 6726476988715377399
+      Troll.Jumping.Left_13: -537812026799342797
+      Troll.Jumping.Left_14: -7462373320066042274
+      Troll.Jumping.Left_15: -3813107521556052952
+      Troll.Jumping.Left_2: -8002106756840800756
+      Troll.Jumping.Left_3: 4251450131864766728
+      Troll.Jumping.Left_4: -5394213083088301579
+      Troll.Jumping.Left_5: 3756434772007945124
+      Troll.Jumping.Left_6: -1268459015794298355
+      Troll.Jumping.Left_7: 8218058478898102711
+      Troll.Jumping.Left_8: -4719370538977554800
+      Troll.Jumping.Left_9: 3767715380625175956
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

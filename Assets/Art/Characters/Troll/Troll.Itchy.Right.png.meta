@@ -1,0 +1,713 @@
+fileFormatVersion: 2
+guid: 3c7217f894cf63deda33de4acad31ad5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5134734393272821853
+    second: Troll.Itchy.Right_0
+  - first:
+      213: 3133114679371243165
+    second: Troll.Itchy.Right_1
+  - first:
+      213: -5736465465951047674
+    second: Troll.Itchy.Right_2
+  - first:
+      213: 2417818397112403246
+    second: Troll.Itchy.Right_3
+  - first:
+      213: 5913757090315235794
+    second: Troll.Itchy.Right_4
+  - first:
+      213: 1902530221669356082
+    second: Troll.Itchy.Right_5
+  - first:
+      213: 697817185974304839
+    second: Troll.Itchy.Right_6
+  - first:
+      213: -5044096310153501226
+    second: Troll.Itchy.Right_7
+  - first:
+      213: 7437310760445665977
+    second: Troll.Itchy.Right_8
+  - first:
+      213: 382048021614276050
+    second: Troll.Itchy.Right_9
+  - first:
+      213: 410201753611318330
+    second: Troll.Itchy.Right_10
+  - first:
+      213: 6512145643053793985
+    second: Troll.Itchy.Right_11
+  - first:
+      213: 8196053374164740633
+    second: Troll.Itchy.Right_12
+  - first:
+      213: -2031345710117484885
+    second: Troll.Itchy.Right_13
+  - first:
+      213: -4985506452395537425
+    second: Troll.Itchy.Right_14
+  - first:
+      213: -2599517204066081339
+    second: Troll.Itchy.Right_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: VisionOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Troll.Itchy.Right_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 173
+        width: 43
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 21.5, y: 20}
+        - {x: 16.5, y: 24}
+        - {x: 6.5, y: 27}
+        - {x: -2.5, y: 27}
+        - {x: -21.5, y: 17}
+        - {x: -21.5, y: -12}
+        - {x: -15.5, y: -28}
+        - {x: 21.5, y: -28}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a71ef83642cdb8b0800000000000000
+      internalID: -5134734393272821853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Itchy.Right_1
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 115
+        width: 43
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 21.5, y: 20}
+        - {x: 16.5, y: 24}
+        - {x: 6.5, y: 27}
+        - {x: -2.5, y: 27}
+        - {x: -21.5, y: 17}
+        - {x: -21.5, y: -12}
+        - {x: -15.5, y: -28}
+        - {x: 21.5, y: -28}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9e1c70733f0b7b20800000000000000
+      internalID: 3133114679371243165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Itchy.Right_2
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 173
+        width: 49
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 21.5, y: 20}
+        - {x: 16.5, y: 24}
+        - {x: 6.5, y: 27}
+        - {x: -2.5, y: 27}
+        - {x: -21.5, y: 17}
+        - {x: -21.5, y: -12}
+        - {x: -15.5, y: -28}
+        - {x: 21.5, y: -28}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60031b34d0bf360b0800000000000000
+      internalID: -5736465465951047674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Itchy.Right_3
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 115
+        width: 41
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 20.5, y: 20}
+        - {x: 16.5, y: 24}
+        - {x: 6.5, y: 27}
+        - {x: -2.5, y: 27}
+        - {x: -20.5, y: 17}
+        - {x: -20.5, y: -12}
+        - {x: -15.5, y: -28}
+        - {x: 20.5, y: -28}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e250a43a501dd8120800000000000000
+      internalID: 2417818397112403246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Itchy.Right_4
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 173
+        width: 43
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 21.5, y: 20}
+        - {x: 16.5, y: 24}
+        - {x: 6.5, y: 27}
+        - {x: -2.5, y: 27}
+        - {x: -21.5, y: 17}
+        - {x: -21.5, y: -12}
+        - {x: -15.5, y: -28}
+        - {x: 21.5, y: -28}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d1ff20cdb2e11250800000000000000
+      internalID: 5913757090315235794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Itchy.Right_5
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 115
+        width: 41
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 20.5, y: 20}
+        - {x: 16.5, y: 24}
+        - {x: 6.5, y: 27}
+        - {x: -2.5, y: 27}
+        - {x: -20.5, y: 17}
+        - {x: -20.5, y: -12}
+        - {x: -15.5, y: -28}
+        - {x: 20.5, y: -28}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2321c051825276a10800000000000000
+      internalID: 1902530221669356082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Itchy.Right_6
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 173
+        width: 43
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 21.5, y: 20}
+        - {x: 16.5, y: 24}
+        - {x: 6.5, y: 27}
+        - {x: -2.5, y: 27}
+        - {x: -21.5, y: 17}
+        - {x: -21.5, y: -12}
+        - {x: -15.5, y: -28}
+        - {x: 21.5, y: -28}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 740492098052fa900800000000000000
+      internalID: 697817185974304839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Itchy.Right_7
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 115
+        width: 41
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 20.5, y: 20}
+        - {x: 16.5, y: 24}
+        - {x: 6.5, y: 27}
+        - {x: -2.5, y: 27}
+        - {x: -20.5, y: 17}
+        - {x: -20.5, y: -12}
+        - {x: -15.5, y: -28}
+        - {x: 20.5, y: -28}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d521747125cff9b0800000000000000
+      internalID: -5044096310153501226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Itchy.Right_8
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 57
+        width: 43
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 21.5, y: 20}
+        - {x: 16.5, y: 24}
+        - {x: 6.5, y: 27}
+        - {x: -2.5, y: 27}
+        - {x: -21.5, y: 17}
+        - {x: -21.5, y: -12}
+        - {x: -15.5, y: -28}
+        - {x: 21.5, y: -28}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b2ed886bb2a63760800000000000000
+      internalID: 7437310760445665977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Itchy.Right_9
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 57
+        width: 43
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 21.5, y: 20}
+        - {x: 16.5, y: 24}
+        - {x: 6.5, y: 27}
+        - {x: -2.5, y: 27}
+        - {x: -21.5, y: 17}
+        - {x: -21.5, y: -12}
+        - {x: -15.5, y: -28}
+        - {x: 21.5, y: -28}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dda577c6ae4d4500800000000000000
+      internalID: 382048021614276050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Itchy.Right_10
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 57
+        width: 43
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 21.5, y: 20}
+        - {x: 16.5, y: 24}
+        - {x: 6.5, y: 27}
+        - {x: -2.5, y: 27}
+        - {x: -21.5, y: 17}
+        - {x: -21.5, y: -12}
+        - {x: -15.5, y: -28}
+        - {x: 21.5, y: -28}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a34be32525451b500800000000000000
+      internalID: 410201753611318330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Itchy.Right_11
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 57
+        width: 42
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 21, y: 20}
+        - {x: 16.5, y: 24}
+        - {x: 6.5, y: 27}
+        - {x: -2.5, y: 27}
+        - {x: -21, y: 17}
+        - {x: -21, y: -12}
+        - {x: -15.5, y: -28}
+        - {x: 21, y: -28}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c244d3a5f9cf5a50800000000000000
+      internalID: 6512145643053793985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Itchy.Right_12
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 0
+        width: 44
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 21.5, y: 20}
+        - {x: 16.5, y: 24}
+        - {x: 6.5, y: 27}
+        - {x: -2.5, y: 27}
+        - {x: -21.5, y: 17}
+        - {x: -21.5, y: -12}
+        - {x: -15.5, y: -27.5}
+        - {x: 21.5, y: -27.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91a2b378e1b3eb170800000000000000
+      internalID: 8196053374164740633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Itchy.Right_13
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 0
+        width: 44
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 21.5, y: 20}
+        - {x: 16.5, y: 24}
+        - {x: 6.5, y: 27}
+        - {x: -2.5, y: 27}
+        - {x: -21.5, y: 17}
+        - {x: -21.5, y: -12}
+        - {x: -15.5, y: -27.5}
+        - {x: 21.5, y: -27.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba60f64d6d53fc3e0800000000000000
+      internalID: -2031345710117484885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Itchy.Right_14
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 0
+        width: 43
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 21.5, y: 20}
+        - {x: 16.5, y: 24}
+        - {x: 6.5, y: 27}
+        - {x: -2.5, y: 27}
+        - {x: -21.5, y: 17}
+        - {x: -21.5, y: -12}
+        - {x: -15.5, y: -27.5}
+        - {x: 21.5, y: -27.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: febcb8fbb4cefcab0800000000000000
+      internalID: -4985506452395537425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Itchy.Right_15
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 0
+        width: 43
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 21.5, y: 20}
+        - {x: 16.5, y: 24}
+        - {x: 6.5, y: 27}
+        - {x: -2.5, y: 27}
+        - {x: -21.5, y: 17}
+        - {x: -21.5, y: -12}
+        - {x: -15.5, y: -27.5}
+        - {x: 21.5, y: -27.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c5ef1030e8acebd0800000000000000
+      internalID: -2599517204066081339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 2fa7a9101e13537ec92e27e22d89ccd7
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Troll.Itchy.Right_0: -5134734393272821853
+      Troll.Itchy.Right_1: 3133114679371243165
+      Troll.Itchy.Right_10: 410201753611318330
+      Troll.Itchy.Right_11: 6512145643053793985
+      Troll.Itchy.Right_12: 8196053374164740633
+      Troll.Itchy.Right_13: -2031345710117484885
+      Troll.Itchy.Right_14: -4985506452395537425
+      Troll.Itchy.Right_15: -2599517204066081339
+      Troll.Itchy.Right_2: -5736465465951047674
+      Troll.Itchy.Right_3: 2417818397112403246
+      Troll.Itchy.Right_4: 5913757090315235794
+      Troll.Itchy.Right_5: 1902530221669356082
+      Troll.Itchy.Right_6: 697817185974304839
+      Troll.Itchy.Right_7: -5044096310153501226
+      Troll.Itchy.Right_8: 7437310760445665977
+      Troll.Itchy.Right_9: 382048021614276050
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

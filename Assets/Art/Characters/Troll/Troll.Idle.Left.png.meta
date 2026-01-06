@@ -1,0 +1,711 @@
+fileFormatVersion: 2
+guid: ae79dc3fc0376c94a8d6153791e5d54e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 9050618748900819069
+    second: Troll.Idle.Left_0
+  - first:
+      213: -2138604188020540590
+    second: Troll.Idle.Left_1
+  - first:
+      213: -6173961627457301540
+    second: Troll.Idle.Left_2
+  - first:
+      213: -700477128312563650
+    second: Troll.Idle.Left_3
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: VisionOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Troll.Idle.Left_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 49
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 13, y: -16}
+        - {x: 23, y: -5}
+        - {x: 19, y: 22}
+        - {x: 7, y: 31}
+        - {x: -13, y: 32}
+        - {x: -24, y: 19}
+        - {x: -24, y: 4}
+        - {x: -17, y: -15}
+        - {x: -19, y: -32}
+        - {x: 15, y: -32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7049b5ccc14a9d70800000000000000
+      internalID: 9050618748900819069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Idle.Left_1
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 192
+        width: 49
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 13, y: -16}
+        - {x: 23, y: -5}
+        - {x: 19, y: 22}
+        - {x: 7, y: 31}
+        - {x: -13, y: 32}
+        - {x: -24, y: 19}
+        - {x: -24, y: 4}
+        - {x: -17, y: -15}
+        - {x: -19, y: -32}
+        - {x: 15, y: -32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25b7fd162d62252e0800000000000000
+      internalID: -2138604188020540590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Idle.Left_2
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 192
+        width: 49
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 13, y: -16}
+        - {x: 23, y: -5}
+        - {x: 19, y: 22}
+        - {x: 7, y: 31}
+        - {x: -13, y: 32}
+        - {x: -24, y: 19}
+        - {x: -24, y: 4}
+        - {x: -17, y: -15}
+        - {x: -19, y: -32}
+        - {x: 15, y: -32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd3d3826c9ea15aa0800000000000000
+      internalID: -6173961627457301540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Idle.Left_3
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 192
+        width: 49
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 13, y: -16}
+        - {x: 23, y: -5}
+        - {x: 19, y: 22}
+        - {x: 7, y: 31}
+        - {x: -13, y: 32}
+        - {x: -24, y: 19}
+        - {x: -24, y: 4}
+        - {x: -17, y: -15}
+        - {x: -19, y: -32}
+        - {x: 15, y: -32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: e38d4a953c76746f0800000000000000
+      internalID: -700477128312563650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Idle.Left_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 49
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 13, y: -16}
+        - {x: 23, y: -5}
+        - {x: 19, y: 22}
+        - {x: 7, y: 31}
+        - {x: -13, y: 32}
+        - {x: -24, y: 19}
+        - {x: -24, y: 4}
+        - {x: -17, y: -15}
+        - {x: -19, y: -32}
+        - {x: 15, y: -32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d393e19eff8ce0780a5c9cfd5f58105f
+      internalID: 1139515843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Idle.Left_5
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 128
+        width: 49
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 13, y: -16}
+        - {x: 23, y: -5}
+        - {x: 19, y: 22}
+        - {x: 7, y: 31}
+        - {x: -13, y: 32}
+        - {x: -24, y: 19}
+        - {x: -24, y: 4}
+        - {x: -17, y: -15}
+        - {x: -19, y: -32}
+        - {x: 15, y: -32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bd9ecdefc9f67c14add50d8c9fc2d47
+      internalID: 961912402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Idle.Left_6
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 128
+        width: 49
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 13, y: -16}
+        - {x: 23, y: -5}
+        - {x: 19, y: 22}
+        - {x: 7, y: 31}
+        - {x: -13, y: 32}
+        - {x: -24, y: 19}
+        - {x: -24, y: 4}
+        - {x: -17, y: -15}
+        - {x: -19, y: -32}
+        - {x: 15, y: -32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae7b86de9039b764f9c8235eac11e770
+      internalID: -561593350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Idle.Left_7
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 128
+        width: 49
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 13, y: -16}
+        - {x: 23, y: -5}
+        - {x: 24, y: 18}
+        - {x: 7, y: 31}
+        - {x: -13, y: 32}
+        - {x: -24, y: 19}
+        - {x: -24, y: 4}
+        - {x: -17, y: -15}
+        - {x: -19, y: -32}
+        - {x: 15, y: -32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 821210faa1c08753e9a2d544e139a53b
+      internalID: 1551101178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Idle.Left_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 49
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 13, y: -16}
+        - {x: 23, y: -5}
+        - {x: 19, y: 22}
+        - {x: 7, y: 31}
+        - {x: -13, y: 32}
+        - {x: -24, y: 19}
+        - {x: -24, y: 4}
+        - {x: -17, y: -15}
+        - {x: -19, y: -32}
+        - {x: 15, y: -32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3ce4f5144a2910e381e9bd49494c1a2
+      internalID: -1559694106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Idle.Left_9
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 64
+        width: 49
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 13, y: -16}
+        - {x: 23, y: -5}
+        - {x: 19, y: 22}
+        - {x: 7, y: 31}
+        - {x: -13, y: 32}
+        - {x: -24, y: 19}
+        - {x: -24, y: 4}
+        - {x: -17, y: -15}
+        - {x: -19, y: -32}
+        - {x: 15, y: -32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a35db3893778951b2adde63370c80fbf
+      internalID: -1543608476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Idle.Left_10
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 64
+        width: 49
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 13, y: -16}
+        - {x: 23, y: -5}
+        - {x: 19, y: 22}
+        - {x: 7, y: 31}
+        - {x: -13, y: 32}
+        - {x: -24, y: 19}
+        - {x: -24, y: 4}
+        - {x: -17, y: -15}
+        - {x: -19, y: -32}
+        - {x: 15, y: -32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 644042dbe8e6b30c6ac39f58a68061af
+      internalID: 64146180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Idle.Left_11
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 64
+        width: 49
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 13, y: -16}
+        - {x: 23, y: -5}
+        - {x: 19, y: 22}
+        - {x: 7, y: 31}
+        - {x: -13, y: 32}
+        - {x: -24, y: 19}
+        - {x: -24, y: 4}
+        - {x: -17, y: -15}
+        - {x: -19, y: -32}
+        - {x: 15, y: -32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: a552d876b3879dc7a816f8039ea609a7
+      internalID: 64950138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Idle.Left_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 49
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 13, y: -16}
+        - {x: 23, y: -5}
+        - {x: 19, y: 22}
+        - {x: 7, y: 31}
+        - {x: -13, y: 32}
+        - {x: -24, y: 19}
+        - {x: -24, y: 4}
+        - {x: -17, y: -15}
+        - {x: -19, y: -32}
+        - {x: 15, y: -32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 417393478018693c1892c58814dd2617
+      internalID: -1710593608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Idle.Left_13
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 0
+        width: 49
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 13, y: -16}
+        - {x: 23, y: -5}
+        - {x: 19, y: 22}
+        - {x: 7, y: 31}
+        - {x: -13, y: 32}
+        - {x: -24, y: 19}
+        - {x: -24, y: 4}
+        - {x: -17, y: -15}
+        - {x: -19, y: -32}
+        - {x: 15, y: -32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee5ce5ccca387bbbab5aec2d7b2e125b
+      internalID: 989539487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Idle.Left_14
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 0
+        width: 49
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 13, y: -16}
+        - {x: 23, y: -5}
+        - {x: 19, y: 22}
+        - {x: 7, y: 31}
+        - {x: -13, y: 32}
+        - {x: -24, y: 19}
+        - {x: -24, y: 4}
+        - {x: -17, y: -15}
+        - {x: -19, y: -32}
+        - {x: 15, y: -32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8403a6f8ae867c88db9e58f20e28b059
+      internalID: -343024421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Idle.Left_15
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 0
+        width: 49
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 13, y: -16}
+        - {x: 23, y: -5}
+        - {x: 19, y: 22}
+        - {x: 7, y: 31}
+        - {x: -13, y: 32}
+        - {x: -24, y: 19}
+        - {x: -24, y: 4}
+        - {x: -17, y: -15}
+        - {x: -19, y: -32}
+        - {x: 15, y: -32}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9780d3b4cc9be08f1bd64c8fb4ce1113
+      internalID: 1521454175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: a8c5ab2fb681b6db599250256f259db3
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":49.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Troll.Idle.Left_0: 9050618748900819069
+      Troll.Idle.Left_1: -2138604188020540590
+      Troll.Idle.Left_10: 64146180
+      Troll.Idle.Left_11: 64950138
+      Troll.Idle.Left_12: -1710593608
+      Troll.Idle.Left_13: 989539487
+      Troll.Idle.Left_14: -343024421
+      Troll.Idle.Left_15: 1521454175
+      Troll.Idle.Left_2: -6173961627457301540
+      Troll.Idle.Left_3: -700477128312563650
+      Troll.Idle.Left_4: 1139515843
+      Troll.Idle.Left_5: 961912402
+      Troll.Idle.Left_6: -561593350
+      Troll.Idle.Left_7: 1551101178
+      Troll.Idle.Left_8: -1559694106
+      Troll.Idle.Left_9: -1543608476
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

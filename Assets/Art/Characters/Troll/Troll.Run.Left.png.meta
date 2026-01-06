@@ -1,0 +1,732 @@
+fileFormatVersion: 2
+guid: e00c911537479a78e8b3523b04db4952
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 749868578722521673
+    second: Troll.Run.Left_0
+  - first:
+      213: -4429708048938602185
+    second: Troll.Run.Left_1
+  - first:
+      213: -5547947048127442722
+    second: Troll.Run.Left_2
+  - first:
+      213: -5891415769633701476
+    second: Troll.Run.Left_3
+  - first:
+      213: -7741068198520633807
+    second: Troll.Run.Left_4
+  - first:
+      213: -4679245835217800947
+    second: Troll.Run.Left_5
+  - first:
+      213: 7649024693587304095
+    second: Troll.Run.Left_6
+  - first:
+      213: -4978887330522969785
+    second: Troll.Run.Left_7
+  - first:
+      213: -8587607891506861827
+    second: Troll.Run.Left_8
+  - first:
+      213: 7728757625677183496
+    second: Troll.Run.Left_9
+  - first:
+      213: 4121881798129882359
+    second: Troll.Run.Left_10
+  - first:
+      213: -3476413998617696604
+    second: Troll.Run.Left_11
+  - first:
+      213: -6297132381420210855
+    second: Troll.Run.Left_12
+  - first:
+      213: -3644817334592331312
+    second: Troll.Run.Left_13
+  - first:
+      213: -3776301592332895729
+    second: Troll.Run.Left_14
+  - first:
+      213: -8511569434834926321
+    second: Troll.Run.Left_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: VisionOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Troll.Run.Left_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 171
+        width: 42
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 21, y: 25}
+        - {x: 13, y: 27}
+        - {x: -9, y: 27}
+        - {x: -21, y: 20}
+        - {x: -21, y: -8}
+        - {x: -10, y: -28}
+        - {x: 21, y: -28}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 942abf6df71186a00800000000000000
+      internalID: 749868578722521673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Run.Left_1
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 174
+        width: 46
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 23, y: -22.5}
+        - {x: 23, y: 16.5}
+        - {x: 15, y: 21.5}
+        - {x: -1, y: 24.5}
+        - {x: -20, y: 24.5}
+        - {x: -23, y: 23.5}
+        - {x: -23, y: -22.5}
+        - {x: -22, y: -26.5}
+        - {x: 9, y: -26.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7317354cff38682c0800000000000000
+      internalID: -4429708048938602185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Run.Left_2
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 172
+        width: 50
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 25, y: -14.5}
+        - {x: 25, y: 0.5}
+        - {x: 23, y: 7.5}
+        - {x: 18, y: 22.5}
+        - {x: 0, y: 25.5}
+        - {x: -15, y: 25.5}
+        - {x: -22, y: 17.5}
+        - {x: -25, y: 12.5}
+        - {x: -25, y: -5.5}
+        - {x: -17, y: -24.5}
+        - {x: -15, y: -26.5}
+        - {x: 0, y: -26.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed0dfa3dd8bb103b0800000000000000
+      internalID: -5547947048127442722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Run.Left_3
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 172
+        width: 55
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 27.5, y: -13}
+        - {x: 27.5, y: 2}
+        - {x: 16.5, y: 24}
+        - {x: 3.5, y: 26}
+        - {x: -13.5, y: 26}
+        - {x: -26.5, y: 12}
+        - {x: -27.5, y: 11}
+        - {x: -27.5, y: -13}
+        - {x: -17.5, y: -28}
+        - {x: 0.5, y: -28}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9149d2529c7d3ea0800000000000000
+      internalID: -5891415769633701476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Run.Left_4
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 119
+        width: 49
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 24.5, y: -24}
+        - {x: 24.5, y: 22}
+        - {x: 15.5, y: 24}
+        - {x: -16.5, y: 24}
+        - {x: -24.5, y: 21}
+        - {x: -24.5, y: -24}
+        - {x: -21.5, y: -26}
+        - {x: 16.5, y: -26}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 136ca15cc73329490800000000000000
+      internalID: -7741068198520633807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Run.Left_5
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 118
+        width: 47
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 23.5, y: 0.5}
+        - {x: 13.5, y: 25.5}
+        - {x: -22.5, y: 25.5}
+        - {x: -23.5, y: 23.5}
+        - {x: -23.5, y: -19.5}
+        - {x: -21.5, y: -26.5}
+        - {x: 23.5, y: -26.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: d01fd1f54baff0fb0800000000000000
+      internalID: -4679245835217800947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Run.Left_6
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 117
+        width: 47
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 23.5, y: -23}
+        - {x: 23.5, y: -5}
+        - {x: 13.5, y: 26}
+        - {x: -16.5, y: 26}
+        - {x: -22.5, y: 18}
+        - {x: -22.5, y: 0}
+        - {x: -13.5, y: -27}
+        - {x: 16.5, y: -27}
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9e567bbe6bc62a60800000000000000
+      internalID: 7649024693587304095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Run.Left_7
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 117
+        width: 44
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 22, y: -17}
+        - {x: 22, y: 17}
+        - {x: 4, y: 26}
+        - {x: -14, y: 26}
+        - {x: -22, y: 20}
+        - {x: -22, y: -4}
+        - {x: -5, y: -27}
+        - {x: 11, y: -27}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7494c772a5077eab0800000000000000
+      internalID: -4978887330522969785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Run.Left_8
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 59
+        width: 47
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 23.5, y: -21}
+        - {x: 23.5, y: 9}
+        - {x: 14.5, y: 25}
+        - {x: 7.5, y: 26}
+        - {x: -17.5, y: 26}
+        - {x: -23.5, y: 11}
+        - {x: -23.5, y: -9}
+        - {x: -17.5, y: -23}
+        - {x: -1.5, y: -27}
+        - {x: 15.5, y: -27}
+      tessellationDetail: 0
+      bones: []
+      spriteID: df8646c2f10b2d880800000000000000
+      internalID: -8587607891506861827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Run.Left_9
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 60
+        width: 52
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 14, y: -23.5}
+        - {x: 26, y: -10.5}
+        - {x: 26, y: 2.5}
+        - {x: 8, y: 23.5}
+        - {x: 6, y: 24.5}
+        - {x: -23, y: 24.5}
+        - {x: -26, y: 13.5}
+        - {x: -26, y: -20.5}
+        - {x: -22, y: -26.5}
+        - {x: 9, y: -26.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80a7491ac10124b60800000000000000
+      internalID: 7728757625677183496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Run.Left_10
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 62
+        width: 52
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 26, y: -11.5}
+        - {x: 26, y: -5.5}
+        - {x: 23, y: -0.5}
+        - {x: 15, y: 2.5}
+        - {x: 11, y: 2.5}
+        - {x: 18, y: 8.5}
+        - {x: 7, y: 23.5}
+        - {x: -16, y: 23.5}
+        - {x: -24, y: 13.5}
+        - {x: -26, y: 9.5}
+        - {x: -26, y: -15.5}
+        - {x: -20, y: -25.5}
+        - {x: -5, y: -25.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f41eaf18add33930800000000000000
+      internalID: 4121881798129882359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Run.Left_11
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 63
+        width: 53
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 25.5, y: -13}
+        - {x: 26.5, y: -10}
+        - {x: 26.5, y: -5}
+        - {x: 17.5, y: 2}
+        - {x: 12.5, y: 3}
+        - {x: 10.5, y: 1}
+        - {x: 20.5, y: 13}
+        - {x: 5.5, y: 23}
+        - {x: -17.5, y: 23}
+        - {x: -25.5, y: 17}
+        - {x: -25.5, y: -19}
+        - {x: -18.5, y: -24}
+        - {x: -11.5, y: -24}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a6623813eb41cfc0800000000000000
+      internalID: -3476413998617696604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Run.Left_12
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 48
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 23, y: -25.5}
+        - {x: 23, y: 18.5}
+        - {x: 8, y: 26.5}
+        - {x: -21, y: 26.5}
+        - {x: -24, y: 15.5}
+        - {x: -24, y: -24.5}
+        - {x: -23, y: -26.5}
+        - {x: 20, y: -26.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 955b6d576771c98a0800000000000000
+      internalID: -6297132381420210855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Run.Left_13
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 2
+        width: 45
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 22.5, y: -23}
+        - {x: 22.5, y: 16}
+        - {x: 7.5, y: 27}
+        - {x: -15.5, y: 27}
+        - {x: -22.5, y: 21}
+        - {x: -22.5, y: -3}
+        - {x: -12.5, y: -28}
+        - {x: 15.5, y: -28}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d1207cf1f10b6dc0800000000000000
+      internalID: -3644817334592331312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Run.Left_14
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 0
+        width: 41
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 20.5, y: -27}
+        - {x: 20.5, y: 27}
+        - {x: -10.5, y: 27}
+        - {x: -18.5, y: 18}
+        - {x: -20.5, y: 12}
+        - {x: -20.5, y: 0}
+        - {x: -1.5, y: -29}
+        - {x: 17.5, y: -29}
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0a7140a5b1e79bc0800000000000000
+      internalID: -3776301592332895729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Troll.Run.Left_15
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 2
+        width: 40
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 20, y: 19.5}
+        - {x: 15, y: 26.5}
+        - {x: -11, y: 26.5}
+        - {x: -20, y: 14.5}
+        - {x: -20, y: 4.5}
+        - {x: -10, y: -25.5}
+        - {x: -9, y: -26.5}
+        - {x: 20, y: -26.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: f05879bf1b4d0e980800000000000000
+      internalID: -8511569434834926321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 1222ad1ed2257aa87b6fe534b33a2544
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Troll.Run.Left_0: 749868578722521673
+      Troll.Run.Left_1: -4429708048938602185
+      Troll.Run.Left_10: 4121881798129882359
+      Troll.Run.Left_11: -3476413998617696604
+      Troll.Run.Left_12: -6297132381420210855
+      Troll.Run.Left_13: -3644817334592331312
+      Troll.Run.Left_14: -3776301592332895729
+      Troll.Run.Left_15: -8511569434834926321
+      Troll.Run.Left_2: -5547947048127442722
+      Troll.Run.Left_3: -5891415769633701476
+      Troll.Run.Left_4: -7741068198520633807
+      Troll.Run.Left_5: -4679245835217800947
+      Troll.Run.Left_6: 7649024693587304095
+      Troll.Run.Left_7: -4978887330522969785
+      Troll.Run.Left_8: -8587607891506861827
+      Troll.Run.Left_9: 7728757625677183496
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
