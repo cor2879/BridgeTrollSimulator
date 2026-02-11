@@ -1,15 +1,14 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+
+using System.Text.Json;
+using Unity.IO.LowLevel.Unsafe;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Components
 {
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Linq;
-    using System.Text;
-
-    using System.Text.Json;
-    using Unity.IO.LowLevel.Unsafe;
-
     [DebuggerDisplay("DebuggerDisplay()")]
     public class PriorityQueue<T> : IEnumerable<(T, double)>
     {

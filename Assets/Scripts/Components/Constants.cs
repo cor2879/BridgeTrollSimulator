@@ -37,37 +37,24 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Components
         /// </summary>
         public const string HeroFiringYDirection = "HeroFiringYDirection";
 
-        public const string IsAiming = "isAiming";
+        public static class AnimatorParams
+        {
+            public const string xDirection = "xDirection";
+            public const string Speed = "Speed";
+        }
 
-        ///<summary>
-        /// The is dying
-        /// </summary>
-        public const string IsDying = "isDying";
+        public static class Triggers
+        {
+            public const string Attack = "Attack";
+            public const string Die = "Die";
+            public const string Itch = "Itch";
+            public const string Jump = "Jump";
+            public const string Threaten = "Threaten";
+        }
 
-        /// <summary>
-        /// The isDying Animator parameter
-        /// </summary>
-        public const string IsEating = "isEating";
+        public const string HorizontalAxis = "Horizontal";
 
-        /// <summary>
-        /// The is flying
-        /// </summary>
-        public const string IsFlying = "isFlying";
-
-        /// <summary>
-        /// The IsFiring Animator parameter
-        /// </summary>
-        public const string IsFiring = "isFiring";
-
-        /// <summary>
-        /// The isRoaring Animator parameter
-        /// </summary>
-        public const string IsRoaring = "isRoaring";
-
-        /// <summary>
-        /// The IsWalking Animator parameter
-        /// </summary>
-        public const string IsWalking = "isWalking";
+        public const string VerticalAxis = "Vertical";
 
         public const string Large = "Large";
 

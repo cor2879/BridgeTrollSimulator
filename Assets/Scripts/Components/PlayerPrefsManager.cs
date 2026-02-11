@@ -3,19 +3,18 @@
  *  
  *  copyright (c) 2020 Old School Games
  **************************************************/
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.Json;
+using UnityEngine;
+
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Platform;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Components;
+using System.Text.Json.Serialization;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Components
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text.Json;
-    using UnityEngine;
-
-    using OldSchoolGames.BridgeTrollSimulator.Scripts.Platform;
-    using OldSchoolGames.BridgeTrollSimulator.Scripts.Components;
-    using System.Text.Json.Serialization;
-
     public static class PlayerPrefsManager
     {
         private const string PlayerPrefsVersion = "1.0.0.0";
