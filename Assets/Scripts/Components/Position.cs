@@ -2,7 +2,8 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Numerics;
-using System.Text.Json;
+
+using UnityEngine;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Components
 {
@@ -31,12 +32,12 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Components
 
         public override string ToString()
         {
-            return JsonSerializer.Serialize(this);
+            return JsonUtility.ToJson(this);
         }
 
         public static Position Parse(string text)
         {
-            return JsonSerializer.Deserialize<Position>(text);
+            return JsonUtility.FromJson<Position>(text);
         }
 
         public override bool Equals([NotNullWhen(true)] object obj)

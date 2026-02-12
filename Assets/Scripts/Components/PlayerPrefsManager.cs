@@ -6,12 +6,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json;
 using UnityEngine;
 
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Platform;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Components;
-using System.Text.Json.Serialization;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Components
 {
@@ -37,7 +35,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Components
 
         private static void SaveMasterKeyList()
         {
-            PlayerPrefs.SetString(MasterKey, JsonSerializer.Serialize(Keys));
+            PlayerPrefs.SetString(MasterKey, JsonUtility.ToJson(Keys));
             PlayerPrefsManager.SavePlayerPrefs();
         }
 
@@ -64,7 +62,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Components
                 var masterKeyList = PlayerPrefs.GetString(MasterKey);
                 Debug.Log($"PlayerPrefs Master Key List: {masterKeyList}");
 
-                return JsonSerializer.Deserialize<Dictionary<string, PlayerPrefsDataType>>(masterKeyList);
+                return JsonUtility.FromJson<Dictionary<string, PlayerPrefsDataType>>(masterKeyList);
             }
 
             return new Dictionary<string, PlayerPrefsDataType>();
@@ -73,7 +71,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Components
         public static void ImportPlayerPrefs()
         {
             var savedPreferences =
-                JsonSerializer.Deserialize<Dictionary<string, Pair<PlayerPrefsDataType, object>>>(PlatformManager.Instance.GetSaveFileContent());
+                JsonUtility.FromJson<Dictionary<string, Pair<PlayerPrefsDataType, object>>>(PlatformManager.Instance.GetSaveFileContent());
 
             ImportPlayerPreferences(savedPreferences);
         }
@@ -301,7 +299,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Components
                 throw new PlayerPrefsException($"The key {keyName} is not registered as a JSON data type.");
             }
 
-            PlayerPrefs.SetString(keyName, JsonSerializer.Serialize(data));
+            PlayerPrefs.SetString(keyName, JsonUtility.ToJson(data));
             PlayerPrefsManager.SavePlayerPrefs();
         }
 
@@ -517,7 +515,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Components
                 return default(TData);
             }
 
-            return JsonSerializer.Deserialize<TData>(PlayerPrefs.GetString(keyName));
+            return JsonUtility.FromJson<TData>(PlayerPrefs.GetString(keyName));
         }
 
         public static TData GetData<TData>(string keyName, TData defaultData)
@@ -537,7 +535,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Components
                 return defaultData;
             }
 
-            return JsonSerializer.Deserialize<TData>(PlayerPrefs.GetString(keyName));
+            return JsonUtility.FromJson<TData>(PlayerPrefs.GetString(keyName));
         }
 
         public static void DeleteKey(string keyName)
@@ -558,7 +556,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Components
         public static void SavePlayerPrefs()
         {
             PlayerPrefs.Save();
-            // PlatformManager.Instance?.SaveFile(JsonSerialize.Serialize(GetAllPlayerPrefs()));
+            // PlatformManager.Instance?.SaveFile(JsonUtility.ToJson(GetAllPlayerPrefs()));
         }
     }
 }

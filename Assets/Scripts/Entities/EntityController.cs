@@ -13,6 +13,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         protected Animator animator;
         protected Rigidbody2D rb;
         protected IInputSource inputSource;
+        protected ControlMode controlMode = ControlMode.FreeRoam;
 
         [Header("Movement")]
         [SerializeField] 
@@ -22,6 +23,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         private bool facingRight = true;
 
         #region Properties
+
+        public ControlMode CurrentControlMode => controlMode;
+        public IInputSource InputSource => inputSource;
 
         public float MoveSpeed { get; set; }
 
@@ -50,9 +54,18 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         #region Input
 
+        protected bool HasInput => inputSource is not null;
+
         protected virtual void ProcessInput()
         {
-            if (this.inputSource is null)
+            if (!HasInput)
+            {
+                return;
+            }
+
+            if (controlMode == ControlMode.Disabled ||
+                controlMode == ControlMode.CutScene ||
+                controlMode == ControlMode.Dead)
             {
                 return;
             }
@@ -76,15 +89,37 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             }
         }
 
+        public void SetInputSource(IInputSource source)
+        {
+            inputSource = source;
+        }
+
+        public void ClearInputSource()
+        {
+            inputSource = null;
+        }
+
+        public void SetControlMode(ControlMode mode)
+        {
+            controlMode = mode;
+        }
+
         #endregion
 
         #region Movement
 
         protected virtual void ApplyMovement()
         {
+            if (this.CurrentControlMode != ControlMode.FreeRoam)
+            {
+                rb.linearVelocity = new Vector2(
+                    0f, rb.linearVelocity.y);
+                return;
+            }
+
             rb.linearVelocity = new Vector2(
                 movementInput.x * moveSpeed, 
-                rb.linearVelocity.y);
+                GetComponent<Rigidbody>().linearVelocity.y);
         }
 
         protected void Flip()

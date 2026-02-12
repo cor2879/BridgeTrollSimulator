@@ -37,13 +37,15 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
                 TriggerAction(Constants.Triggers.Itch);
             }
 
-            if (inputSource.JumpPressed())
+            if (inputSource.JumpPressed() &&
+                this.CurrentControlMode == ControlMode.FreeRoam)
             {
                 TriggerAction(Constants.Triggers.Jump);
             }
 
             if (inputSource.DiePressed())
             {
+                SetControlMode(ControlMode.Dead);
                 TriggerAction(Constants.Triggers.Die);
             }
         }
