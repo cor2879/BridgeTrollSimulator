@@ -107,14 +107,14 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Components
             {
                 playSound.Set(value);
 
-                if (value && !GameManager.Instance.MusicManager.IsPlaying)
+              /*  if (value && !GameManager.Instance.MusicManager.IsPlaying)
                 {
                     GameManager.Instance.MusicManager.Play();
                 }
                 else if (!value && GameManager.Instance.MusicManager.IsPlaying)
                 {
                     GameManager.Instance.MusicManager.Stop();
-                }
+                } */
             }
         }
 
@@ -129,7 +129,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Components
             {
                 musicVolume.Set(value);
 
-                GameManager.Instance.MusicManager.Volume = value;
+                // GameManager.Instance.MusicManager.Volume = value;
             }
         }
 
@@ -144,7 +144,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Components
             {
                 soundEffectVolume.Set(value);
 
-                GameManager.Instance.SoundEffectManager.Volume = value;
+                // GameManager.Instance.SoundEffectManager.Volume = value;
             }
         }
 

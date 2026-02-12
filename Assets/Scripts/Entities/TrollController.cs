@@ -1,6 +1,6 @@
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Components;
-using OldSchoolGames.BridgeTrollSimulator.Scripts.Input;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.InputHandling;
 using UnityEngine;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities

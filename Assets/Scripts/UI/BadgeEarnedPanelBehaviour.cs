@@ -67,7 +67,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
                 this.ExpandUpBehaviour.ExpandedHeight = BadgeEarnedPanelBehaviour.height;
                 this.Texture = Resources.Load<Texture2D>(badge.TextureName);
                 this.Text = badge.DisplayName;
-                GameManager.Instance.MusicManager.PlayAudioOnce(SoundClips.BadgeEarned);
+                // GameManager.Instance.MusicManager.PlayAudioOnce(SoundClips.BadgeEarned);
                 this.Enable();
                 StartCoroutine(
                     nameof(this.ShowForDuration),

@@ -107,7 +107,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             });
 
             this.gameObject.SetActive(true);
-            GameManager.Instance.PauseAction = true;
+            // GameManager.Instance.PauseAction = true;
             this.ButtonsPanel.DefaultButton.Select();
         }
 
@@ -138,7 +138,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             this.noButton.onClick.RemoveAllListeners();
 
             this.gameObject.SetActive(false);
-            GameManager.Instance.PauseAction = pauseAction;
+            // GameManager.Instance.PauseAction = pauseAction;
         }
 
         /// <summary>

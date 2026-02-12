@@ -255,6 +255,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
         private void OnNextItemButtonPressed()
         {
             this.SelectedIndex++;
+            this.SelectedIndex++;
         }
 
         private void OnPreviousItemButtonPressed()
@@ -264,7 +265,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         public void ValidateUnityEditorParameter(MonoBehaviour parameter, string parameterName)
         {
-            UIHelperBehaviour.ValidateUnityEditorParameter(parameter, parameterName, nameof(MinimapBehaviour));
+            UIHelperBehaviour.ValidateUnityEditorParameter(parameter, parameterName, nameof(OptionSelectorBehaviour));
         }
     }
 }
