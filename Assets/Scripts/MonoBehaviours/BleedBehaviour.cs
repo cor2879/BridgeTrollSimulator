@@ -18,16 +18,12 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.MonoBehaviours
     /// </summary>
     /// <seealso cref="UnityEngine.MonoBehaviour" />
     [RequireComponent(typeof(SpawnerBehaviour))]
-    [RequireComponent(typeof(MovementBehaviour))]
     public class BleedBehaviour : MonoBehaviour
     {
         private static readonly Vector3 IdlePointOffsetVector = new Vector3(0.0f, -0.4f, 0.0f);
 
         [SerializeField]
         private EntityBehaviour entityBehaviour;
-
-        [SerializeField]
-        private MovementBehaviour movementBehaviour;
 
         /// <summary>
         /// The interval in seconds between bleeds
@@ -94,19 +90,6 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.MonoBehaviours
             get { return this.bleedInterval; }
         }
 
-        public MovementBehaviour MovementBehaviour
-        {
-            get
-            {
-                if (this.movementBehaviour == null)
-                {
-                    this.movementBehaviour = this.GetComponent<MovementBehaviour>();
-                }
-
-                return this.movementBehaviour;
-            }
-        }
-
         public EntityBehaviour EntityBehaviour
         {
             get
@@ -120,10 +103,10 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.MonoBehaviours
             }
         }
 
-        public Vector2 CurrentDestination
+        /* public Vector2 CurrentDestination
         {
             get => this.MovementBehaviour.CurrentDestination;
-        }
+        } */
 
         public Vector2 CurrentPosition
         {

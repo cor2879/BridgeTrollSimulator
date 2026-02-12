@@ -27,11 +27,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
         /// <param name="eventData">The event data.</param>
         public void OnSelect(BaseEventData eventData)
         {
-            var soundEffectManager = GameManager.Instance != null ?
+            /* var soundEffectManager = GameManager.Instance != null ?
                 GameManager.Instance.SoundEffectManager :
-                null;
+                null; */
 
-            soundEffectManager?.PlayAudioOnce(SoundClips.Click1);
+            // soundEffectManager?.PlayAudioOnce(SoundClips.Click1);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
     {
         public void OnPointerEnter(PointerEventData eventData)
         {
-            GameManager.Instance.SoundEffectManager.PlayAudioOnce(SoundClips.Blip);
+            // GameManager.Instance.SoundEffectManager.PlayAudioOnce(SoundClips.Blip);
         }
     }
 }

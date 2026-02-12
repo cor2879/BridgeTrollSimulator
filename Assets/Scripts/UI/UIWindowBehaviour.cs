@@ -46,7 +46,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
         /// </summary>
         public virtual void OnEnable()
         {
-            GameManager.Instance.PauseAction = true;
+            // GameManager.Instance.PauseAction = true;
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
         /// </summary>
         public virtual void OnDisable()
         {
-            GameManager.Instance.PauseAction = false;
+            // GameManager.Instance.PauseAction = false;
         }
 
         /// <summary>

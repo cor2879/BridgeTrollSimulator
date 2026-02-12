@@ -50,7 +50,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.MonoBehaviours
             {
                 if (this.cameraTarget == null)
                 {
-                    this.cameraTarget = Instantiate(GameManager.Instance.cameraTargetPrefab)?.GetComponent<CameraTargetBehaviour>();
+                    // this.cameraTarget = Instantiate(GameManager.Instance.cameraTargetPrefab)?.GetComponent<CameraTargetBehaviour>();
                     this.cameraTarget.GameObject.SetActive(false);
                 }
 
@@ -145,10 +145,10 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.MonoBehaviours
         public static void InitializeCamera()
         {
             Instance.CameraTarget.GameObject.SetActive(true);
-            var position = PlayerBehaviour.Instance.transform.position;
+            var position = new Vector2(); // PlayerBehaviour.Instance.transform.position;
             var startingPosition = position;
             Instance.CameraTarget.transform.position = startingPosition;
-            Instance.CameraTarget.DragCameraToTarget(PlayerBehaviour.Instance.gameObject);
+            // Instance.CameraTarget.DragCameraToTarget(PlayerBehaviour.Instance.gameObject);
         }
 
         /// <summary>

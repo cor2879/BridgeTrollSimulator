@@ -122,10 +122,10 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.MonoBehaviours
         /// </summary>
         public void FixedUpdate()
         {
-            if (GameManager.Instance.PauseAction)
+            /* if (GameManager.Instance.PauseAction)
             {
                 return;
-            }
+            } */
 
             if (percentComplete < this.totalPercentage)
             {

@@ -32,10 +32,10 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.MonoBehaviours
 
             if (this.EarnedBadgeQueue.Count == 1)
             {
-                GameManager.Instance.ShowBadgeEarned(
+                /* GameManager.Instance.ShowBadgeEarned(
                     badge,
                     ShowBadgeDuration,
-                    this.OnShowBadgeComplete);
+                    this.OnShowBadgeComplete); */
             }
         }
 
@@ -89,10 +89,10 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.MonoBehaviours
 
                 if (badge != null)
                 {
-                    GameManager.Instance.ShowBadgeEarned(
+                    /* GameManager.Instance.ShowBadgeEarned(
                         badge,
                         ShowBadgeDuration,
-                        this.OnShowBadgeComplete);
+                        this.OnShowBadgeComplete); */
                 }
             }
         }

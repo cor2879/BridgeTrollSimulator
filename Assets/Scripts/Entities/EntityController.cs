@@ -1,10 +1,11 @@
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Components;
-using OldSchoolGames.BridgeTrollSimulator.Scripts.Input;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.InputHandling;
 using UnityEngine;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 {
+    [RequireComponent(typeof(SpriteRenderer))]
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(Rigidbody2D))]
     public abstract class EntityController : MonoBehaviour
@@ -17,7 +18,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         [SerializeField] 
         private float moveSpeed = 3f;
 
-        private float movementInput;
+        private Vector2 movementInput;
         private bool facingRight = true;
 
         #region Properties
@@ -64,7 +65,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         protected void HandleFacing()
         {
-            if (this.movmentInput.x > 0 && !this.facingRight)
+            if (this.movementInput.x > 0 && !this.facingRight)
             {
                 this.Flip();
             }
@@ -81,9 +82,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         protected virtual void ApplyMovement()
         {
-            rb.velocity = new Vector2(
-                movementInput * moveSpeed, 
-                rb.velocity.y);
+            rb.linearVelocity = new Vector2(
+                movementInput.x * moveSpeed, 
+                rb.linearVelocity.y);
         }
 
         protected void Flip()
@@ -103,9 +104,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         {
             animator.SetFloat(
                 Constants.AnimatorParams.Speed, 
-                Mathf.Abs(movementInput));
+                Mathf.Abs(moveSpeed));
             animator.SetFloat(
-                Constants.AnimatorPrams.xDirection, 
+                Constants.AnimatorParams.xDirection, 
                 facingRight ? 1f : -1f);
         }
 
