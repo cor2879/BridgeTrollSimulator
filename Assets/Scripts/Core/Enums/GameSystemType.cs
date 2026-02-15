@@ -9,6 +9,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums
         Core,
         Debug,
         System,
-        Entity
+        Entity,
+        Dialog
     };
 }

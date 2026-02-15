@@ -1,6 +1,7 @@
 using UnityEngine;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 {
@@ -10,6 +11,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
         private void OnEnable()
         {
             GameEventBus.Subscribe<EntityEncounterEvent>(OnEncounter);
+            GameEventBus.Subscribe<DialogEndedEvent>(OnDialogEnded);
         }
 
         private void OnDisable()
@@ -28,6 +30,12 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
             evt.Target.HandleEncounter(evt.Initiator);
 
             Debug.Log($"Encounter started between {evt.Initiator.name} and {evt.Target.name}");
+        }
+
+        private void OnDialogEnded(DialogEndedEvent evt)
+        {
+            evt.Initiator.ResetControlMode();
+            evt.Target.ResetControlMode();
         }
     }
 }

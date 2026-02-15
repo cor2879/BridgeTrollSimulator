@@ -40,6 +40,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         #region Properties
 
+        public abstract ControlMode DefaultControlMode { get; }
         public GameObject GameObject => this.gameObject;
         public ControlMode CurrentControlMode => controlMode;
         public IInputSource InputSource => inputSource;
@@ -128,6 +129,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             controlMode = mode;
         }
 
+        public void ResetControlMode()
+        {
+            controlMode = DefaultControlMode;
+        }
+        
         #endregion
 
         #region Movement

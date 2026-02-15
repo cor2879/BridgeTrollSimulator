@@ -15,6 +15,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         [SerializeField]
         private float walkSpeed = 1.5f;
 
+        public override ControlMode DefaultControlMode => ControlMode.Npc;
+        
         protected override void Awake()
         {
             base.Awake();

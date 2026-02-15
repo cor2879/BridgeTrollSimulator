@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8091140681091881740}
   m_Layer: 8
   m_Name: Archer
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -203,6 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71d8b9096959a4da09e98dc181583815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.NpcController
+  entityType: 0
   controlMode: 0
   moveSpeed: 1
   animatorSpeed: 0

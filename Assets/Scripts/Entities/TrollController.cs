@@ -9,6 +9,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 {
     public class TrollController : EntityController
     {
+        public override ControlMode DefaultControlMode => ControlMode.FreeRoam;
+
         protected override void Awake()
         {
             base.Awake();
