@@ -1,4 +1,4 @@
-namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
+namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums
 {
     public enum ControlMode
     {
@@ -6,6 +6,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         Combat,
         CutScene,
         Disabled,
-        Dead
+        Dead,
+        Npc,
+        Encounter,
     }
 }

@@ -82,7 +82,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -197,7 +197,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Troll.Walk.Left_0
+      name: Troll.Walk.Left_3
       rect:
         serializedVersion: 2
         x: 1
@@ -228,7 +228,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Walk.Left_1
+      name: Troll.Walk.Left_7
       rect:
         serializedVersion: 2
         x: 1
@@ -285,7 +285,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Walk.Left_3
+      name: Troll.Walk.Left_6
       rect:
         serializedVersion: 2
         x: 46
@@ -316,7 +316,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Walk.Left_4
+      name: Troll.Walk.Left_1
       rect:
         serializedVersion: 2
         x: 91
@@ -376,7 +376,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Walk.Left_6
+      name: Troll.Walk.Left_0
       rect:
         serializedVersion: 2
         x: 137
@@ -410,7 +410,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Walk.Left_7
+      name: Troll.Walk.Left_4
       rect:
         serializedVersion: 2
         x: 137
@@ -441,7 +441,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Walk.Left_8
+      name: Troll.Walk.Left_15
       rect:
         serializedVersion: 2
         x: 0
@@ -472,7 +472,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Walk.Left_9
+      name: Troll.Walk.Left_11
       rect:
         serializedVersion: 2
         x: 1
@@ -503,7 +503,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Walk.Left_10
+      name: Troll.Walk.Left_14
       rect:
         serializedVersion: 2
         x: 45
@@ -540,7 +540,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Walk.Left_11
+      name: Troll.Walk.Left_10
       rect:
         serializedVersion: 2
         x: 47
@@ -569,7 +569,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Walk.Left_12
+      name: Troll.Walk.Left_13
       rect:
         serializedVersion: 2
         x: 92
@@ -600,7 +600,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Walk.Left_13
+      name: Troll.Walk.Left_9
       rect:
         serializedVersion: 2
         x: 93
@@ -635,7 +635,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Walk.Left_14
+      name: Troll.Walk.Left_8
       rect:
         serializedVersion: 2
         x: 137
@@ -674,7 +674,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Walk.Left_15
+      name: Troll.Walk.Left_12
       rect:
         serializedVersion: 2
         x: 137
@@ -718,22 +718,22 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Troll.Walk.Left_0: -1268750020482286488
-      Troll.Walk.Left_1: -8115066338195985969
-      Troll.Walk.Left_10: 1618755227644667783
-      Troll.Walk.Left_11: 7772375034773646299
-      Troll.Walk.Left_12: -6065055336997416022
-      Troll.Walk.Left_13: -3013097954821515680
-      Troll.Walk.Left_14: 5091365529963673763
-      Troll.Walk.Left_15: -2968622854465431771
+      Troll.Walk.Left_0: -5172544192301568982
+      Troll.Walk.Left_1: -363763894545132009
+      Troll.Walk.Left_10: 7772375034773646299
+      Troll.Walk.Left_11: 777419243589389662
+      Troll.Walk.Left_12: -2968622854465431771
+      Troll.Walk.Left_13: -6065055336997416022
+      Troll.Walk.Left_14: 1618755227644667783
+      Troll.Walk.Left_15: 8056588659645033638
       Troll.Walk.Left_2: -3615467195513845227
-      Troll.Walk.Left_3: 5744320077549524546
-      Troll.Walk.Left_4: -363763894545132009
+      Troll.Walk.Left_3: -1268750020482286488
+      Troll.Walk.Left_4: -6895405285382852423
       Troll.Walk.Left_5: -6301026612801203962
-      Troll.Walk.Left_6: -5172544192301568982
-      Troll.Walk.Left_7: -6895405285382852423
-      Troll.Walk.Left_8: 8056588659645033638
-      Troll.Walk.Left_9: 777419243589389662
+      Troll.Walk.Left_6: 5744320077549524546
+      Troll.Walk.Left_7: -8115066338195985969
+      Troll.Walk.Left_8: 5091365529963673763
+      Troll.Walk.Left_9: -3013097954821515680
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

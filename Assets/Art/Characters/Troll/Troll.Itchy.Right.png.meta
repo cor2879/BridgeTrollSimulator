@@ -82,7 +82,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -227,7 +227,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Itchy.Right_1
+      name: Troll.Itchy.Right_4
       rect:
         serializedVersion: 2
         x: 3
@@ -257,7 +257,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Itchy.Right_2
+      name: Troll.Itchy.Right_1
       rect:
         serializedVersion: 2
         x: 53
@@ -287,7 +287,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Itchy.Right_3
+      name: Troll.Itchy.Right_5
       rect:
         serializedVersion: 2
         x: 55
@@ -317,7 +317,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Itchy.Right_4
+      name: Troll.Itchy.Right_2
       rect:
         serializedVersion: 2
         x: 104
@@ -347,7 +347,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Itchy.Right_5
+      name: Troll.Itchy.Right_6
       rect:
         serializedVersion: 2
         x: 106
@@ -377,7 +377,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Itchy.Right_6
+      name: Troll.Itchy.Right_3
       rect:
         serializedVersion: 2
         x: 155
@@ -691,18 +691,18 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Troll.Itchy.Right_0: -5134734393272821853
-      Troll.Itchy.Right_1: 3133114679371243165
+      Troll.Itchy.Right_1: -5736465465951047674
       Troll.Itchy.Right_10: 410201753611318330
       Troll.Itchy.Right_11: 6512145643053793985
       Troll.Itchy.Right_12: 8196053374164740633
       Troll.Itchy.Right_13: -2031345710117484885
       Troll.Itchy.Right_14: -4985506452395537425
       Troll.Itchy.Right_15: -2599517204066081339
-      Troll.Itchy.Right_2: -5736465465951047674
-      Troll.Itchy.Right_3: 2417818397112403246
-      Troll.Itchy.Right_4: 5913757090315235794
-      Troll.Itchy.Right_5: 1902530221669356082
-      Troll.Itchy.Right_6: 697817185974304839
+      Troll.Itchy.Right_2: 5913757090315235794
+      Troll.Itchy.Right_3: 697817185974304839
+      Troll.Itchy.Right_4: 3133114679371243165
+      Troll.Itchy.Right_5: 2417818397112403246
+      Troll.Itchy.Right_6: 1902530221669356082
       Troll.Itchy.Right_7: -5044096310153501226
       Troll.Itchy.Right_8: 7437310760445665977
       Troll.Itchy.Right_9: 382048021614276050

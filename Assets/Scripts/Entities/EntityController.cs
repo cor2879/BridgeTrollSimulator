@@ -1,5 +1,9 @@
+using System;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Components;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.InputHandling;
 using UnityEngine;
 
@@ -8,30 +12,41 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
     [RequireComponent(typeof(SpriteRenderer))]
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(Rigidbody2D))]
-    public abstract class EntityController : MonoBehaviour
+    [RequireComponent(typeof(Collider2D))]
+    public abstract class EntityController 
+        : MonoBehaviour, IEventSource, IEncounterable
     {
         protected Animator animator;
         protected Rigidbody2D rb;
         protected IInputSource inputSource;
+        [SerializeField, ReadOnly]
+        protected EntityType entityType;
+
+        [SerializeField, ReadOnly]
+        protected Guid instanceId;
+
+        [SerializeField]
         protected ControlMode controlMode = ControlMode.FreeRoam;
 
         [Header("Movement")]
         [SerializeField] 
-        private float moveSpeed = 3f;
+        private float moveSpeed = 1.0f;
+
+        [SerializeField]
+        protected float animatorSpeed = 0.0f;
 
         private Vector2 movementInput;
         private bool facingRight = true;
 
         #region Properties
 
+        public GameObject GameObject => this.gameObject;
         public ControlMode CurrentControlMode => controlMode;
         public IInputSource InputSource => inputSource;
 
-        public float MoveSpeed { get; set; }
 
-        public float MovementInput { get; protected set; }
-
-        public bool FacingRight { get; protected set; }
+        public string SourceName => $"{entityType}_{instanceId}";
+        public GameSystemType SystemType => GameSystemType.Entity;
 
         #endregion
 
@@ -39,6 +54,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         {
             animator = GetComponent<Animator>();
             rb = GetComponent<Rigidbody2D>();
+            instanceId = Guid.NewGuid();
         }
 
         protected virtual void Update()
@@ -65,15 +81,23 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
             if (controlMode == ControlMode.Disabled ||
                 controlMode == ControlMode.CutScene ||
-                controlMode == ControlMode.Dead)
+                controlMode == ControlMode.Dead ||
+                controlMode == ControlMode.Npc ||
+                controlMode == ControlMode.Encounter)
             {
                 return;
             }
+
+            var horizontalAxis = inputSource.GetHorizontal();
+
+            animatorSpeed = horizontalAxis != 0.0f ? 0.5f : 0.0f;
 
             this.movementInput = new Vector2(
                 this.inputSource.GetHorizontal(),
                 this.inputSource.GetVertical()
             );
+
+            HandleFacing();
         }
 
         protected void HandleFacing()
@@ -110,6 +134,12 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         protected virtual void ApplyMovement()
         {
+            if (CurrentControlMode == ControlMode.Encounter)
+            {
+                rb.linearVelocity = Vector2.zero;
+                return;
+            }
+
             if (this.CurrentControlMode != ControlMode.FreeRoam)
             {
                 rb.linearVelocity = new Vector2(
@@ -118,17 +148,17 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             }
 
             rb.linearVelocity = new Vector2(
-                movementInput.x * moveSpeed, 
-                GetComponent<Rigidbody>().linearVelocity.y);
+                movementInput.x * moveSpeed * transform.localScale.x, 
+                GetComponent<Rigidbody2D>().linearVelocity.y);
         }
 
         protected void Flip()
         {
             facingRight = !facingRight;
 
-            var scale = transform.localScale;
-            scale.x *= -1f;
-            transform.localScale = scale;
+            animator.SetFloat(
+                Constants.AnimatorParams.xDirection,
+                !facingRight ? -1f : 1f);
         }
 
         #endregion
@@ -139,7 +169,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         {
             animator.SetFloat(
                 Constants.AnimatorParams.Speed, 
-                Mathf.Abs(moveSpeed));
+                Mathf.Abs(animatorSpeed));
             animator.SetFloat(
                 Constants.AnimatorParams.xDirection, 
                 facingRight ? 1f : -1f);
@@ -148,6 +178,28 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         protected void TriggerAction(string triggerName)
         {
             animator.SetTrigger(triggerName);
+        }
+
+        #endregion
+
+        #region Collision Detection
+
+        protected virtual void OnTriggerEnter2D(Collider2D other)
+        {
+            var otherEntity = other.GetComponent<EntityController>();
+
+            if (otherEntity is null)
+            {
+                return;
+            }
+
+            GameEventBus.Publish(
+                new EntityEncounterEvent(this, otherEntity, Time.frameCount));
+        }
+
+        public virtual void HandleEncounter(IEncounterable other)
+        {
+            SetControlMode(ControlMode.Encounter);
         }
 
         #endregion

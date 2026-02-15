@@ -82,7 +82,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -329,7 +329,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Jumping.Right_4
+      name: Troll.Jumping.Right_8
       rect:
         serializedVersion: 2
         x: 1
@@ -358,7 +358,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Jumping.Right_5
+      name: Troll.Jumping.Right_4
       rect:
         serializedVersion: 2
         x: 4
@@ -389,7 +389,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Jumping.Right_6
+      name: Troll.Jumping.Right_5
       rect:
         serializedVersion: 2
         x: 56
@@ -422,7 +422,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Jumping.Right_7
+      name: Troll.Jumping.Right_6
       rect:
         serializedVersion: 2
         x: 110
@@ -454,7 +454,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Jumping.Right_8
+      name: Troll.Jumping.Right_7
       rect:
         serializedVersion: 2
         x: 157
@@ -737,11 +737,11 @@ TextureImporter:
       Troll.Jumping.Right_15: 1132787212222523448
       Troll.Jumping.Right_2: 3024324055018049504
       Troll.Jumping.Right_3: 172983066727676665
-      Troll.Jumping.Right_4: -7573325793161813199
-      Troll.Jumping.Right_5: -2873724591687336765
-      Troll.Jumping.Right_6: -5029825452802286878
-      Troll.Jumping.Right_7: 1659919361934039809
-      Troll.Jumping.Right_8: 8812105590277284683
+      Troll.Jumping.Right_4: -2873724591687336765
+      Troll.Jumping.Right_5: -5029825452802286878
+      Troll.Jumping.Right_6: 1659919361934039809
+      Troll.Jumping.Right_7: 8812105590277284683
+      Troll.Jumping.Right_8: -7573325793161813199
       Troll.Jumping.Right_9: -3613959954254954864
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

@@ -82,7 +82,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -197,7 +197,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Troll.Whack.Left_0
+      name: Troll.Whack.Left_4
       rect:
         serializedVersion: 2
         x: 13
@@ -232,7 +232,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Whack.Left_1
+      name: Troll.Whack.Left_0
       rect:
         serializedVersion: 2
         x: 14
@@ -261,7 +261,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Whack.Left_2
+      name: Troll.Whack.Left_
       rect:
         serializedVersion: 2
         x: 91
@@ -291,7 +291,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Whack.Left_3
+      name: Troll.Whack.Left_2
       rect:
         serializedVersion: 2
         x: 171
@@ -321,7 +321,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Whack.Left_4
+      name: Troll.Whack.Left_3
       rect:
         serializedVersion: 2
         x: 247
@@ -699,17 +699,17 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Troll.Whack.Left_0: -5924190774152908301
-      Troll.Whack.Left_1: 4191752076194389481
+      Troll.Whack.Left_: 8581800745488580711
+      Troll.Whack.Left_0: 4191752076194389481
       Troll.Whack.Left_10: -464360593329508017
       Troll.Whack.Left_11: 6625205101818122761
       Troll.Whack.Left_12: 6445833332427596859
       Troll.Whack.Left_13: 6122935372570177819
       Troll.Whack.Left_14: 3582720289376761805
       Troll.Whack.Left_15: 299453353302050354
-      Troll.Whack.Left_2: 8581800745488580711
-      Troll.Whack.Left_3: 2201881848992649851
-      Troll.Whack.Left_4: 2890736919331347834
+      Troll.Whack.Left_2: 2201881848992649851
+      Troll.Whack.Left_3: 2890736919331347834
+      Troll.Whack.Left_4: -5924190774152908301
       Troll.Whack.Left_5: -3508015907465406549
       Troll.Whack.Left_6: -8018159814907746282
       Troll.Whack.Left_7: 4820620958245945293

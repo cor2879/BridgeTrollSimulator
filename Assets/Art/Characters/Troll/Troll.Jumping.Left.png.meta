@@ -82,7 +82,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -410,7 +410,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Jumping.Left_7
+      name: Troll.Jumping.Left_11
       rect:
         serializedVersion: 2
         x: 154
@@ -440,7 +440,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Jumping.Left_8
+      name: Troll.Jumping.Left_7
       rect:
         serializedVersion: 2
         x: 155
@@ -471,7 +471,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Jumping.Left_9
+      name: Troll.Jumping.Left_8
       rect:
         serializedVersion: 2
         x: 0
@@ -499,7 +499,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Jumping.Left_10
+      name: Troll.Jumping.Left_9
       rect:
         serializedVersion: 2
         x: 51
@@ -529,7 +529,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Jumping.Left_11
+      name: Troll.Jumping.Left_10
       rect:
         serializedVersion: 2
         x: 101
@@ -693,8 +693,8 @@ TextureImporter:
     nameFileIdTable:
       Troll.Jumping.Left_0: 6818662560050886723
       Troll.Jumping.Left_1: 4006889553687926995
-      Troll.Jumping.Left_10: 8991320809393787422
-      Troll.Jumping.Left_11: -2179341462194105157
+      Troll.Jumping.Left_10: -2179341462194105157
+      Troll.Jumping.Left_11: 8218058478898102711
       Troll.Jumping.Left_12: 6726476988715377399
       Troll.Jumping.Left_13: -537812026799342797
       Troll.Jumping.Left_14: -7462373320066042274
@@ -704,9 +704,9 @@ TextureImporter:
       Troll.Jumping.Left_4: -5394213083088301579
       Troll.Jumping.Left_5: 3756434772007945124
       Troll.Jumping.Left_6: -1268459015794298355
-      Troll.Jumping.Left_7: 8218058478898102711
-      Troll.Jumping.Left_8: -4719370538977554800
-      Troll.Jumping.Left_9: 3767715380625175956
+      Troll.Jumping.Left_7: -4719370538977554800
+      Troll.Jumping.Left_8: 3767715380625175956
+      Troll.Jumping.Left_9: 8991320809393787422
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

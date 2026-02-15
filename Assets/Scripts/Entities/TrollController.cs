@@ -1,5 +1,7 @@
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Components;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.InputHandling;
 using UnityEngine;
 
@@ -11,13 +13,22 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         {
             base.Awake();
             this.inputSource = new KeyboardInputSource();
+            this.entityType = EntityType.Troll;
         }
 
         protected override void ProcessInput()
         {
             base.ProcessInput();
 
-            if (inputSource is null)
+            if (!HasInput)
+            {
+                return;
+            }
+
+            if (controlMode == ControlMode.Disabled ||
+                controlMode == ControlMode.CutScene ||
+                controlMode == ControlMode.Encounter ||
+                controlMode == ControlMode.Dead)
             {
                 return;
             }
@@ -47,6 +58,18 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             {
                 SetControlMode(ControlMode.Dead);
                 TriggerAction(Constants.Triggers.Die);
+            }
+        }
+
+        public override void HandleEncounter(IEncounterable other)
+        {
+            Debug.Log($"{entityType}_{instanceId}::{nameof(HandleEncounter)}");
+            if (other.GameObject.CompareTag("NPC"))
+            {
+                SetControlMode(ControlMode.Encounter);
+                animatorSpeed = 0f;
+
+                Debug.Log("Troll encountered NPC!");
             }
         }
     }

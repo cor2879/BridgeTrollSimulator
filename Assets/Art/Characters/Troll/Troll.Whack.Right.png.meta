@@ -82,7 +82,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -325,7 +325,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Whack.Right_4
+      name: Troll.Whack.Right_7
       rect:
         serializedVersion: 2
         x: 252
@@ -360,7 +360,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Whack.Right_5
+      name: Troll.Whack.Right_4
       rect:
         serializedVersion: 2
         x: 7
@@ -391,7 +391,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Whack.Right_6
+      name: Troll.Whack.Right_5
       rect:
         serializedVersion: 2
         x: 78
@@ -419,7 +419,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Troll.Whack.Right_7
+      name: Troll.Whack.Right_6
       rect:
         serializedVersion: 2
         x: 155
@@ -729,10 +729,10 @@ TextureImporter:
       Troll.Whack.Right_15: -4865895072113133340
       Troll.Whack.Right_2: -5277602821449590267
       Troll.Whack.Right_3: -91877042168574974
-      Troll.Whack.Right_4: 4231805477662014494
-      Troll.Whack.Right_5: 4820247213212645456
-      Troll.Whack.Right_6: 8397628723776316347
-      Troll.Whack.Right_7: -1624519331387062006
+      Troll.Whack.Right_4: 4820247213212645456
+      Troll.Whack.Right_5: 8397628723776316347
+      Troll.Whack.Right_6: -1624519331387062006
+      Troll.Whack.Right_7: 4231805477662014494
       Troll.Whack.Right_8: -4541673454492469002
       Troll.Whack.Right_9: -5685603435626880748
   mipmapLimitGroupName: 
