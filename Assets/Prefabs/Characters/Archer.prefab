@@ -205,6 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.NpcController
   entityType: 0
   controlMode: 0
+  sourceName: Archer
   moveSpeed: 1
   animatorSpeed: 0
   walkSpeed: 1.5

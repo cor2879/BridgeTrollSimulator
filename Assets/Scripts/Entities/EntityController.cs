@@ -19,6 +19,21 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         protected Animator animator;
         protected Rigidbody2D rb;
         protected IInputSource inputSource;
+
+        [Header("Character Stats")]
+        [SerializeField]
+        protected string entityName;
+        [SerializeField]
+        protected int gold;
+        [SerializeField]
+        protected int maxHealth;
+        [SerializeField, ReadOnly]
+        protected int currentHealth;
+        [SerializeField]
+        protected int attack = 3;
+        [SerializeField]
+        protected int defense = 1;
+
         [SerializeField, ReadOnly]
         protected EntityType entityType;
 
@@ -27,6 +42,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         [SerializeField]
         protected ControlMode controlMode = ControlMode.FreeRoam;
+
+        [SerializeField]
+        protected string sourceName;
 
         [Header("Movement")]
         [SerializeField] 
@@ -44,10 +62,16 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         public GameObject GameObject => this.gameObject;
         public ControlMode CurrentControlMode => controlMode;
         public IInputSource InputSource => inputSource;
+        public string Name { get => entityName; set => this.entityName = value;}
+        public int Gold => gold;
+        public int MaxHealth => maxHealth;
+        public int CurrentHealth { get => currentHealth; set => this.currentHealth = value; }
+        public int Attack => attack;
+        public int Defense => defense;
 
-
-        public string SourceName => $"{entityType}_{instanceId}";
         public GameSystemType SystemType => GameSystemType.Entity;
+
+        public string SourceName => sourceName;
 
         #endregion
 
@@ -56,6 +80,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             animator = GetComponent<Animator>();
             rb = GetComponent<Rigidbody2D>();
             instanceId = Guid.NewGuid();
+            currentHealth = maxHealth;
         }
 
         protected virtual void Update()
@@ -133,7 +158,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         {
             controlMode = DefaultControlMode;
         }
-        
+
         #endregion
 
         #region Movement
@@ -193,19 +218,76 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         protected virtual void OnTriggerEnter2D(Collider2D other)
         {
             var otherEntity = other.GetComponent<EntityController>();
+            if (otherEntity == null)
+            {
+                return;
+            }
 
-            if (otherEntity is null)
+            var thisEntity = GetComponent<EntityController>();
+            if (thisEntity == null)
+            {
+                return;
+            }
+
+            EntityController player = null;
+            EntityController npc = null;
+
+            if (thisEntity.CompareTag("Troll"))
+            {
+                player = thisEntity;
+            }
+            else if (otherEntity.CompareTag("Troll"))
+            {
+                player = otherEntity;
+            }
+
+            if (thisEntity.CompareTag("NPC"))
+            {
+                npc = thisEntity;
+            }
+            else if (otherEntity.CompareTag("NPC"))
+            {
+                npc = otherEntity;
+            }
+
+            if (player == null || npc == null)
             {
                 return;
             }
 
             GameEventBus.Publish(
-                new EntityEncounterEvent(this, otherEntity, Time.frameCount));
+                new EntityEncounterEvent(player, npc, Time.frameCount));
         }
 
         public virtual void HandleEncounter(IEncounterable other)
         {
             SetControlMode(ControlMode.Encounter);
+        }
+
+        #endregion
+    
+        #region Interaction
+
+        public virtual int DeductGold(int amount)
+        {
+            var goldReturned = amount;
+
+            if (this.gold < amount)
+            {
+                goldReturned = this.gold;
+                this.gold = 0;
+            }
+            else
+            {
+                this.gold -= amount;
+            }
+            
+            return goldReturned;
+        }
+
+        public virtual void AddGold(int amount)
+        {
+            this.gold += amount;
         }
 
         #endregion

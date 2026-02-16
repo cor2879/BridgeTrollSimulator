@@ -206,6 +206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.TrollController
   entityType: 0
   controlMode: 0
+  sourceName: Troll
   moveSpeed: 1
   animatorSpeed: 0
 --- !u!114 &674175424968041386

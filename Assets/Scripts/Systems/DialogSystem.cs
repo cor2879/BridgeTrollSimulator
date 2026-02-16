@@ -7,7 +7,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
     public class DialogSystem : MonoBehaviour
     {
         [SerializeField]
-        private DialogSequence defaultEncounterDialog;
+        private DialogNode defaultEncounterNode;
 
         private void OnEnable()
         {
@@ -23,7 +23,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
         {
             GameEventBus.Publish(
                 new DialogStartedEvent(
-                    defaultEncounterDialog,
+                    defaultEncounterNode,
                     evt.Initiator,
                     evt.Target,
                     Time.frameCount));

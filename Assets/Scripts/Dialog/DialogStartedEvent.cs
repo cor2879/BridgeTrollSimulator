@@ -6,18 +6,18 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog
 {
     public class DialogStartedEvent : GameEvent
     {
-        public DialogSequence Sequence { get; }
+        public DialogNode RootNode { get; }
         public EntityController Initiator { get; }
         public EntityController Target { get; }
 
         public DialogStartedEvent(
-            DialogSequence sequence,
+            DialogNode rootNode,
             EntityController initiator,
             EntityController target,
             int frame)
             : base(initiator, frame)
         {
-            Sequence = sequence;
+            RootNode = rootNode;
             Initiator = initiator;
             Target = target;
         }

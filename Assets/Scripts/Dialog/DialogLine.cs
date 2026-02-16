@@ -5,7 +5,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog
     [System.Serializable]
     public class DialogLine
     {
-        public string SpeakerId;
+        public string Speaker;
         [TextArea(2, 5)]
         public string Text;
     }
