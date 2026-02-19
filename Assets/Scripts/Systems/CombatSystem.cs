@@ -1,9 +1,15 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat.Enums;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat.Interfaces;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Components;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameState;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.UI;
@@ -15,14 +21,28 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
         [SerializeField] private CombatUIController combatUI;
         [SerializeField] private float actionDelay = 1.2f;
 
-        private EntityController player;
-        private EntityController enemy;
+        private IFactionDispositionResolver dispositionResolver;
 
         private CombatState state = CombatState.Inactive;
         private bool isResolving;
 
+        [SerializeField]
+        private List<EntityController> combatants;
+        [SerializeField, ReadOnly]
+        private OrderedCollection<InitiativeEntry> initiativeOrder = new();
+        [SerializeField, ReadOnly]
+        private int currentTurnIndex = 0;
+        [SerializeField, ReadOnly]
+        private int roundNumber = 1;
+
         public string SourceName => nameof(CombatSystem);
         public GameSystemType SystemType => GameSystemType.Combat;
+
+        private void Awake()
+        {
+            dispositionResolver = new MatrixDispositionResolver(
+                GameDatabase.Instance.Dispositions);
+        }
 
         private void OnEnable()
         {
@@ -36,72 +56,92 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 
         private void OnCombatStarted(CombatStartedEvent evt)
         {
-            player = evt.Initiator;
-            enemy = evt.Target;
+            evt.Initiator.EnterCombat();
+            evt.Target.EnterCombat();
 
-            player.EnterCombat();
-            enemy.EnterCombat();
+            combatants = new List<EntityController>
+            {
+                evt.Initiator,
+                evt.Target
+            };
 
-            combatUI.Initialize(this, player);
+            BuildInitiativeOrder();
+
+            combatUI.Initialize(
+                this, 
+                GameDatabase.Instance.Player);
             combatUI.Show();
 
-            state = CombatState.PlayerTurn;
-            BeginPlayerTurn();
+            currentTurnIndex = 0;
+            roundNumber = 1;
+
+            BeginTurn(GetCurrentCombatant());
         }
 
-        private void BeginPlayerTurn()
+        private void RollInitiative()
         {
-            player.ClearTurnFlags();
-
-            state = CombatState.PlayerTurn;
-            player.ProcessTurnStartEffects();
-            combatUI.EnableInput(true);
+            foreach (var entity in combatants)
+            {
+                entity.RollInitiative();
+            }
         }
 
-        private IEnumerator ResolvePlayerAbility(Ability ability)
+        private void BuildInitiativeOrder()
+        {
+            initiativeOrder.Clear();
+
+            foreach (var entity in combatants)
+            {
+                entity.RollInitiative();
+                initiativeOrder.Add(
+                    new InitiativeEntry(entity));
+            }
+        }
+
+        private EntityController GetCurrentCombatant()
+        {
+            return initiativeOrder[currentTurnIndex].Entity;
+        }
+
+        private void BeginTurn(EntityController entity)
+        {
+            entity.ClearTurnFlags();
+
+            if (entity.IsPlayerControlled)
+            {
+                state = CombatState.PlayerTurn;
+                combatUI.EnableInput(true);
+            }
+            else
+            {
+                state = CombatState.ResolvingEnemyAction;
+                StartCoroutine(ResolveAI(entity));
+            }
+        }
+
+        private IEnumerator ResolveAI(EntityController entity)
         {
             isResolving = true;
-            state = CombatState.ResolvingPlayerAction;
-            combatUI.EnableInput(false);
+            var ability = entity.ChooseCombatAbility();
+            var target = ChooseTarget(entity);
 
-            UseAbility(player, enemy, ability);
+            UseAbility(entity, target, ability);
 
             yield return new WaitForSeconds(actionDelay);
 
-            if (enemy.CurrentHealth <= 0)
-            {
-                state = CombatState.Victory;
-                EndCombat(true);
-                yield break;
-            }
+            entity.ProcessTurnEndEffects();
 
-            player.ProcessTurnEndEffects();
-            state = CombatState.EnemyTurn;
-            yield return StartCoroutine(ResolveEnemyTurn());
+            isResolving = false;
+            AdvanceTurn();
         }
 
-        private IEnumerator ResolveEnemyTurn()
+        private EntityController ChooseTarget(EntityController attacker)
         {
-            enemy.ClearTurnFlags();
-            enemy.ProcessTurnStartEffects();
-            state = CombatState.ResolvingEnemyAction;
-
-            var chosenAbility = enemy.ChooseCombatAbility();
-
-            UseAbility(enemy, player, chosenAbility);
-
-            yield return new WaitForSeconds(actionDelay);
-
-            if (player.CurrentHealth <= 0)
-            {
-                state = CombatState.Defeat;
-                EndCombat(false);
-                yield break;
-            }
-
-            enemy.ProcessTurnEndEffects();
-            BeginPlayerTurn();
-            isResolving = false;
+            return combatants
+                .Where(e =>
+                    e.CurrentHealth > 0 &&
+                    dispositionResolver.IsHostile(attacker.Faction, e.Faction))
+                .FirstOrDefault();
         }
 
         private void UseAbility(EntityController initiator, EntityController target, Ability ability)
@@ -116,21 +156,84 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
                 return;
             }
 
-            StartCoroutine(ResolvePlayerAbility(ability));
+            StartCoroutine(ResolvePlayerTurn(ability));
+        }
+
+        private IEnumerator ResolvePlayerTurn(Ability ability)
+        {
+            isResolving = true;
+
+            var player = GameDatabase.Instance.Player;
+            var target = ChooseTarget(player);
+
+            combatUI.EnableInput(false);
+            UseAbility(player, target, ability);
+
+            yield return new WaitForSeconds(actionDelay);
+
+            player.ProcessTurnEndEffects();
+            isResolving = false;
+            AdvanceTurn();
+        }
+
+        private void AdvanceTurn()
+        {
+            currentTurnIndex++;
+
+            if (currentTurnIndex >= initiativeOrder.Count)
+            {
+                currentTurnIndex = 0;
+                roundNumber++;
+            }
+
+            if (CheckCombatEnd())
+            {
+                return;
+            }
+
+            var combatant = GetCurrentCombatant();
+            combatant.ProcessTurnStartEffects();
+            BeginTurn(combatant);
+        }
+
+        private bool CheckCombatEnd()
+        {
+            var aliveCombatants = combatants
+                .Where(e => e.CurrentHealth > 0)
+                .ToList();
+
+            var aliveFactions = aliveCombatants
+                .Select(e => e.Faction)
+                .Distinct()
+                .ToList();
+
+            if (aliveFactions.Count <= 1)
+            {
+                var player = GameDatabase.Instance.Player;
+
+                bool playerWon = player != null &&
+                                player.CurrentHealth > 0 &&
+                                aliveFactions.Contains(player.Faction);
+
+                EndCombat(playerWon);
+                return true;
+            }
+
+            return false;
         }
 
         private void EndCombat(bool playerWon)
         {
-            string combatLog = playerWon ? "Victory!" : "Defeat!";
-
-            GameEventBus.Publish(
-                new CombatLogEvent(combatLog, this, Time.frameCount));
-
             state = CombatState.Inactive;
             combatUI.Hide();
 
+            combatants.Clear();
+            initiativeOrder.Clear();
+
+            var log = playerWon ? "Victory!" : "Defeat!";
+
             GameEventBus.Publish(
-                new CombatEndedEvent(player, enemy, Time.frameCount));
+                new CombatLogEvent(log, this, Time.frameCount));
         }
     }
 }

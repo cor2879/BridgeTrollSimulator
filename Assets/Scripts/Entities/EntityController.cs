@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Components;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
@@ -31,6 +32,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         [SerializeField]
         protected string entityName;
         [SerializeField]
+        protected bool isPlayerControlled;
+        [SerializeField]
         protected int gold;
         [SerializeField]
         protected int maxHealth;
@@ -44,6 +47,10 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         protected int currentStamina;
         [SerializeField, ReadOnly]
         protected int currentHealth;
+        [SerializeField]
+        protected int dexterity = 10;
+        [SerializeField, ReadOnly]
+        protected int initiativeRoll;
         [SerializeField]
         protected int attack = 3;
         [SerializeField]
@@ -62,6 +69,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         protected float critMultiplier = 2f;
         [SerializeField]
         protected float temporaryCritBonus;
+        [SerializeField]
+        protected CombatFaction faction;
         [SerializeField]
         protected Ability[] abilities;
 
@@ -97,6 +106,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         public ControlMode CurrentControlMode => controlMode;
         public IInputSource InputSource => inputSource;
         public EntityCombatUI CombatUI => entityCombatUI;
+        public bool IsPlayerControlled => isPlayerControlled;
 
         #region Stats
 
@@ -132,6 +142,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         }
         public int Gold => gold;
         public int MaxHealth => maxHealth;
+        public int Dexterity => dexterity;
+        public int InitiativeRoll => initiativeRoll;
         public float CritChance => critChance;
         public float CritMultiplier => critMultiplier;
         public int CurrentHealth 
@@ -154,6 +166,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
                 entityCombatUI.Refresh();
             }
         }
+        public CombatFaction Faction => faction;
         public Ability[] Abilities => abilities;
         public List<StatusEffect> ActiveEffects => activeEffects;
 
@@ -277,6 +290,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         {
             SetControlMode(ControlMode.Combat);
             CurrentStamina = MaxStamina;
+            RollInitiative();
         }
 
         #endregion
@@ -511,6 +525,16 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
                 return offensiveAbilities[UnityEngine.Random.Range(0, offensiveAbilities.Count)];
 
             return Abilities[0];
+        }
+
+        public virtual int GetInitiativeModifier()
+        {
+            return Dexterity / 2;
+        }
+
+        public void RollInitiative()
+        {
+            initiativeRoll = GetInitiativeModifier() + UnityEngine.Random.Range(1, 20);
         }
 
         #endregion

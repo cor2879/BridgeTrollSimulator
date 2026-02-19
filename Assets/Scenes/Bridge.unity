@@ -226,6 +226,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Systems.CombatSystem
   combatUI: {fileID: 1931539559}
   actionDelay: 1
+  combatants: []
+  currentTurnIndex: 0
+  roundNumber: 1
+--- !u!114 &364316233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364316227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c500a1780e9214ce786ae597e481e7b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameState.GameDatabase
+  dispositionMatrix: {fileID: 11400000, guid: 906d00111393043d6a3e4ecdebdbe67a, type: 2}
+  player: {fileID: 734634292}
 --- !u!1001 &403268082
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -431,6 +448,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8091140681091881740, guid: f4150bf2882634a35a14ffb272d4b4a5, type: 3}
+      propertyPath: faction
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8091140681091881740, guid: f4150bf2882634a35a14ffb272d4b4a5, type: 3}
       propertyPath: maxHealth
       value: 100
       objectReference: {fileID: 0}
@@ -605,6 +626,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 564046663}
   m_CullTransparentMesh: 1
+--- !u!114 &734634292 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1778569078660424935, guid: 957094dc32b9a45d6a14a6c38985eda7, type: 3}
+  m_PrefabInstance: {fileID: 4350162637379164570}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43f950e3e71644879bcad980cc72c8c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.TrollController
 --- !u!4 &734634296 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4036327340478857543, guid: 957094dc32b9a45d6a14a6c38985eda7, type: 3}
@@ -3534,6 +3566,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3357592020530091363, guid: 4dcaa2ee42d31430c9f846773bfa35f3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 364316232}
+    - targetCorrespondingSourceObject: {fileID: 3357592020530091363, guid: 4dcaa2ee42d31430c9f846773bfa35f3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 364316233}
   m_SourcePrefab: {fileID: 100100000, guid: 4dcaa2ee42d31430c9f846773bfa35f3, type: 3}
 --- !u!1001 &4350162637379164570
 PrefabInstance:
@@ -3606,6 +3641,10 @@ PrefabInstance:
     - target: {fileID: 1778569078660424935, guid: 957094dc32b9a45d6a14a6c38985eda7, type: 3}
       propertyPath: defense
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1778569078660424935, guid: 957094dc32b9a45d6a14a6c38985eda7, type: 3}
+      propertyPath: faction
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1778569078660424935, guid: 957094dc32b9a45d6a14a6c38985eda7, type: 3}
       propertyPath: maxHealth

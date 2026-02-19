@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.NpcController
   entityName: 
+  isPlayerControlled: 0
   gold: 0
   maxHealth: 0
   maxStamina: 10
@@ -213,15 +214,17 @@ MonoBehaviour:
   defendRestore: 2
   currentStamina: 0
   currentHealth: 0
+  dexterity: 10
+  initiativeRoll: 0
   attack: 3
   defense: 1
   defenseModifier: 0
-  defenseDebuff: 0
   isDefending: 0
   defendMultiplier: 0.5
   critChance: 0.1
   critMultiplier: 2
   temporaryCritBonus: 0
+  faction: 2
   abilities:
   - {fileID: 11400000, guid: f03ee2b4f24c941e5b17e2b9b28d15d7, type: 2}
   - {fileID: 11400000, guid: 3538289a4c24b460680814b748f4d78c, type: 2}
