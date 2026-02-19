@@ -1,10 +1,16 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Components;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.StatusEffects;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.InputHandling;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.UI;
 using UnityEngine;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
@@ -19,6 +25,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         protected Animator animator;
         protected Rigidbody2D rb;
         protected IInputSource inputSource;
+        protected EntityCombatUI entityCombatUI;
 
         [Header("Character Stats")]
         [SerializeField]
@@ -27,15 +34,42 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         protected int gold;
         [SerializeField]
         protected int maxHealth;
+        [SerializeField]
+        protected int maxStamina = 10;
+        [SerializeField]
+        protected int attackCost = 3;
+        [SerializeField]
+        protected int defendRestore = 2;
+        [SerializeField, ReadOnly]
+        protected int currentStamina;
         [SerializeField, ReadOnly]
         protected int currentHealth;
         [SerializeField]
         protected int attack = 3;
         [SerializeField]
         protected int defense = 1;
+        [SerializeField, ReadOnly]
+        protected int defenseModifier;
+        [SerializeField, ReadOnly]
+        private List<StatusEffect> activeEffects = new();
+        [SerializeField, ReadOnly]
+        protected bool isDefending;
+        [SerializeField]
+        protected float defendMultiplier = 0.5f;
+        [SerializeField]
+        protected float critChance = 0.1f;
+        [SerializeField]
+        protected float critMultiplier = 2f;
+        [SerializeField]
+        protected float temporaryCritBonus;
+        [SerializeField]
+        protected Ability[] abilities;
 
         [SerializeField, ReadOnly]
         protected EntityType entityType;
+
+        [SerializeField, ReadOnly]
+        protected Canvas combatUIRoot;
 
         [SerializeField, ReadOnly]
         protected Guid instanceId;
@@ -62,12 +96,68 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         public GameObject GameObject => this.gameObject;
         public ControlMode CurrentControlMode => controlMode;
         public IInputSource InputSource => inputSource;
+        public EntityCombatUI CombatUI => entityCombatUI;
+
+        #region Stats
+
         public string Name { get => entityName; set => this.entityName = value;}
+        public int Attack
+        {
+            get
+            {
+                var value = attack;
+
+                foreach (var effect in activeEffects)
+                {
+                    value = effect.ModifyAttack(value);
+                }
+
+                return value;
+            }
+        }
+        public int BaseDefense => defense;
+        public int Defense
+        {
+            get
+            {
+                var value = BaseDefense + defenseModifier;
+
+                foreach (var effect in activeEffects)
+                {
+                    value = effect.ModifyDefense(value);
+                }
+
+                return value;
+            }
+        }
         public int Gold => gold;
         public int MaxHealth => maxHealth;
-        public int CurrentHealth { get => currentHealth; set => this.currentHealth = value; }
-        public int Attack => attack;
-        public int Defense => defense;
+        public float CritChance => critChance;
+        public float CritMultiplier => critMultiplier;
+        public int CurrentHealth 
+        { 
+            get => currentHealth; 
+            protected set
+            {
+                this.currentHealth = value; 
+                entityCombatUI.Refresh();
+            }
+        }
+        public int MaxStamina => maxStamina;
+        public int AttackCost => attackCost;
+        public int CurrentStamina
+        {
+            get => currentStamina;
+            protected set
+            {
+                this.currentStamina = value;
+                entityCombatUI.Refresh();
+            }
+        }
+        public Ability[] Abilities => abilities;
+        public List<StatusEffect> ActiveEffects => activeEffects;
+
+        #endregion
 
         public GameSystemType SystemType => GameSystemType.Entity;
 
@@ -79,8 +169,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         {
             animator = GetComponent<Animator>();
             rb = GetComponent<Rigidbody2D>();
+            combatUIRoot = GetComponentInChildren<Canvas>();
             instanceId = Guid.NewGuid();
             currentHealth = maxHealth;
+            entityCombatUI = GetComponent<EntityCombatUI>();
+            entityCombatUI.SetActive(false);
         }
 
         protected virtual void Update()
@@ -151,12 +244,39 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         public void SetControlMode(ControlMode mode)
         {
+            if (CurrentControlMode == mode)
+            {
+                return;
+            }
+
             controlMode = mode;
+
+            OnControlModeChanged(mode);
         }
 
         public void ResetControlMode()
         {
-            controlMode = DefaultControlMode;
+            SetControlMode(DefaultControlMode);
+        }
+
+        protected virtual void OnControlModeChanged(ControlMode newMode)
+        {
+            if (combatUIRoot == null)
+            {
+                return;
+            }
+
+            entityCombatUI.SetActive(newMode == ControlMode.Combat);
+        }
+
+        #endregion
+
+        #region Combat
+
+        public void EnterCombat()
+        {
+            SetControlMode(ControlMode.Combat);
+            CurrentStamina = MaxStamina;
         }
 
         #endregion
@@ -268,6 +388,21 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
     
         #region Interaction
 
+        public virtual bool CanAttack()
+        {
+            return true;
+        }
+
+        public virtual bool CanDefend()
+        {
+            return true;
+        }
+
+        public virtual bool CanExecute(Ability ability)
+        {
+            return CurrentStamina >= ability.StaminaCost;
+        }
+
         public virtual int DeductGold(int amount)
         {
             var goldReturned = amount;
@@ -289,7 +424,126 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         {
             this.gold += amount;
         }
+        
+        public virtual void TakeDamage(int amount)
+        {
+            this.CurrentHealth -= amount;
+            GameEventBus.Publish(
+                new DamageTakenEvent(this, amount, Time.frameCount));
+        }
 
+        public virtual void SpendStamina(int amount)
+        {
+            if (this.CurrentStamina < amount)
+            {
+                this.CurrentStamina = 0;
+            }
+            else
+            {
+                this.CurrentStamina -= amount;
+            }
+            
+            GameEventBus.Publish(
+                new StaminaDamageTakenEvent(this, amount, Time.frameCount));
+        }
+
+        public virtual void RestoreStamina(int amount)
+        {
+            CurrentStamina = Math.Min(maxStamina, CurrentStamina + amount);
+        }
+
+        public void Defend()
+        {
+            if (isDefending)
+            {
+                return;
+            }
+
+            isDefending = true;
+
+            var bonus = Mathf.RoundToInt(BaseDefense * defendMultiplier);
+            defenseModifier += bonus;
+
+            temporaryCritBonus = 0.15f;
+        }
+
+        public void ClearTurnFlags()
+        {
+            if (isDefending)
+            {
+                var bonus = Mathf.RoundToInt(BaseDefense * defendMultiplier);
+                defenseModifier -= bonus;
+                isDefending = false;
+            }
+
+            temporaryCritBonus = 0.0f;
+        }
+
+        public float GetTemporaryCritBonus()
+        {
+            return temporaryCritBonus;
+        }
+
+        public void ApplyDefenseDebuff(int amount, int duration)
+        {
+            ActiveEffects.Add(new ArmorBreakEffect(amount, duration));
+        }
+
+        public virtual Ability ChooseCombatAbility()
+        {
+            var staminaRatio = (float)CurrentStamina / MaxStamina;
+            var defendProbability = 1f - staminaRatio;
+
+            foreach (var ability in Abilities)
+            {
+                if (!ability.IsOffensive)
+                {
+                    if (UnityEngine.Random.value < defendProbability)
+                    {
+                        return ability;
+                    }
+                }
+            }
+
+            var offensiveAbilities = Abilities.Where(a => a.IsOffensive).ToList();
+
+            if (offensiveAbilities.Count > 0)
+                return offensiveAbilities[UnityEngine.Random.Range(0, offensiveAbilities.Count)];
+
+            return Abilities[0];
+        }
+
+        #endregion
+
+        #region Status Effect Management
+
+        public void AddStatusEffect(StatusEffect effect)
+        {
+            activeEffects.Add(effect);
+            effect.OnApply(this);
+        }
+
+        public void ProcessTurnStartEffects()
+        {
+            foreach (var effect in activeEffects)
+            {
+                effect.OnTurnStart(this);
+            }
+        }
+
+        public void ProcessTurnEndEffects()
+        {
+            for (var i = activeEffects.Count - 1; i >- 0; i--)
+            {
+                activeEffects[i].OnTurnEnd(this);
+                activeEffects[i].Tick(this);
+
+                if (activeEffects[i].IsExpired)
+                {
+                    activeEffects.RemoveAt(i);
+                }
+            }
+        }
         #endregion
     }
 }

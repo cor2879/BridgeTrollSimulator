@@ -1,6 +1,7 @@
 using UnityEngine;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.UI;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 {
@@ -8,6 +9,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
     {
         [SerializeField]
         private DialogNode defaultEncounterNode;
+
+        [SerializeField]
+        private DialogUIController dialogPanel;
 
         private void OnEnable()
         {

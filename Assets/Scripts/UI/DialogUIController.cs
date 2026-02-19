@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -10,106 +11,106 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 {
     public class DialogUIController : MonoBehaviour
     {
-        [SerializeField] 
-        private GameObject panel;
-        [SerializeField]
-        private TMP_Text speakerNameText;
-        [SerializeField]
-        private TMP_Text dialogText;
+        [Header("Panel Root")]
+        [SerializeField] private GameObject panel;
 
-        [SerializeField]
-        private Transform choiceContainer;
-        [SerializeField]
-        private GameObject choiceButtonPrefab;
+        [Header("Log System")]
+        [SerializeField] private Transform contentRoot;
+        [SerializeField] private GameObject logEntryPrefab;
+        [SerializeField] private ScrollRect scrollRect;
+        [SerializeField] private int maxEntries = 50;
+
+        private readonly List<GameObject> activeEntries = new();
+
+        [Header("Choices")]
+        [SerializeField] private GameObject choiceContainer;
+        [SerializeField] private GameObject choiceButtonPrefab;
 
         private DialogNode currentNode;
-        private DialogNode rootNode;
         private EntityController initiator;
         private EntityController target;
 
-        #region Typing Enhancement Fields
+        #region Typing Fields
 
         private Coroutine typingCoroutine;
-        private bool isTyping;
+        private TMP_Text currentTypingText;
         private string fullLine;
+        private bool isTyping;
         private float typingDelay = 0.02f;
 
         #endregion
+
+        #region Unity Lifecycle
 
         private void OnEnable()
         {
             GameEventBus.Subscribe<DialogStartedEvent>(OnDialogStarted);
             GameEventBus.Subscribe<CombatStartedEvent>(OnCombatStarted);
+            GameEventBus.Subscribe<CombatLogEvent>(OnCombatLog);
         }
 
         private void OnDisable()
         {
             GameEventBus.Unsubscribe<DialogStartedEvent>(OnDialogStarted);
-        }
-
-        private void OnDialogStarted(DialogStartedEvent evt)
-        {
-            Debug.Log(evt.ToString());
-
-            if (evt.RootNode is null)
-            {
-                Debug.LogWarning("DialogStartedEvent received with Null Sequence");
-            }
-
-            currentNode = evt.RootNode;
-            initiator = evt.Initiator;
-            target = evt.Target;
-
-            ShowDialog(currentNode);
-        }
-
-        private void OnCombatStarted(CombatStartedEvent evt)
-        {
-            panel.SetActive(false);
+            GameEventBus.Unsubscribe<CombatStartedEvent>(OnCombatStarted);
+            GameEventBus.Unsubscribe<CombatLogEvent>(OnCombatLog);
         }
 
         private void Update()
         {
-            if (currentNode is null) 
-            {
+            if (currentNode == null)
                 return;
-            }
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (isTyping)
-                {
                     CompleteLineInstantly();
-                }
                 else
-                {
                     AdvanceNode();
-                }
             }
         }
 
-        public void ShowDialog(DialogNode node)
+        #endregion
+
+        #region Event Handlers
+
+        private void OnDialogStarted(DialogStartedEvent evt)
         {
+            if (evt.RootNode == null)
+            {
+                Debug.LogWarning("DialogStartedEvent received with null RootNode.");
+                return;
+            }
+
+            initiator = evt.Initiator;
+            target = evt.Target;
+            currentNode = evt.RootNode;
+
             panel.SetActive(true);
-            speakerNameText.text = node.Speaker;
-            StartTyping(node.Text);
-
             ClearChoices();
+
+            AppendLine(currentNode.Speaker, currentNode.Text, true);
         }
 
-        private void EndDialog()
+        private void OnCombatStarted(CombatStartedEvent evt)
         {
-            panel.SetActive(false);
-
-            GameEventBus.Publish(
-                new DialogEndedEvent(initiator, target, Time.frameCount));
-
-            currentNode = null;
+            // Keep panel active – it becomes the combat log
+            panel.SetActive(true);
+            AppendLine("System", "Combat started!", true);
         }
+
+        private void OnCombatLog(CombatLogEvent evt)
+        {
+            AppendLine("Combat", evt.Message, true);
+        }
+
+        #endregion
+
+        #region Dialog Flow
 
         private void AdvanceNode()
         {
-            if (currentNode.Choices is null || currentNode.Choices.Count == 0)
+            if (currentNode.Choices == null || currentNode.Choices.Count == 0)
             {
                 EndDialog();
                 return;
@@ -118,105 +119,86 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             if (currentNode.Choices.Count == 1)
             {
                 currentNode = currentNode.Choices[0].NextNode;
-                ShowDialog(currentNode);
-                return;
+                ShowNode(currentNode);
             }
         }
 
-        private void ClearChoices()
+        private void ShowNode(DialogNode node)
         {
-            foreach (Transform child in choiceContainer)
-            {
-                Destroy(child.gameObject);
-            }
+            ClearChoices();
+            AppendLine(node.Speaker, node.Text, true);
         }
 
-        private void CreateChoiceButtons(DialogNode node)
+        private void EndDialog()
         {
-            for (var i = 0; i < node.Choices.Count; i++)
-            {
-                var choice = node.Choices[i];
-                var index = i;
+            currentNode = null;
 
-                var buttonObj = Instantiate(choiceButtonPrefab, choiceContainer);
-                var buttonText = buttonObj.GetComponentInChildren<TMP_Text>();
-                buttonText.text = choice.ChoiceText;
-
-                var button = buttonObj.GetComponent<Button>();
-                bool available = IsChoiceAvailable(choice);
-
-                Debug.Log($"{choice}.available == {available}");
-                button.interactable = available;
-
-                if (available)
-                {
-                    button.onClick.AddListener(() =>
-                    {
-                        Choose(index);
-                    });
-                }
-                else
-                {
-                    // visually indicate disabled state
-                    buttonText.color = Color.gray;
-                }
-            }
+            GameEventBus.Publish(
+                new DialogEndedEvent(initiator, target, Time.frameCount));
         }
 
-        public void Choose(int index)
+        #endregion
+
+        #region Log System
+
+        public void AppendLine(string speaker, string text, bool type = false)
         {
-            if (currentNode.Choices.Count <= index || index < 0)
+            ForceCompleteIfTyping();
+            var entryObj = Instantiate(logEntryPrefab, contentRoot);
+            entryObj.transform.SetAsLastSibling();
+            var texts = entryObj.GetComponentsInChildren<TMP_Text>();
+
+            if (texts.Length < 2)
             {
+                Debug.LogError("LogEntry prefab must contain at least 2 TMP_Text components.");
                 return;
             }
 
-            var choice = currentNode.Choices[index];
+            texts[0].text = speaker;
 
-            if (!IsChoiceAvailable(choice))
+            activeEntries.Add(entryObj);
+
+            if (activeEntries.Count > maxEntries)
             {
-                return;
+                Destroy(activeEntries[0]);
+                activeEntries.RemoveAt(0);
             }
 
-            foreach (var action in choice.Actions)
-            {
-                action.Execute(initiator, target);
-            }
-            
-            currentNode = choice.NextNode;
+            Canvas.ForceUpdateCanvases();
+            scrollRect.verticalNormalizedPosition = 0f;
 
-            if (currentNode == null)
+            if (type)
             {
-                EndDialog();
+                currentTypingText = texts[1];
+                currentTypingText.text = string.Empty;
+                StartTyping(text);
             }
             else
             {
-                ShowDialog(currentNode);
+                texts[1].text = text;
             }
+
+            ShowChoicesIfNeeded();
         }
 
-        private bool IsChoiceAvailable(DialogChoice choice)
+        public void ClearLog()
         {
-            foreach (var action in choice.Actions)
-            {
-                if (!action.CanExecute(initiator, target))
-                {
-                    return false;
-                }
-            }
+            foreach (var entry in activeEntries)
+                Destroy(entry);
 
-            return true;
+            activeEntries.Clear();
         }
+
+        #endregion
+
+        #region Typing
 
         private void StartTyping(string line)
         {
             if (typingCoroutine != null)
-            {
                 StopCoroutine(typingCoroutine);
-            }
 
             fullLine = line;
-            dialogText.text = string.Empty;
-
             typingCoroutine = StartCoroutine(TypeLine());
         }
 
@@ -226,36 +208,115 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
             foreach (char c in fullLine)
             {
-                dialogText.text += c;
+                currentTypingText.text += c;
                 yield return new WaitForSeconds(typingDelay);
             }
 
             isTyping = false;
-            ShowChoicesIfNeeded();
+        }
+
+        private void ForceCompleteIfTyping()
+        {
+            if (!isTyping)
+            {
+                return;
+            }
+
+            CompleteLineInstantly();
         }
 
         private void CompleteLineInstantly()
         {
             if (typingCoroutine != null)
-            {
                 StopCoroutine(typingCoroutine);
-            }
 
-            dialogText.text = fullLine;
+            currentTypingText.text = fullLine;
             isTyping = false;
-            ShowChoicesIfNeeded();
+        }
+
+        #endregion
+
+        #region Choices
+
+        private void ClearChoices()
+        {
+            foreach (Transform child in choiceContainer.transform)
+                Destroy(child.gameObject);
+
+            choiceContainer.SetActive(false);
         }
 
         private void ShowChoicesIfNeeded()
         {
-            if (currentNode.Choices == null || 
-                currentNode.Choices.Count == 0 || 
-                currentNode.Choices.Count == 1)
-            {
+            if (currentNode == null)
                 return;
-            }
 
+            if (currentNode.Choices == null || currentNode.Choices.Count <= 1)
+                return;
+
+            choiceContainer.SetActive(true);
             CreateChoiceButtons(currentNode);
         }
+
+        private void CreateChoiceButtons(DialogNode node)
+        {
+            for (int i = 0; i < node.Choices.Count; i++)
+            {
+                var choice = node.Choices[i];
+                int index = i;
+
+                var buttonObj = Instantiate(choiceButtonPrefab, choiceContainer.transform);
+                var buttonText = buttonObj.GetComponentInChildren<TMP_Text>();
+                buttonText.text = choice.ChoiceText;
+
+                var button = buttonObj.GetComponent<Button>();
+                bool available = IsChoiceAvailable(choice);
+
+                button.interactable = available;
+
+                if (available)
+                {
+                    button.onClick.AddListener(() => Choose(index));
+                }
+                else
+                {
+                    buttonText.color = Color.gray;
+                }
+            }
+        }
+
+        private void Choose(int index)
+        {
+            if (currentNode == null || index < 0 || index >= currentNode.Choices.Count)
+                return;
+
+            var choice = currentNode.Choices[index];
+
+            if (!IsChoiceAvailable(choice))
+                return;
+
+            foreach (var action in choice.Actions)
+                action.Execute(initiator, target);
+
+            currentNode = choice.NextNode;
+
+            if (currentNode == null)
+                EndDialog();
+            else
+                ShowNode(currentNode);
+        }
+
+        private bool IsChoiceAvailable(DialogChoice choice)
+        {
+            foreach (var action in choice.Actions)
+            {
+                if (!action.CanExecute(initiator, target))
+                    return false;
+            }
+
+            return true;
+        }
+
+        #endregion
     }
 }

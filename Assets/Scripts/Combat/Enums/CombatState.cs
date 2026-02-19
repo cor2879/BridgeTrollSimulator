@@ -7,6 +7,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Combat.Enums
         EnemyTurn,
         Resolving,
         Victory,
-        Defeat
+        Defeat,
+        ResolvingPlayerAction,
+        ResolvingEnemyAction,
     };
 }

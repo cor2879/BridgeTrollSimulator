@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -8,45 +9,68 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Systems;
 
 public class CombatUIController : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject panel;
-    [SerializeField]
-    private TMP_Text playerStatsText;
-    [SerializeField]
-    private TMP_Text enemyStatsText;
-    [SerializeField]
-    private Button attackButton;
+    [Header("Ability UI")]
+    [SerializeField] private GameObject abilityContainer;
+    [SerializeField] private GameObject abilityButtonPrefab;
 
     private CombatSystem combatSystem;
+    private readonly List<Button> abilityButtons = new();
 
-    public void Initialize(CombatSystem system)
+    public void Initialize(CombatSystem system, EntityController player)
     {
         combatSystem = system;
-        HookButtons();
+
+        ClearAbilityButtons();
+
+        foreach (var ability in player.Abilities)
+        {
+            Debug.Log(ability.Name);
+            CreateAbilityButton(player, ability);
+        }
+    }
+
+    private void CreateAbilityButton(EntityController player, Ability ability)
+    {
+        var buttonObj = Instantiate(abilityButtonPrefab, abilityContainer.transform);
+
+        var button = buttonObj.GetComponent<Button>();
+        var text = buttonObj.GetComponentInChildren<TMP_Text>();
+
+        text.text = $"{ability.Name} ({ability.StaminaCost})";
+
+        button.onClick.AddListener(() =>
+        {
+            combatSystem.PlayerUseAbility(ability);
+        });
+
+        abilityButtons.Add(button);
+    }
+
+    private void ClearAbilityButtons()
+    {
+        foreach (Transform child in abilityContainer.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        abilityButtons.Clear();
     }
 
     public void Show()
     {
-        panel.SetActive(true);
+        abilityContainer.SetActive(true);
     }
 
     public void Hide()
     {
-        panel.SetActive(false);
+        abilityContainer.SetActive(false);
     }
 
-    public void UpdateStats(EntityController player, EntityController enemy)
+    public void EnableInput(bool enabled)
     {
-        playerStatsText.text = $"HP: {player.CurrentHealth}";
-        enemyStatsText.text = $"HP: {enemy.CurrentHealth}";
-    }
-
-    private void HookButtons()
-    {
-        attackButton.onClick.RemoveAllListeners();
-        attackButton.onClick.AddListener(() =>
+        foreach (var button in abilityButtons)
         {
-            combatSystem.PlayerAttack();
-        });
+            button.interactable = enabled;
+        }
     }
 }
