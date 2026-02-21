@@ -122,8 +122,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
         private IEnumerator ResolveAI(EntityController entity)
         {
             isResolving = true;
-            var ability = entity.ChooseCombatAbility();
             var target = ChooseTarget(entity);
+            var ability = entity.ChooseBestCombatAbility(target);
 
             UseAbility(entity, target, ability);
 

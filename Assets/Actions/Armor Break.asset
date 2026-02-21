@@ -14,6 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Combat.ArmorBreakAbility
   abilityName: Smash
   staminaCost: 5
+  baseScore: 15
   damageMultiplier: 0.7
+  followUpSynergies:
+  - ability: {fileID: 11400000, guid: f03ee2b4f24c941e5b17e2b9b28d15d7, type: 2}
+    bonusScore: 10
   isOffensive: 1
   defenseDebuffAmount: 2
+  duration: 2

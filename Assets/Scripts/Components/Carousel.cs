@@ -10,6 +10,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Components
     using System.Collections.Generic;
     using System.Linq;
 
+    [Serializable]
     public class Carousel<TValue> : IEnumerable<TValue>
     {
         private Queue<TValue> innerQueue;

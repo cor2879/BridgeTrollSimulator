@@ -6,6 +6,7 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Components;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Audio;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
@@ -27,6 +28,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         protected Rigidbody2D rb;
         protected IInputSource inputSource;
         protected EntityCombatUI entityCombatUI;
+
+        #region Character Stats
 
         [Header("Character Stats")]
         [SerializeField]
@@ -73,6 +76,17 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         protected CombatFaction faction;
         [SerializeField]
         protected Ability[] abilities;
+
+        #endregion
+
+        #region Sound Effects
+
+        [SerializeField]
+        protected AudioClip hurtSfx;
+        [SerializeField]
+        protected AudioClip deathSfx;
+
+        #endregion
 
         [SerializeField, ReadOnly]
         protected EntityType entityType;
@@ -444,6 +458,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             this.CurrentHealth -= amount;
             GameEventBus.Publish(
                 new DamageTakenEvent(this, amount, Time.frameCount));
+
+            AudioSystem.Instance.PlaySFX(hurtSfx);
         }
 
         public virtual void SpendStamina(int amount)
@@ -537,6 +553,26 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             initiativeRoll = GetInitiativeModifier() + UnityEngine.Random.Range(1, 20);
         }
 
+        public Ability ChooseBestCombatAbility(EntityController target)
+        {
+            Ability bestAbility = null;
+            var bestScore = float.MinValue;
+
+            foreach (var ability in Abilities)
+            {
+                var score = ability.Evaluate(this, target);
+
+                score += UnityEngine.Random.Range(-2f, 2f);
+                if (score > bestScore)
+                {
+                    bestScore = score;
+                    bestAbility = ability;
+                }
+            }
+
+            return bestAbility;
+        }
+
         #endregion
 
         #region Status Effect Management
@@ -568,6 +604,43 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
                 }
             }
         }
+
+        #endregion
+
+        #region Ability Scoring (AI)
+
+        private Dictionary<Ability, float> primedAbilities = new();
+
+        public bool HasAbility(Ability ability)
+        {
+            return Abilities.Contains(ability);
+        }
+
+        public void PrimeAbility(AbilitySynergy synergy)
+        {
+            if (synergy == null || synergy.ability == null)
+            {
+                return;
+            }
+
+            primedAbilities[synergy.ability] = synergy.bonusScore;
+        }
+
+        public float GetPrimeBonus(Ability ability)
+        {
+            if (!primedAbilities.TryGetValue(ability, out var bonus))
+            {
+                return 0f;
+            }
+
+            return bonus;
+        }
+
+        public void ConsumePrimeBonus(Ability ability)
+        {
+            primedAbilities[ability] = 0f;
+        }
+
         #endregion
     }
 }
