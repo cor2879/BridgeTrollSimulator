@@ -16,5 +16,22 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Combat
         {
             return initiator.CanAttack();
         }
+
+        public override float Evaluate(EntityController initiator, EntityController target)
+        {
+            if (initiator.CurrentStamina < StaminaCost)
+            {
+                return 0f;
+            }
+
+            var score = baseScore + base.Evaluate(initiator, target);
+
+            if (target.CurrentHealth < damageMultiplier * initiator.Attack - target.Defense)
+            {
+                score += 20f;
+            }
+
+            return score;
+        }
     }
 }

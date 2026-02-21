@@ -30,6 +30,17 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Combat
                 initiator.SpendStamina(ability.StaminaCost);
             }
 
+            if (ability.FollowUpSynergies != null &&
+                ability.FollowUpSynergies.Count > 0)
+            {
+                var synergy = ability.FollowUpSynergies[0];
+
+                if (initiator.HasAbility(synergy.ability))
+                {
+                    initiator.PrimeAbility(synergy);
+                }
+            }
+
             var finalDamage = 0;
             var isCritical = false;
 
@@ -59,6 +70,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Combat
 
             var critText = isCritical ? " (CRITICAL!)" : "";
             var exhaustedText = exhausted ? " (EXHAUSTED)" : "";
+            initiator.ConsumePrimeBonus(ability);
 
             GameEventBus.Publish(
                 new CombatLogEvent(

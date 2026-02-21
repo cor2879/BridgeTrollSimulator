@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Combat.AttackAbility
   abilityName: Attack
   staminaCost: 4
+  baseScore: 8
   damageMultiplier: 1
+  followUpSynergies: []
   isOffensive: 1

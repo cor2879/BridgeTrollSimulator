@@ -230,6 +230,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f03ee2b4f24c941e5b17e2b9b28d15d7, type: 2}
   - {fileID: 11400000, guid: 3538289a4c24b460680814b748f4d78c, type: 2}
   - {fileID: 11400000, guid: 43c62434ad8004932a9f77e00b5a0378, type: 2}
+  hurtSfx: {fileID: 8300000, guid: 656e5e4f113454bb8bc1d1ecf708a98e, type: 3}
+  deathSfx: {fileID: 8300000, guid: 092cd44d7dfea4893bac55501c379853, type: 3}
   entityType: 0
   combatUIRoot: {fileID: 0}
   controlMode: 0
