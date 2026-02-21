@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14fe64b2a872c4276b58d1fb225745de, type: 3}
+  m_Name: Default Audio Library
+  m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Audio.AudioLibrary
+  overworldThemes:
+  - {fileID: 8300000, guid: 4393ea42f98364c1682cec2cdf2c1240, type: 3}
+  - {fileID: 8300000, guid: 10884908c6c59414e82ac77b11cdd72a, type: 3}
+  combatThemes:
+  - {fileID: 8300000, guid: 27de518f79d8740cfbecd4088eec491a, type: 3}
+  attack: {fileID: 8300000, guid: 2f472d22ea24841169b86d4cfab08b61, type: 3}
+  armorBreak: {fileID: 8300000, guid: 1ecb1a5937f1c41ddaf6e97d632603ca, type: 3}
+  defend: {fileID: 8300000, guid: a3bb89c458af74d039df819d6d0ceab3, type: 3}
+  crit: {fileID: 8300000, guid: 38265836e068643dd9aca4fd874a7a36, type: 3}
+  buttonClick: {fileID: 8300000, guid: e64dda1306cd342019ec10bd36a3f0b8, type: 3}
