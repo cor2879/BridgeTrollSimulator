@@ -15,10 +15,16 @@ MonoBehaviour:
   overworldThemes:
   - {fileID: 8300000, guid: 4393ea42f98364c1682cec2cdf2c1240, type: 3}
   - {fileID: 8300000, guid: 10884908c6c59414e82ac77b11cdd72a, type: 3}
+  - {fileID: 8300000, guid: fca2448f64730c87ea9ed50549f327aa, type: 3}
+  - {fileID: 8300000, guid: 74a69b371791aba01979315b87096ae8, type: 3}
   combatThemes:
   - {fileID: 8300000, guid: 27de518f79d8740cfbecd4088eec491a, type: 3}
-  attack: {fileID: 8300000, guid: 2f472d22ea24841169b86d4cfab08b61, type: 3}
-  armorBreak: {fileID: 8300000, guid: 1ecb1a5937f1c41ddaf6e97d632603ca, type: 3}
-  defend: {fileID: 8300000, guid: a3bb89c458af74d039df819d6d0ceab3, type: 3}
-  crit: {fileID: 8300000, guid: 38265836e068643dd9aca4fd874a7a36, type: 3}
+  - {fileID: 8300000, guid: 7ea694688eb482026afa0efce633cdc1, type: 3}
+  - {fileID: 8300000, guid: 04c7f01d28a1a13b89c0f497c9705f48, type: 3}
+  - {fileID: 8300000, guid: e3682be20674f1d4799a53c4a6e80d06, type: 3}
+  - {fileID: 8300000, guid: 83779ead24f0a7d6baa62ec834605a86, type: 3}
+  attack: {fileID: 8300000, guid: 827a62532dbce45e49c0790e2e802a97, type: 3}
+  armorBreak: {fileID: 8300000, guid: 04dbe86f219ed480ea297ea689929c8e, type: 3}
+  defend: {fileID: 8300000, guid: 43952d8e72f8df1cf9799a347b24ea6a, type: 3}
+  crit: {fileID: 8300000, guid: c3542b6d0bcdb4485bf558c3bd7bbd99, type: 3}
   buttonClick: {fileID: 8300000, guid: e64dda1306cd342019ec10bd36a3f0b8, type: 3}

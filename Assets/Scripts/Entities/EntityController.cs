@@ -453,11 +453,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             this.gold += amount;
         }
         
-        public virtual void TakeDamage(int amount)
+        public virtual void TakeDamage(int amount, bool isCrit = false)
         {
             this.CurrentHealth -= amount;
             GameEventBus.Publish(
-                new DamageTakenEvent(this, amount, Time.frameCount));
+                new DamageTakenEvent(this, amount, Time.frameCount, isCrit));
 
             AudioSystem.Instance.PlaySFX(hurtSfx);
         }
@@ -495,6 +495,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             defenseModifier += bonus;
 
             temporaryCritBonus = 0.15f;
+
+            GameEventBus.Publish(
+                new DefendEvent(this, Time.frameCount));
         }
 
         public void ClearTurnFlags()

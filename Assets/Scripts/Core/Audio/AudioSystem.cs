@@ -22,6 +22,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Audio
         [SerializeField, ReadOnly]
         private int musicResumeSample;
 
+        public static AudioLibrary Library => Instance.library;
+
         private void Awake()
         {
             if (Instance != null && Instance != this)
@@ -37,11 +39,23 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Audio
         private void OnEnable()
         {
             GameEventBus.Subscribe<DamageTakenEvent>(OnDamage);
+            GameEventBus.Subscribe<DefendEvent>(OnDefend);
+            GameEventBus.Subscribe<SoundEffectEvent>(OnSoundEffect);
         }
 
         private void OnDamage(DamageTakenEvent evt)
         {
-            PlaySFX(library.attack);
+            PlaySFX(evt.IsCrit ? library.crit : library.attack);
+        }
+
+        private void OnDefend(DefendEvent evt)
+        {
+            PlaySFX(library.defend);    
+        }
+
+        private void OnSoundEffect(SoundEffectEvent evt)
+        {
+            PlaySFX(evt.Clip);
         }
 
         #region Music
@@ -99,7 +113,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Audio
         public int SfxVolume
         {
             get => Mathf.RoundToInt(sfxSource.volume * 100f);
-            set => musicSource.volume = Mathf.Clamp01(value / 100f);
+            set => sfxSource.volume = Mathf.Clamp01(value / 100f);
         }
 
         public void PlaySFX(AudioClip clip, float volume = 1f)

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Audio;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Combat
@@ -23,6 +25,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Combat
         public override void ApplySecondaryEffects(EntityController initiator, EntityController target)
         {
             target.ApplyDefenseDebuff(defenseDebuffAmount, duration);
+            
+            GameEventBus.Publish(
+                new SoundEffectEvent(initiator, AudioSystem.Library.armorBreak, Time.frameCount));
         }
 
         public override float Evaluate(EntityController initiator, EntityController target)

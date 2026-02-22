@@ -7,6 +7,7 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Components;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Audio;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameState;
@@ -76,6 +77,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
             roundNumber = 1;
 
             BeginTurn(GetCurrentCombatant());
+
+            AudioSystem.Instance.PlayCombatMusic();
         }
 
         private void RollInitiative()
@@ -227,13 +230,15 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
             state = CombatState.Inactive;
             combatUI.Hide();
 
-            combatants.Clear();
-            initiativeOrder.Clear();
-
             var log = playerWon ? "Victory!" : "Defeat!";
 
             GameEventBus.Publish(
                 new CombatLogEvent(log, this, Time.frameCount));
+            GameEventBus.Publish(
+                new CombatEndedEvent(combatants[0], combatants[1], Time.frameCount));
+            
+            combatants.Clear();
+            initiativeOrder.Clear();
         }
     }
 }
