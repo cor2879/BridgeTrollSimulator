@@ -58,8 +58,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
             if (inputSource.DiePressed())
             {
-                SetControlMode(ControlMode.Dead);
-                TriggerAction(Constants.Triggers.Die);
+                this.Die();
             }
         }
 

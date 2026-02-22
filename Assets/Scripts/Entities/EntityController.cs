@@ -81,6 +81,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         #region Sound Effects
 
+        [Header("Sound Effects")]
         [SerializeField]
         protected AudioClip hurtSfx;
         [SerializeField]
@@ -359,6 +360,17 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             animator.SetTrigger(triggerName);
         }
 
+        public void OnDeathAnimationComplete()
+        {
+            StartCoroutine(DespawnAfterDelay(0.5f));
+        }
+
+        private IEnumerator DespawnAfterDelay(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            Destroy (gameObject);
+        }
+
         #endregion
 
         #region Collision Detection
@@ -460,6 +472,19 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
                 new DamageTakenEvent(this, amount, Time.frameCount, isCrit));
 
             AudioSystem.Instance.PlaySFX(hurtSfx);
+
+            if (CurrentHealth <= 0)
+            {
+                Die();
+            }
+        }
+
+        public virtual void Die()
+        {
+            SetControlMode(ControlMode.Dead);
+            TriggerAction(Constants.Triggers.Die);
+            GameEventBus.Publish(new EntityDiedEvent(this, Time.frameCount));
+            GameEventBus.Publish(new SoundEffectEvent(this, deathSfx, Time.frameCount));
         }
 
         public virtual void SpendStamina(int amount)

@@ -12,12 +12,14 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
         private TMP_Text text;
         private float timer;
 
-        public void Initialize(int amount)
+        public void Initialize(int amount, bool isCrit)
         {
             text = GetComponent<TMP_Text>();
             canvasGroup = GetComponent<CanvasGroup>();
 
             text.text = amount > 0 ? $"-{amount}" : amount.ToString();
+            var localScale = text.transform.localScale;
+            text.transform.localScale = isCrit ? localScale * 1.5f : localScale;
         }
 
         private void Update()

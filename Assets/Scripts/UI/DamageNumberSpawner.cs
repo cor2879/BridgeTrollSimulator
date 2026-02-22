@@ -30,15 +30,15 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
                 return;
             }
 
-            Spawn(combatUI.Transform, evt.Amount);
+            Spawn(combatUI.Transform, evt.Amount, evt.IsCrit);
         }
 
-        private void Spawn(Transform parent, int amount)
+        private void Spawn(Transform parent, int amount, bool isCrit)
         {
             GameObject obj = Instantiate(damageNumberPrefab, parent);
             obj.transform.localPosition = Vector3.zero;
 
-            obj.GetComponent<DamageNumber>().Initialize(amount);
+            obj.GetComponent<DamageNumber>().Initialize(amount, isCrit);
         }
     }
 }

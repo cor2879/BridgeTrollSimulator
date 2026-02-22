@@ -5,6 +5,8 @@ using UnityEngine;
 
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Components;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameState;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
@@ -14,6 +16,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         [Header("NPC Movement")]
         [SerializeField]
         private float walkSpeed = 1.5f;
+
+        [Header("Sound Effects")]
+        protected AudioClip epicDeathSfx;
 
         public override ControlMode DefaultControlMode => ControlMode.Npc;
         
@@ -66,6 +71,24 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
                 rb.linearVelocity = Vector2.zero;
 
                 Debug.Log("NPC encountered Troll!");
+            }
+        }
+
+        public override void Die()
+        {
+            if (UnityEngine.Random.value < 0.25)
+            {
+                SetControlMode(ControlMode.Dead);
+                TriggerAction(Constants.Triggers.Explode);
+                GameEventBus.Publish(new EntityDiedEvent(this, Time.frameCount));
+                GameEventBus.Publish(new SoundEffectEvent(
+                    this, 
+                    epicDeathSfx != null ? epicDeathSfx : deathSfx,
+                    Time.frameCount));
+            }
+            else
+            {
+                base.Die();
             }
         }
     }

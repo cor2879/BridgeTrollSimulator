@@ -50,6 +50,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Components
             public const string Itch = "Itch";
             public const string Jump = "Jump";
             public const string Threaten = "Threaten";
+            public const string Explode = "Explode";
         }
 
         public const string HorizontalAxis = "Horizontal";
