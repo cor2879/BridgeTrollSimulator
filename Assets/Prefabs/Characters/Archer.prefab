@@ -229,7 +229,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f03ee2b4f24c941e5b17e2b9b28d15d7, type: 2}
   - {fileID: 11400000, guid: 3538289a4c24b460680814b748f4d78c, type: 2}
   - {fileID: 11400000, guid: 43c62434ad8004932a9f77e00b5a0378, type: 2}
-  hurtSfx: {fileID: 8300000, guid: 0a9eb5e09e4864504bdc3073ad4920e9, type: 3}
+  hurtSfx: {fileID: 8300000, guid: e958e874fb15e3361b3a930ce0c4be9b, type: 3}
   deathSfx: {fileID: 8300000, guid: 39565decb50c5460b9de94bc2720c2f6, type: 3}
   entityType: 0
   combatUIRoot: {fileID: 0}

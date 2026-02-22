@@ -63,7 +63,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Combat
                     ? Mathf.RoundToInt(baseDamage * initiator.CritMultiplier)
                     : baseDamage;
 
-                target.TakeDamage(finalDamage);
+                target.TakeDamage(finalDamage, isCritical);
             }
 
             ability.ApplySecondaryEffects(initiator, target);

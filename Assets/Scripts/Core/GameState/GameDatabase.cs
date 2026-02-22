@@ -7,7 +7,20 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameState
 {
     public class GameDatabase : MonoBehaviour
     {
-        public static GameDatabase Instance { get; private set; }
+        private static GameDatabase _instance;
+
+        public static GameDatabase Instance 
+        { 
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = FindFirstObjectByType<GameDatabase>();
+                }
+
+                return _instance;
+            }
+        }
 
         [SerializeField]
         private DispositionMatrix dispositionMatrix;
@@ -20,13 +33,13 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameState
 
         private void Awake()
         {
-            if (Instance != null && Instance != this)
+            if (_instance != null && _instance != this)
             {
                 Destroy(gameObject);
                 return;
             }
 
-            Instance = this;
+            _instance = this;
 
             if (player == null)
             {
