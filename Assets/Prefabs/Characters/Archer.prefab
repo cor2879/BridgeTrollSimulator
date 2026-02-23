@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6536700361220947029}
   - component: {fileID: 8091140681091881740}
   - component: {fileID: 256194312775249842}
+  - component: {fileID: 6094743984625508775}
   m_Layer: 8
   m_Name: Archer
   m_TagString: NPC
@@ -208,6 +209,7 @@ MonoBehaviour:
   entityName: Muglump Hunter
   isPlayerControlled: 0
   level: 1
+  bravery: 0.5
   gold: 40
   maxHealth: 100
   maxStamina: 10
@@ -254,6 +256,20 @@ MonoBehaviour:
   hpText: {fileID: 8113814628869916642}
   staminaText: {fileID: 4280569976666734268}
   combatUIPanel: {fileID: 5509105865314491972}
+--- !u!114 &6094743984625508775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4825716358332868103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd366818f1e894ac7b0a2728bd2a8151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog.EntityDialogLibrary
+  payToll: {fileID: 11400000, guid: 96fa80cb7902040278ae7e581cf47bf0, type: 2}
+  refuseToll: {fileID: 11400000, guid: f41d450a9015d45f9b2ebaa15b483f0d, type: 2}
 --- !u!1 &5796269734137418723
 GameObject:
   m_ObjectHideFlags: 0

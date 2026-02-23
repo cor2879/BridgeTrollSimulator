@@ -12,8 +12,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog.Actions
 
         public override void Execute(EntityController initiator, EntityController target)
         {
-            GameEventBus.Publish(
-                new GoldDeductedEvent(initiator, target, Amount, Time.frameCount));
+            // GameEventBus.Publish(
+            //    new GoldDeductedEvent(initiator, target, Amount, Time.frameCount));
         }
     }
 }

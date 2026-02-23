@@ -50,6 +50,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             GameEventBus.Subscribe<CombatStartedEvent>(OnCombatStarted);
             GameEventBus.Subscribe<CombatLogEvent>(OnCombatLog);
             GameEventBus.Subscribe<CombatEndedEvent>(OnCombatEnded);
+            GameEventBus.Subscribe<TollPaidEvent>(OnTollPaid);
         }
 
         private void OnDisable()
@@ -58,6 +59,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             GameEventBus.Unsubscribe<CombatStartedEvent>(OnCombatStarted);
             GameEventBus.Unsubscribe<CombatLogEvent>(OnCombatLog);
             GameEventBus.Unsubscribe<CombatEndedEvent>(OnCombatEnded);
+            GameEventBus.Unsubscribe<TollPaidEvent>(OnTollPaid);
         }
 
         private void Update()
@@ -98,19 +100,41 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         private void OnCombatStarted(CombatStartedEvent evt)
         {
-            // Keep panel active – it becomes the combat log
+            ClearChoices();
+            currentNode = null;
             panel.SetActive(true);
             AppendLine("System", "Combat started!", true);
         }
 
         private void OnCombatEnded(CombatEndedEvent evt)
         {
-            AdvanceNode();
+            if (currentNode != null)
+            {
+                AdvanceNode();
+            }
         }
 
         private void OnCombatLog(CombatLogEvent evt)
         {
             AppendLine("Combat", evt.Message, true);
+        }
+
+        private void OnTollPaid(TollPaidEvent evt)
+        {
+            AppendLine(evt.Initiator.Name, evt.Initiator.DialogLibrary.payToll.Text, true);
+
+            ClearChoices();
+            currentRuntimeNode = null;
+
+            EndDialog();
+        }
+
+        private void OnTollRefused(TollRefusedEvent evt)
+        {
+            AppendLine(evt.Initiator.Name, evt.Initiator.DialogLibrary.refuseToll.Text, true);
+
+            ClearChoices();
+            currentRuntimeNode = null;
         }
 
         #endregion

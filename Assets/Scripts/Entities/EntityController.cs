@@ -10,6 +10,7 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Audio;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.StatusEffects;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.InputHandling;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.UI;
@@ -126,6 +127,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         public IInputSource InputSource => inputSource;
         public EntityCombatUI CombatUI => entityCombatUI;
         public bool IsPlayerControlled => isPlayerControlled;
+        public EntityDialogLibrary DialogLibrary { get; private set; }
 
         #region Stats
 
@@ -208,6 +210,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             currentHealth = maxHealth;
             entityCombatUI = GetComponent<EntityCombatUI>();
             entityCombatUI.SetActive(false);
+            DialogLibrary = GetComponent<EntityDialogLibrary>();
         }
 
         protected virtual void Update()
@@ -442,6 +445,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
                 this.gold -= amount;
             }
             
+            GameEventBus.Publish(new GoldDeductedEvent(
+                this,
+                goldReturned,
+                Time.frameCount));
+
             return goldReturned;
         }
 
@@ -596,15 +604,21 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             // Very naive first pass logic
             if (Gold >= evt.Amount && Bravery < 0.5f)
             {
-                GameEventBus.Publish(new TollPaidEvent(evt.Initiator, this, evt.Amount, Time.frameCount));
-            }
-            else if (bravery > 0.8f)
-            {
-                GameEventBus.Publish(new TollRefusedEvent(evt.Initiator, this, Time.frameCount));
+                GameEventBus.Publish(
+                    new TollPaidEvent(
+                        this, 
+                        evt.Initiator, 
+                        DeductGold(evt.Amount), 
+                        Time.frameCount));
             }
             else
             {
-                GameEventBus.Publish(new CombatStartedEvent(evt.Initiator, this, Time.frameCount));
+                GameEventBus.Publish(
+                    new TollRefusedEvent(
+                        this,
+                        evt.Initiator, 
+                        evt.Amount,
+                        Time.frameCount));
             }
         }
 
@@ -636,7 +650,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         public void ProcessTurnEndEffects()
         {
-            for (var i = activeEffects.Count - 1; i >- 0; i--)
+            for (var i = activeEffects.Count - 1; i >= 0; i--)
             {
                 activeEffects[i].OnTurnEnd(this);
                 activeEffects[i].Tick(this);

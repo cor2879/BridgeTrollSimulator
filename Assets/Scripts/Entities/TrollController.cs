@@ -1,6 +1,7 @@
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Components;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.InputHandling;
 using UnityEngine;
@@ -72,6 +73,34 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
                 Debug.Log("Troll encountered NPC!");
             }
+        }
+
+        public override void Receive<TEvent>(TEvent evt) 
+        {
+            if (evt is TollRefusedEvent refused && refused.Target == this)
+            {
+                HandleTollRefusal(refused);
+            }
+
+            if (evt is TollPaidEvent paid && paid.Target == this)
+            {
+                HandleTollPaidEvent(paid);
+            }
+        }
+
+        private void HandleTollRefusal(TollRefusedEvent evt)
+        {
+            GameEventBus.Publish(
+                new CombatStartedEvent(this, evt.Initiator, Time.frameCount));
+        }
+
+        private void HandleTollPaidEvent(TollPaidEvent evt)
+        {
+            AddGold(evt.Amount);
+            GameEventBus.Publish(new GoldAddedEvent(
+                evt.Initiator,
+                evt.Amount,
+                Time.frameCount));
         }
     }
 }

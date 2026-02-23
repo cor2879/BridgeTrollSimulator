@@ -3,13 +3,13 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 {
-    public class TollDemandedEvent : GameEvent, ITargetedEvent
+    public class TollRefusedEvent : GameEvent, ITargetedEvent
     {
         public EntityController Initiator => (EntityController)Sender;
         public EntityController Target { get; }
         public int Amount { get; }
 
-        public TollDemandedEvent(
+        public TollRefusedEvent(
             EntityController initiator,
             EntityController target,
             int amount,
