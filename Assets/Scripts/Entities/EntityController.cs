@@ -37,6 +37,10 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         [SerializeField]
         protected bool isPlayerControlled;
         [SerializeField]
+        protected int level = 1;
+        [SerializeField, Range(0f, 1f)]
+        protected float bravery = 0.5f;
+        [SerializeField]
         protected int gold;
         [SerializeField]
         protected int maxHealth;
@@ -125,7 +129,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         #region Stats
 
-        public string Name { get => entityName; set => this.entityName = value;}
+        public string Name { get => entityName; set => this.entityName = value; }
+        public int Level => level;
+        public float Bravery => bravery;
         public int Attack
         {
             get
@@ -278,23 +284,16 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             }
 
             controlMode = mode;
-
-            OnControlModeChanged(mode);
+            Debug.Log($"ControlMode : {mode}");
         }
 
-        public void ResetControlMode()
+        public void ResetControlMode(bool overrideDeath = false)
         {
-            SetControlMode(DefaultControlMode);
-        }
-
-        protected virtual void OnControlModeChanged(ControlMode newMode)
-        {
-            if (combatUIRoot == null)
+            if (CurrentControlMode != ControlMode.Dead ||
+                overrideDeath)
             {
-                return;
+                SetControlMode(DefaultControlMode);
             }
-
-            entityCombatUI.SetActive(newMode == ControlMode.Combat);
         }
 
         #endregion
@@ -362,6 +361,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         public void OnDeathAnimationComplete()
         {
+            
+        }
+
+        public void BeginDespawn()
+        {
             StartCoroutine(DespawnAfterDelay(0.5f));
         }
 
@@ -377,43 +381,24 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         protected virtual void OnTriggerEnter2D(Collider2D other)
         {
-            var otherEntity = other.GetComponent<EntityController>();
-            if (otherEntity == null)
+            if (!other.TryGetComponent<EntityController>(out var otherEntity))
             {
                 return;
             }
 
-            var thisEntity = GetComponent<EntityController>();
-            if (thisEntity == null)
+            if (!TryGetComponent<EntityController>(out var thisEntity))
+            {
+                return;
+            }   
+
+            // Only trigger encounter if exactly one is player-controlled
+            if (thisEntity.IsPlayerControlled == otherEntity.IsPlayerControlled)
             {
                 return;
             }
 
-            EntityController player = null;
-            EntityController npc = null;
-
-            if (thisEntity.CompareTag("Troll"))
-            {
-                player = thisEntity;
-            }
-            else if (otherEntity.CompareTag("Troll"))
-            {
-                player = otherEntity;
-            }
-
-            if (thisEntity.CompareTag("NPC"))
-            {
-                npc = thisEntity;
-            }
-            else if (otherEntity.CompareTag("NPC"))
-            {
-                npc = otherEntity;
-            }
-
-            if (player == null || npc == null)
-            {
-                return;
-            }
+            var player = thisEntity.IsPlayerControlled ? thisEntity : otherEntity;
+            var npc    = thisEntity.IsPlayerControlled ? otherEntity : thisEntity;
 
             GameEventBus.Publish(
                 new EntityEncounterEvent(player, npc, Time.frameCount));
@@ -599,6 +584,36 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             }
 
             return bestAbility;
+        }
+
+        public virtual void HandleTollDemand(TollDemandedEvent evt)
+        {
+            if (evt.Target != this)
+                return;
+
+            float goldRatio = Gold / (float)evt.Amount;
+
+            // Very naive first pass logic
+            if (Gold >= evt.Amount && Bravery < 0.5f)
+            {
+                GameEventBus.Publish(new TollPaidEvent(evt.Initiator, this, evt.Amount, Time.frameCount));
+            }
+            else if (bravery > 0.8f)
+            {
+                GameEventBus.Publish(new TollRefusedEvent(evt.Initiator, this, Time.frameCount));
+            }
+            else
+            {
+                GameEventBus.Publish(new CombatStartedEvent(evt.Initiator, this, Time.frameCount));
+            }
+        }
+
+        public virtual void Receive<TEvent>(TEvent evt) where TEvent : ITargetedEvent
+        {
+            if (evt is TollDemandedEvent toll)
+            {
+                HandleTollDemand(toll);
+            }
         }
 
         #endregion

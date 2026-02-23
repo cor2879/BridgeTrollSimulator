@@ -17,6 +17,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
         private void OnDisable()
         {
             GameEventBus.Unsubscribe<EntityEncounterEvent>(OnEncounter);
+            GameEventBus.Unsubscribe<DialogEndedEvent>(OnDialogEnded);
         }
 
         private void OnEncounter(EntityEncounterEvent evt)

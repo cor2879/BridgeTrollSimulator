@@ -6,6 +6,7 @@ using TMPro;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Policies;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 {
@@ -27,6 +28,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
         [SerializeField] private GameObject choiceButtonPrefab;
 
         private DialogNode currentNode;
+        private RuntimeDialogNode currentRuntimeNode;
         private EntityController initiator;
         private EntityController target;
 
@@ -47,6 +49,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             GameEventBus.Subscribe<DialogStartedEvent>(OnDialogStarted);
             GameEventBus.Subscribe<CombatStartedEvent>(OnCombatStarted);
             GameEventBus.Subscribe<CombatLogEvent>(OnCombatLog);
+            GameEventBus.Subscribe<CombatEndedEvent>(OnCombatEnded);
         }
 
         private void OnDisable()
@@ -54,6 +57,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             GameEventBus.Unsubscribe<DialogStartedEvent>(OnDialogStarted);
             GameEventBus.Unsubscribe<CombatStartedEvent>(OnCombatStarted);
             GameEventBus.Unsubscribe<CombatLogEvent>(OnCombatLog);
+            GameEventBus.Unsubscribe<CombatEndedEvent>(OnCombatEnded);
         }
 
         private void Update()
@@ -97,6 +101,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             // Keep panel active – it becomes the combat log
             panel.SetActive(true);
             AppendLine("System", "Combat started!", true);
+        }
+
+        private void OnCombatEnded(CombatEndedEvent evt)
+        {
+            AdvanceNode();
         }
 
         private void OnCombatLog(CombatLogEvent evt)
@@ -244,18 +253,26 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
                 Destroy(child.gameObject);
 
             choiceContainer.SetActive(false);
+            Debug.Log("Choices Cleared");
         }
 
         private void ShowChoicesIfNeeded()
         {
-            if (currentNode == null)
-                return;
+            if (currentNode != null)
+            {
+                if (currentNode.Choices == null || currentNode.Choices.Count <= 1)
+                    return;
 
-            if (currentNode.Choices == null || currentNode.Choices.Count <= 1)
+                choiceContainer.SetActive(true);
+                CreateChoiceButtons(currentNode);
                 return;
+            }
 
-            choiceContainer.SetActive(true);
-            CreateChoiceButtons(currentNode);
+            if (currentRuntimeNode != null)
+            {
+                choiceContainer.SetActive(true);
+                CreateRuntimeChoiceButtons(currentRuntimeNode);
+            }
         }
 
         private void CreateChoiceButtons(DialogNode node)
@@ -285,6 +302,27 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             }
         }
 
+        private void CreateRuntimeChoiceButtons(RuntimeDialogNode node)
+        {
+            for (int i = 0; i < node.Options.Count; i++)
+            {
+                var option = node.Options[i];
+                Debug.Log($"{option.Label}");
+
+                var buttonObj = Instantiate(choiceButtonPrefab, choiceContainer.transform);
+                var buttonText = buttonObj.GetComponentInChildren<TMP_Text>();
+                buttonText.text = option.Label;
+
+                var button = buttonObj.GetComponent<Button>();
+
+                button.onClick.AddListener(() =>
+                {
+                    currentRuntimeNode = null;
+                    option.Execute(initiator, target);
+                });
+            }
+        }
+
         private void Choose(int index)
         {
             if (currentNode == null || index < 0 || index >= currentNode.Choices.Count)
@@ -297,6 +335,12 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
             foreach (var action in choice.Actions)
                 action.Execute(initiator, target);
+
+            // If runtime branching occurred, stop static flow
+            if (currentRuntimeNode != null)
+            {
+                return;
+            }
 
             currentNode = choice.NextNode;
 
@@ -315,6 +359,34 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             }
 
             return true;
+        }
+
+        public void ShowRuntimeNode(
+            string text,
+            List<GeneratedOption> options,
+            EntityController initiator,
+            EntityController target)
+        {
+            this.initiator = initiator;
+            this.target = target;
+
+            currentNode = null; // important
+            currentRuntimeNode = new RuntimeDialogNode
+            {
+                Text = text,
+                Options = options
+            };
+
+            panel.SetActive(true);
+            ClearChoices();
+
+            AppendLine(initiator.Name, text, true);
+
+            if (options == null || options.Count == 0)
+            {
+                Debug.LogWarning("Runtime options list empty.");
+                return;
+            }
         }
 
         #endregion

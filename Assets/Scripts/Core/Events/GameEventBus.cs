@@ -48,6 +48,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 
             var type = typeof(T);
 
+            if (gameEvent is ITargetedEvent targeted && targeted.Target != null)
+            {
+                targeted.Target.Receive(targeted);    
+            }
+
             if (!subscribers.ContainsKey(type))
             {
                 return;

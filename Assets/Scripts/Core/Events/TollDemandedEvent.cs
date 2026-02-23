@@ -3,28 +3,22 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 {
-    public class GoldDeductedEvent : GameEvent, ITargetedEvent
+    public class TollDemandedEvent : GameEvent, ITargetedEvent
     {
         public EntityController Initiator => (EntityController)Sender;
         public EntityController Target { get; }
         public int Amount { get; }
 
-        public GoldDeductedEvent(
+        public TollDemandedEvent(
             EntityController initiator,
             EntityController target,
             int amount,
-            int frame)
+            int frame,
+            bool isCrit = false)
             : base(initiator, frame)
         {
-            Target = target;
-            Amount = amount;
-
-            Initiator.AddGold(Target.DeductGold(Amount));
-        }
-
-        public override string ToString()
-        {
-            return $"{nameof(GoldDeductedEvent)}: {Initiator?.name} vs {Target?.name} Amount: {Amount} @ Frame {Frame}";
-        }
+            this.Target = target;
+            this.Amount = amount;
+        } 
     }
 }

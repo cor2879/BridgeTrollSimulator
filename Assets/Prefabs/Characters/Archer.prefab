@@ -207,7 +207,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.NpcController
   entityName: Muglump Hunter
   isPlayerControlled: 0
-  gold: 0
+  level: 1
+  gold: 40
   maxHealth: 100
   maxStamina: 10
   attackCost: 3

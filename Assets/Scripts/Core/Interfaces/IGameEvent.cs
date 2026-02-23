@@ -1,4 +1,5 @@
 using System;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces
 {
@@ -7,5 +8,10 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces
         IEventSource Sender { get; }
         int Frame { get; }
         DateTime Timestamp { get; }
+    }
+
+    public interface ITargetedEvent : IGameEvent
+    {
+        EntityController Target { get; }
     }
 }

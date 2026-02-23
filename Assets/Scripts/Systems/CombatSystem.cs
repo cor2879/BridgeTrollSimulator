@@ -230,13 +230,16 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
             state = CombatState.Inactive;
             combatUI.Hide();
 
-            var log = playerWon ? "Victory!" : "Defeat!";
+            var snapshot = combatants.ToList();
 
-            GameEventBus.Publish(
-                new CombatLogEvent(log, this, Time.frameCount));
             GameEventBus.Publish(
                 new CombatEndedEvent(combatants[0], combatants[1], Time.frameCount));
             
+            foreach (var entity in snapshot.Where(e => e.CurrentControlMode == ControlMode.Dead))
+            {
+                entity.BeginDespawn();
+            }
+
             combatants.Clear();
             initiativeOrder.Clear();
         }

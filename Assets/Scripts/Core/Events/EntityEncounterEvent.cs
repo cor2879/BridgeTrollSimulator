@@ -1,8 +1,9 @@
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 {
-    public class EntityEncounterEvent : GameEvent
+    public class EntityEncounterEvent : GameEvent, ITargetedEvent
     {
         public EntityController Initiator { get; }
         public EntityController Target { get; }

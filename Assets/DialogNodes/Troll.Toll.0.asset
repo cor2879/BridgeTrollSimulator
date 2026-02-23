@@ -16,5 +16,11 @@ MonoBehaviour:
   Text: A toll is a toll, and this bridge has a Troll.  Therefore you must pay the
     toll!
   Choices:
-  - ChoiceText: 
-    NextNode: {fileID: 11400000, guid: acafc9935dd2b4ae3a4e23dc4005eb48, type: 2}
+  - ChoiceText: Demand Toll
+    NextNode: {fileID: 11400000, guid: 52f40c665c497862eaab86cf0d07c6a4, type: 2}
+    actions:
+    - {fileID: 11400000, guid: 050efcc315ca6bc26bcace1866d73770, type: 2}
+  - ChoiceText: Attack
+    NextNode: {fileID: 11400000, guid: d1798ebe40bdf3713805e9d6a7c6a402, type: 2}
+    actions:
+    - {fileID: 11400000, guid: 529a8b166e5e944d4957c99567d7b435, type: 2}

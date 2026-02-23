@@ -8,13 +8,6 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Feedback
 {
     public class CombatFeedbackSystem : MonoBehaviour
     {
-        [Header("Hit Stop")]
-        [SerializeField] private float normalHitStop = 0.05f;
-        [SerializeField] private float critHitStop = 0.1f;
-
-        [Header("Camera Shake")]
-        [SerializeField] private float normalShake = 0.2f;
-        [SerializeField] private float critShake = 0.4f;
         [SerializeField]
         private ShakeBehaviour cameraShake;
 

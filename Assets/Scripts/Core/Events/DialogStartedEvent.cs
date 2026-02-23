@@ -1,13 +1,13 @@
-using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 
-namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog
+namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 {
-    public class DialogStartedEvent : GameEvent
+    public class DialogStartedEvent : GameEvent, ITargetedEvent
     {
         public DialogNode RootNode { get; }
-        public EntityController Initiator { get; }
+        public EntityController Initiator => (EntityController)Sender;
         public EntityController Target { get; }
 
         public DialogStartedEvent(
@@ -18,7 +18,6 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog
             : base(initiator, frame)
         {
             RootNode = rootNode;
-            Initiator = initiator;
             Target = target;
         }
     }
