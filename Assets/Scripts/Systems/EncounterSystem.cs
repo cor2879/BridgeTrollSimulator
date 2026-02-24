@@ -1,6 +1,7 @@
 using UnityEngine;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameState;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
@@ -35,8 +36,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 
         private void OnDialogEnded(DialogEndedEvent evt)
         {
-            evt.Initiator.ResetControlMode();
-            evt.Target.ResetControlMode();
+            GameDatabase.Instance.Player.ResetControlMode();
         }
     }
 }

@@ -234,6 +234,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 
             GameEventBus.Publish(
                 new CombatEndedEvent(combatants[0], combatants[1], Time.frameCount));
+
+            GameDatabase.Instance.Player.ResetControlMode(overrideDeath: false);
             
             foreach (var entity in snapshot.Where(e => e.CurrentControlMode == ControlMode.Dead))
             {

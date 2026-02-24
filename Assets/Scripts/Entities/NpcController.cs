@@ -74,6 +74,28 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             }
         }
 
+        public override void Receive<TEvent>(TEvent evt)
+        {
+            base.Receive(evt);
+
+            if (evt is AllowToPassEvent allow && allow.Target == this)
+            {
+                BeginPassing();
+            }
+        }
+
+        protected void BeginPassing()
+        {
+            SetControlMode(ControlMode.Passing);
+
+            var player = GameDatabase.Instance.Player;
+
+            Physics2D.IgnoreCollision(
+                this.Collider,
+                player.Collider,
+                true);
+        }
+
         public override void Die()
         {
             if (UnityEngine.Random.value < 0.25)

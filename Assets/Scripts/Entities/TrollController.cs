@@ -98,8 +98,12 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         {
             AddGold(evt.Amount);
             GameEventBus.Publish(new GoldAddedEvent(
-                evt.Initiator,
+                this,
                 evt.Amount,
+                Time.frameCount));
+            GameEventBus.Publish(new AllowToPassEvent(
+                this,
+                evt.Initiator,
                 Time.frameCount));
         }
     }

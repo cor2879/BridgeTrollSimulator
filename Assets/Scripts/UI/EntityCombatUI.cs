@@ -57,11 +57,21 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         public void OnCombatStarted(CombatStartedEvent evt)
         {
+            if (evt.Initiator != entity && evt.Target != entity)
+            {
+                return;
+            }
+
             SetActive(true);
         }
 
         public void OnCombatEnded(CombatEndedEvent evt)
         {
+            if (evt.Initiator != entity && evt.Target != entity)
+            {
+                return;
+            }
+            
             SetActive(false);
         }
     }

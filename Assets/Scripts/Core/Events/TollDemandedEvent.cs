@@ -19,5 +19,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
             this.Target = target;
             this.Amount = amount;
         } 
+
+        public override string ToString()
+        {
+            return $"{nameof(TollDemandedEvent)}: Initiator: {Initiator?.Name} Target: {Target?.Name} Amount: {Amount} @ Frame {Frame}";
+        }
+        
     }
 }

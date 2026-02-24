@@ -21,11 +21,13 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Spawning
         private void OnEnable()
         {
             GameEventBus.Subscribe<EntityDiedEvent>(OnEntityDied);
+            GameEventBus.Subscribe<AllowToPassEvent>(OnAllowedToPass);            
         }
 
         private void OnDisable()
         {
             GameEventBus.Unsubscribe<EntityDiedEvent>(OnEntityDied);
+            GameEventBus.Unsubscribe<AllowToPassEvent>(OnAllowedToPass);
         }
 
         private void Start()
@@ -36,6 +38,15 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Spawning
         private void OnEntityDied(EntityDiedEvent evt)
         {
             if (evt.Entity is NpcController)
+            {
+                activeNpcCount--;
+                StartCoroutine(RespawnRoutine());
+            }
+        }
+
+        private void OnAllowedToPass(AllowToPassEvent evt)
+        {
+            if (evt.Target is NpcController)
             {
                 activeNpcCount--;
                 StartCoroutine(RespawnRoutine());

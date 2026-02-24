@@ -209,7 +209,7 @@ MonoBehaviour:
   entityName: Muglump Hunter
   isPlayerControlled: 0
   level: 1
-  bravery: 0.5
+  bravery: 0.3
   gold: 40
   maxHealth: 100
   maxStamina: 10

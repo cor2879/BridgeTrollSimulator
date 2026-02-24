@@ -30,7 +30,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Policies
                     Execute = (initiator, target) =>
                     {
                         GameEventBus.Publish(
-                            new TollDemandedEvent(initiator, target, amount, Time.frameCount));
+                            new TollDemandedEvent(initiator, target, capturedAmount, Time.frameCount));
                     }
                 });
 

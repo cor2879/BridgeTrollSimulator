@@ -357,21 +357,24 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             if (!IsChoiceAvailable(choice))
                 return;
 
-            foreach (var action in choice.Actions)
-                action.Execute(initiator, target);
+            var nextNode = choice.NextNode;
 
-            // If runtime branching occurred, stop static flow
-            if (currentRuntimeNode != null)
+            // Advance static dialog FIRST
+            if (nextNode == null)
             {
-                return;
+                EndDialog();
+            }
+            else
+            {
+                currentNode = nextNode;
+                ShowNode(currentNode);
             }
 
-            currentNode = choice.NextNode;
-
-            if (currentNode == null)
-                EndDialog();
-            else
-                ShowNode(currentNode);
+            // THEN execute actions (which may trigger runtime branching)
+            foreach (var action in choice.Actions)
+            {
+                action.Execute(initiator, target);
+            }
         }
 
         private bool IsChoiceAvailable(DialogChoice choice)
@@ -404,7 +407,14 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             panel.SetActive(true);
             ClearChoices();
 
-            AppendLine(initiator.Name, text, true);
+            if (!string.IsNullOrWhiteSpace(text))
+            {
+                AppendLine(initiator.Name, text, true);
+            }
+            else
+            {
+                ShowChoicesIfNeeded();
+            }
 
             if (options == null || options.Count == 0)
             {

@@ -3,23 +3,24 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 {
-    public class CombatStartedEvent : GameEvent, ITargetedEvent
+    public class AllowToPassEvent : GameEvent, ITargetedEvent
     {
         public EntityController Initiator => (EntityController)Sender;
         public EntityController Target { get; }
-        
-        public CombatStartedEvent(
+
+        public AllowToPassEvent(
             EntityController initiator,
             EntityController target,
             int frame)
             : base(initiator, frame)
         {
-            Target = target;
-        }
+            this.Target = target;
+        } 
 
         public override string ToString()
         {
-            return $"{nameof(CombatStartedEvent)}: {Initiator?.name} vs {Target?.name} @ Frame {Frame}";
+            return $"{nameof(AllowToPassEvent)}: Initiator: {Initiator?.Name} Target: {Target?.Name} @ Frame {Frame}";
         }
+        
     }
 }

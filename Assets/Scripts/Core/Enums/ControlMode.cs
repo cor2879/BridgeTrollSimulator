@@ -9,5 +9,6 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums
         Dead,
         Npc,
         Encounter,
+        Passing
     }
 }

@@ -27,8 +27,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
     {
         protected Animator animator;
         protected Rigidbody2D rb;
+        protected Collider2D cldr;
         protected IInputSource inputSource;
         protected EntityCombatUI entityCombatUI;
+        [SerializeField]
+        protected GoldPopupUI goldPopupUI;
 
         #region Character Stats
 
@@ -122,10 +125,12 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         #region Properties
 
         public abstract ControlMode DefaultControlMode { get; }
+        public Collider2D Collider => cldr;
         public GameObject GameObject => this.gameObject;
         public ControlMode CurrentControlMode => controlMode;
         public IInputSource InputSource => inputSource;
         public EntityCombatUI CombatUI => entityCombatUI;
+        public GoldPopupUI GoldPopupUI => goldPopupUI;
         public bool IsPlayerControlled => isPlayerControlled;
         public EntityDialogLibrary DialogLibrary { get; private set; }
 
@@ -205,12 +210,18 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         {
             animator = GetComponent<Animator>();
             rb = GetComponent<Rigidbody2D>();
+            cldr = GetComponent<Collider2D>();
             combatUIRoot = GetComponentInChildren<Canvas>();
             instanceId = Guid.NewGuid();
             currentHealth = maxHealth;
             entityCombatUI = GetComponent<EntityCombatUI>();
             entityCombatUI.SetActive(false);
             DialogLibrary = GetComponent<EntityDialogLibrary>();
+            
+            if (this.goldPopupUI != null)
+            {
+                this.goldPopupUI.SetActive(false);
+            }
         }
 
         protected virtual void Update()
@@ -287,7 +298,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             }
 
             controlMode = mode;
-            Debug.Log($"ControlMode : {mode}");
+            Debug.Log($"{Name} : ControlMode : {mode}");
         }
 
         public void ResetControlMode(bool overrideDeath = false)
@@ -322,6 +333,15 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
                 return;
             }
 
+            if (CurrentControlMode == ControlMode.Passing)
+            {
+                facingRight = false;
+                rb.linearVelocity = new Vector2(
+                    moveSpeed * (facingRight ? 1f : -1f),
+                    rb.linearVelocity.y);
+                return;
+            }
+
             if (this.CurrentControlMode != ControlMode.FreeRoam)
             {
                 rb.linearVelocity = new Vector2(
@@ -331,7 +351,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
             rb.linearVelocity = new Vector2(
                 movementInput.x * moveSpeed * transform.localScale.x, 
-                GetComponent<Rigidbody2D>().linearVelocity.y);
+                rb.linearVelocity.y);
         }
 
         protected void Flip()
@@ -370,6 +390,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         public void BeginDespawn()
         {
             StartCoroutine(DespawnAfterDelay(0.5f));
+            GameEventBus.Publish(
+                new EntityDespawningEvent(this, Time.frameCount));
         }
 
         private IEnumerator DespawnAfterDelay(float delay)
@@ -403,8 +425,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             var player = thisEntity.IsPlayerControlled ? thisEntity : otherEntity;
             var npc    = thisEntity.IsPlayerControlled ? otherEntity : thisEntity;
 
-            GameEventBus.Publish(
-                new EntityEncounterEvent(player, npc, Time.frameCount));
+            if (npc.CurrentControlMode != ControlMode.Passing)
+            {
+                GameEventBus.Publish(
+                    new EntityEncounterEvent(player, npc, Time.frameCount));
+            }
         }
 
         public virtual void HandleEncounter(IEncounterable other)
