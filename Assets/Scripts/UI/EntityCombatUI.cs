@@ -34,13 +34,13 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         private void OnEnable()
         {
-            GameEventBus.Subscribe<CombatStartedEvent>(OnCombatStarted);
+            GameEventBus.Subscribe<CombatConfirmedEvent>(OnCombatConfirmed);
             GameEventBus.Subscribe<CombatEndedEvent>(OnCombatEnded);
         }
 
         private void OnDisable()
         {
-            GameEventBus.Unsubscribe<CombatStartedEvent>(OnCombatStarted);
+            GameEventBus.Unsubscribe<CombatConfirmedEvent>(OnCombatConfirmed);
             GameEventBus.Unsubscribe<CombatEndedEvent>(OnCombatEnded);
         }
 
@@ -55,7 +55,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             combatUIPanel.gameObject.SetActive(active);
         }
 
-        public void OnCombatStarted(CombatStartedEvent evt)
+        public void OnCombatConfirmed(CombatConfirmedEvent evt)
         {
             if (evt.Initiator != entity && evt.Target != entity)
             {

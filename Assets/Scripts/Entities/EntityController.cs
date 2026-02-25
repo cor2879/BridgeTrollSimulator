@@ -624,10 +624,23 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             if (evt.Target != this)
                 return;
 
-            float goldRatio = Gold / (float)evt.Amount;
+            if (Gold < evt.Amount)
+            {
+                GameEventBus.Publish(
+                    new TollRefusedEvent(
+                        this,
+                        evt.Initiator, 
+                        evt.Amount,
+                        Time.frameCount));
+                return;
+            }
+
+            var payChance = CalculatePayChance(evt.Amount);
+            Debug.Log($"PayChance: {payChance}");
+            var roll = UnityEngine.Random.value;
 
             // Very naive first pass logic
-            if (Gold >= evt.Amount && Bravery < 0.5f)
+            if (roll < payChance)
             {
                 GameEventBus.Publish(
                     new TollPaidEvent(
@@ -645,6 +658,20 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
                         evt.Amount,
                         Time.frameCount));
             }
+        }
+
+        private float CalculatePayChance(int tollAmount)
+        {
+            float braveryFactor = Mathf.Pow(1f - Bravery, 2f);
+
+            float wealthRatio = Gold / (float)tollAmount;
+            float wealthFactor = Mathf.Clamp01(Mathf.Log(wealthRatio + 1f));
+
+            float payChance = (braveryFactor * 0.7f) + (wealthFactor * 0.3f);
+
+            payChance += UnityEngine.Random.Range(-0.25f, 0.25f);
+
+            return Mathf.Clamp01(payChance);
         }
 
         public virtual void Receive<TEvent>(TEvent evt) where TEvent : ITargetedEvent

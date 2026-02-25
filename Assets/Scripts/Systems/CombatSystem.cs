@@ -20,6 +20,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
     public class CombatSystem : MonoBehaviour, IEventSource
     {
         [SerializeField] private CombatUIController combatUI;
+        [SerializeField] private BattleIntroUI battleIntroUI;
+
         [SerializeField] private float actionDelay = 1.2f;
 
         private IFactionDispositionResolver dispositionResolver;
@@ -48,14 +50,26 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
         private void OnEnable()
         {
             GameEventBus.Subscribe<CombatStartedEvent>(OnCombatStarted);
+            GameEventBus.Subscribe<CombatConfirmedEvent>(OnCombatConfirmed);
         }
 
         private void OnDisable()
         {
             GameEventBus.Unsubscribe<CombatStartedEvent>(OnCombatStarted);
+            GameEventBus.Unsubscribe<CombatConfirmedEvent>(OnCombatConfirmed);
         }
 
         private void OnCombatStarted(CombatStartedEvent evt)
+        {
+            battleIntroUI.Show(
+                "BATTLE BEGINS",
+                "Press Any Key to Continue",
+                evt);
+
+            AudioSystem.Instance.PlayCombatMusic();
+        }
+
+        private void OnCombatConfirmed(CombatConfirmedEvent evt)
         {
             evt.Initiator.EnterCombat();
             evt.Target.EnterCombat();
@@ -77,8 +91,6 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
             roundNumber = 1;
 
             BeginTurn(GetCurrentCombatant());
-
-            AudioSystem.Instance.PlayCombatMusic();
         }
 
         private void RollInitiative()

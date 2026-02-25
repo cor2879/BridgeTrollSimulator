@@ -7,70 +7,73 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Systems;
 
-public class CombatUIController : MonoBehaviour
+namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 {
-    [Header("Ability UI")]
-    [SerializeField] private GameObject abilityContainer;
-    [SerializeField] private GameObject abilityButtonPrefab;
-
-    private CombatSystem combatSystem;
-    private readonly List<Button> abilityButtons = new();
-
-    public void Initialize(CombatSystem system, EntityController player)
+    public class CombatUIController : MonoBehaviour
     {
-        combatSystem = system;
+        [Header("Ability UI")]
+        [SerializeField] private GameObject abilityContainer;
+        [SerializeField] private GameObject abilityButtonPrefab;
 
-        ClearAbilityButtons();
+        private CombatSystem combatSystem;
+        private readonly List<Button> abilityButtons = new();
 
-        foreach (var ability in player.Abilities)
+        public void Initialize(CombatSystem system, EntityController player)
         {
-            Debug.Log(ability.Name);
-            CreateAbilityButton(player, ability);
-        }
-    }
+            combatSystem = system;
 
-    private void CreateAbilityButton(EntityController player, Ability ability)
-    {
-        var buttonObj = Instantiate(abilityButtonPrefab, abilityContainer.transform);
+            ClearAbilityButtons();
 
-        var button = buttonObj.GetComponent<Button>();
-        var text = buttonObj.GetComponentInChildren<TMP_Text>();
-
-        text.text = $"{ability.Name} ({ability.StaminaCost})";
-
-        button.onClick.AddListener(() =>
-        {
-            combatSystem.PlayerUseAbility(ability);
-        });
-
-        abilityButtons.Add(button);
-    }
-
-    private void ClearAbilityButtons()
-    {
-        foreach (Transform child in abilityContainer.transform)
-        {
-            Destroy(child.gameObject);
+            foreach (var ability in player.Abilities)
+            {
+                Debug.Log(ability.Name);
+                CreateAbilityButton(player, ability);
+            }
         }
 
-        abilityButtons.Clear();
-    }
-
-    public void Show()
-    {
-        abilityContainer.SetActive(true);
-    }
-
-    public void Hide()
-    {
-        abilityContainer.SetActive(false);
-    }
-
-    public void EnableInput(bool enabled)
-    {
-        foreach (var button in abilityButtons)
+        private void CreateAbilityButton(EntityController player, Ability ability)
         {
-            button.interactable = enabled;
+            var buttonObj = Instantiate(abilityButtonPrefab, abilityContainer.transform);
+
+            var button = buttonObj.GetComponent<Button>();
+            var text = buttonObj.GetComponentInChildren<TMP_Text>();
+
+            text.text = $"{ability.Name} ({ability.StaminaCost})";
+
+            button.onClick.AddListener(() =>
+            {
+                combatSystem.PlayerUseAbility(ability);
+            });
+
+            abilityButtons.Add(button);
+        }
+
+        private void ClearAbilityButtons()
+        {
+            foreach (Transform child in abilityContainer.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
+            abilityButtons.Clear();
+        }
+
+        public void Show()
+        {
+            abilityContainer.SetActive(true);
+        }
+
+        public void Hide()
+        {
+            abilityContainer.SetActive(false);
+        }
+
+        public void EnableInput(bool enabled)
+        {
+            foreach (var button in abilityButtons)
+            {
+                button.interactable = enabled;
+            }
         }
     }
 }

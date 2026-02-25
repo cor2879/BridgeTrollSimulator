@@ -206,10 +206,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71d8b9096959a4da09e98dc181583815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.NpcController
+  goldPopupUI: {fileID: 0}
   entityName: Muglump Hunter
   isPlayerControlled: 0
   level: 1
-  bravery: 0.3
+  bravery: 0.405
   gold: 40
   maxHealth: 100
   maxStamina: 10

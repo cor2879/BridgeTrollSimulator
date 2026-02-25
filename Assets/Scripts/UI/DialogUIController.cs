@@ -103,7 +103,6 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             ClearChoices();
             currentNode = null;
             panel.SetActive(true);
-            AppendLine("System", "Combat started!", true);
         }
 
         private void OnCombatEnded(CombatEndedEvent evt)
