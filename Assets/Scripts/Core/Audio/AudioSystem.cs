@@ -106,6 +106,26 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Audio
             PlayMusic(library.combatThemes[Random.Range(0, library.combatThemes.Length)]);
         }
 
+        public void PlayBossFightMusic()
+        {
+            PlayMusic(library.bossFightThemes[Random.Range(0, library.bossFightThemes.Length)]);
+        }
+
+        public void PlayDefeatMusic()
+        {
+            PlayMusic(library.defeatThemes[Random.Range(0, library.defeatThemes.Length)]);
+        }
+
+        public void PlayVictoryMusic()
+        {
+            PlayMusic(library.victoryThemes[Random.Range(0, library.victoryThemes.Length)]);
+        }
+
+        public void PlayMoodMusic()
+        {
+            PlayMusic(library.moodThemes[Random.Range(0, library.moodThemes.Length)]);
+        }
+        
         #endregion
 
         #region SFX
