@@ -66,7 +66,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
                 return;
             }
 
-            messageText.text = $"LEVEL UP! ({player.ProgressionPoints} points available)\nPress L to allocate";
+            messageText.text = $"LEVEL UP! ({player.ProgressionPoints} points available)";
             GameEventBus.Publish(
                 new PauseRequestEvent(this, Time.frameCount));
             panel.SetActive(true);

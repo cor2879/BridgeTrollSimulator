@@ -224,7 +224,7 @@ MonoBehaviour:
   level: 1
   bravery: 0.405
   gold: 40
-  maxHealth: 5
+  maxHealth: 50
   maxStamina: 10
   attackCost: 3
   defendRestore: 2

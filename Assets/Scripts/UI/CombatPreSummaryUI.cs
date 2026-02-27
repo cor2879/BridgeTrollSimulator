@@ -60,7 +60,6 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
             continueText.text = "Press Any Key to Begin";
             panelRoot.SetActive(true);
-            awaitingInput = true;
             combatConfirmedEvent = evt;
             panelRoot.transform.localScale = Vector3.zero;
             GameEventBus.Publish(
@@ -143,6 +142,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             }
 
             panelRoot.transform.localScale = Vector3.one;
+            awaitingInput = true;
         }
     }
 }
