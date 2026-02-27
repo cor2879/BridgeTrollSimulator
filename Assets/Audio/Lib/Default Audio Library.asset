@@ -23,6 +23,20 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 04c7f01d28a1a13b89c0f497c9705f48, type: 3}
   - {fileID: 8300000, guid: e3682be20674f1d4799a53c4a6e80d06, type: 3}
   - {fileID: 8300000, guid: 83779ead24f0a7d6baa62ec834605a86, type: 3}
+  bossFightThemes:
+  - {fileID: 8300000, guid: 8d8ccf54a68dbcec7a2376ea6d811723, type: 3}
+  - {fileID: 8300000, guid: 84ca861978e30f10494c79698f9ca9c2, type: 3}
+  - {fileID: 8300000, guid: b0a39ff99f6b43328a3578dacf6ec65e, type: 3}
+  - {fileID: 8300000, guid: 831b313bdda561534875992ad2e10402, type: 3}
+  - {fileID: 8300000, guid: c61f4fe0dd283b98891cef1ec7a1f61c, type: 3}
+  defeatThemes:
+  - {fileID: 8300000, guid: 0a0e4c49c29154e7d8cb0c5f3d2c4a81, type: 3}
+  - {fileID: 8300000, guid: 780e6dba8a00c0df09fe8dd026604533, type: 3}
+  victoryThemes:
+  - {fileID: 8300000, guid: 237d69472eeebd04bbdcaac64232313d, type: 3}
+  moodThemes:
+  - {fileID: 8300000, guid: dd485a4132c9954d7940a989d7c2e64e, type: 3}
+  - {fileID: 8300000, guid: 14fd5dcdc78f574c992e38c80fa3b191, type: 3}
   attack: {fileID: 8300000, guid: 827a62532dbce45e49c0790e2e802a97, type: 3}
   armorBreak: {fileID: 8300000, guid: 04dbe86f219ed480ea297ea689929c8e, type: 3}
   defend: {fileID: 8300000, guid: 43952d8e72f8df1cf9799a347b24ea6a, type: 3}
