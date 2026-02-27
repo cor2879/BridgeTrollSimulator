@@ -4,7 +4,7 @@ using UnityEngine;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Audio;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 
-namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameState
+namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameStateManagement
 {
     public class GameStateController : MonoBehaviour
     {
@@ -15,13 +15,13 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameState
 
         private void OnEnable()
         {
-            GameEventBus.Subscribe<PauseRequestEvent>(OnPauseRequested);
+            // GameEventBus.Subscribe<PauseRequestEvent>(OnPauseRequested);
             GameEventBus.Subscribe<CombatEndedEvent>(OnCombatEnded);
         }
 
         private void OnDisable()
         {
-            GameEventBus.Unsubscribe<PauseRequestEvent>(OnPauseRequested);
+            // GameEventBus.Unsubscribe<PauseRequestEvent>(OnPauseRequested);
             GameEventBus.Unsubscribe<CombatEndedEvent>(OnCombatEnded);
         }
 

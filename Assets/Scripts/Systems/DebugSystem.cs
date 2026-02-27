@@ -1,6 +1,7 @@
 using UnityEngine;
 
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameStateManagement;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 {
@@ -10,12 +11,14 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
         {
             GameEventBus.Subscribe<CombatStartedEvent>(OnCombatStarted);
             GameEventBus.Subscribe<GoldDeductedEvent>(OnGoldDeducted);
+            GameEventBus.Subscribe<GameStateChangedEvent>(OnGameStateChanged);
         }
 
         private void OnDisable()
         {
             GameEventBus.Unsubscribe<CombatStartedEvent>(OnCombatStarted);
             GameEventBus.Unsubscribe<GoldDeductedEvent>(OnGoldDeducted);
+            GameEventBus.Unsubscribe<GameStateChangedEvent>(OnGameStateChanged);
         }
 
         private void OnCombatStarted(CombatStartedEvent evt)
@@ -24,6 +27,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
         }
 
         private void OnGoldDeducted(GoldDeductedEvent evt)
+        {
+            Debug.Log(evt.ToString());
+        }
+
+        private void OnGameStateChanged(GameStateChangedEvent evt)
         {
             Debug.Log(evt.ToString());
         }

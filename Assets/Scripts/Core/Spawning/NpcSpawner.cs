@@ -2,7 +2,10 @@ using System.Collections;
 using UnityEngine;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameStateManagement;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Extensions;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Spawning
 {
@@ -17,6 +20,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Spawning
 
         [SerializeField, ReadOnly]
         private int activeNpcCount = 0;
+        [SerializeField, ReadOnly]
+        private bool respawnQueued = false;
+
+        [SerializeField]
+        private int maxNpcCount = 5;
 
         private void OnEnable()
         {
@@ -40,7 +48,12 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Spawning
             if (evt.Entity is NpcController)
             {
                 activeNpcCount--;
-                StartCoroutine(RespawnRoutine());
+
+                if (!respawnQueued)
+                {
+                    respawnQueued = true;
+                    StartCoroutine(RespawnRoutine());
+                }
             }
         }
 
@@ -49,15 +62,29 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Spawning
             if (evt.Target is NpcController)
             {
                 activeNpcCount--;
-                StartCoroutine(RespawnRoutine());
+
+                if (!respawnQueued)
+                {
+                    respawnQueued = true;
+                    StartCoroutine(RespawnRoutine());
+                }
             }
         }
 
         private IEnumerator RespawnRoutine()
         {
             var respawnDelay = Random.Range(respawnRange.x, respawnRange.y);
-            yield return new WaitForSeconds(respawnDelay);
-            SpawnNpc();
+
+            yield return CoroutineExtensions.WaitForSecondsRespectingPause(respawnDelay);
+
+            yield return CoroutineExtensions.WaitUntilGameplayActive();
+
+            if (activeNpcCount < maxNpcCount)
+            {
+                SpawnNpc();
+            }
+
+            respawnQueued = false;
         }
 
         private void SpawnNpc()

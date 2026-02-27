@@ -207,18 +207,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.NpcController
   goldPopupUI: {fileID: 0}
+  battleIntroSprite: {fileID: 5192567680764768608, guid: ca47e4e7e6ed4418db3fea045ee42ce8, type: 3}
+  victorySprite: {fileID: 5013750305564586707, guid: ca47e4e7e6ed4418db3fea045ee42ce8, type: 3}
+  defeatedSprite: {fileID: -3992854602077150086, guid: ca47e4e7e6ed4418db3fea045ee42ce8, type: 3}
+  deadSprite: {fileID: -4927870872518498366, guid: ca47e4e7e6ed4418db3fea045ee42ce8, type: 3}
   entityName: Muglump Hunter
   isPlayerControlled: 0
+  size: 2
+  experience: 0
+  totalExperience: 0
+  progressionPoints: 0
+  experienceReward: 100
+  fame: 5
+  respect: 5
+  reputation: 5
   level: 1
   bravery: 0.405
   gold: 40
-  maxHealth: 100
+  maxHealth: 5
   maxStamina: 10
   attackCost: 3
   defendRestore: 2
   currentStamina: 0
   currentHealth: 0
-  dexterity: 10
+  baseStats:
+    strength: 5
+    dexterity: 5
+    constitution: 5
+    charisma: 5
+    intelligence: 5
+    luck: 5
   initiativeRoll: 0
   attack: 3
   defense: 1

@@ -9,8 +9,10 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Components;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Audio;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameStateManagement;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.CharacterStats;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.StatusEffects;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.InputHandling;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.UI;
@@ -28,10 +30,20 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         protected Animator animator;
         protected Rigidbody2D rb;
         protected Collider2D cldr;
+        protected SpriteRenderer sr;
         protected IInputSource inputSource;
         protected EntityCombatUI entityCombatUI;
+        [Header("UI and Sprites")]
         [SerializeField]
         protected GoldPopupUI goldPopupUI;
+        [SerializeField]
+        private Sprite battleIntroSprite;
+        [SerializeField]
+        private Sprite victorySprite;
+        [SerializeField]
+        private Sprite defeatedSprite;
+        [SerializeField]
+        private Sprite deadSprite;
 
         #region Character Stats
 
@@ -40,6 +52,22 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         protected string entityName;
         [SerializeField]
         protected bool isPlayerControlled;
+        [SerializeField]
+        protected EntitySize size;
+        [SerializeField]
+        private int experience;
+        [SerializeField]
+        private int totalExperience;
+        [SerializeField]
+        private int progressionPoints;
+        [SerializeField]
+        private int experienceReward;
+        [SerializeField]
+        private int fame;
+        [SerializeField]
+        private int respect;
+        [SerializeField, Range(-100, 100)]
+        private int reputation;
         [SerializeField]
         protected int level = 1;
         [SerializeField, Range(0f, 1f)]
@@ -59,7 +87,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         [SerializeField, ReadOnly]
         protected int currentHealth;
         [SerializeField]
-        protected int dexterity = 10;
+        protected Stats baseStats = new();
         [SerializeField, ReadOnly]
         protected int initiativeRoll;
         [SerializeField]
@@ -126,6 +154,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         public abstract ControlMode DefaultControlMode { get; }
         public Collider2D Collider => cldr;
+        public SpriteRenderer SpriteRenderer => sr;
         public GameObject GameObject => this.gameObject;
         public ControlMode CurrentControlMode => controlMode;
         public IInputSource InputSource => inputSource;
@@ -133,11 +162,17 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         public GoldPopupUI GoldPopupUI => goldPopupUI;
         public bool IsPlayerControlled => isPlayerControlled;
         public EntityDialogLibrary DialogLibrary { get; private set; }
+        public Sprite BattleIntroSprite => battleIntroSprite;
+        public Sprite VictorySprite => victorySprite;
+        public Sprite DefeatedSprite => defeatedSprite;
+        public Sprite DeadSprite => deadSprite;
 
         #region Stats
 
         public string Name { get => entityName; set => this.entityName = value; }
-        public int Level => level;
+        public EntitySize Size { get => size; }
+        public int Level { get => level; private set => level = value; }
+        public Stats BaseStats => baseStats;
         public float Bravery => bravery;
         public int Attack
         {
@@ -170,7 +205,14 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         }
         public int Gold => gold;
         public int MaxHealth => maxHealth;
-        public int Dexterity => dexterity;
+        public int Experience { get => experience; private set => experience = value; }
+        public int TotalExperience { get => totalExperience; private set => totalExperience = value; }
+        public int ProgressionPoints => progressionPoints;
+        public int ExperienceReward => experienceReward;
+        public int Fame => fame;
+        public int Respect => respect;
+        public int Reputation => reputation;
+        public int Dexterity => BaseStats.Dexterity;
         public int InitiativeRoll => initiativeRoll;
         public float CritChance => critChance;
         public float CritMultiplier => critMultiplier;
@@ -210,6 +252,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         {
             animator = GetComponent<Animator>();
             rb = GetComponent<Rigidbody2D>();
+            sr = GetComponent<SpriteRenderer>();
             cldr = GetComponent<Collider2D>();
             combatUIRoot = GetComponentInChildren<Canvas>();
             instanceId = Guid.NewGuid();
@@ -226,12 +269,22 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         protected virtual void Update()
         {
+            if (GameStateSystem.Instance.IsPaused)
+            {
+                return;
+            }
+
             this.ProcessInput();
             this.UpdateAnimator();
         }
 
         protected virtual void FixedUpdate()
         {
+            if (GameStateSystem.Instance.IsPaused)
+            {
+                return;
+            }
+
             this.ApplyMovement();
         }
 
@@ -481,6 +534,14 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         public virtual void AddGold(int amount)
         {
             this.gold += amount;
+
+            if (amount > 0)
+            {
+                GameEventBus.Publish(new GoldAddedEvent(
+                    this,
+                    amount,
+                    Time.frameCount));
+            }
         }
         
         public virtual void TakeDamage(int amount, bool isCrit = false)
@@ -680,6 +741,30 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             {
                 HandleTollDemand(toll);
             }
+
+            if (evt is CombatRewardEvent reward)
+            {
+                AddExperience(reward.Experience);
+                AddFame(reward.Fame);
+                AddRespect(reward.Respect);
+                AddReputation(reward.Reputation);
+                AddGold(reward.Gold);
+            }
+        }
+
+        public void AddFame(int amount)
+        {
+            fame += amount;
+        }
+
+        public void AddRespect(int amount)
+        {
+            respect += amount;
+        }
+
+        public void AddReputation(int amount)
+        {
+            reputation = Mathf.Clamp(reputation + amount, -100, 100);
         }
 
         #endregion
@@ -748,6 +833,56 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         public void ConsumePrimeBonus(Ability ability)
         {
             primedAbilities[ability] = 0f;
+        }
+
+        #endregion
+
+        #region Leveling and Stats Management
+
+        private int GetXpRequiredForNextLevel()
+        {
+            const float baseXp = 100f;
+            return Mathf.RoundToInt(baseXp * Mathf.Pow(Level, 1.5f));
+        }
+
+        public void AddExperience(int amount)
+        {
+            if (amount <= 0) return;
+
+            TotalExperience += amount;
+            Experience += amount;
+            CheckForLevelUp();
+        }
+
+        private void CheckForLevelUp()
+        {
+            while (Experience >= GetXpRequiredForNextLevel())
+            {
+                Experience -= GetXpRequiredForNextLevel();
+                Level++;
+
+                int pointsGranted = 1; // for now, fixed
+                progressionPoints += pointsGranted;
+
+                GameEventBus.Publish(
+                    new LevelUpEvent(
+                        this,
+                        this,
+                        Level,
+                        pointsGranted,
+                        Time.frameCount));
+            }
+        }
+
+        public bool TrySpendPoint(StatType stat)
+        {
+            if (progressionPoints <= 0)
+                return false;
+
+            baseStats.Add(stat, 1);
+            progressionPoints--;
+
+            return true;
         }
 
         #endregion

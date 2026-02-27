@@ -19,6 +19,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 
         private void OnGoldAdded(GoldAddedEvent evt)
         {
+            Debug.Log($"Gold Added {evt.Amount}");
             GameEventBus.Publish(
                 new SoundEffectEvent(
                     evt.Initiator,

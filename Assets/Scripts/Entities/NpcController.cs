@@ -6,7 +6,7 @@ using UnityEngine;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Components;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
-using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameState;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameStateManagement;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities

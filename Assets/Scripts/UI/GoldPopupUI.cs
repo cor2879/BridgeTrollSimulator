@@ -13,7 +13,6 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         [SerializeField] private float deltaRiseDistance = 20f;
         [SerializeField] private float deltaRiseDuration = 0.5f;
-        [SerializeField] private float typeSpeed = 0.03f;
         [SerializeField] private float lingerTime = 0.4f;
 
         private Coroutine activeRoutine;
@@ -71,13 +70,20 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         private IEnumerator TypeGoldIncrease(int start, int end)
         {
-            int current = start;
+            int delta = end - start;
+            float duration = Mathf.Clamp(delta * 0.02f, 0.3f, 1.0f);
 
-            while (current < end)
+            float elapsed = 0f;
+
+            while (elapsed < duration)
             {
-                current++;
-                currentGoldText.text = current.ToString();
-                yield return new WaitForSeconds(typeSpeed);
+                elapsed += Time.deltaTime;
+                float t = elapsed / duration;
+
+                int value = Mathf.RoundToInt(Mathf.Lerp(start, end, t));
+                currentGoldText.text = value.ToString();
+
+                yield return null;
             }
 
             currentGoldText.text = end.ToString();

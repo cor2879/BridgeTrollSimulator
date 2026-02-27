@@ -5,11 +5,12 @@ using UnityEngine;
 
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameStateManagement;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 {
-    public class BattleIntroUI : MonoBehaviour, IEventSource
+    public class CombatIntroUI : MonoBehaviour, IEventSource
     {
         [SerializeField] private GameObject panelRoot;
         [SerializeField] private TMP_Text titleText;
@@ -36,6 +37,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             awaitingInput = true;
             panelRoot.transform.localScale = Vector3.zero;
             StartCoroutine(PopIn());
+            GameEventBus.Publish(
+                new PauseRequestEvent(this, Time.frameCount));
         }
 
         private void Update()
@@ -53,6 +56,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
                 GameEventBus.Publish(
                     new CombatConfirmedEvent(combatStartedEvent.Initiator, combatStartedEvent.Target, Time.frameCount));
                 combatStartedEvent = null;
+                GameEventBus.Publish(
+                    new ResumeRequestEvent(this, Time.frameCount));
             }
         }
 

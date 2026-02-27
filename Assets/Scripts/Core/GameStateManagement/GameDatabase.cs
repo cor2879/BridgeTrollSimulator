@@ -3,7 +3,7 @@ using UnityEngine;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 
-namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameState
+namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameStateManagement
 {
     public class GameDatabase : MonoBehaviour
     {

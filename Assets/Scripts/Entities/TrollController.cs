@@ -77,6 +77,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         public override void Receive<TEvent>(TEvent evt) 
         {
+            base.Receive(evt);
+
             if (evt is TollRefusedEvent refused && refused.Target == this)
             {
                 HandleTollRefusal(refused);
@@ -85,6 +87,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             if (evt is TollPaidEvent paid && paid.Target == this)
             {
                 HandleTollPaidEvent(paid);
+            }
+
+            if (evt is LevelUpEvent levelUp && IsPlayerControlled)
+            {
+                HandleLevelUp(levelUp);
             }
         }
 
@@ -97,14 +104,15 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         private void HandleTollPaidEvent(TollPaidEvent evt)
         {
             AddGold(evt.Amount);
-            GameEventBus.Publish(new GoldAddedEvent(
-                this,
-                evt.Amount,
-                Time.frameCount));
             GameEventBus.Publish(new AllowToPassEvent(
                 this,
                 evt.Initiator,
                 Time.frameCount));
+        }
+
+        private void HandleLevelUp(LevelUpEvent levelUp)
+        {
+            Debug.Log($"Level Up received: {levelUp}");
         }
     }
 }

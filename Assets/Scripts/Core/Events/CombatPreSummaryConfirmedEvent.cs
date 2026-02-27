@@ -1,30 +1,25 @@
-using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat.Enums;
-using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 {
-    public class CombatEndedEvent : GameEvent, ITargetedEvent
+    public class CombatPreSummaryConfirmedEvent : GameEvent, ITargetedEvent
     {
         public EntityController Initiator => (EntityController)Sender;
         public EntityController Target { get; }
-        public CombatOutcome Outcome { get; }
         
-        public CombatEndedEvent(
+        public CombatPreSummaryConfirmedEvent(
             EntityController initiator,
             EntityController target,
-            CombatOutcome combatOutcome,
             int frame)
             : base(initiator, frame)
         {
             Target = target;
-            Outcome = combatOutcome;
         }
 
         public override string ToString()
         {
-            return $"{nameof(CombatEndedEvent)}: {Initiator?.name} vs {Target?.name} @ Frame {Frame}";
+            return $"{nameof(CombatStartedEvent)}: {Initiator?.name} vs {Target?.name} @ Frame {Frame}";
         }
     }
 }
