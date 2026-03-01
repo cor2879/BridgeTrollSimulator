@@ -6,34 +6,23 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameStateManagement;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Systems;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 {
-    public class LevelUpNotificationUI : MonoBehaviour, IEventSource
+    public class LevelUpNotificationUI : ModalUIBase, IEventSource
     {
         [SerializeField] private GameObject panel;
         [SerializeField] private TMP_Text messageText;
-        [SerializeField]
-        private LevelUpScreenUI levelUpScreenUI;
 
         private bool awaitingInput = false;
 
-        public string SourceName => nameof(LevelUpNotificationUI);
-        public GameSystemType SystemType => GameSystemType.UI;
+        public override string SourceName => nameof(LevelUpNotificationUI);
+        public override GameSystemType SystemType => GameSystemType.UI;
 
         private void Awake()
         {
             panel.SetActive(false);
-        }
-
-        private void OnEnable()
-        {
-            GameEventBus.Subscribe<LevelUpEvent>(OnLevelUp);
-        }
-
-        private void OnDisable()
-        {
-            GameEventBus.Unsubscribe<LevelUpEvent>(OnLevelUp);
         }
 
         private void Update()
@@ -50,12 +39,12 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             }
         }
 
-        private void OnLevelUp(LevelUpEvent evt)
+        public void Show(EntityController target)
         {
-            if (!evt.Target.IsPlayerControlled)
+            if (!target.IsPlayerControlled)
                 return;
 
-            UpdateNotification(evt.Target);
+            UpdateNotification(target);
         }
 
         private void UpdateNotification(EntityController player)
@@ -67,20 +56,19 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             }
 
             messageText.text = $"LEVEL UP! ({player.ProgressionPoints} points available)";
-            GameEventBus.Publish(
-                new PauseRequestEvent(this, Time.frameCount));
-            panel.SetActive(true);
+            ShowModal(panel);
             awaitingInput = true;
         }
 
         private void OpenLevelUpScreen()
         {
-            panel.SetActive(false);
-            GameEventBus.Publish(
-                new ResumeRequestEvent(this, Time.frameCount));
+            HideModal(panel);
 
-            // levelUpScreenUI.Show(GameDatabase.Instance.Player);
-            // GameStateSystem.Instance.SetState(GameState.LevelUp);
+            GameEventBus.Publish(
+                new LevelUpNotificationDismissedEvent(
+                    this,
+                    GameDatabase.Instance.Player,
+                    Time.frameCount));
         }
     }
 }

@@ -7,20 +7,22 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameStateManagement;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Systems;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 {
-    public class CombatIntroUI : MonoBehaviour, IEventSource
+    public class CombatIntroUI : ModalUIBase, IEventSource
     {
         [SerializeField] private GameObject panelRoot;
         [SerializeField] private TMP_Text titleText;
         [SerializeField] private TMP_Text subText;
         private CombatStartedEvent combatStartedEvent;
+        private int showFrame;
 
         private bool awaitingInput;
 
-        public string SourceName => this.name;
-        public GameSystemType SystemType => GameSystemType.UI;
+        public override string SourceName => this.name;
+        public override GameSystemType SystemType => GameSystemType.UI;
 
         private void Awake()
         {
@@ -33,12 +35,13 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             subText.text = subTitle;
             this.combatStartedEvent = combatStartedEvent;
 
-            panelRoot.SetActive(true);
+            ShowModal(panelRoot);
+
             awaitingInput = true;
+            showFrame = Time.frameCount;
+
             panelRoot.transform.localScale = Vector3.zero;
             StartCoroutine(PopIn());
-            GameEventBus.Publish(
-                new PauseRequestEvent(this, Time.frameCount));
         }
 
         private void Update()
@@ -48,16 +51,19 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
                 return;
             }
 
+            if (Time.frameCount == showFrame)
+            {
+                return;
+            }
+
             if (Input.anyKeyDown || Input.GetMouseButtonDown(0))
             {
                 awaitingInput = false;
-                panelRoot.SetActive(false);
+                HideModal(panelRoot);
 
                 GameEventBus.Publish(
                     new CombatConfirmedEvent(combatStartedEvent.Initiator, combatStartedEvent.Target, Time.frameCount));
                 combatStartedEvent = null;
-                GameEventBus.Publish(
-                    new ResumeRequestEvent(this, Time.frameCount));
             }
         }
 

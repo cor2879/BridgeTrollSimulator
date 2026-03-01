@@ -8,10 +8,11 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameStateManagement;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Systems;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 {
-    public class CombatPreSummaryUI : MonoBehaviour, IEventSource
+    public class CombatPreSummaryUI : ModalUIBase, IEventSource
     {
         [Header("Root")]
         [SerializeField]
@@ -36,8 +37,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
         private bool awaitingInput;
         private CombatConfirmedEvent combatConfirmedEvent;
 
-        public string SourceName => nameof(CombatPreSummaryUI);
-        public GameSystemType SystemType => GameSystemType.UI;
+        public override string SourceName => nameof(CombatPreSummaryUI);
+        public override GameSystemType SystemType => GameSystemType.UI;
 
         private void Awake()
         {
@@ -59,11 +60,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
                 $"{firstMover.Name} has First Initiative!";
 
             continueText.text = "Press Any Key to Begin";
-            panelRoot.SetActive(true);
+            ShowModal(panelRoot);
             combatConfirmedEvent = evt;
             panelRoot.transform.localScale = Vector3.zero;
-            GameEventBus.Publish(
-                new PauseRequestEvent(this, Time.frameCount));
             StartCoroutine(PopIn());
         }
 
@@ -112,15 +111,12 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             if (Input.anyKeyDown || Input.GetMouseButtonDown(0))
             {
                 awaitingInput = false;
-                panelRoot.SetActive(false);
-
+                HideModal(panelRoot);
                 GameEventBus.Publish(
                     new CombatPreSummaryConfirmedEvent(
                         combatConfirmedEvent.Initiator,
                         combatConfirmedEvent.Target,
                         Time.frameCount));
-                GameEventBus.Publish(
-                    new ResumeRequestEvent(this, Time.frameCount));
                 combatConfirmedEvent = null;
             }
         }

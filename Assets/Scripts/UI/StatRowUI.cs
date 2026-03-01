@@ -15,34 +15,75 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
         [SerializeField] private TMP_Text statNameText;
         [SerializeField] private TMP_Text statValueText;
         [SerializeField] private Button addButton;
+        [SerializeField] private Button subtractButton;
+
+        private System.Func<StatType, bool> tryIncrease;
+        private System.Func<StatType, bool> tryDecrease;
+        private System.Func<StatType, int> getPending;
+        private System.Func<StatType, int> getBaseValue;
+        private System.Func<int> getAvailablePoints;
 
         private StatType statType;
-        private EntityController player;
 
         public event Action OnStatChanged;
 
-        public void Initialize(StatType type, EntityController entity)
+        public void Initialize(
+            StatType type,
+            System.Func<StatType, bool> increaseCallback,
+            System.Func<StatType, bool> decreaseCallback,
+            System.Func<StatType, int> getPendingCallback,
+            System.Func<StatType, int> getBaseValueCallback,
+            System.Func<int> getAvailablePointsCallback)
         {
             statType = type;
-            player = entity;
+            tryIncrease = increaseCallback;
+            tryDecrease = decreaseCallback;
+            getPending = getPendingCallback;
+            getBaseValue = getBaseValueCallback;
+            getAvailablePoints = getAvailablePointsCallback;
 
             statNameText.text = statType.ToString();
-            addButton.onClick.AddListener(AddPoint);
+            addButton.onClick.RemoveAllListeners();
+            subtractButton.onClick.RemoveAllListeners();
+            addButton.onClick.AddListener(OnIncrease);
+            subtractButton.onClick.AddListener(OnDecrease);
 
             Refresh();
         }
 
         public void Refresh()
         {
-            int value = player.BaseStats.Get(statType);
-            statValueText.text = value.ToString();
+            int baseValue = getBaseValue(statType);
+            int pending = getPending(statType);
 
-            addButton.interactable = player.ProgressionPoints > 0;
+            statValueText.text = pending > 0 ?
+                $"{baseValue} (+{pending})" :
+                baseValue.ToString();
+            
+            if (pending > 0)
+            {
+                statValueText.text = $"{baseValue} <color=#6FFF6F>(+{pending})</color>";
+            }
+            else
+            {
+                statValueText.text = baseValue.ToString();
+            }
+
+            subtractButton.interactable = pending > 0;
+            addButton.interactable = getAvailablePoints() > 0;
         }
 
-        private void AddPoint()
+        private void OnIncrease()
         {
-            if (player.TrySpendPoint(statType))
+            if (tryIncrease(statType))
+            {
+                OnStatChanged?.Invoke();
+            }
+        }
+
+        private void OnDecrease()
+        {
+            if (tryDecrease(statType))
             {
                 OnStatChanged?.Invoke();
             }

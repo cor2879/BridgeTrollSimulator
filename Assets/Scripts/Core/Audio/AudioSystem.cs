@@ -2,6 +2,8 @@ using System.Collections;
 using UnityEngine;
 
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Audio
@@ -41,6 +43,13 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Audio
             GameEventBus.Subscribe<DamageTakenEvent>(OnDamage);
             GameEventBus.Subscribe<DefendEvent>(OnDefend);
             GameEventBus.Subscribe<SoundEffectEvent>(OnSoundEffect);
+        }
+
+        private void OnDisable()
+        {
+            GameEventBus.Unsubscribe<DamageTakenEvent>(OnDamage);
+            GameEventBus.Unsubscribe<DefendEvent>(OnDefend);
+            GameEventBus.Unsubscribe<SoundEffectEvent>(OnSoundEffect);
         }
 
         private void OnDamage(DamageTakenEvent evt)

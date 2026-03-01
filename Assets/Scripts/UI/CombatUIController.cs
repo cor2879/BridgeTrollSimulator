@@ -1,8 +1,10 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Systems;
@@ -16,12 +18,16 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
         [SerializeField] private GameObject abilityButtonPrefab;
 
         private CombatSystem combatSystem;
-        private readonly List<Button> abilityButtons = new();
+        private readonly List<(Button button, Ability ability)> abilityButtons = new();
+        private EntityController player;
+        [SerializeField, ReadOnly]
+        private bool isVisible = false;
+        private Coroutine activeAnimation;
 
         public void Initialize(CombatSystem system, EntityController player)
         {
             combatSystem = system;
-
+            this.player = player;
             ClearAbilityButtons();
 
             foreach (var ability in player.Abilities)
@@ -45,7 +51,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
                 combatSystem.PlayerUseAbility(ability);
             });
 
-            abilityButtons.Add(button);
+            abilityButtons.Add((button, ability));
         }
 
         private void ClearAbilityButtons()
@@ -60,20 +66,82 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         public void Show()
         {
-            abilityContainer.SetActive(true);
+            Debug.Log($"{nameof(CombatUIController.Show)}");
+            StartCoroutine(PopIn());
         }
 
         public void Hide()
         {
-            abilityContainer.SetActive(false);
+            StartCoroutine(PopOut());
         }
 
         public void EnableInput(bool enabled)
         {
-            foreach (var button in abilityButtons)
+            foreach (var (button, ability) in abilityButtons)
             {
-                button.interactable = enabled;
+                button.interactable = enabled && ability.CanExecute(player);
             }
+
+            if (activeAnimation != null)
+            {
+                StopCoroutine(activeAnimation);
+            }
+
+            if (enabled && !isVisible)
+            {
+                activeAnimation = StartCoroutine(PopIn());
+                isVisible = true;
+            }
+            else if (!enabled && isVisible)
+            {
+                activeAnimation = StartCoroutine(PopOut());
+                isVisible = false;
+            }
+        }
+
+        private IEnumerator PopIn()
+        {
+            abilityContainer.SetActive(true);
+
+            float duration = 0.35f;
+            float timer = 0f;
+
+            while (timer < duration)
+            {
+                timer += Time.deltaTime;
+                float t = timer / duration;
+
+                abilityContainer.transform.localScale =
+                    Vector3.Lerp(Vector3.zero, Vector3.one, t);
+
+                yield return null;
+            }
+
+            abilityContainer.transform.localScale = Vector3.one;
+        }
+
+        private IEnumerator PopOut()
+        {
+            float duration = 0.35f;
+            float timer = 0f;
+
+            Vector3 startScale = Vector3.one;
+            Vector3 endScale = Vector3.zero;
+
+            while (timer < duration)
+            {
+                timer += Time.deltaTime;
+                float t = timer / duration;
+
+                abilityContainer.transform.localScale =
+                    Vector3.Lerp(startScale, endScale, t);
+
+                yield return null;
+            }
+
+            abilityContainer.transform.localScale = Vector3.zero;
+
+            abilityContainer.SetActive(false);
         }
     }
 }

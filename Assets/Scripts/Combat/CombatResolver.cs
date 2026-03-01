@@ -25,10 +25,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Combat
 
             var exhausted = initiator.CurrentStamina < ability.StaminaCost;
 
-            if (!exhausted)
-            {
-                initiator.SpendStamina(ability.StaminaCost);
-            }
+            initiator.SpendStamina(ability.StaminaCost);
 
             if (ability.FollowUpSynergies != null &&
                 ability.FollowUpSynergies.Count > 0)

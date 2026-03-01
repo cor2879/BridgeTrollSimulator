@@ -154,7 +154,20 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         public abstract ControlMode DefaultControlMode { get; }
         public Collider2D Collider => cldr;
-        public SpriteRenderer SpriteRenderer => sr;
+        
+        public SpriteRenderer SpriteRenderer 
+        {
+            get
+            {
+                if (sr == null)
+                {
+                    sr = GetComponent<SpriteRenderer>();
+                }
+
+                return sr;
+            }
+        }
+
         public GameObject GameObject => this.gameObject;
         public ControlMode CurrentControlMode => controlMode;
         public IInputSource InputSource => inputSource;
@@ -256,7 +269,6 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             cldr = GetComponent<Collider2D>();
             combatUIRoot = GetComponentInChildren<Canvas>();
             instanceId = Guid.NewGuid();
-            currentHealth = maxHealth;
             entityCombatUI = GetComponent<EntityCombatUI>();
             entityCombatUI.SetActive(false);
             DialogLibrary = GetComponent<EntityDialogLibrary>();
@@ -265,6 +277,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             {
                 this.goldPopupUI.SetActive(false);
             }
+
+            RecalculateDerivedStats();
+            currentHealth = maxHealth;
         }
 
         protected virtual void Update()
@@ -750,6 +765,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
                 AddReputation(reward.Reputation);
                 AddGold(reward.Gold);
             }
+
+            if (evt is LevelUpConfirmedEvent levelUp)
+            {
+                HandleLevelUpConfirmed(levelUp);
+            }
         }
 
         public void AddFame(int amount)
@@ -765,6 +785,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         public void AddReputation(int amount)
         {
             reputation = Mathf.Clamp(reputation + amount, -100, 100);
+        }
+
+        protected virtual void HandleLevelUpConfirmed(LevelUpConfirmedEvent levelUp)
+        {
+            ApplyLevelUpBenefits();
         }
 
         #endregion
@@ -861,6 +886,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
                 Experience -= GetXpRequiredForNextLevel();
                 Level++;
 
+                ApplyPerLevelGrowth();
+
                 int pointsGranted = 1; // for now, fixed
                 progressionPoints += pointsGranted;
 
@@ -874,6 +901,36 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             }
         }
 
+        private void ApplyPerLevelGrowth()
+        {
+            maxHealth += 5;
+            maxStamina += 1;
+
+            CurrentHealth = maxHealth;
+            CurrentStamina = maxStamina;
+        }
+
+        private void ApplyLevelUpBenefits()
+        {
+            RecalculateDerivedStats();
+        }
+
+        private void RecalculateDerivedStats()
+        {
+            attack = 2 + BaseStats.Strength;
+            defense = 1 + (BaseStats.Constitution / 3);
+            int bonusHealthFromCon = BaseStats.Constitution * 2;
+            int bonusStaminaFromDex = BaseStats.Dexterity / 2;
+
+            maxHealth =  (Level * 5) + 40 + bonusHealthFromCon;
+            maxStamina = (Level * 1) + 8 + bonusStaminaFromDex;
+
+            critChance = 0.05f + (BaseStats.Luck * 0.005f);
+            critChance = Mathf.Clamp(critChance, 0f, 0.5f);
+            GameEventBus.Publish(
+                new EntityStatsRecalculatedEvent(this, Time.frameCount));
+        }
+
         public bool TrySpendPoint(StatType stat)
         {
             if (progressionPoints <= 0)
@@ -883,6 +940,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             progressionPoints--;
 
             return true;
+        }
+
+        public void ConsumeProgressionPoints(int amount)
+        {
+            progressionPoints -= amount;
         }
 
         #endregion

@@ -3,23 +3,34 @@ using UnityEngine;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameStateManagement;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.UI;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 {
     public class LevelUpQueueSystem : MonoBehaviour
     {
+        [SerializeField]
+        private LevelUpNotificationUI notificationUI;
+        [SerializeField]
+        private LevelUpScreenUI levelUpScreenUI;
+
         private readonly Queue<LevelUpEvent> queue = new();
+        private LevelUpEvent activeLevelUp;
 
         private void OnEnable()
         {
             GameEventBus.Subscribe<LevelUpEvent>(OnLevelUp);
             GameEventBus.Subscribe<GameStateChangedEvent>(OnGameStateChanged);
+            GameEventBus.Subscribe<LevelUpNotificationDismissedEvent>(OnNotificationDismissed);
+            GameEventBus.Subscribe<LevelUpConfirmedEvent>(OnLevelUpConfirmed);
         }
 
         private void OnDisable()
         {
             GameEventBus.Unsubscribe<LevelUpEvent>(OnLevelUp);
             GameEventBus.Unsubscribe<GameStateChangedEvent>(OnGameStateChanged);
+            GameEventBus.Unsubscribe<LevelUpNotificationDismissedEvent>(OnNotificationDismissed);
+            GameEventBus.Unsubscribe<LevelUpConfirmedEvent>(OnLevelUpConfirmed);
         }
 
         private void OnLevelUp(LevelUpEvent evt)
@@ -35,20 +46,38 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
             }
         }
 
+        private void OnNotificationDismissed(LevelUpNotificationDismissedEvent evt)
+        {
+            if (activeLevelUp == null)
+            {
+                return;
+            }
+
+            GameStateSystem.Instance.SetState(GameState.LevelUp);
+            levelUpScreenUI.Show(evt.Target);
+        }
+
+        private void OnLevelUpConfirmed(LevelUpConfirmedEvent evt)
+        {
+            activeLevelUp = null;
+
+            ProcessQueue();
+        }
+
         private void ProcessQueue()
         {
-            while (queue.Count > 0)
+            if (activeLevelUp != null)
             {
-                var levelUpEvent = queue.Dequeue();
-
-                // For now just log
-                Debug.Log($"LEVEL UP! Level {levelUpEvent.NewLevel}");
-
-                // Later:
-                // Open LevelUp UI
-                // Grant stat points
-                // Trigger animation
+                return;
             }
+
+            if (queue.Count == 0)
+            {
+                return;
+            }
+
+            activeLevelUp = queue.Dequeue();
+            notificationUI.Show(activeLevelUp.Target);
         }
     }
 }

@@ -108,7 +108,6 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
             combatUI.Initialize(
                 this, 
                 GameDatabase.Instance.Player);
-            combatUI.Show();
 
             currentTurnIndex = 0;
             roundNumber = 1;

@@ -11,10 +11,11 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameStateManagement;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Systems;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 {
-    public class CombatResolutionUI : MonoBehaviour, IEventSource
+    public class CombatResolutionUI : ModalUIBase, IEventSource
     {
         [Header("Core")]
         [SerializeField]
@@ -47,8 +48,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
         private bool awaitingInput;
         private CombatResolutionData resolutionData;
 
-        public string SourceName => "CombatResolutionUI";
-        public GameSystemType SystemType => GameSystemType.UI;
+        public override string SourceName => "CombatResolutionUI";
+        public override GameSystemType SystemType => GameSystemType.UI;
 
         private void Awake()
         {
@@ -76,9 +77,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             respectText.text = $"{data.RespectDelta} Respect";
             reputationText.text = $"{data.ReputationDelta} Reputation";
 
-            panelRoot.SetActive(true);
-            GameEventBus.Publish(
-                new PauseRequestEvent(this, Time.frameCount));
+            ShowModal(panelRoot);
             awaitingInput = true;
             resolutionData = data;
         }
@@ -134,8 +133,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             if (Input.anyKeyDown)
             {
                 awaitingInput = false;
-                panelRoot.SetActive(false);
-
+                HideModal(panelRoot);
                 GameEventBus.Publish(
                     new CombatResolutionCompletedEvent(this, resolutionData, Time.frameCount));
                 resolutionData = null;
