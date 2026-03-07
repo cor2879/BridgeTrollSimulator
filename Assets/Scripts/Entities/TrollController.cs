@@ -31,7 +31,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             if (controlMode == ControlMode.Disabled ||
                 controlMode == ControlMode.CutScene ||
                 controlMode == ControlMode.Encounter ||
-                controlMode == ControlMode.Dead)
+                controlMode == ControlMode.Dead ||
+                controlMode == ControlMode.Combat)
             {
                 return;
             }

@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 514253d5a311044b58c0ba7b354a426d, type: 3}
+  m_Name: Persuade
+  m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Abilities.SocialAbility
+  abilityName: Persuade
+  icon: {fileID: 0}
+  governingSkill: 0
+  offensiveStat: 3
+  defensiveStat: 5
+  basePower: 5
+  weakSuccessLines:
+  - You see the wisdom in this.
+  - This arrangement favors us both.
+  - Let reason prevail.
+  - There is balance in what I offer.
+  strongSuccessLines:
+  - This is settled.
+  - This is the wiser course.
+  - You will thank me for this.
+  - Agreement is reached.
+  criticalSuccessLines:
+  - It is decided.
+  - You concede.
+  - You will pass, and we are done.
+  - Wisdom triumphs.
+  weakFailureLines:
+  - Consider your position.
+  - There is another path here.
+  - Consider the alternative.
+  - This need not escalate.
+  strongFailureLines:
+  - You cannot win this exchange.
+  - This is the only rational outcome!
+  - Defiance costs you more than you know.
+  - Choose correctly, or suffer the consequence.
+  criticalFailureLines:
+  - Surely this benefits us both?
+  - "Let\u2019s be sensible about this."
+  - You see my point, yes?
+  - "There is\u2026 logic here."

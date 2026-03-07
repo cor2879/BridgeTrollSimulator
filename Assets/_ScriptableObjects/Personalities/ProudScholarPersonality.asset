@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f39b323c7d57e4388b310f3f91c91f20, type: 3}
+  m_Name: ProudScholarPersonality
+  m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.Personalities.Personality
+  personalityName: Proud Scholar
+  defensiveBiases:
+  - stat: 4
+    modifier: 1
+  - stat: 3
+    modifier: 0
+  - stat: 0
+    modifier: -1
+  pride: 0.85
+  caution: 0.4
+  volatility: 0.2
+  reactions:
+  - skill: 1
+    result: 0
+    lines:
+    - "Crude\u2026 but effective."
+    - I concede the point.
+    - You wield fear with unfortunate competence.
+    - Very well. I will not escalate this.
+    - "You have the advantage\u2026 for now."
+  - skill: 1
+    result: 3
+    lines:
+    - Is that meant to frighten me?
+    - Volume is not authority.
+    - You mistake posture for power.
+    - Threats betray insecurity.
+    - How very primitive.
+  - skill: 0
+    result: 3
+    lines:
+    - Hm. You attempt intimidation.
+    - "I see what you\u2019re trying to do."
+    - You posture with some effect.
+    - That tone is unnecessary.
+    - You lean on force too quickly.
+  - skill: 1
+    result: 2
+    lines:
+    - That is not persuasive.
+    - Your volume does not strengthen your claim.
+    - Control yourself.
+    - You overestimate your presence.
+    - Is that meant to impress me?
+  - skill: 0
+    result: 0
+    lines:
+    - "Ah\u2026 a cogent argument."
+    - You reason better than I expected.
+    - "That is\u2026 surprisingly sound."
+    - Very well. I yield to logic.
+    - I cannot refute that.
+  - skill: 0
+    result: 3
+    lines:
+    - Your reasoning is flawed.
+    - "You construct arguments like scaffolding \u2014 unstable."
+    - Appeal to logic, not emotion.
+    - You reach without grasping.
+    - I expected more.
+  - skill: 0
+    result: 1
+    lines:
+    - There is some merit in that.
+    - You approach something resembling logic.
+    - Continue.
+    - "That is\u2026 not entirely flawed."
+    - I will consider it.
+  - skill: 0
+    result: 2
+    lines:
+    - Your reasoning lacks structure.
+    - You skip several steps.
+    - You argue in fragments.
+    - Support your claim.
+    - That is incomplete.

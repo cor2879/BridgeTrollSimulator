@@ -38,6 +38,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2419731725615231812}
+  - {fileID: 2944412915403967318}
   - {fileID: 4291708488803775405}
   - {fileID: 3837704860857662358}
   m_Father: {fileID: 0}
@@ -209,6 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.TrollController
   goldPopupUI: {fileID: 2739140604645198108}
+  speechBubble: {fileID: 5020790580924924394}
   battleIntroSprite: {fileID: 1917378661519646051, guid: 1e164fe9688e221cfaf97480d1f5fdc6, type: 3}
   victorySprite: {fileID: -7473052881233181494, guid: 4d52ddc3e540ddd7ca68fc109c3371ae, type: 3}
   defeatedSprite: {fileID: -2599517204066081339, guid: 3c7217f894cf63deda33de4acad31ad5, type: 3}
@@ -238,7 +240,12 @@ MonoBehaviour:
     constitution: 5
     charisma: 5
     intelligence: 5
+    wisdom: 10
     luck: 5
+  baseSkills:
+    persuade: 0
+    intimidate: 0
+    riddle: 0
   initiativeRoll: 0
   attack: 3
   defense: 1
@@ -248,11 +255,38 @@ MonoBehaviour:
   critChance: 0.1
   critMultiplier: 2
   temporaryCritBonus: 0
+  momentum: 0
   faction: 1
   abilities:
   - {fileID: 11400000, guid: f03ee2b4f24c941e5b17e2b9b28d15d7, type: 2}
   - {fileID: 11400000, guid: 3538289a4c24b460680814b748f4d78c, type: 2}
   - {fileID: 11400000, guid: 43c62434ad8004932a9f77e00b5a0378, type: 2}
+  socialAbilities:
+  - {fileID: 11400000, guid: 12784bcd6df9745c4adc1172b5bddc37, type: 2}
+  - {fileID: 11400000, guid: ee92ea42dbec84d50b8f6d74875639c0, type: 2}
+  socialResponseProfile:
+    high:
+      weakSuccess: []
+      strongSuccess: []
+      weakFailure: []
+      strongFailure: []
+      criticalSuccess: []
+      criticalFailure: []
+    mid:
+      weakSuccess: []
+      strongSuccess: []
+      weakFailure: []
+      strongFailure: []
+      criticalSuccess: []
+      criticalFailure: []
+    low:
+      weakSuccess: []
+      strongSuccess: []
+      weakFailure: []
+      strongFailure: []
+      criticalSuccess: []
+      criticalFailure: []
+  personality: {fileID: 0}
   hurtSfx: {fileID: 8300000, guid: 461464739643e76f4be9df33ce4729b7, type: 3}
   deathSfx: {fileID: 8300000, guid: 092cd44d7dfea4893bac55501c379853, type: 3}
   entityType: 0
@@ -310,7 +344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Effects.FlashEffect
   flashDuration: 0.1
   flashColor: {r: 1, g: 1, b: 1, a: 1}
-  entity: {fileID: 0}
+  isFlashing: 0
 --- !u!1 &5529988485356194070
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,6 +561,163 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1001 &2954464927125862015
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4036327340478857543}
+    m_Modifications:
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 350
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 767373116372000780, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_Name
+      value: SpeechBubble
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174358537136213597, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.0125
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174358537136213597, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.0125
+      objectReference: {fileID: 0}
+    - target: {fileID: 6110392435442385681, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7830968499719092117, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: entity
+      value: 
+      objectReference: {fileID: 1778569078660424935}
+    - target: {fileID: 8887222257132471772, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8916289552435669206, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8916289552435669206, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8916289552435669206, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.0125
+      objectReference: {fileID: 0}
+    - target: {fileID: 8916289552435669206, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.0125
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+--- !u!224 &2944412915403967318 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+  m_PrefabInstance: {fileID: 2954464927125862015}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5020790580924924394 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7830968499719092117, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+  m_PrefabInstance: {fileID: 2954464927125862015}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d04ce8564093944c4aeb0687dd5aa0fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.UI.SpeechBubbleUI
 --- !u!1001 &4184885189281467687
 PrefabInstance:
   m_ObjectHideFlags: 0

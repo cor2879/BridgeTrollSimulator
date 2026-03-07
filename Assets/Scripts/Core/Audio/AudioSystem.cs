@@ -135,6 +135,10 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Audio
             PlayMusic(library.moodThemes[Random.Range(0, library.moodThemes.Length)]);
         }
         
+        public void PlayWhimsicalMusic()
+        {
+            PlayMusic(library.whimsicalThemes[Random.Range(0, library.whimsicalThemes.Length)]);
+        }
         #endregion
 
         #region SFX

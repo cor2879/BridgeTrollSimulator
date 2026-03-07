@@ -39,14 +39,27 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         protected override void UpdateAnimator()
         {
-            if (CurrentControlMode != ControlMode.Npc)
+            if (CurrentControlMode != ControlMode.Npc &&
+                CurrentControlMode != ControlMode.Passing)
             {
                 // base.UpdateAnimator();
                 // return;
             }
 
+            animator.speed = 1f;
             float direction = rb.linearVelocity.x <= 0 ? -1f : 1f;
             float speed = Mathf.Abs(rb.linearVelocity.x) > 0.01f ? 0.5f : 0f;
+
+            var velocityX = rb.linearVelocity.x;
+
+            if (velocityX < -0.01f)
+            {
+                SetFacing(false);
+            }
+            else if (velocityX > 0.01f)
+            {
+                SetFacing(true);
+            }
 
             animator.SetFloat(Constants.AnimatorParams.Speed, speed);
             animator.SetFloat(Constants.AnimatorParams.xDirection, direction);

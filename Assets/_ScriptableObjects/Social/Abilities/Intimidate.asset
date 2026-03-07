@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 514253d5a311044b58c0ba7b354a426d, type: 3}
+  m_Name: Intimidate
+  m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Abilities.SocialAbility
+  abilityName: Intimidate
+  icon: {fileID: 0}
+  governingSkill: 1
+  offensiveStat: 0
+  defensiveStat: 2
+  basePower: 7
+  weakSuccessLines:
+  - There it is. I see your fear.
+  - Your courage falters.
+  - You feel it now.
+  - Your footing weakens.
+  strongSuccessLines:
+  - You are already beaten.
+  - Your will bends.
+  - The bridge rejects you.
+  - Leave while you can.
+  criticalSuccessLines:
+  - You were never my equal.
+  - Your spirit cracks.
+  - The toll is the least of your worries.
+  - Begone.
+  weakFailureLines:
+  - You would be wise to reconsider.
+  - This bridge is not forgiving.
+  - You test dangerous ground.
+  - You stand before power.
+  strongFailureLines:
+  - Kneel, or be broken!
+  - I will snap your courage in half!
+  - You stand one breath from ruin!
+  - Defy me again and regret it!
+  criticalFailureLines:
+  - "You will kneel before\u2014 \u2026oh."
+  - "Fear me! \u2026No? Truly?"
+  - "I am doom given flesh! \u2026Why are you laughing?"
+  - You should be terrified. This is terrifying.

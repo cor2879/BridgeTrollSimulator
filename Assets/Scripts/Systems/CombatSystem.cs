@@ -81,6 +81,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
                 evt);
 
             GameStateSystem.Instance.SetState(GameState.Combat);
+            ModalUISystem.Instance.OpenModal(this);
             AudioSystem.Instance.PlayCombatMusic();
         }
 
@@ -362,8 +363,6 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
         {
             state = CombatState.Inactive;
             combatUI.Hide();
-            GameEventBus.Publish(
-                new ResumeRequestEvent(this, Time.frameCount));
             var snapshot = combatants.ToList();
 
             GameDatabase.Instance.Player.ResetControlMode(overrideDeath: false);
@@ -386,6 +385,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 
             combatants.Clear();
             initiativeOrder.Clear();
+            ModalUISystem.Instance.CloseModal(this);
         }
     }
 }

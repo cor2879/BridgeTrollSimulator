@@ -5,6 +5,7 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameStateManagement;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.Personalities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Extensions;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Spawning
@@ -25,6 +26,10 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Spawning
 
         [SerializeField]
         private int maxNpcCount = 5;
+
+        [Header("Personality Pool")]
+        [SerializeField]
+        private Personality[] availablePersonalities;
 
         private void OnEnable()
         {
@@ -89,8 +94,22 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Spawning
 
         private void SpawnNpc()
         {
-            Instantiate(npcPrefab, transform.position, Quaternion.identity);
+            var npcObj = Instantiate(npcPrefab, transform.position, Quaternion.identity);
+            var entity = npcObj.GetComponent<EntityController>();
+            AssignRandomPersonality(entity);
             activeNpcCount++;
+        }
+
+        private void AssignRandomPersonality(EntityController npc)
+        {
+            if (availablePersonalities == null || availablePersonalities.Length == 0)
+                return;
+
+            var chosen =
+                availablePersonalities[Random.Range(0, availablePersonalities.Length)];
+
+            npc.AssignPersonality(chosen);
+            Debug.Log($"NPC {npc.Name} spawned with {npc.Personality} personality");
         }
     }
 }

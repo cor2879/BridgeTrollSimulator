@@ -12,6 +12,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Audio
         public AudioClip[] defeatThemes;
         public AudioClip[] victoryThemes;
         public AudioClip[] moodThemes;
+        public AudioClip[] whimsicalThemes;
 
         [Header("Combat SFX")]
         public AudioClip attack;

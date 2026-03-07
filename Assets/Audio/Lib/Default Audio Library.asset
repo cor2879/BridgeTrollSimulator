@@ -37,6 +37,10 @@ MonoBehaviour:
   moodThemes:
   - {fileID: 8300000, guid: dd485a4132c9954d7940a989d7c2e64e, type: 3}
   - {fileID: 8300000, guid: 14fd5dcdc78f574c992e38c80fa3b191, type: 3}
+  whimsicalThemes:
+  - {fileID: 8300000, guid: 093e56bd2031a40fda0f4afd88235fea, type: 3}
+  - {fileID: 8300000, guid: de9291691618a47e7a0569bdb722a32b, type: 3}
+  - {fileID: 8300000, guid: fb0687072500d4ad79dcc109f2c42eb6, type: 3}
   attack: {fileID: 8300000, guid: 827a62532dbce45e49c0790e2e802a97, type: 3}
   armorBreak: {fileID: 8300000, guid: 04dbe86f219ed480ea297ea689929c8e, type: 3}
   defend: {fileID: 8300000, guid: 43952d8e72f8df1cf9799a347b24ea6a, type: 3}

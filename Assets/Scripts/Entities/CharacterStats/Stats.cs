@@ -6,21 +6,23 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.CharacterStats
     [Serializable]
     public class Stats
     {
-        [Header("Primary Stats")]
-        [SerializeField] private int strength = 5;
-        [SerializeField] private int dexterity = 5;
-        [SerializeField] private int constitution = 5;
-        [SerializeField] private int charisma = 5;
-        [SerializeField] private int intelligence = 5;
-        [SerializeField] private int luck = 5;
+        [Header("Primary Stats (D20 Model)")]
+        [SerializeField] private int strength = 10;
+        [SerializeField] private int dexterity = 10;
+        [SerializeField] private int constitution = 10;
+        [SerializeField] private int charisma = 10;
+        [SerializeField] private int intelligence = 10;
+        [SerializeField] private int wisdom = 10;
+        [SerializeField] private int luck = 10;
 
-        #region Properties (Read-Only External Access)
+        #region Properties
 
         public int Strength => strength;
         public int Dexterity => dexterity;
         public int Constitution => constitution;
         public int Charisma => charisma;
         public int Intelligence => intelligence;
+        public int Wisdom => wisdom;
         public int Luck => luck;
 
         #endregion
@@ -36,13 +38,26 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.CharacterStats
                 StatType.Constitution => constitution,
                 StatType.Charisma => charisma,
                 StatType.Intelligence => intelligence,
+                StatType.Wisdom => wisdom,
                 StatType.Luck => luck,
                 _ => 0
             };
         }
 
+        public int GetModifier(StatType type)
+        {
+            return CalculateModifier(Get(type));
+        }
+
+        public static int CalculateModifier(int statValue)
+        {
+            return Mathf.FloorToInt((statValue - 10) / 2f);
+        }
+
         public void Set(StatType type, int value)
         {
+            value = Mathf.Max(1, value); // Optional safety floor
+
             switch (type)
             {
                 case StatType.Strength: strength = value; break;
@@ -50,21 +65,14 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.CharacterStats
                 case StatType.Constitution: constitution = value; break;
                 case StatType.Charisma: charisma = value; break;
                 case StatType.Intelligence: intelligence = value; break;
+                case StatType.Wisdom: wisdom = value; break;
                 case StatType.Luck: luck = value; break;
             }
         }
 
         public void Add(StatType type, int amount)
         {
-            switch (type)
-            {
-                case StatType.Strength: strength += amount; break;
-                case StatType.Dexterity: dexterity += amount; break;
-                case StatType.Constitution: constitution += amount; break;
-                case StatType.Charisma: charisma += amount; break;
-                case StatType.Intelligence: intelligence += amount; break;
-                case StatType.Luck: luck += amount; break;
-            }
+            Set(type, Get(type) + amount);
         }
 
         #endregion
@@ -78,6 +86,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.CharacterStats
             constitution += other.constitution;
             charisma += other.charisma;
             intelligence += other.intelligence;
+            wisdom += other.wisdom;
             luck += other.luck;
         }
 
@@ -85,12 +94,13 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.CharacterStats
         {
             return new Stats
             {
-                strength = this.strength,
-                dexterity = this.dexterity,
-                constitution = this.constitution,
-                charisma = this.charisma,
-                intelligence = this.intelligence,
-                luck = this.luck
+                strength = strength,
+                dexterity = dexterity,
+                constitution = constitution,
+                charisma = charisma,
+                intelligence = intelligence,
+                wisdom = wisdom,
+                luck = luck
             };
         }
 

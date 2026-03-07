@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f39b323c7d57e4388b310f3f91c91f20, type: 3}
+  m_Name: HiredMercenaryPersonality
+  m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.Personalities.Personality
+  personalityName: Hired Mercenary
+  defensiveBiases:
+  - stat: 0
+    modifier: 1
+  - stat: 4
+    modifier: 0
+  - stat: 3
+    modifier: 0
+  pride: 0.3
+  caution: 0.7
+  volatility: 0.35
+  reactions:
+  - skill: 1
+    result: 0
+    lines:
+    - "Alright. That\u2019s serious."
+    - "I\u2019ve seen worse\u2026 but not by much."
+    - "Fine. I\u2019m listening."
+    - "You\u2019ve got the edge."
+    - No need to push further.
+  - skill: 1
+    result: 3
+    lines:
+    - "Alright. That\u2019s serious."
+    - "I\u2019ve seen worse\u2026 but not by much."
+    - "Fine. I\u2019m listening."
+    - "You\u2019ve got the edge."
+    - No need to push further.
+  - skill: 1
+    result: 1
+    lines:
+    - Alright. I hear you.
+    - Careful.
+    - "You\u2019re getting louder."
+    - "That\u2019s closer."
+    - Keep talking.
+  - skill: 1
+    result: 2
+    lines:
+    - Nah.
+    - Not feeling it.
+    - "You\u2019ll need more than that."
+    - Try harder.
+    - Still standing.
+  - skill: 0
+    result: 0
+    lines:
+    - That works.
+    - Fair enough.
+    - "You\u2019re not wrong."
+    - I can live with that.
+    - Deal.
+  - skill: 0
+    result: 3
+    lines:
+    - No.
+    - "Doesn\u2019t add up."
+    - Try again.
+    - "That\u2019s weak."
+    - "You\u2019re reaching."
+  - skill: 0
+    result: 1
+    lines:
+    - Maybe.
+    - Could work.
+    - "I\u2019m listening."
+    - "That\u2019s something."
+    - Go on.
+  - skill: 0
+    result: 2
+    lines:
+    - "Doesn\u2019t track."
+    - Not buying it.
+    - "You\u2019re stretching."
+    - "I don\u2019t see it."
+    - Needs work.

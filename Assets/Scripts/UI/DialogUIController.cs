@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Policies;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Events;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Systems;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 {
-    public class DialogUIController : MonoBehaviour
+    public class DialogUIController : MonoBehaviour, IEventSource
     {
         [Header("Panel Root")]
         [SerializeField] private GameObject panel;
@@ -42,6 +47,13 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         #endregion
 
+        #region IEventSource
+
+        public string SourceName => nameof(DialogUIController);
+        public GameSystemType SystemType => GameSystemType.UI;
+
+        #endregion
+
         #region Unity Lifecycle
 
         private void OnEnable()
@@ -50,7 +62,10 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             GameEventBus.Subscribe<CombatStartedEvent>(OnCombatStarted);
             GameEventBus.Subscribe<CombatLogEvent>(OnCombatLog);
             GameEventBus.Subscribe<CombatEndedEvent>(OnCombatEnded);
+            GameEventBus.Subscribe<SocialActionAttemptedEvent>(OnSocialActionAttempted);
+            GameEventBus.Subscribe<ResolveChangedEvent>(OnResolveChanged);
             GameEventBus.Subscribe<TollPaidEvent>(OnTollPaid);
+            GameEventBus.Subscribe<TollRefusedEvent>(OnTollRefused);
         }
 
         private void OnDisable()
@@ -59,21 +74,10 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             GameEventBus.Unsubscribe<CombatStartedEvent>(OnCombatStarted);
             GameEventBus.Unsubscribe<CombatLogEvent>(OnCombatLog);
             GameEventBus.Unsubscribe<CombatEndedEvent>(OnCombatEnded);
+            GameEventBus.Unsubscribe<SocialActionAttemptedEvent>(OnSocialActionAttempted);
+            GameEventBus.Unsubscribe<ResolveChangedEvent>(OnResolveChanged);
             GameEventBus.Unsubscribe<TollPaidEvent>(OnTollPaid);
-        }
-
-        private void Update()
-        {
-            if (currentNode == null)
-                return;
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (isTyping)
-                    CompleteLineInstantly();
-                else
-                    AdvanceNode();
-            }
+            GameEventBus.Unsubscribe<TollRefusedEvent>(OnTollRefused);
         }
 
         #endregion
@@ -95,7 +99,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             panel.SetActive(true);
             ClearChoices();
 
-            AppendLine(currentNode.Speaker, currentNode.Text, true);
+            ShowCharacterSpeech(currentNode);
         }
 
         private void OnCombatStarted(CombatStartedEvent evt)
@@ -118,10 +122,30 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             AppendLine("Combat", evt.Message, true);
         }
 
+        private void OnResolveChanged(ResolveChangedEvent evt)
+        {
+            var direction = evt.Amount < 0 ? "loses" : "gains";
+
+            AppendLine(
+                "System",
+                $"{evt.Entity.Name} {direction} {Mathf.Abs(evt.Amount)} Resolve.",
+                false);
+        }
+
+        private void OnSocialActionAttempted(SocialActionAttemptedEvent evt)
+        {
+            string result = evt.Success ? "succeeded" : "failed";
+
+            AppendLine(
+                "System",
+                $"{evt.Attacker.Name} attempted to {evt.ActionName} {evt.Target.Name} and {result}.",
+                false);
+        }        
+
         private void OnTollPaid(TollPaidEvent evt)
         {
-            AppendLine(evt.Initiator.Name, evt.Initiator.DialogLibrary.payToll.Text, true);
-
+            ShowSpeechBubble(evt.Initiator, evt.Initiator.DialogLibrary.payToll);
+            
             ClearChoices();
             currentRuntimeNode = null;
 
@@ -130,7 +154,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         private void OnTollRefused(TollRefusedEvent evt)
         {
-            AppendLine(evt.Initiator.Name, evt.Initiator.DialogLibrary.refuseToll.Text, true);
+            ShowSpeechBubble(evt.Initiator, evt.Initiator.DialogLibrary.refuseToll);
 
             ClearChoices();
             currentRuntimeNode = null;
@@ -142,7 +166,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         private void AdvanceNode()
         {
-            if (currentNode.Choices == null || currentNode.Choices.Count == 0)
+            if (currentNode == null ||
+                currentNode.Choices == null || 
+                currentNode.Choices.Count == 0)
             {
                 EndDialog();
                 return;
@@ -158,15 +184,69 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
         private void ShowNode(DialogNode node)
         {
             ClearChoices();
-            AppendLine(node.Speaker, node.Text, true);
+            ShowCharacterSpeech(node);
         }
 
         private void EndDialog()
         {
+            initiator.SpeechBubble.OnAdvanceRequested -= HandleAdvance;
+            target.SpeechBubble.OnAdvanceRequested -= HandleAdvance;
+
+            // initiator?.SpeechBubble?.Hide();
+            // target?.SpeechBubble?.Hide();
+
             currentNode = null;
 
             GameEventBus.Publish(
                 new DialogEndedEvent(initiator, target, Time.frameCount));
+        }
+
+        private void ShowCharacterSpeech(DialogNode node)
+        {
+            EntityController speaker = null;
+
+            switch (node.SpeakerRole)
+            {
+                case DialogSpeakerRole.Initiator:
+                    speaker = initiator;
+                    // target.SpeechBubble.Hide();
+                    break;
+
+                case DialogSpeakerRole.Target:
+                    speaker = target;
+                    // initiator.SpeechBubble.Hide();
+                    break;
+
+                case DialogSpeakerRole.System:
+                    AppendLine("System", node.Text, true);
+                    return;
+            }
+
+            if (speaker != null && speaker.SpeechBubble != null)
+            {
+                ShowSpeechBubble(speaker, node);
+            }
+
+            ShowChoicesIfNeeded();
+        }
+
+        private void ShowSpeechBubble(EntityController speaker, DialogNode node)
+        {
+            speaker.SpeechBubble.OnAdvanceRequested -= HandleAdvance;
+            speaker.SpeechBubble.OnAdvanceRequested += HandleAdvance;
+            speaker.SpeechBubble.Show(node.Text);
+        }
+
+        private void ShowSpeechBubble(EntityController speaker, string text)
+        {
+            speaker.SpeechBubble.OnAdvanceRequested -= HandleAdvance;
+            speaker.SpeechBubble.OnAdvanceRequested += HandleAdvance;
+            speaker.SpeechBubble.Show(text);            
+        }
+
+        private void HandleAdvance()
+        {
+            AdvanceNode();
         }
 
         #endregion
@@ -276,6 +356,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
                 Destroy(child.gameObject);
 
             choiceContainer.SetActive(false);
+            ModalUISystem.Instance.CloseModal(this);
             Debug.Log("Choices Cleared");
         }
 
@@ -294,6 +375,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             if (currentRuntimeNode != null)
             {
                 choiceContainer.SetActive(true);
+                ModalUISystem.Instance.OpenModal(this);
                 CreateRuntimeChoiceButtons(currentRuntimeNode);
             }
         }
@@ -408,7 +490,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
             if (!string.IsNullOrWhiteSpace(text))
             {
-                AppendLine(initiator.Name, text, true);
+                ShowSpeechBubble(initiator, text);
             }
             else
             {

@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 514253d5a311044b58c0ba7b354a426d, type: 3}
+  m_Name: Riddle
+  m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Abilities.SocialAbility
+  abilityName: Riddle
+  icon: {fileID: 0}
+  governingSkill: 2
+  offensiveStat: 4
+  defensiveStat: 4
+  basePower: 5
+  weakSuccessLines:
+  - What binds without rope?
+  - What steals without hands?
+  - What is seen only when lost?
+  - What bridge cannot be crossed?
+  strongSuccessLines:
+  - What weighs nothing yet crushes kings?
+  - What lives in shadow but dies in light?
+  - What is paid but never owned?
+  - What toll is taken without coin?
+  criticalSuccessLines:
+  - What stands between two worlds and judges all who pass?
+  - What demands payment yet offers passage?
+  - What is crossed once and remembered forever?
+  - What watches in silence and decides your fate?
+  weakFailureLines:
+  - What has a mouth but never eats?
+  - What runs yet never tires?
+  - What stands but never walks?
+  - What rises but never lives?
+  strongFailureLines:
+  - What breaks without being touched?
+  - What grows smaller the more you take?
+  - 'What is heavier: truth or silence?'
+  - What belongs to you, yet others use more?
+  criticalFailureLines:
+  - What burns without flame and freezes without frost?
+  - What walks on wind but leaves no shadow?
+  - "Answer me this\u2026 no, that\u2019s not it."
+  - What speaks without voice and listens without ears?

@@ -37,6 +37,7 @@ Transform:
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3872057122933806285}
   - {fileID: 4113612623775441376}
   - {fileID: 3916955562036039612}
   m_Father: {fileID: 0}
@@ -208,6 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.NpcController
   goldPopupUI: {fileID: 0}
+  speechBubble: {fileID: 6398918997750586993}
   battleIntroSprite: {fileID: 5192567680764768608, guid: ca47e4e7e6ed4418db3fea045ee42ce8, type: 3}
   victorySprite: {fileID: 5013750305564586707, guid: ca47e4e7e6ed4418db3fea045ee42ce8, type: 3}
   defeatedSprite: {fileID: -3992854602077150086, guid: ca47e4e7e6ed4418db3fea045ee42ce8, type: 3}
@@ -237,7 +239,12 @@ MonoBehaviour:
     constitution: 5
     charisma: 5
     intelligence: 5
+    wisdom: 10
     luck: 5
+  baseSkills:
+    persuade: 0
+    intimidate: 0
+    riddle: 0
   initiativeRoll: 0
   attack: 3
   defense: 1
@@ -252,6 +259,83 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f03ee2b4f24c941e5b17e2b9b28d15d7, type: 2}
   - {fileID: 11400000, guid: 3538289a4c24b460680814b748f4d78c, type: 2}
   - {fileID: 11400000, guid: 43c62434ad8004932a9f77e00b5a0378, type: 2}
+  socialAbilities: []
+  socialResponseProfile:
+    high:
+      weakSuccess:
+      - "You\u2019ll have to do better than that."
+      - "I\u2019ve heard worse."
+      - "Your words don\u2019t reach me."
+      strongSuccess:
+      - Is that truly your best?
+      - I stand firm.
+      - You mistake resolve for weakness.
+      weakFailure:
+      - Hmph. Clever.
+      - "A fair strike\u2026"
+      - "I\u2019ll grant you that."
+      strongFailure:
+      - "You press hard\u2026"
+      - That cuts deeper than you know.
+      - "Careful\u2026 you tread dangerous ground."
+      criticalSuccess:
+      - Your resolve falters before mine.
+      - I see through you completely.
+      - You were never prepared for this.
+      criticalFailure:
+      - "\u2026That was well played."
+      - "You\u2019ve found your mark."
+      - I did not expect that.
+    mid:
+      weakSuccess:
+      - "I\u2019m not finished yet."
+      - "You\u2019ll not break me so easily."
+      - Still standing.
+      strongSuccess:
+      - You waver.
+      - Your confidence cracks.
+      - I see doubt in your eyes.
+      weakFailure:
+      - "You\u2019re getting closer\u2026"
+      - Enough.
+      - Watch your tongue.
+      strongFailure:
+      - "This is\u2026 frustrating."
+      - You push too far.
+      - "I won\u2019t be mocked."
+      criticalSuccess:
+      - "You\u2019ve overreached."
+      - This ends now.
+      - You falter.
+      criticalFailure:
+      - "That\u2026 stung."
+      - You strike true.
+      - "\u2026Damn."
+    low:
+      weakSuccess:
+      - "I won\u2019t fall."
+      - Not yet.
+      - I endure.
+      strongSuccess:
+      - You will not break me!
+      - I refuse!
+      - I stand!
+      weakFailure:
+      - Stop.
+      - "Enough\u2026"
+      - "That\u2019s unfair."
+      strongFailure:
+      - "I\u2026 misjudged you."
+      - "You\u2019ve broken through."
+      - "\u2026I see it now."
+      criticalSuccess:
+      - You will remember this!
+      - I am not done!
+      - You miscalculated!
+      criticalFailure:
+      - "\u2026I yield."
+      - I cannot.
+      - You win.
   hurtSfx: {fileID: 8300000, guid: e958e874fb15e3361b3a930ce0c4be9b, type: 3}
   deathSfx: {fileID: 8300000, guid: 39565decb50c5460b9de94bc2720c2f6, type: 3}
   entityType: 0
@@ -580,3 +664,207 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1001 &3774217358364355044
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8021404075461764970}
+    m_Modifications:
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 350
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 767373116372000780, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_Name
+      value: SpeechBubble
+      objectReference: {fileID: 0}
+    - target: {fileID: 767373116372000780, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174358537136213597, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174358537136213597, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174358537136213597, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174358537136213597, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7830968499719092117, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: entity
+      value: 
+      objectReference: {fileID: 8091140681091881740}
+    - target: {fileID: 8916289552435669206, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8916289552435669206, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8916289552435669206, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 8916289552435669206, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 8916289552435669206, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.05999756
+      objectReference: {fileID: 0}
+    - target: {fileID: 8916289552435669206, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.08000183
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 767373116372000780, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 8804045821060972698}
+  m_SourcePrefab: {fileID: 100100000, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+--- !u!224 &3872057122933806285 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 134256695769972009, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+  m_PrefabInstance: {fileID: 3774217358364355044}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4523574971815037416 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 767373116372000780, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+  m_PrefabInstance: {fileID: 3774217358364355044}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &8804045821060972698
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4523574971815037416}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &6398918997750586993 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7830968499719092117, guid: cf1f9800cc3f04eaaa1fc263c0bb45aa, type: 3}
+  m_PrefabInstance: {fileID: 3774217358364355044}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4523574971815037416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d04ce8564093944c4aeb0687dd5aa0fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.UI.SpeechBubbleUI

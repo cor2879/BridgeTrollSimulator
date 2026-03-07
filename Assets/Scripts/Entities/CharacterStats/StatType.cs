@@ -7,6 +7,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.CharacterStats
         Constitution,
         Charisma,
         Intelligence,
+        Wisdom,
         Luck
     }
 }

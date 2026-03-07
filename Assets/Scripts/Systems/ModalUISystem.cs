@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
@@ -16,6 +17,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 
         public string SourceName => nameof(ModalUISystem);
         public GameSystemType SystemType => GameSystemType.System;
+
+        private HashSet<IEventSource> openModals = new HashSet<IEventSource>();
 
         public static ModalUISystem Instance 
         { 
@@ -43,7 +46,13 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 
         public void OpenModal(IEventSource source)
         {
+            if (openModals.Contains(source)) // Modal is already being tracked
+            {
+                return;
+            }
+
             activeModalCount++;
+            openModals.Add(source);
 
             if (activeModalCount == 1)
             {
@@ -54,6 +63,12 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 
         public void CloseModal(IEventSource source)
         {
+            if (!openModals.Contains(source))
+            {
+                return;
+            }
+
+            openModals.Remove(source);
             activeModalCount = Mathf.Max(0, activeModalCount - 1);
 
             if (activeModalCount == 0)

@@ -8,7 +8,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog
     [CreateAssetMenu(menuName = "BridgeTroll/Dialog Node")]
     public class DialogNode : ScriptableObject
     {
-        public string Speaker;
+        public DialogSpeakerRole SpeakerRole;
 
         [TextArea(2, 5)]
         public string Text;

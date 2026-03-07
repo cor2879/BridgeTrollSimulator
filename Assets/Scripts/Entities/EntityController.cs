@@ -12,10 +12,15 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameStateManagement;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.CharacterSkills;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.CharacterStats;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.Personalities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.StatusEffects;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.InputHandling;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Abilities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.UI;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Utilities;
 using UnityEngine;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
@@ -36,6 +41,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         [Header("UI and Sprites")]
         [SerializeField]
         protected GoldPopupUI goldPopupUI;
+        [SerializeField]
+        private SpeechBubbleUI speechBubble;
         [SerializeField]
         private Sprite battleIntroSprite;
         [SerializeField]
@@ -88,6 +95,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         protected int currentHealth;
         [SerializeField]
         protected Stats baseStats = new();
+        [SerializeField]
+        protected Skills baseSkills = new();
         [SerializeField, ReadOnly]
         protected int initiativeRoll;
         [SerializeField]
@@ -109,9 +118,17 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         [SerializeField]
         protected float temporaryCritBonus;
         [SerializeField]
+        private int momentum;
+        [SerializeField]
         protected CombatFaction faction;
         [SerializeField]
         protected Ability[] abilities;
+        [SerializeField]
+        protected SocialAbility[] socialAbilities;
+        [SerializeField]
+        protected SocialResponseProfile socialResponseProfile;
+        [SerializeField]
+        protected Personality personality;
 
         #endregion
 
@@ -154,7 +171,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         public abstract ControlMode DefaultControlMode { get; }
         public Collider2D Collider => cldr;
-        
+        public Rigidbody2D RigidBody => rb;
+
         public SpriteRenderer SpriteRenderer 
         {
             get
@@ -173,6 +191,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         public IInputSource InputSource => inputSource;
         public EntityCombatUI CombatUI => entityCombatUI;
         public GoldPopupUI GoldPopupUI => goldPopupUI;
+        public SpeechBubbleUI SpeechBubble => speechBubble;
         public bool IsPlayerControlled => isPlayerControlled;
         public EntityDialogLibrary DialogLibrary { get; private set; }
         public Sprite BattleIntroSprite => battleIntroSprite;
@@ -186,6 +205,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         public EntitySize Size { get => size; }
         public int Level { get => level; private set => level = value; }
         public Stats BaseStats => baseStats;
+        public Skills BaseSkills => baseSkills;
         public float Bravery => bravery;
         public int Attack
         {
@@ -250,7 +270,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             }
         }
         public CombatFaction Faction => faction;
+        public bool IsFacingRight => facingRight;
+        public int Momentum => momentum;
         public Ability[] Abilities => abilities;
+        public SocialAbility[] SocialAbilities => socialAbilities;
+        public Personality Personality { get =>  personality; private set => personality = value; }
         public List<StatusEffect> ActiveEffects => activeEffects;
 
         #endregion
@@ -286,6 +310,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         {
             if (GameStateSystem.Instance.IsPaused)
             {
+                // animator.speed = 0f;
+                animatorSpeed = 0f;
+                this.UpdateAnimator();
                 return;
             }
 
@@ -318,7 +345,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
                 controlMode == ControlMode.CutScene ||
                 controlMode == ControlMode.Dead ||
                 controlMode == ControlMode.Npc ||
-                controlMode == ControlMode.Encounter)
+                controlMode == ControlMode.Encounter ||
+                controlMode == ControlMode.Combat)
             {
                 return;
             }
@@ -403,7 +431,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
             if (CurrentControlMode == ControlMode.Passing)
             {
-                facingRight = false;
+                SetFacing(false);
                 rb.linearVelocity = new Vector2(
                     moveSpeed * (facingRight ? 1f : -1f),
                     rb.linearVelocity.y);
@@ -422,13 +450,22 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
                 rb.linearVelocity.y);
         }
 
-        protected void Flip()
+        public void SetFacing(bool faceRight)
         {
-            facingRight = !facingRight;
+            if (facingRight == faceRight)
+            {
+                return;
+            }
 
+            facingRight = faceRight;
             animator.SetFloat(
                 Constants.AnimatorParams.xDirection,
-                !facingRight ? -1f : 1f);
+                facingRight ? 1f : -1f);
+        }
+
+        protected void Flip()
+        {
+            SetFacing(!facingRight);
         }
 
         #endregion
@@ -437,6 +474,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         protected virtual void UpdateAnimator()
         {
+            animator.speed = 1f;
             animator.SetFloat(
                 Constants.AnimatorParams.Speed, 
                 Mathf.Abs(animatorSpeed));
@@ -495,6 +533,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
             if (npc.CurrentControlMode != ControlMode.Passing)
             {
+                player.RigidBody.linearVelocity = Vector2.zero;
+
                 GameEventBus.Publish(
                     new EntityEncounterEvent(player, npc, Time.frameCount));
             }
@@ -945,6 +985,67 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         public void ConsumeProgressionPoints(int amount)
         {
             progressionPoints -= amount;
+        }
+
+        #endregion
+
+        #region Dialog
+
+        public void Speak(string line)
+        {
+            if (speechBubble == null)
+            {
+                Debug.Log($"{Name} Speech Bubble activated but no Speech Bubble designated.");
+                return;
+            }
+
+            speechBubble.Show(line);
+        }
+
+        public void ClearSpeech()
+        {
+            if (speechBubble == null)
+            {
+                return;
+            }
+
+            speechBubble.gameObject.SetActive(false);
+        }
+
+        public string GetSocialResponse(
+            SocialExchangeOutcome outcome,
+            int currentResolve,
+            int maxResolve)
+        {
+            if (Personality == null)
+                return string.Empty;
+
+            var reaction = Personality.GetReaction(
+                outcome.GoverningSkill,
+                outcome.Result);
+
+            if (string.IsNullOrEmpty(reaction))
+            {
+                return "...";
+            }
+
+            return reaction;
+        }
+
+        public void ModifyMomentum(int amount)
+        {
+            momentum = Mathf.Clamp(momentum + amount, -3, 3);
+        }
+
+        public void DecayMomentum()
+        {
+            if (momentum > 0) momentum--;
+            if (momentum < 0) momentum++;
+        }
+
+        public void AssignPersonality(Personality personality)
+        {
+            Personality = personality;
         }
 
         #endregion
