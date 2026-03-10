@@ -1,16 +1,18 @@
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
-using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 {
     public class EntityDespawningEvent : GameEvent
     {
-        public EntityController Entity => (EntityController)Sender;
-
         public EntityDespawningEvent(
-            EntityController entity,
+            IEventSource entity,
             int frameCount)
             : base(entity, frameCount)
         {}
+
+        public override string ToString()
+        {
+            return $"{nameof(EntityDespawningEvent)}::Entity:{Sender.SourceName} @ Frame {Frame}";
+        }
     }
 }

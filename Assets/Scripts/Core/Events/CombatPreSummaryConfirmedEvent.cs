@@ -1,16 +1,16 @@
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
-using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Interfaces;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 {
     public class CombatPreSummaryConfirmedEvent : GameEvent, ITargetedEvent
     {
-        public EntityController Initiator => (EntityController)Sender;
-        public EntityController Target { get; }
+        public IReceiver Initiator => (IReceiver)Sender;
+        public IReceiver Target { get; }
         
         public CombatPreSummaryConfirmedEvent(
-            EntityController initiator,
-            EntityController target,
+            IReceiver initiator,
+            IReceiver target,
             int frame)
             : base(initiator, frame)
         {
@@ -19,7 +19,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 
         public override string ToString()
         {
-            return $"{nameof(CombatStartedEvent)}: {Initiator?.name} vs {Target?.name} @ Frame {Frame}";
+            return $"{nameof(CombatStartedEvent)}: {Initiator?.SourceName} vs {Target?.SourceName} @ Frame {Frame}";
         }
     }
 }

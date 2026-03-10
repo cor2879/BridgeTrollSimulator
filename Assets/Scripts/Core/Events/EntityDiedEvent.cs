@@ -5,12 +5,15 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 {
     public class EntityDiedEvent : GameEvent
     {
-        public EntityController Entity => (EntityController)Sender;
-
         public EntityDiedEvent(
-            EntityController entity,
+            IEventSource entity,
             int frameCount)
             : base(entity, frameCount)
         {}
+
+        public override string ToString()
+        {
+            return $"{nameof(EntityDiedEvent)}::Entity:{Sender.SourceName} @ Frame {Frame}";
+        }
     }
 }

@@ -1,16 +1,17 @@
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Interfaces;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 {
     public class LevelUpNotificationDismissedEvent : GameEvent, ITargetedEvent
     {
-        public EntityController Target { get; }
+        public IReceiver Target { get; }
 
         public LevelUpNotificationDismissedEvent(
             IEventSource sender,
-            EntityController target,
+            IReceiver target,
             int frame)
             : base(sender, frame)
         {
@@ -19,7 +20,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 
         public override string ToString()
         {
-            return $"{nameof(LevelUpNotificationDismissedEvent)}::Target:{Target.Name}:: @ Frame {Frame}";
+            return $"{nameof(LevelUpNotificationDismissedEvent)}::Sender:{Sender.SourceName}" +
+                $"::Target:{Target.SourceName} @ Frame {Frame}";
         }
     }
 }

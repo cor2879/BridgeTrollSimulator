@@ -30,7 +30,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.Personalities
         // Runtime lookup
         private Dictionary<(SkillType, SocialExchangeResult), List<string>> lookup;
 
-        public string PersonalityName { get => personalityName; }
+        public string Name { get => personalityName; }
 
         private void OnEnable()
         {
@@ -108,7 +108,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.Personalities
 
         public override string ToString()
         {
-            return PersonalityName;
+            return Name;
         }
     }
 }

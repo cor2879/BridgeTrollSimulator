@@ -1,4 +1,4 @@
-using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 {
@@ -8,10 +8,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
         public int NewAmount;
         public int Delta;
 
-        public EntityController Target => (EntityController)Sender;
-
         public GoldFeedbackEvent(
-            EntityController target,
+            IEventSource target,
             int previous,
             int current,
             int delta,
@@ -25,7 +23,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 
         public override string ToString()
         {
-            return $"{nameof(GoldFeedbackEvent)} {Target.Name} :: Previous Amount {PreviousAmount} :: NewAmount {NewAmount} :: Delta {Delta} @ Frame {Frame}";
+            return $"{nameof(GoldFeedbackEvent)}::Sender:{Sender.SourceName} :: Previous Amount {PreviousAmount} ::" +
+                $" NewAmount {NewAmount} :: Delta {Delta} @ Frame {Frame}";
         }
     }
 }

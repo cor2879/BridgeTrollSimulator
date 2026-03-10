@@ -2,6 +2,7 @@ using UnityEngine;
 
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Audio;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 {
@@ -22,16 +23,17 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
             Debug.Log($"Gold Added {evt.Amount}");
             GameEventBus.Publish(
                 new SoundEffectEvent(
-                    evt.Initiator,
+                    evt.Sender,
                     AudioSystem.Library.coins,
                     Time.frameCount));
 
-            var newAmount = evt.Initiator.Gold;
+            var initiator = evt.Sender as EntityController;
+            var newAmount = initiator.Gold;
             int previous = newAmount - evt.Amount;
 
             GameEventBus.Publish(
                 new GoldFeedbackEvent(
-                    evt.Initiator,
+                    initiator,
                     previous,
                     newAmount,
                     evt.Amount,

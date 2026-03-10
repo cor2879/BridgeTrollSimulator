@@ -80,12 +80,12 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         {
             base.Receive(evt);
 
-            if (evt is TollRefusedEvent refused && refused.Target == this)
+            if (evt is TollRefusedEvent refused && refused.Target as EntityController == this)
             {
                 HandleTollRefusal(refused);
             }
 
-            if (evt is TollPaidEvent paid && paid.Target == this)
+            if (evt is TollPaidEvent paid && paid.Target as EntityController == this)
             {
                 HandleTollPaidEvent(paid);
             }
@@ -98,8 +98,10 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         private void HandleTollRefusal(TollRefusedEvent evt)
         {
+            /*
             GameEventBus.Publish(
                 new CombatStartedEvent(this, evt.Initiator, Time.frameCount));
+            */
         }
 
         private void HandleTollPaidEvent(TollPaidEvent evt)

@@ -229,6 +229,8 @@ MonoBehaviour:
   gold: 40
   maxHealth: 50
   maxStamina: 10
+  maxResolve: 100
+  currentResolve: 0
   attackCost: 3
   defendRestore: 2
   currentStamina: 0
@@ -254,6 +256,7 @@ MonoBehaviour:
   critChance: 0.1
   critMultiplier: 2
   temporaryCritBonus: 0
+  momentum: 0
   faction: 2
   abilities:
   - {fileID: 11400000, guid: f03ee2b4f24c941e5b17e2b9b28d15d7, type: 2}
@@ -336,6 +339,7 @@ MonoBehaviour:
       - "\u2026I yield."
       - I cannot.
       - You win.
+  personality: {fileID: 0}
   hurtSfx: {fileID: 8300000, guid: e958e874fb15e3361b3a930ce0c4be9b, type: 3}
   deathSfx: {fileID: 8300000, guid: 39565decb50c5460b9de94bc2720c2f6, type: 3}
   entityType: 0
@@ -399,7 +403,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4113612623775441376}
   - component: {fileID: 8904510182280885156}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: EncounterZone
   m_TagString: NPC
   m_Icon: {fileID: 0}

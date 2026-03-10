@@ -1,17 +1,17 @@
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
-using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Interfaces;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 {
     public class LevelUpEvent : GameEvent, ITargetedEvent
     {
-        public EntityController Target { get; }
+        public IReceiver Target { get; }
         public int NewLevel { get; }
         public int PointsGranted { get; }
 
         public LevelUpEvent(
             IEventSource sender,
-            EntityController target,
+            IReceiver target,
             int newLevel,
             int pointsGranted,
             int frame)
@@ -24,7 +24,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 
         public override string ToString()
         {
-            return $"{nameof(LevelUpEvent)}::Target:{Target.Name}::NewLevel:{NewLevel}::" +
+            return $"{nameof(LevelUpEvent)}::Target:{Target.SourceName}::NewLevel:{NewLevel}::" +
                 $"PointsGraned:{PointsGranted}:: @ Frame {Frame}";
         }
     }

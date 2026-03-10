@@ -3,6 +3,7 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Abilities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.UI;
@@ -92,7 +93,13 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel
 
         private void OnSocialDuelStarted(SocialDuelStartedEvent evt)
         {
-            StartDuel(evt.Initiator, evt.Target);
+            var initiator = evt.Initiator as EntityController;
+            var target = evt.Target as EntityController;
+
+            var player = initiator.IsPlayerControlled ? initiator : target;
+            var npc = initiator.IsPlayerControlled ? target : initiator;
+
+            StartDuel(player, npc);
         }
 
         #endregion

@@ -17,6 +17,7 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.CharacterStats;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.Personalities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.StatusEffects;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.InputHandling;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Abilities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.UI;
@@ -30,7 +31,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collider2D))]
     public abstract class EntityController 
-        : MonoBehaviour, IEventSource, IEncounterable
+        : MonoBehaviour, IReceiver, IEncounterable
     {
         protected Animator animator;
         protected Rigidbody2D rb;
@@ -85,6 +86,10 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         protected int maxHealth;
         [SerializeField]
         protected int maxStamina = 10;
+        [SerializeField]
+        protected int maxResolve = 100;
+        [SerializeField, ReadOnly]
+        protected int currentResolve;
         [SerializeField]
         protected int attackCost = 3;
         [SerializeField]
@@ -201,7 +206,21 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         #region Stats
 
-        public string Name { get => entityName; set => this.entityName = value; }
+        public string Name 
+        { 
+            get
+            {
+                if (Personality != null)
+                {
+                    return $"{entityName} ({Personality})";
+                }
+
+                return entityName;
+            } 
+            
+            set => this.entityName = value; 
+        }
+
         public EntitySize Size { get => size; }
         public int Level { get => level; private set => level = value; }
         public Stats BaseStats => baseStats;
@@ -279,11 +298,34 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         #endregion
 
-        public GameSystemType SystemType => GameSystemType.Entity;
+        #region IEventSource
 
-        public string SourceName => sourceName;
+        public GameSystemType SystemType => GameSystemType.Entity;
+        public string SourceName => Name;
 
         #endregion
+
+        #region IReactor
+
+        public int Resolve => currentResolve;
+
+        float IReactor.Aggression
+        {
+            get
+            {
+                var value = Bravery;
+                value += Momentum * 0.1f;
+                return Mathf.Clamp01(value);
+            }
+        }
+
+        int IReactor.Charisma => BaseStats.Charisma;
+
+        #endregion
+
+        #endregion
+
+        #region Initialization and Iteration
 
         protected virtual void Awake()
         {
@@ -304,11 +346,14 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
             RecalculateDerivedStats();
             currentHealth = maxHealth;
+            currentResolve = maxResolve;
         }
 
         protected virtual void Update()
         {
-            if (GameStateSystem.Instance.IsPaused)
+            if (GameStateSystem.Instance.IsPaused &&
+                CurrentControlMode != ControlMode.Passing &&
+                CurrentControlMode != ControlMode.Leaving)
             {
                 // animator.speed = 0f;
                 animatorSpeed = 0f;
@@ -322,13 +367,32 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         protected virtual void FixedUpdate()
         {
-            if (GameStateSystem.Instance.IsPaused)
+            if (GameStateSystem.Instance.IsPaused &&
+                CurrentControlMode != ControlMode.Passing &&
+                CurrentControlMode != ControlMode.Leaving)
             {
                 return;
             }
 
             this.ApplyMovement();
         }
+
+        private void CleanupUI()
+        {
+            ClearSpeech();
+
+            if (entityCombatUI != null)
+            {
+                entityCombatUI.SetActive(false);
+            }
+
+            if (goldPopupUI != null)
+            {
+                goldPopupUI.SetActive(false);
+            }
+        }
+
+        #endregion
 
         #region Input
 
@@ -495,6 +559,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         public void BeginDespawn()
         {
+            CleanupUI();
             StartCoroutine(DespawnAfterDelay(0.5f));
             GameEventBus.Publish(
                 new EntityDespawningEvent(this, Time.frameCount));
@@ -515,23 +580,19 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             if (!other.TryGetComponent<EntityController>(out var otherEntity))
             {
                 return;
-            }
-
-            if (!TryGetComponent<EntityController>(out var thisEntity))
-            {
-                return;
-            }   
+            } 
 
             // Only trigger encounter if exactly one is player-controlled
-            if (thisEntity.IsPlayerControlled == otherEntity.IsPlayerControlled)
+            if (this.IsPlayerControlled == otherEntity.IsPlayerControlled)
             {
                 return;
             }
 
-            var player = thisEntity.IsPlayerControlled ? thisEntity : otherEntity;
-            var npc    = thisEntity.IsPlayerControlled ? otherEntity : thisEntity;
+            var player = this.IsPlayerControlled ? this : otherEntity;
+            var npc    = this.IsPlayerControlled ? otherEntity : this;
 
-            if (npc.CurrentControlMode != ControlMode.Passing)
+            if (npc.CurrentControlMode != ControlMode.Passing &&
+                npc.CurrentControlMode != ControlMode.Leaving)
             {
                 player.RigidBody.linearVelocity = Vector2.zero;
 
@@ -735,45 +796,14 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             return bestAbility;
         }
 
-        public virtual void HandleTollDemand(TollDemandedEvent evt)
+        public void PayToll(IReceiver payee, int amount)
         {
-            if (evt.Target != this)
-                return;
-
-            if (Gold < evt.Amount)
-            {
-                GameEventBus.Publish(
-                    new TollRefusedEvent(
-                        this,
-                        evt.Initiator, 
-                        evt.Amount,
-                        Time.frameCount));
-                return;
-            }
-
-            var payChance = CalculatePayChance(evt.Amount);
-            Debug.Log($"PayChance: {payChance}");
-            var roll = UnityEngine.Random.value;
-
-            // Very naive first pass logic
-            if (roll < payChance)
-            {
-                GameEventBus.Publish(
+            GameEventBus.Publish(
                     new TollPaidEvent(
                         this, 
-                        evt.Initiator, 
-                        DeductGold(evt.Amount), 
+                        payee, 
+                        DeductGold(amount), 
                         Time.frameCount));
-            }
-            else
-            {
-                GameEventBus.Publish(
-                    new TollRefusedEvent(
-                        this,
-                        evt.Initiator, 
-                        evt.Amount,
-                        Time.frameCount));
-            }
         }
 
         private float CalculatePayChance(int tollAmount)
@@ -792,11 +822,6 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         public virtual void Receive<TEvent>(TEvent evt) where TEvent : ITargetedEvent
         {
-            if (evt is TollDemandedEvent toll)
-            {
-                HandleTollDemand(toll);
-            }
-
             if (evt is CombatRewardEvent reward)
             {
                 AddExperience(reward.Experience);
@@ -999,6 +1024,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
                 return;
             }
 
+            ClearSpeech();
             speechBubble.Show(line);
         }
 
@@ -1009,7 +1035,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
                 return;
             }
 
-            speechBubble.gameObject.SetActive(false);
+            speechBubble.Hide();
         }
 
         public string GetSocialResponse(

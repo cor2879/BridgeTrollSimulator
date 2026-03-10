@@ -1,18 +1,18 @@
-using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 {
     public class DefendEvent : GameEvent
     {
-        public EntityController Target => (EntityController)Sender;
-        public int Amount { get; }
-
-        public bool IsCrit { get; }
-
         public DefendEvent(
-            EntityController subject,
+            IEventSource initiator,
             int frame)
-            : base(subject, frame)
-        { }         
+            : base(initiator, frame)
+        { }
+
+        public override string ToString()
+        {
+            return $"{nameof(DefendEvent)}::Initiator:{Sender.SourceName} @ Frame {Frame}";
+        } 
     }
 }

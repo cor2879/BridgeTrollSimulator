@@ -14,7 +14,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Spawning
                 return;
             }
 
-            if (entity.CurrentControlMode == ControlMode.Passing)
+            if (entity.CurrentControlMode == ControlMode.Passing ||
+                entity.CurrentControlMode == ControlMode.Leaving)
             {
                 entity.BeginDespawn();   
             }

@@ -1,17 +1,17 @@
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
-using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Events
 {
     public class ResolveChangedEvent : GameEvent
     {
-        public EntityController Entity => (EntityController)Sender;
+        public IReactor Entity => (IReactor)Sender;
         public int Amount { get; }
 
         public ResolveChangedEvent(
-            EntityController entity,
+            IReactor entity,
             int amount,
             int frame)
             : base(entity, frame)
@@ -21,7 +21,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Events
 
         public override string ToString()
         {
-            return $"{nameof(ResolveChangedEvent)}::Entity:{Entity.Name}" +
+            return $"{nameof(ResolveChangedEvent)}::Entity:{Entity.SourceName}" +
                 $"::Amount:{Amount} @ Frame {Frame}";
         }
     }

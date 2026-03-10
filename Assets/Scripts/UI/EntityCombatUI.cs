@@ -57,7 +57,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         public void OnCombatConfirmed(CombatConfirmedEvent evt)
         {
-            if (evt.Initiator != entity && evt.Target != entity)
+            if ((EntityController)evt.Initiator != entity && (EntityController)evt.Target != entity)
             {
                 return;
             }
@@ -67,7 +67,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         public void OnCombatEnded(CombatEndedEvent evt)
         {
-            if (evt.Initiator != entity && evt.Target != entity)
+            if ((EntityController)evt.Initiator != entity && (EntityController)evt.Target != entity)
             {
                 return;
             }

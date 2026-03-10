@@ -67,6 +67,12 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         protected override void ApplyMovement()
         {
+            if (CurrentControlMode == ControlMode.Leaving)
+            {
+                rb.linearVelocity = new Vector2(walkSpeed, rb.linearVelocity.y);
+                return;    
+            }
+
             if (CurrentControlMode != ControlMode.Npc)
             {
                 base.ApplyMovement();
@@ -91,7 +97,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         {
             base.Receive(evt);
 
-            if (evt is AllowToPassEvent allow && allow.Target == this)
+            if (evt is AllowToPassEvent allow && allow.Target as EntityController == this)
             {
                 BeginPassing();
             }
@@ -125,6 +131,16 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             {
                 base.Die();
             }
+        }
+
+        public void Leave()
+        {
+            SetControlMode(ControlMode.Leaving);
+
+            rb.linearVelocity = new Vector2(walkSpeed, rb.linearVelocity.y);
+
+            GameEventBus.Publish(
+                new LeaveEvent(this, Time.frameCount));
         }
     }
 }

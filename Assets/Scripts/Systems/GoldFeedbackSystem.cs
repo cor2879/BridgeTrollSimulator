@@ -1,6 +1,7 @@
 using UnityEngine;
 
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.UI;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
@@ -24,7 +25,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 
         private void SpawnPopup(GoldFeedbackEvent evt)
         {
-            var popupUI = evt.Target.GoldPopupUI;
+            var popupUI = ((EntityController)evt.Sender).GoldPopupUI;
 
             if (popupUI == null)
             {

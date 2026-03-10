@@ -37,7 +37,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Effects
 
         private void OnDamageTaken(DamageTakenEvent evt)
         {
-            if (evt.Target != entity)
+            if (evt.Sender as EntityController != entity)
                 return;
 
             StartFlash();

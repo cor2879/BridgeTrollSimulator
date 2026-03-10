@@ -87,18 +87,21 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 
         private void OnCombatConfirmed(CombatConfirmedEvent evt)
         {
-            evt.Initiator.EnterCombat();
-            evt.Target.EnterCombat();
+            var initiator = evt.Initiator as EntityController;
+            var target = evt.Target as EntityController;
+
+            initiator.EnterCombat();
+            target.EnterCombat();
 
             combatants = new List<EntityController>
             {
-                evt.Initiator,
-                evt.Target
+                initiator,
+                target
             };
 
             BuildInitiativeOrder();
-            var teamA = new List<EntityController>() { evt.Initiator };
-            var teamB = new List<EntityController>() { evt.Target };
+            var teamA = new List<EntityController>() { initiator };
+            var teamB = new List<EntityController>() { target };
 
             battlePreSummaryUI.Show(
                 teamA, teamB, initiativeOrder.First().Entity, evt);
@@ -134,8 +137,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 
         private CombatResolutionData BuildResolution(CombatEndedEvent evt)
         {
-            var player = evt.Initiator;
-            var enemy = evt.Target;
+            var player = evt.Initiator as EntityController;
+            var enemy = evt.Target as EntityController;
             var outcome = evt.Outcome;
             CombatFaction winningFaction = CombatFaction.Neutral;
             var experience = 0;

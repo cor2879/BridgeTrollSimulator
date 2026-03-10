@@ -1,11 +1,11 @@
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
-using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Interfaces;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 {
     public class CombatRewardEvent : GameEvent, ITargetedEvent
     {
-        public EntityController Target { get; }
+        public IReceiver Target { get; }
         public int Experience { get; }
         public int Fame { get; }
         public int Respect { get; }
@@ -14,7 +14,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 
         public CombatRewardEvent(
             IEventSource sender,
-            EntityController target,
+            IReceiver target,
             int experience,
             int fame,
             int respect,

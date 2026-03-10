@@ -1,19 +1,19 @@
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
-using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Interfaces;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 {
     public class CombatEndedEvent : GameEvent, ITargetedEvent
     {
-        public EntityController Initiator => (EntityController)Sender;
-        public EntityController Target { get; }
+        public IReceiver Initiator => (IReceiver)Sender;
+        public IReceiver Target { get; }
         public CombatOutcome Outcome { get; }
         
         public CombatEndedEvent(
-            EntityController initiator,
-            EntityController target,
+            IReceiver initiator,
+            IReceiver target,
             CombatOutcome combatOutcome,
             int frame)
             : base(initiator, frame)
@@ -24,7 +24,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 
         public override string ToString()
         {
-            return $"{nameof(CombatEndedEvent)}: {Initiator?.name} vs {Target?.name} @ Frame {Frame}";
+            return $"{nameof(CombatEndedEvent)}: {Initiator?.SourceName} vs {Target?.SourceName} Outcome: {Outcome} @ Frame {Frame}";
         }
     }
 }

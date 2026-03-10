@@ -15,5 +15,10 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
         { 
             Data = data;
         }         
+
+        public override string ToString()
+        {
+            return $"{nameof(CombatResolutionCompletedEvent)}::Initiator:{Sender.SourceName}::Data:{Data} @ Frame {Frame}";
+        }
     }
 }

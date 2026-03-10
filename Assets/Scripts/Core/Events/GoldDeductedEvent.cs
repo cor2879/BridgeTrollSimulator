@@ -1,16 +1,13 @@
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
-using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 {
     public class GoldDeductedEvent : GameEvent
     {
-        public EntityController Initiator => (EntityController)Sender;
-        public EntityController Target { get; }
         public int Amount { get; }
 
         public GoldDeductedEvent(
-            EntityController initiator,
+            IEventSource initiator,
             int amount,
             int frame)
             : base(initiator, frame)
@@ -20,7 +17,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 
         public override string ToString()
         {
-            return $"{nameof(GoldDeductedEvent)}: {Initiator?.name} Amount: {Amount} @ Frame {Frame}";
+            return $"{nameof(GoldDeductedEvent)}::Sender:{Sender.SourceName} Amount: {Amount} @ Frame {Frame}";
         }
     }
 }

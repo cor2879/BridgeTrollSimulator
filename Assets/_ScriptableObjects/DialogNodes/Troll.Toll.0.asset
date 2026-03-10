@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Troll.Toll.0
   m_EditorClassIdentifier: Assembly-CSharp:OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog:DialogNode
-  Speaker: Troll
+  SpeakerRole: 0
   Text: A toll is a toll, and this bridge has a Troll.  Therefore you must pay the
     toll!
   Choices:
@@ -24,7 +24,7 @@ MonoBehaviour:
     NextNode: {fileID: 11400000, guid: d1798ebe40bdf3713805e9d6a7c6a402, type: 2}
     actions:
     - {fileID: 11400000, guid: 529a8b166e5e944d4957c99567d7b435, type: 2}
-  - ChoiceText: Start Social Duel
-    NextNode: {fileID: 11400000, guid: bc9d22e5ecef14663b595c96a4b6053d, type: 2}
+  - ChoiceText: Refuse Passage
+    NextNode: {fileID: 11400000, guid: b024c507ff049204098c1dba5f5388d5, type: 2}
     actions:
-    - {fileID: 11400000, guid: c165cfe428ef64431aeb3ec74294b7aa, type: 2}
+    - {fileID: 11400000, guid: 4aac4126f466153f6b1e7cd3a4d8c244, type: 2}

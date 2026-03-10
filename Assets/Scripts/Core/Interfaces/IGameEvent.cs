@@ -9,9 +9,4 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces
         int Frame { get; }
         DateTime Timestamp { get; }
     }
-
-    public interface ITargetedEvent : IGameEvent
-    {
-        EntityController Target { get; }
-    }
 }

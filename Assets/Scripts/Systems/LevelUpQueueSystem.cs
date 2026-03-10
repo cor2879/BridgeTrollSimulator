@@ -3,6 +3,7 @@ using UnityEngine;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameStateManagement;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.UI;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
@@ -15,7 +16,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
         private LevelUpScreenUI levelUpScreenUI;
 
         private readonly Queue<LevelUpEvent> queue = new();
-        private LevelUpEvent activeLevelUp;
+        private LevelUpEvent activeLevelUpEvent;
 
         private void OnEnable()
         {
@@ -48,25 +49,25 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 
         private void OnNotificationDismissed(LevelUpNotificationDismissedEvent evt)
         {
-            if (activeLevelUp == null)
+            if (activeLevelUpEvent == null)
             {
                 return;
             }
 
             GameStateSystem.Instance.SetState(GameState.LevelUp);
-            levelUpScreenUI.Show(evt.Target);
+            levelUpScreenUI.Show(evt.Target as EntityController);
         }
 
         private void OnLevelUpConfirmed(LevelUpConfirmedEvent evt)
         {
-            activeLevelUp = null;
+            activeLevelUpEvent = null;
 
             ProcessQueue();
         }
 
         private void ProcessQueue()
         {
-            if (activeLevelUp != null)
+            if (activeLevelUpEvent != null)
             {
                 return;
             }
@@ -76,8 +77,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
                 return;
             }
 
-            activeLevelUp = queue.Dequeue();
-            notificationUI.Show(activeLevelUp.Target);
+            activeLevelUpEvent = queue.Dequeue();
+            notificationUI.Show(activeLevelUpEvent.Target as EntityController);
         }
     }
 }

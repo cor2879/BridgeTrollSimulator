@@ -23,7 +23,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         private void OnDamageTaken(DamageTakenEvent evt)
         {
-            var combatUI = evt.Target.CombatUI;
+            var combatUI = ((EntityController)evt.Sender).CombatUI;
 
             if (combatUI == null)
             {

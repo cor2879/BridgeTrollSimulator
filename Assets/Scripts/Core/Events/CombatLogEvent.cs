@@ -14,5 +14,10 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
         {
             Message = message;
         }
+
+        public override string ToString()
+        {
+            return $"{nameof(CombatLogEvent)}::Sender:{Sender.SourceName}::Message:\"{Message}\" @ Frame {Frame}";
+        }
     }
 }

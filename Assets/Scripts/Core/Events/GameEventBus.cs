@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Interfaces;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 {

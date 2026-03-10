@@ -3,12 +3,16 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameStateManagement;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Events;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 {
     public class EncounterSystem 
         : MonoBehaviour
     {
+#region Initialization
+
         private void OnEnable()
         {
             GameEventBus.Subscribe<EntityEncounterEvent>(OnEncounter);
@@ -21,22 +25,31 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
             GameEventBus.Unsubscribe<DialogEndedEvent>(OnDialogEnded);
         }
 
+#endregion
+
+#region Event Handling
+
         private void OnEncounter(EntityEncounterEvent evt)
         {
-            if (evt.Initiator.CurrentControlMode == ControlMode.Encounter)
+            var initiator = (EntityController)evt.Initiator;
+            var target = (EntityController)evt.Target;
+
+            if (initiator.CurrentControlMode == ControlMode.Encounter)
             {
                 return;
             }
 
-            evt.Initiator.HandleEncounter(evt.Target);
-            evt.Target.HandleEncounter(evt.Initiator);
+            initiator.HandleEncounter(target);
+            target.HandleEncounter(initiator);
 
-            Debug.Log($"Encounter started between {evt.Initiator.name} and {evt.Target.name}");
+            Debug.Log($"Encounter started between {evt.Initiator.SourceName} and {evt.Target.SourceName}");
         }
 
         private void OnDialogEnded(DialogEndedEvent evt)
         {
             GameDatabase.Instance.Player.ResetControlMode();
         }
+
+#endregion
     }
 }

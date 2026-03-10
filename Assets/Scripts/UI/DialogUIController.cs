@@ -7,6 +7,8 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog.Events;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Policies;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel;
@@ -32,8 +34,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
         [SerializeField] private GameObject choiceContainer;
         [SerializeField] private GameObject choiceButtonPrefab;
 
-        private DialogNode currentNode;
-        private RuntimeDialogNode currentRuntimeNode;
+        private IDialogRenderable currentRenderable;
+        private DialogNode currentStaticNode; // only needed for legacy static flow
         private EntityController initiator;
         private EntityController target;
 
@@ -66,6 +68,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             GameEventBus.Subscribe<ResolveChangedEvent>(OnResolveChanged);
             GameEventBus.Subscribe<TollPaidEvent>(OnTollPaid);
             GameEventBus.Subscribe<TollRefusedEvent>(OnTollRefused);
+            GameEventBus.Subscribe<SystemMessageEvent>(OnSystemMessage);
         }
 
         private void OnDisable()
@@ -78,6 +81,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             GameEventBus.Unsubscribe<ResolveChangedEvent>(OnResolveChanged);
             GameEventBus.Unsubscribe<TollPaidEvent>(OnTollPaid);
             GameEventBus.Unsubscribe<TollRefusedEvent>(OnTollRefused);
+            GameEventBus.Unsubscribe<SystemMessageEvent>(OnSystemMessage);
         }
 
         #endregion
@@ -92,26 +96,23 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
                 return;
             }
 
-            initiator = evt.Initiator;
-            target = evt.Target;
-            currentNode = evt.RootNode;
+            initiator = (EntityController)evt.Initiator;
+            target = (EntityController)evt.Target;
+            currentStaticNode = evt.RootNode;
 
-            panel.SetActive(true);
-            ClearChoices();
-
-            ShowCharacterSpeech(currentNode);
+            ShowRenderable(evt.RootNode);
         }
 
         private void OnCombatStarted(CombatStartedEvent evt)
         {
             ClearChoices();
-            currentNode = null;
+            currentRenderable = null;
             panel.SetActive(true);
         }
 
         private void OnCombatEnded(CombatEndedEvent evt)
         {
-            if (currentNode != null)
+            if (currentRenderable != null)
             {
                 AdvanceNode();
             }
@@ -144,20 +145,29 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         private void OnTollPaid(TollPaidEvent evt)
         {
-            ShowSpeechBubble(evt.Initiator, evt.Initiator.DialogLibrary.payToll);
+            var initiator = evt.Initiator as EntityController;
+
+            ShowSpeechBubble(initiator, initiator.DialogLibrary.payToll);
             
             ClearChoices();
-            currentRuntimeNode = null;
+            currentRenderable = null;
 
             EndDialog();
         }
 
         private void OnTollRefused(TollRefusedEvent evt)
         {
-            ShowSpeechBubble(evt.Initiator, evt.Initiator.DialogLibrary.refuseToll);
+            var initiator = evt.Initiator as EntityController;
+
+            ShowSpeechBubble(initiator, initiator.DialogLibrary.refuseToll);
 
             ClearChoices();
-            currentRuntimeNode = null;
+            currentRenderable= null;
+        }
+
+        private void OnSystemMessage(SystemMessageEvent evt)
+        {
+            AppendLine(evt.Sender.SourceName, evt.Message, true);
         }
 
         #endregion
@@ -166,25 +176,25 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         private void AdvanceNode()
         {
-            if (currentNode == null ||
-                currentNode.Choices == null || 
-                currentNode.Choices.Count == 0)
+            if (currentStaticNode == null ||
+                currentStaticNode.Choices == null ||
+                currentStaticNode.Choices.Count == 0)
             {
                 EndDialog();
                 return;
             }
 
-            if (currentNode.Choices.Count == 1)
+            if (currentStaticNode.Choices.Count == 1)
             {
-                currentNode = currentNode.Choices[0].NextNode;
-                ShowNode(currentNode);
+                currentStaticNode = currentStaticNode.Choices[0].NextNode;
+                ShowRenderable(currentStaticNode);
             }
         }
 
-        private void ShowNode(DialogNode node)
+        public void ShowNode(DialogNode node)
         {
             ClearChoices();
-            ShowCharacterSpeech(node);
+            ShowRenderable(node);
         }
 
         private void EndDialog()
@@ -195,39 +205,10 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             // initiator?.SpeechBubble?.Hide();
             // target?.SpeechBubble?.Hide();
 
-            currentNode = null;
+            currentRenderable = null;
 
             GameEventBus.Publish(
                 new DialogEndedEvent(initiator, target, Time.frameCount));
-        }
-
-        private void ShowCharacterSpeech(DialogNode node)
-        {
-            EntityController speaker = null;
-
-            switch (node.SpeakerRole)
-            {
-                case DialogSpeakerRole.Initiator:
-                    speaker = initiator;
-                    // target.SpeechBubble.Hide();
-                    break;
-
-                case DialogSpeakerRole.Target:
-                    speaker = target;
-                    // initiator.SpeechBubble.Hide();
-                    break;
-
-                case DialogSpeakerRole.System:
-                    AppendLine("System", node.Text, true);
-                    return;
-            }
-
-            if (speaker != null && speaker.SpeechBubble != null)
-            {
-                ShowSpeechBubble(speaker, node);
-            }
-
-            ShowChoicesIfNeeded();
         }
 
         private void ShowSpeechBubble(EntityController speaker, DialogNode node)
@@ -289,8 +270,6 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             {
                 texts[1].text = text;
             }
-
-            ShowChoicesIfNeeded();
         }
 
         public void ClearLog()
@@ -360,115 +339,6 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             Debug.Log("Choices Cleared");
         }
 
-        private void ShowChoicesIfNeeded()
-        {
-            if (currentNode != null)
-            {
-                if (currentNode.Choices == null || currentNode.Choices.Count <= 1)
-                    return;
-
-                choiceContainer.SetActive(true);
-                CreateChoiceButtons(currentNode);
-                return;
-            }
-
-            if (currentRuntimeNode != null)
-            {
-                choiceContainer.SetActive(true);
-                ModalUISystem.Instance.OpenModal(this);
-                CreateRuntimeChoiceButtons(currentRuntimeNode);
-            }
-        }
-
-        private void CreateChoiceButtons(DialogNode node)
-        {
-            for (int i = 0; i < node.Choices.Count; i++)
-            {
-                var choice = node.Choices[i];
-                int index = i;
-
-                var buttonObj = Instantiate(choiceButtonPrefab, choiceContainer.transform);
-                var buttonText = buttonObj.GetComponentInChildren<TMP_Text>();
-                buttonText.text = choice.ChoiceText;
-
-                var button = buttonObj.GetComponent<Button>();
-                bool available = IsChoiceAvailable(choice);
-
-                button.interactable = available;
-
-                if (available)
-                {
-                    button.onClick.AddListener(() => Choose(index));
-                }
-                else
-                {
-                    buttonText.color = Color.gray;
-                }
-            }
-        }
-
-        private void CreateRuntimeChoiceButtons(RuntimeDialogNode node)
-        {
-            for (int i = 0; i < node.Options.Count; i++)
-            {
-                var option = node.Options[i];
-                Debug.Log($"{option.Label}");
-
-                var buttonObj = Instantiate(choiceButtonPrefab, choiceContainer.transform);
-                var buttonText = buttonObj.GetComponentInChildren<TMP_Text>();
-                buttonText.text = option.Label;
-
-                var button = buttonObj.GetComponent<Button>();
-
-                button.onClick.AddListener(() =>
-                {
-                    currentRuntimeNode = null;
-                    option.Execute(initiator, target);
-                });
-            }
-        }
-
-        private void Choose(int index)
-        {
-            if (currentNode == null || index < 0 || index >= currentNode.Choices.Count)
-                return;
-
-            var choice = currentNode.Choices[index];
-
-            if (!IsChoiceAvailable(choice))
-                return;
-
-            var nextNode = choice.NextNode;
-
-            // Advance static dialog FIRST
-            if (nextNode == null)
-            {
-                EndDialog();
-            }
-            else
-            {
-                currentNode = nextNode;
-                ShowNode(currentNode);
-            }
-
-            // THEN execute actions (which may trigger runtime branching)
-            foreach (var action in choice.Actions)
-            {
-                action.Execute(initiator, target);
-            }
-        }
-
-        private bool IsChoiceAvailable(DialogChoice choice)
-        {
-            foreach (var action in choice.Actions)
-            {
-                if (!action.CanExecute(initiator, target))
-                    return false;
-            }
-
-            return true;
-        }
-
         public void ShowRuntimeNode(
             string text,
             List<GeneratedOption> options,
@@ -478,29 +348,75 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             this.initiator = initiator;
             this.target = target;
 
-            currentNode = null; // important
-            currentRuntimeNode = new RuntimeDialogNode
+            var runtimeNode = new RuntimeDialogNode
             {
                 Text = text,
                 Options = options
             };
 
+            currentStaticNode = null;
+            ShowRenderable(runtimeNode);
+        }
+
+        private void ShowRenderable(IDialogRenderable renderable)
+        {
+            currentRenderable = renderable;
+
             panel.SetActive(true);
             ClearChoices();
 
-            if (!string.IsNullOrWhiteSpace(text))
+            if (!string.IsNullOrWhiteSpace(renderable.Text))
             {
-                ShowSpeechBubble(initiator, text);
-            }
-            else
-            {
-                ShowChoicesIfNeeded();
+                if (renderable is DialogNode staticNode)
+                {
+                    EntityController speaker = staticNode.SpeakerRole switch
+                    {
+                        DialogSpeakerRole.Initiator => initiator,
+                        DialogSpeakerRole.Target => target,
+                        DialogSpeakerRole.System => null,
+                        _ => null
+                    };
+
+                    if (speaker != null)
+                    {
+                        ShowSpeechBubble(speaker, staticNode.Text);
+                    }
+                    else
+                    {
+                        AppendLine("System", staticNode.Text, true);
+                    }
+                }
+                else
+                {
+                    // runtime node fallback (default to initiator)
+                    ShowSpeechBubble(initiator, renderable.Text);
+                }
             }
 
+            RenderOptions(renderable.Options);
+        }
+
+        private void RenderOptions(List<GeneratedOption> options)
+        {
             if (options == null || options.Count == 0)
-            {
-                Debug.LogWarning("Runtime options list empty.");
                 return;
+
+            choiceContainer.SetActive(true);
+            ModalUISystem.Instance.OpenModal(this);
+
+            foreach (var option in options)
+            {
+                var buttonObj = Instantiate(choiceButtonPrefab, choiceContainer.transform);
+                var buttonText = buttonObj.GetComponentInChildren<TMP_Text>();
+                buttonText.text = option.Label;
+
+                var button = buttonObj.GetComponent<Button>();
+
+                button.onClick.AddListener(() =>
+                {
+                    ClearChoices();
+                    option.Execute(initiator, target);
+                });
             }
         }
 
