@@ -10,7 +10,7 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Systems;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 {
-    public class LevelUpNotificationUI : ModalUIBase, IEventSource
+    public class LevelUpNotificationUI : ModalUIBase
     {
         [SerializeField] private GameObject panel;
         [SerializeField] private TMP_Text messageText;
@@ -19,6 +19,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         public override string SourceName => nameof(LevelUpNotificationUI);
         public override GameSystemType SystemType => GameSystemType.UI;
+        public override bool IsBlockingUI => true;
 
         private void Awake()
         {

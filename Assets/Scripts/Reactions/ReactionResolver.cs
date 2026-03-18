@@ -73,8 +73,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions
             var sb = new StringBuilder();
             sb.AppendLine("----- Reaction Decision -----");
             sb.AppendLine($"Scenario: {scenario.GetType().Name}");
-            sb.AppendLine($"Actor: {actor.Name}");
-            sb.AppendLine($"Opponent: {opponent.Name}");
+            sb.AppendLine($"Actor: {actor.SourceName}");
+            sb.AppendLine($"Opponent: {opponent.SourceName}");
 
             foreach (var r in reactions)
             {

@@ -15,7 +15,10 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions
 
         public override float GetWeight(IReactor actor, IReactor opponent, ITargetedEvent evt)
         {
-            return Mathf.Max(1, 100 - actor.Resolve);
+            float resolveRatio = actor.Resolve / (float)actor.MaxResolve;
+            float desperation = Mathf.Pow(1f - resolveRatio, 2f);
+
+            return Mathf.Max(1f, desperation * 100f);
         }
 
         public override void Execute(IReceiver actor, IReceiver opponent, ITargetedEvent evt)

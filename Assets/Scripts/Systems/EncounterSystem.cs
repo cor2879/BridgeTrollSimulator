@@ -32,7 +32,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
         private void OnEncounter(EntityEncounterEvent evt)
         {
             var initiator = (EntityController)evt.Initiator;
-            var target = (EntityController)evt.Target;
+            var target = (NpcController)evt.Target;
 
             if (initiator.CurrentControlMode == ControlMode.Encounter)
             {
@@ -41,6 +41,15 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 
             initiator.HandleEncounter(target);
             target.HandleEncounter(initiator);
+
+            if (target.DemandComponent.HasDemands)
+            {
+                target.DemandComponent.ResolveNextDemand(target);
+            }
+            else
+            {
+                StartDialog(evt);
+            }
 
             Debug.Log($"Encounter started between {evt.Initiator.SourceName} and {evt.Target.SourceName}");
         }
@@ -51,5 +60,15 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
         }
 
 #endregion
+
+        private void StartDialog(EntityEncounterEvent evt)
+        {
+            GameEventBus.Publish(
+                new DialogStartedEvent(
+                    DialogSystem.Instance.DefaultEncounterNode,
+                    evt.Initiator,
+                    evt.Target,
+                    Time.frameCount));
+        }
     }
 }

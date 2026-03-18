@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -7,12 +9,15 @@ using TMPro;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Systems;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.UI.Interfaces;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 {
-    public class SpeechBubbleUI : MonoBehaviour, IEventSource
+    public class SpeechBubbleUI : MonoBehaviour, IModalUI
     {
         [Header("Entity")]
         [SerializeField] private EntityController entity;
@@ -34,15 +39,22 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
         [Header("Typing")]
         [SerializeField] private float typingSpeed = 0.02f;
 
+        [Header("Queue")]
+        [SerializeField, ReadOnly]
+        private readonly Queue<SpeechRequest> speechQueue = new();
+        [SerializeField, ReadOnly]
+        private bool isShowing = false;
+        [SerializeField, ReadOnly]
+        private SpeechRequest currentSpeechRequest;
+
         private RectTransform rectTransform;
         private Coroutine typingRoutine;
         private Coroutine popRoutine;
-        private Coroutine autoDismissRoutine;
+        private Coroutine waitRoutine;
         private Vector3 originalScale;
 
         private string fullText;
         private bool isTyping;
-        private bool waitingForAdvance;
         private bool ignoreInputUntilRelease;
 
 #region IEventSource
@@ -56,8 +68,13 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
 #endregion
 
+#region IModalUI
+
+        public bool IsBlockingUI => false;
+
+#endregion
+
         public bool IsTyping => isTyping;
-        public bool IsWaitingForAdvance => waitingForAdvance;
 
         public event Action OnAdvanceRequested;
 
@@ -75,83 +92,81 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             if (!gameObject.activeSelf)
                 return;
 
+            if (ModalUISystem.Instance.IsBlockingWorldUI)
+            {
+                return;
+            }
+
             if (ignoreInputUntilRelease)
             {
                 if (!Input.anyKey)
                 {
                     ignoreInputUntilRelease = false;
-                    return;
                 }
-            } 
 
-            if (!Input.anyKeyDown)
-            {
                 return;
             }
 
+            if (!Input.anyKeyDown)
+                return;
+
+            Advance();
+        }
+
+#region Public API
+
+        public void Advance()
+        {
             if (isTyping)
             {
                 CompleteInstantly();
                 return;
             }
 
-            if (waitingForAdvance)
+            if (OnAdvanceRequested != null)
             {
-                waitingForAdvance = false;
-                OnAdvanceRequested?.Invoke();
-                Hide();
+                OnAdvanceRequested.Invoke();
             }
+            Hide();
         }
-
-        private void OnEnable()
-        {
-
-        }
-
-#region Public API
 
         public void Show(string value,
                         SpeechBubbleMode mode = SpeechBubbleMode.Modal,
                         float duration = 2f)
         {
-            fullText = value;
-
-            PositionBehind(entity.IsFacingRight);
-            transform.localScale = Vector3.zero;
-            gameObject.SetActive(true);
-
-            if (popRoutine != null)
-                StopCoroutine(popRoutine);
-
-            popRoutine = StartCoroutine(
-                Pop(
-                    Vector3.zero, 
-                    originalScale, 
-                    popInDuration));
-
-            ignoreInputUntilRelease = true;
-            if (mode == SpeechBubbleMode.Modal)
+            speechQueue.Enqueue(new SpeechRequest
             {
-                ModalUISystem.Instance.OpenModal(this);
-                StartCoroutine(StartTypingNextFrame());
-            }
-            else
+                Text = value,
+                Mode = mode,
+                Duration = duration
+            });
+
+            #if UNITY_EDITOR
+            Debug.Log($"{nameof(Show)}::Entity:{entity.SourceName}" +
+                $"::\"{value}\" Queue Length: {speechQueue.Count} @Frame {Time.frameCount}");
+            #endif
+
+            if (!isShowing)
             {
-                StartCoroutine(StartTypingNextFrame());
-                autoDismissRoutine = StartCoroutine(AutoDismiss(duration));
+                ProcessQueue();
             }
         }
 
         public void Hide()
         {
-            Debug.Log($"{nameof(Hide)}::Entity:{entity.Name} @ Frame {Time.frameCount}");
-            if (!gameObject.activeSelf)
+            #if UNITY_EDITOR
+
+            Debug.Log($"{nameof(Hide)}::Entity:{entity.SourceName}" +
+                $"::\"{fullText}\" @ Frame {Time.frameCount}");
+
+            #endif
+
+            if (!isShowing)
             {
                 return;
             }
 
             StopTyping();
-            waitingForAdvance = false;
 
             if (popRoutine != null)
                 StopCoroutine(popRoutine);
@@ -163,7 +178,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
                     popOutDuration, 
                     false));
 
-            StartCoroutine(CloseModalAfterKeyRelease());
+            isShowing = false;
+            ProcessQueue();
         }
 
 #endregion
@@ -197,38 +213,36 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             typingRoutine = StartCoroutine(TypeRoutine());
         }
 
-        private IEnumerator StartTypingNextFrame()
-        {
-            yield return null;
-            StartTyping();
-        }
-
         private IEnumerator TypeRoutine()
         {
             isTyping = true;
-            waitingForAdvance = false;
 
-            text.text = "";
+            text.text = fullText;
+            text.maxVisibleCharacters = 0;
 
-            foreach (char c in fullText)
+            int totalChars = fullText.Length;
+
+            for (int i = 0; i <= totalChars; i++)
             {
-                text.text += c;
+                text.maxVisibleCharacters = i;
                 ResizeToFit();
                 yield return new WaitForSeconds(typingSpeed);
             }
 
             isTyping = false;
-            waitingForAdvance = true;
         }
 
         private void CompleteInstantly()
         {
+            #if UNITY_EDITOR
+            Debug.Log($"{nameof(CompleteInstantly)}");
+            #endif
+
             StopTyping();
-            text.text = fullText;
+            text.maxVisibleCharacters = fullText.Length;
             ResizeToFit();
 
             isTyping = false;
-            waitingForAdvance = true;
         }
 
         private void StopTyping()
@@ -238,6 +252,16 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
                 StopCoroutine(typingRoutine);
                 typingRoutine = null;
             }
+        }
+
+        private IEnumerator DelayedStartTyping()
+        {
+            yield return null;
+
+            Canvas.ForceUpdateCanvases();
+
+            ResizeToFit();
+            StartTyping();
         }
 
 #endregion
@@ -250,6 +274,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
                 return;
 
             RectTransform textRect = text.rectTransform;
+            text.ForceMeshUpdate();
 
             // Step 1: Get natural width (no wrapping yet)
             Vector2 unconstrained = text.GetPreferredValues(
@@ -308,26 +333,71 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
                 gameObject.SetActive(false);
         }
 
-        private IEnumerator AutoDismiss(float delay)
+        #endregion
+
+        #region Queue Processing
+
+        private void ProcessQueue()
         {
-            yield return new WaitUntil(() => !isTyping);
-            yield return new WaitForSeconds(delay);
-            Hide();
+            if (waitRoutine != null)
+            {
+                return;
+            }
+
+            if (ModalUISystem.Instance.IsBlockingWorldUI)
+            {
+                waitRoutine = StartCoroutine(WaitForClearAndProcess());
+                return;
+            }
+
+            if (!speechQueue.Any())
+            {
+                ModalUISystem.Instance.CloseModal(this);
+                gameObject.SetActive(false);
+                isShowing = false;
+                return;
+            }
+
+            currentSpeechRequest = speechQueue.Dequeue();
+            DisplaySpeech(currentSpeechRequest);
         }
 
-        private IEnumerator WaitForKeyUpThenDoAction(Action action)
+        private IEnumerator WaitForClearAndProcess()
         {
-            yield return new WaitUntil(() => !Input.anyKey);
+            yield return new WaitUntil(() =>
+                !ModalUISystem.Instance.IsBlockingWorldUI);
+            
+            waitRoutine = null;
 
-            action?.Invoke();
+            ProcessQueue();
         }
 
-        private IEnumerator CloseModalAfterKeyRelease()
+        private void DisplaySpeech(SpeechRequest request)
         {
-            yield return new WaitUntil(() => !Input.anyKey);
+            isShowing = true;
 
-            ModalUISystem.Instance.CloseModal(this);
-            gameObject.SetActive(false);
+            fullText = request.Text;
+            PositionBehind(entity.IsFacingRight);
+
+            transform.localScale = Vector3.zero;
+            gameObject.SetActive(true);
+
+            if (popRoutine != null)
+            {
+                StopCoroutine(popRoutine);
+            }
+
+            popRoutine = StartCoroutine(
+                Pop(Vector3.zero, originalScale, popInDuration));
+
+            ignoreInputUntilRelease = true;
+
+            if (request.Mode == SpeechBubbleMode.Modal)
+            {
+                ModalUISystem.Instance.OpenModal(this);
+            }
+
+            StartCoroutine(DelayedStartTyping());
         }
 
         #endregion

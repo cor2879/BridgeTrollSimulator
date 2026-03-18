@@ -7,7 +7,7 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Utilities;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Abilities
 {
-    [CreateAssetMenu(menuName = "BridgeTroll/Social/Abilities")]
+    [CreateAssetMenu(menuName = "BridgeTroll/Social/Abilities/SocialAbility")]
     public class SocialAbility : ScriptableObject
     {
         [SerializeField] private string abilityName;
@@ -27,6 +27,13 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Abilities
         public Sprite Icon => icon;
         public SkillType GoverningSkill => governingSkill;
         public StatType OffensiveStat => offensiveStat;
+
+        public virtual bool TryExecuteSpecial(
+            EntityController initiator,
+            EntityController target)
+        {
+            return false;
+        }
 
         public SocialExchangeOutcome ResolveExchange(
             EntityController attacker,

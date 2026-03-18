@@ -27,6 +27,43 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.Personalities
         [Header("Reaction Sets")]
         public List<PersonalityReactionSet> reactions;
 
+        [Header("Dialog")]
+        [TextArea]
+        [SerializeField]
+        private string[] leaveDialog;
+
+        [TextArea]
+        [SerializeField]
+        private string[] attackDialog;
+
+        [TextArea]
+        [SerializeField]
+        private string[] greetDialog;
+
+        [TextArea]
+        [SerializeField]
+        private string[] agreeDialog;
+
+        [TextArea]
+        [SerializeField]
+        private string[] payTollDialog;
+
+        [TextArea]
+        [SerializeField]
+        private string[] socialDuelVictoryDialog;
+
+        [TextArea]
+        [SerializeField]
+        private string[] surrenderDialog;
+
+        [TextArea]
+        [SerializeField]
+        private string[] acceptSurrenderDialog;
+
+        [TextArea]
+        [SerializeField]
+        private string[] denySurrenderDialog;
+
         // Runtime lookup
         private Dictionary<(SkillType, SocialExchangeResult), List<string>> lookup;
 
@@ -109,6 +146,61 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.Personalities
         public override string ToString()
         {
             return Name;
+        }
+
+        public string GetLeaveDialog()
+        {
+            return Pick(leaveDialog);
+        }
+
+        public string GetAttackDialog()
+        {
+            return Pick(attackDialog);
+        }
+
+        public string GetGreetDialog()
+        {
+            return Pick(greetDialog);
+        }
+
+        public string GetAgreeDialog()
+        {
+            return Pick(agreeDialog);
+        }
+
+        public string GetPayTollDialog()
+        {
+            return Pick(payTollDialog);
+        }
+
+        public string GetSocialDuelVictoryDialog()
+        {
+            return Pick(socialDuelVictoryDialog);
+        }
+
+        public string GetSurrenderDialog()
+        {
+            return Pick(surrenderDialog);
+        }
+
+        public string GetAcceptSurrenderDialog()
+        {
+            return Pick(acceptSurrenderDialog);
+        }
+
+        public string GetDenySurrenderDialog()
+        {
+            return Pick(denySurrenderDialog);
+        }
+
+        private string Pick(string[] array)
+        {
+            if (array == null || array.Length == 0)
+            {
+                return "...";
+            }
+
+            return array[Random.Range(0, array.Length)];
         }
     }
 }

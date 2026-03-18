@@ -13,7 +13,7 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Systems;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 {
-    public class LevelUpScreenUI : ModalUIBase, IEventSource
+    public class LevelUpScreenUI : ModalUIBase
     {
         [SerializeField] private GameObject panel;
         [SerializeField] private TMP_Text pointsText;
@@ -29,6 +29,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         public override string SourceName => nameof(LevelUpScreenUI);
         public override GameSystemType SystemType => GameSystemType.UI;
+        public override bool IsBlockingUI => true;
 
         private void Start()
         {

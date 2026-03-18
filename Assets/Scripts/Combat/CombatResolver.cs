@@ -23,6 +23,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Combat
                 return;
             }
 
+            if (ability.TryExecuteSpecial(initiator, target))
+            {
+                return;
+            }
+
             var exhausted = initiator.CurrentStamina < ability.StaminaCost;
 
             initiator.SpendStamina(ability.StaminaCost);

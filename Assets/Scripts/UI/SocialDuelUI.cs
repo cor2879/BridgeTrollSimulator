@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
@@ -11,10 +12,11 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Abilities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Systems;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.UI.Interfaces;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 {
-    public class SocialDuelUI : MonoBehaviour, IEventSource
+    public class SocialDuelUI : MonoBehaviour, IModalUI
     {
         [Header("Ability Buttons")]
         [SerializeField] private Transform abilityButtonContainer;
@@ -24,8 +26,18 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
         [SerializeField] private ResolveBarUI playerBar;
         [SerializeField] private ResolveBarUI npcBar;
 
+        [Header("UI Panels")]
+        [SerializeField] private SocialDuelIntroUI introPanel;
+        [SerializeField] private SocialDuelPreSummaryUI preSummaryPanel;
+        [SerializeField] private SocialDuelResolutionUI outcomePanel;
+
+        [SerializeField, ReadOnly]
+        private int busy = 0;
+
         private SocialDuelContext context;
         private readonly List<Button> activeButtons = new();
+
+        public int Busy { get => busy; private set => busy = value; }
 
         #region IEventSource
 
@@ -34,11 +46,17 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         #endregion
 
+        #region IModalUI
+
+        public bool IsBlockingUI => false;
+
+        #endregion
+
         #region Initialization
 
         private void Awake()
         {
-            gameObject.SetActive(false);
+            HideAllChildren();
         }
         
         public void Initialize(SocialDuelContext context)
@@ -53,15 +71,15 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
         {
             playerBar.Initialize(
                 context.Player.Name,
-                context.PlayerMaxResolve);
+                context.Player.MaxResolve);
 
-            playerBar.SetValue(context.PlayerCurrentResolve);
+            playerBar.SetValue(context.Player.Resolve);
 
             npcBar.Initialize(
                 context.Npc.Name,
-                context.NpcMaxResolve);
+                context.Npc.MaxResolve);
 
-            npcBar.SetValue(context.NpcCurrentResolve);
+            npcBar.SetValue(context.Npc.Resolve);
         }
 
         #endregion
@@ -90,7 +108,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
                 button.onClick.AddListener(() =>
                 {
-                    SocialDuelSystem.Instance.PlayerUseAbility(capturedAbility);
+                    SocialDuelSystem.Instance.HandleAbility(capturedAbility);
                 });
 
                 activeButtons.Add(button);
@@ -109,16 +127,18 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         #region Resolve Animation
 
-        public void AnimateResolveChange(EntityController entity, int newValue)
+        public Coroutine AnimateResolveChange(EntityController entity, int newValue)
         {
             if (entity.IsPlayerControlled)
-                StartCoroutine(AnimateBar(playerBar, newValue));
+                return StartCoroutine(AnimateBar(playerBar, newValue));
             else
-                StartCoroutine(AnimateBar(npcBar, newValue));
+                return StartCoroutine(AnimateBar(npcBar, newValue));
         }
 
         private IEnumerator AnimateBar(ResolveBarUI bar, int target)
         {
+            Busy++;
+
             float duration = 0.3f;
             float timer = 0f;
             float start = bar.CurrentValue;
@@ -132,6 +152,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             }
 
             bar.SetValue(target);
+            Busy--;
         }
 
         #endregion
@@ -141,13 +162,24 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
         public void Show()
         {
             gameObject.SetActive(true);
+            ShowDuelUI();
             ModalUISystem.Instance.OpenModal(this);
         }
 
         public void Hide()
         {
-            gameObject.SetActive(false);
+            HideAllChildren();
             ModalUISystem.Instance.CloseModal(this);
+        }
+
+        private void HideAllChildren()
+        {
+            abilityButtonContainer.gameObject.SetActive(false);
+            playerBar.gameObject.SetActive(false);
+            npcBar.gameObject.SetActive(false);
+            introPanel.gameObject.SetActive(false);
+            preSummaryPanel.gameObject.SetActive(false);
+            outcomePanel.gameObject.SetActive(false);
         }
 
         public void EnableInput(bool enabled)
@@ -157,6 +189,19 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
                 if (button != null)
                     button.interactable = enabled;
             }
+        }
+
+        public void ShowIntro(EntityController player, EntityController npc)
+        {
+            gameObject.SetActive(true);
+            introPanel.Show(player, npc);
+        }
+
+        public void ShowDuelUI()
+        {
+            abilityButtonContainer.gameObject.SetActive(true);
+            playerBar.gameObject.SetActive(true);
+            npcBar.gameObject.SetActive(true);
         }
 
         #endregion

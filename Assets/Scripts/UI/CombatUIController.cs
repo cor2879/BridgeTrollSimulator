@@ -26,6 +26,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         public void Initialize(CombatSystem system, EntityController player)
         {
+            EnableInput(false);
             combatSystem = system;
             this.player = player;
             ClearAbilityButtons();

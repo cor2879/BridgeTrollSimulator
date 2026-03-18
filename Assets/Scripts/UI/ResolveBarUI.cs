@@ -6,8 +6,10 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 {
     public class ResolveBarUI : MonoBehaviour
     {
+        [Header("UI")]
         [SerializeField] private Slider slider;
         [SerializeField] private TMP_Text nameLabel;
+        [SerializeField] private TMP_Text resolveText;
 
         [Header("Visual References")]
         [SerializeField] private Image fillImage;
@@ -38,6 +40,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
         {
             float percent = slider.value / slider.maxValue;
 
+            resolveText.text = $"Resolve: {slider.value}/{slider.maxValue}";
             // Background shifts toward red as resolve drops
             backgroundImage.color = Color.Lerp(
                 baseBackgroundColor,

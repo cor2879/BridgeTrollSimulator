@@ -14,10 +14,11 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Policies;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Systems;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.UI.Interfaces;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 {
-    public class DialogUIController : MonoBehaviour, IEventSource
+    public class DialogUIController : MonoBehaviour, IModalUI
     {
         [Header("Panel Root")]
         [SerializeField] private GameObject panel;
@@ -53,6 +54,12 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         public string SourceName => nameof(DialogUIController);
         public GameSystemType SystemType => GameSystemType.UI;
+
+        #endregion
+
+        #region IModalUI
+
+        public bool IsBlockingUI => false;
 
         #endregion
 
@@ -146,8 +153,6 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
         private void OnTollPaid(TollPaidEvent evt)
         {
             var initiator = evt.Initiator as EntityController;
-
-            ShowSpeechBubble(initiator, initiator.DialogLibrary.payToll);
             
             ClearChoices();
             currentRenderable = null;
@@ -199,9 +204,6 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         private void EndDialog()
         {
-            initiator.SpeechBubble.OnAdvanceRequested -= HandleAdvance;
-            target.SpeechBubble.OnAdvanceRequested -= HandleAdvance;
-
             // initiator?.SpeechBubble?.Hide();
             // target?.SpeechBubble?.Hide();
 
@@ -213,21 +215,12 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         private void ShowSpeechBubble(EntityController speaker, DialogNode node)
         {
-            speaker.SpeechBubble.OnAdvanceRequested -= HandleAdvance;
-            speaker.SpeechBubble.OnAdvanceRequested += HandleAdvance;
             speaker.SpeechBubble.Show(node.Text);
         }
 
         private void ShowSpeechBubble(EntityController speaker, string text)
         {
-            speaker.SpeechBubble.OnAdvanceRequested -= HandleAdvance;
-            speaker.SpeechBubble.OnAdvanceRequested += HandleAdvance;
             speaker.SpeechBubble.Show(text);            
-        }
-
-        private void HandleAdvance()
-        {
-            AdvanceNode();
         }
 
         #endregion

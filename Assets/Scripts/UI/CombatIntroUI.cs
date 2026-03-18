@@ -23,6 +23,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         public override string SourceName => this.name;
         public override GameSystemType SystemType => GameSystemType.UI;
+        public override bool IsBlockingUI => true;
 
         private void Awake()
         {
@@ -61,8 +62,15 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
                 awaitingInput = false;
                 HideModal(panelRoot);
 
+                var player = combatStartedEvent.Initiator.IsPlayerControlled ? 
+                    combatStartedEvent.Initiator :
+                    combatStartedEvent.Target;
+                var npc = combatStartedEvent.Initiator.IsPlayerControlled ?
+                    combatStartedEvent.Target :
+                    combatStartedEvent.Initiator;
+
                 GameEventBus.Publish(
-                    new CombatConfirmedEvent(combatStartedEvent.Initiator, combatStartedEvent.Target, Time.frameCount));
+                    new CombatConfirmedEvent(player, npc, Time.frameCount));
                 combatStartedEvent = null;
             }
         }

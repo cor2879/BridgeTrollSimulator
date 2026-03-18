@@ -37,6 +37,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
         private void OnLevelUp(LevelUpEvent evt)
         {
             queue.Enqueue(evt);
+
+            if (GameStateSystem.Instance.CurrentState == GameState.World)
+            {
+                ProcessQueue();
+            }
         }
 
         private void OnGameStateChanged(GameStateChangedEvent evt)

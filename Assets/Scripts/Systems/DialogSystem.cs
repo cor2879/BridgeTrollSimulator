@@ -60,6 +60,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
         #endregion
 
         public DialogUIController DialogPanel => dialogPanel;
+        public DialogNode DefaultEncounterNode => defaultEncounterNode;
 
         #region Initialization
 
@@ -76,35 +77,21 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 
         private void OnEnable()
         {
-            GameEventBus.Subscribe<EntityEncounterEvent>(OnEncounter);
             GameEventBus.Subscribe<DialogStartedEvent>(OnDialogStarted);
             GameEventBus.Subscribe<TollDemandedEvent>(OnTollDemanded);
-            GameEventBus.Subscribe<TollRefusedEvent>(OnTollRefused);
             GameEventBus.Subscribe<RefusePassageEvent>(OnRefusedPassage);
         }
 
         private void OnDisable()
         {
-            GameEventBus.Unsubscribe<EntityEncounterEvent>(OnEncounter);
             GameEventBus.Unsubscribe<DialogStartedEvent>(OnDialogStarted);
             GameEventBus.Unsubscribe<TollDemandedEvent>(OnTollDemanded);
-            GameEventBus.Unsubscribe<TollRefusedEvent>(OnTollRefused);
             GameEventBus.Unsubscribe<RefusePassageEvent>(OnRefusedPassage);
         }
 
         #endregion
 
         #region Event Handlers
-
-        private void OnEncounter(EntityEncounterEvent evt)
-        {
-            GameEventBus.Publish(
-                new DialogStartedEvent(
-                    defaultEncounterNode,
-                    evt.Initiator,
-                    evt.Target,
-                    Time.frameCount));
-        }
 
         private void OnDialogStarted(DialogStartedEvent evt)
         {
@@ -128,30 +115,6 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
                 evt);
             
             reaction.Execute(npc, player, evt);
-        }
-
-        private void OnTollRefused(TollRefusedEvent evt)
-        {
-            var player = evt.Target as EntityController;
-            var npc = evt.Initiator as EntityController;
-            // Only escalate if the player was the one who demanded
-            if (!player.IsPlayerControlled)
-                return;
-
-            runtimeStack.Clear();
-
-            var options = BuildEscalationOptions(player, npc);
-
-            ShowGeneratedOptions(
-                options,
-                player,
-                npc);
-
-            GameEventBus.Publish(
-                new SystemMessageEvent(
-                    this,
-                    $"{npc.Name} refuses to pay the toll.",
-                    Time.frameCount));
         }
 
         private void OnRefusedPassage(RefusePassageEvent evt)

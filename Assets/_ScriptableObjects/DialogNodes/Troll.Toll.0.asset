@@ -21,7 +21,7 @@ MonoBehaviour:
     actions:
     - {fileID: 11400000, guid: 050efcc315ca6bc26bcace1866d73770, type: 2}
   - ChoiceText: Attack
-    NextNode: {fileID: 11400000, guid: d1798ebe40bdf3713805e9d6a7c6a402, type: 2}
+    NextNode: {fileID: 0}
     actions:
     - {fileID: 11400000, guid: 529a8b166e5e944d4957c99567d7b435, type: 2}
   - ChoiceText: Refuse Passage

@@ -2,15 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat.Enums;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Components;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Audio;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameStateManagement;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Demands;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Demands.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.CharacterSkills;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.CharacterStats;
@@ -18,8 +22,12 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.Personalities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.StatusEffects;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.InputHandling;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Interfaces;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Rewards;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Rewards.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Abilities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Events;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.UI;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Utilities;
 using UnityEngine;
@@ -39,6 +47,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         protected SpriteRenderer sr;
         protected IInputSource inputSource;
         protected EntityCombatUI entityCombatUI;
+        protected DemandComponent demandComponent;
         [Header("UI and Sprites")]
         [SerializeField]
         protected GoldPopupUI goldPopupUI;
@@ -46,6 +55,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         private SpeechBubbleUI speechBubble;
         [SerializeField]
         private Sprite battleIntroSprite;
+        [SerializeField]
+        private Sprite socialDuelIntroSprite;
         [SerializeField]
         private Sprite victorySprite;
         [SerializeField]
@@ -191,6 +202,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             }
         }
 
+        public DemandComponent DemandComponent => demandComponent;
+
         public GameObject GameObject => this.gameObject;
         public ControlMode CurrentControlMode => controlMode;
         public IInputSource InputSource => inputSource;
@@ -200,6 +213,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         public bool IsPlayerControlled => isPlayerControlled;
         public EntityDialogLibrary DialogLibrary { get; private set; }
         public Sprite BattleIntroSprite => battleIntroSprite;
+        public Sprite SocialDuelIntroSprite => socialDuelIntroSprite;
         public Sprite VictorySprite => victorySprite;
         public Sprite DefeatedSprite => defeatedSprite;
         public Sprite DeadSprite => deadSprite;
@@ -208,16 +222,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         public string Name 
         { 
-            get
-            {
-                if (Personality != null)
-                {
-                    return $"{entityName} ({Personality})";
-                }
-
-                return entityName;
-            } 
-            
+            get => entityName;
             set => this.entityName = value; 
         }
 
@@ -291,6 +296,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         public CombatFaction Faction => faction;
         public bool IsFacingRight => facingRight;
         public int Momentum => momentum;
+        public int MaxResolve => maxResolve;
         public Ability[] Abilities => abilities;
         public SocialAbility[] SocialAbilities => socialAbilities;
         public Personality Personality { get =>  personality; private set => personality = value; }
@@ -301,13 +307,29 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         #region IEventSource
 
         public GameSystemType SystemType => GameSystemType.Entity;
-        public string SourceName => Name;
+
+        public string SourceName
+        {
+            get
+            {
+                if (Personality != null)
+                {
+                    return $"{Name} ({Personality})";
+                }
+
+                return entityName;
+            } 
+        }
 
         #endregion
 
         #region IReactor
 
-        public int Resolve => currentResolve;
+        public int Resolve  
+        { 
+            get => currentResolve; 
+            private set => currentResolve = value;
+        }
 
         float IReactor.Aggression
         {
@@ -321,6 +343,28 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         int IReactor.Charisma => BaseStats.Charisma;
 
+        public abstract void AcceptSurrender(IReactor opponent, ITargetedEvent evt);
+        public abstract void DenySurrender(IReactor opponent, ITargetedEvent evt);
+
+        public virtual void ConcedeCombat(IReceiver opponent)
+        {
+            GameEventBus.Publish(
+                new ConcedeCombatEvent(
+                    this,
+                    opponent,
+                    null,
+                    Time.frameCount));
+        }
+
+        public virtual void ConcedeSocialDuel(IReceiver opponent)
+        {
+            GameEventBus.Publish(
+                new ConcedeSocialDuelEvent(
+                    this,
+                    opponent,
+                    Time.frameCount));
+        }
+
         #endregion
 
         #endregion
@@ -333,6 +377,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             rb = GetComponent<Rigidbody2D>();
             sr = GetComponent<SpriteRenderer>();
             cldr = GetComponent<Collider2D>();
+            demandComponent = GetComponent<DemandComponent>();
             combatUIRoot = GetComponentInChildren<Canvas>();
             instanceId = Guid.NewGuid();
             entityCombatUI = GetComponent<EntityCombatUI>();
@@ -480,6 +525,18 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             CurrentStamina = MaxStamina;
             RollInitiative();
         }
+
+        public abstract void OnCombatVictory(CombatResolutionData data);
+
+        public abstract void OnCombatDefeat(CombatResolutionData data);
+
+        #endregion
+
+        #region Social Duel
+
+        public abstract void OnSocialDuelVictory(SocialDuelResolutionData data);
+
+        public abstract void OnSocialDuelLoss(SocialDuelResolutionData data);
 
         #endregion
 
@@ -674,6 +731,21 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             }
         }
 
+        public virtual void TakeResolveDamage(int amount, bool isCrit = false)
+        {
+            var oldResolve = Resolve;
+
+            Resolve = Mathf.Max(Resolve - amount, 0);
+            var delta = Resolve - oldResolve;
+
+            GameEventBus.Publish(
+                new ResolveChangedEvent(
+                    this,
+                    delta,
+                    isCrit,
+                    Time.frameCount));
+        }
+
         public virtual void Die()
         {
             SetControlMode(ControlMode.Dead);
@@ -781,17 +853,42 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             Ability bestAbility = null;
             var bestScore = float.MinValue;
 
+            #if UNITY_EDITOR
+
+            var sb = new StringBuilder();
+            sb.AppendLine($"----- [AI] {Name} evaluating combat abilities vs {target.Name} -----");
+
+            #endif
+
             foreach (var ability in Abilities)
             {
-                var score = ability.Evaluate(this, target);
+                var baseScore = ability.Evaluate(this, target);
+                var randomFactor = UnityEngine.Random.Range(-2f, 2f);
+                var finalScore = baseScore + randomFactor;
 
-                score += UnityEngine.Random.Range(-2f, 2f);
-                if (score > bestScore)
+                #if UNITY_EDITOR
+
+                sb.AppendLine($"\t* Ability: {ability.Name} | " +
+                             $"Base: {baseScore:F2} | " +
+                             $"Rand: {randomFactor:F2} | " +
+                             $"Final: {finalScore:F2}");
+
+                #endif
+
+                if (finalScore > bestScore)
                 {
-                    bestScore = score;
+                    bestScore = finalScore;
                     bestAbility = ability;
                 }
             }
+
+            #if UNITY_EDITOR
+
+            sb.AppendLine($"[AI] {Name} selected: {bestAbility?.Name} " +
+                        $"with score {bestScore:F2}");
+            Debug.Log(sb.ToString());
+
+            #endif
 
             return bestAbility;
         }
@@ -804,6 +901,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
                         payee, 
                         DeductGold(amount), 
                         Time.frameCount));
+
+            this.SpeechBubble.Show(
+                this.Personality.GetPayTollDialog());
         }
 
         private float CalculatePayChance(int tollAmount)
@@ -822,13 +922,14 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         public virtual void Receive<TEvent>(TEvent evt) where TEvent : ITargetedEvent
         {
-            if (evt is CombatRewardEvent reward)
+            if (evt is RewardEvent rewardEvent)
             {
-                AddExperience(reward.Experience);
-                AddFame(reward.Fame);
-                AddRespect(reward.Respect);
-                AddReputation(reward.Reputation);
-                AddGold(reward.Gold);
+                AddExperience(rewardEvent.Reward.Experience);
+                AddFame(rewardEvent.Reward.FameDelta);
+                AddRespect(rewardEvent.Reward.RespectDelta);
+                AddReputation(rewardEvent.Reward.ReputationDelta);
+                AddGold(rewardEvent.Reward.Gold);
+                RestoreResolve(rewardEvent.Reward.Resolve);
             }
 
             if (evt is LevelUpConfirmedEvent levelUp)
@@ -887,6 +988,12 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
                     activeEffects.RemoveAt(i);
                 }
             }
+        }
+
+        public void RestoreResolve(int amount)
+        {
+            Debug.Log($"{SourceName}::RestoreResolve:{amount}");
+            currentResolve = Mathf.Min(MaxResolve, Resolve + amount);
         }
 
         #endregion
@@ -970,9 +1077,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         {
             maxHealth += 5;
             maxStamina += 1;
+            maxResolve += 3;
 
             CurrentHealth = maxHealth;
             CurrentStamina = maxStamina;
+            Resolve = maxResolve;
         }
 
         private void ApplyLevelUpBenefits()
@@ -982,13 +1091,17 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         private void RecalculateDerivedStats()
         {
-            attack = 2 + BaseStats.Strength;
-            defense = 1 + (BaseStats.Constitution / 3);
-            int bonusHealthFromCon = BaseStats.Constitution * 2;
-            int bonusStaminaFromDex = BaseStats.Dexterity / 2;
+            attack = 2 + BaseStats.GetModifier(StatType.Strength);
+            defense = BaseStats.GetModifier(StatType.Constitution);
 
-            maxHealth =  (Level * 5) + 40 + bonusHealthFromCon;
-            maxStamina = (Level * 1) + 8 + bonusStaminaFromDex;
+            int mentalStat = Mathf.Max(
+                BaseStats.GetModifier(StatType.Charisma),
+                BaseStats.GetModifier(StatType.Wisdom),
+                BaseStats.GetModifier(StatType.Intelligence));
+
+            maxHealth =  40 + (Level * (5 + BaseStats.GetModifier(StatType.Constitution)));
+            maxStamina = 10 + (Level * (1 + BaseStats.GetModifier(StatType.Dexterity)));
+            maxResolve = (Level * 3) + 30 + mentalStat;
 
             critChance = 0.05f + (BaseStats.Luck * 0.005f);
             critChance = Mathf.Clamp(critChance, 0f, 0.5f);
@@ -1025,6 +1138,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             }
 
             ClearSpeech();
+            Debug.Log($"{SourceName}::{nameof(Speak)}::\"line\" @ Frame {Time.frameCount}");
             speechBubble.Show(line);
         }
 

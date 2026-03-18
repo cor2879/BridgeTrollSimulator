@@ -88,3 +88,67 @@ MonoBehaviour:
     - You skipped a step.
     - You can do better.
     - Try again.
+  leaveDialog:
+  - Heh. Not today!
+  - Nice bridge. Shame about the troll.
+  - "I\u2019ll find another way~"
+  - Catch you later, rock-face!
+  - No fun here!
+  attackDialog:
+  - "Let\u2019s dance!"
+  - You picked the wrong traveler!
+  - "Bet you didn\u2019t expect this!"
+  - Hope you can swim!
+  - Try to keep up!
+  greetDialog:
+  - "Well well\u2026"
+  - What do we have here?
+  - Nice bridge!
+  - Troll toll?
+  - This should be fun.
+  agreeDialog:
+  - Sure, why not?
+  - Sounds entertaining.
+  - Alright!
+  - "I\u2019m listening."
+  - Deal.
+  payTollDialog:
+  - Money solves everything!
+  - There you go!
+  - "Don\u2019t spend it all in one place!"
+  - Worth it!
+  - A shiny coin for a shiny bridge!
+  socialDuelVictoryDialog:
+  - Too easy!
+  - Ha!
+  - That was fun!
+  - Better luck next time!
+  - Thanks, bridge troll!
+  - You almost had me.
+  - "I\u2019ll take that win."
+  - See ya!
+  - Good talk!
+  - Easy victory.
+  surrenderDialog:
+  - Alright, alright!
+  - You got me!
+  - Fine, troll wins!
+  - Okay okay!
+  - You win this round!
+  - Fair enough!
+  - No hard feelings!
+  - I fold!
+  - Good game!
+  - "Guess I\u2019ll pay!"
+  acceptSurrenderDialog:
+  - Aww, already? You were just getting interesting.
+  - "Fine, fine\u2026 I\u2019ll let you go. This time."
+  - Run along! Try not to trip over your dignity.
+  - "Hehe\u2026 I\u2019ll spare you. Consider it a gift."
+  - "Ohhh, I could keep going\u2026 but where\u2019s the fun in that?"
+  denySurrenderDialog:
+  - "Nope! I\u2019m having way too much fun."
+  - "You don\u2019t get off that easy~"
+  - Begging already? Adorable. Keep going.
+  - "Let\u2019s see how this really ends."
+  - "Oh no no\u2026 we\u2019re not done playing."

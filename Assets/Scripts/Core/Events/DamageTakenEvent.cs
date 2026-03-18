@@ -9,11 +9,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
         public bool IsCrit { get; }
 
         public DamageTakenEvent(
-            IEventSource initiator,
+            IEventSource sender,
             int amount,
             int frame,
             bool isCrit = false)
-            : base(initiator, frame)
+            : base(sender, frame)
         {
             this.Amount = amount;
             this.IsCrit = isCrit;

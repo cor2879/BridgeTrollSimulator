@@ -213,6 +213,7 @@ MonoBehaviour:
   goldPopupUI: {fileID: 2739140604645198108}
   speechBubble: {fileID: 5020790580924924394}
   battleIntroSprite: {fileID: 1917378661519646051, guid: 1e164fe9688e221cfaf97480d1f5fdc6, type: 3}
+  socialDuelIntroSprite: {fileID: -5736465465951047674, guid: 3c7217f894cf63deda33de4acad31ad5, type: 3}
   victorySprite: {fileID: -7473052881233181494, guid: 4d52ddc3e540ddd7ca68fc109c3371ae, type: 3}
   defeatedSprite: {fileID: -2599517204066081339, guid: 3c7217f894cf63deda33de4acad31ad5, type: 3}
   deadSprite: {fileID: 5130021861280262746, guid: 0e8796544dbefe5c48a9976ffde5d6df, type: 3}
@@ -238,13 +239,13 @@ MonoBehaviour:
   currentStamina: 0
   currentHealth: 0
   baseStats:
-    strength: 5
-    dexterity: 5
-    constitution: 5
-    charisma: 5
-    intelligence: 5
+    strength: 16
+    dexterity: 10
+    constitution: 14
+    charisma: 10
+    intelligence: 12
     wisdom: 10
-    luck: 5
+    luck: 10
   baseSkills:
     persuade: 0
     intimidate: 0
@@ -264,9 +265,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f03ee2b4f24c941e5b17e2b9b28d15d7, type: 2}
   - {fileID: 11400000, guid: 3538289a4c24b460680814b748f4d78c, type: 2}
   - {fileID: 11400000, guid: 43c62434ad8004932a9f77e00b5a0378, type: 2}
+  - {fileID: 11400000, guid: 2cb1cfbf8dfbf4db8bfca64a5d3ffac2, type: 2}
   socialAbilities:
   - {fileID: 11400000, guid: 12784bcd6df9745c4adc1172b5bddc37, type: 2}
   - {fileID: 11400000, guid: ee92ea42dbec84d50b8f6d74875639c0, type: 2}
+  - {fileID: 11400000, guid: 902d1c34f6ba64e74a159cdf31daefd5, type: 2}
   socialResponseProfile:
     high:
       weakSuccess: []

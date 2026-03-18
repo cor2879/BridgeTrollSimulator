@@ -5,6 +5,7 @@ using UnityEngine;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat.Enums;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Components;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Audio;
@@ -12,12 +13,19 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameStateManagement;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Demands.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Interfaces;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Scenarios;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Rewards;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Rewards.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.UI;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.UI.Interfaces;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 {
-    public class CombatSystem : MonoBehaviour, IEventSource
+    public class CombatSystem : MonoBehaviour, IModalUI
     {
         [SerializeField] 
         private CombatUIController combatUI;
@@ -43,9 +51,40 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
         private int currentTurnIndex = 0;
         [SerializeField, ReadOnly]
         private int roundNumber = 1;
+        [SerializeField, ReadOnly]
+        private bool awaitingPlayerDecision = false;
+        [SerializeField, ReadOnly]
+        private bool playerCancelledAction = false;
+        [SerializeField, ReadOnly]
+        private bool showCombatControls = true;
 
         public string SourceName => nameof(CombatSystem);
         public GameSystemType SystemType => GameSystemType.Combat;
+
+        #region IModalUI
+
+        public bool IsBlockingUI => false;
+
+        #endregion
+
+        #region Singleton
+
+        private static CombatSystem _instance;
+
+        public static CombatSystem Instance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = FindFirstObjectByType<CombatSystem>();
+
+                return _instance;
+            }
+        }
+
+        #endregion
+
+        #region Initialization
 
         private void Awake()
         {
@@ -60,6 +99,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
             GameEventBus.Subscribe<CombatPreSummaryConfirmedEvent>(OnCombatPreSummaryConfirmed);
             GameEventBus.Subscribe<CombatEndedEvent>(OnCombatEnded);
             GameEventBus.Subscribe<CombatResolutionCompletedEvent>(OnCombatResolutionCompleted);
+            GameEventBus.Subscribe<CombatSurrenderAcceptedEvent>(OnCombatSurrenderAccepted);
+            GameEventBus.Subscribe<ConcedeCombatEvent>(OnConcededCombat);
         }
 
         private void OnDisable()
@@ -69,7 +110,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
             GameEventBus.Unsubscribe<CombatPreSummaryConfirmedEvent>(OnCombatPreSummaryConfirmed);
             GameEventBus.Unsubscribe<CombatEndedEvent>(OnCombatEnded);
             GameEventBus.Unsubscribe<CombatResolutionCompletedEvent>(OnCombatResolutionCompleted);
+            GameEventBus.Unsubscribe<CombatSurrenderAcceptedEvent>(OnCombatSurrenderAccepted);
+            GameEventBus.Unsubscribe<ConcedeCombatEvent>(OnConcededCombat);
         }
+
+        #endregion
 
         #region Event Handlers
 
@@ -116,6 +161,10 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
             currentTurnIndex = 0;
             roundNumber = 1;
 
+            isResolving = false;
+            awaitingPlayerDecision = false;
+            playerCancelledAction = false;
+
             BeginTurn(GetCurrentCombatant());
         }
 
@@ -133,7 +182,112 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
             GameStateSystem.Instance.SetState(GameState.World);
         }
 
+        private void OnCombatSurrenderAccepted(CombatSurrenderAcceptedEvent evt)
+        {
+            var winner = evt.Initiator as EntityController;
+            var loser = evt.Target as EntityController;
+
+            var outcome = winner.IsPlayerControlled ?
+                CombatOutcome.PlayerVictory_EnemyAlive :
+                CombatOutcome.PlayerDefeated;
+
+            EndCombat(outcome);
+        }
+
+        private void OnConcededCombat(ConcedeCombatEvent evt)
+        {
+            var initiator = evt.Initiator as EntityController;
+            var target = evt.Target as EntityController;
+
+            if (initiator == null || target == null)
+                return;
+
+            if (initiator.IsPlayerControlled)
+            {
+                ResolveSurrenderReaction(initiator, target, evt); 
+            }
+            else
+            {
+                HandleNpcSurrenderOffer(evt);
+            }
+        }
+
+
         #endregion
+
+        #region Public API
+
+        public void ConcedeCombat(IReactor initiator, IReceiver target)
+        {
+            Debug.Log($"{nameof(ConcedeCombat)}::initiator:{initiator.Name}::target:{target.Name}");
+
+            if (initiator.IsPlayerControlled)
+            {
+                awaitingPlayerDecision = true;
+
+                ModalUISystem.Instance.ShowConfirmationDialog(
+                    "Really concede this battle?",
+                    () => 
+                    {
+                        awaitingPlayerDecision = false;
+                        initiator.ConcedeCombat(target);
+                    },
+                    () =>
+                    {
+                        awaitingPlayerDecision = false;
+                        playerCancelledAction = true;
+                    });
+            }
+            else
+            {
+                initiator.ConcedeCombat(target);
+            }
+        }
+
+        #endregion
+
+        private void ResolveSurrenderReaction(
+            EntityController player,
+            EntityController npc,
+            ConcedeCombatEvent evt)
+        {
+            var chosen = ReactionResolver.Resolve(
+                SurrenderScenario.Instance,
+                npc, 
+                player,
+                evt);
+
+            chosen.Execute(npc, player, evt);
+        }
+
+        private void HandleNpcSurrenderOffer(ConcedeCombatEvent evt)
+        {
+            var npc = evt.Initiator as IResolver;
+            var player = evt.Target;
+
+            showCombatControls = false;
+            combatUI.EnableInput(showCombatControls);
+            var text = !string.IsNullOrEmpty(evt.Concession?.Description) ?
+                evt.Concession.Description :
+                $"{npc.Name} is offering to surrender. Do you accept?";
+
+            ModalUISystem.Instance.ShowConfirmationDialog(
+                text,
+                onYes: () =>
+                {
+                    npc.DemandComponent.AddDemand(evt.Concession);
+                    showCombatControls = true;
+                    GameEventBus.Publish(
+                        new CombatSurrenderAcceptedEvent(player, npc, Time.frameCount));
+                },
+                onNo: () =>
+                {
+                    showCombatControls = true;
+                    GameEventBus.Publish(
+                        new CombatSurrenderDeniedEvent(player, npc, Time.frameCount));
+                    BeginTurn(player as EntityController);
+                });
+        }
 
         private CombatResolutionData BuildResolution(CombatEndedEvent evt)
         {
@@ -146,6 +300,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
             var respect = 0;
             var reputation = 0;
             var gold = 0;
+            var resolve = 0;
 
             switch (outcome)
             {
@@ -156,6 +311,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
                     respect = enemy.Respect;
                     reputation = -enemy.Reputation;
                     gold = enemy.DeductGold(enemy.Gold);
+                    resolve = player.MaxResolve / 2;
                     break;
                 case CombatOutcome.PlayerVictory_EnemyAlive:
                     winningFaction = CombatFaction.Player;
@@ -164,6 +320,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
                     respect = enemy.Respect;
                     reputation = System.Math.Max(0, enemy.Reputation);
                     gold = 0;
+                    resolve = player.MaxResolve / 2;
                     break;
                 case CombatOutcome.PlayerDefeated:
                     winningFaction = CombatFaction.Enemy;
@@ -188,11 +345,13 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
                 new List<EntityController>() { player },
                 new List<EntityController>() { enemy },
                 winningFaction,
-                experience,
-                fame,
-                respect,
-                reputation,
-                gold);
+                new RewardBundle(
+                    experience,
+                    gold,
+                    fame,
+                    respect,
+                    reputation,
+                    resolve));
             
             return resolutionData;
         }
@@ -229,7 +388,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
             if (entity.IsPlayerControlled)
             {
                 state = CombatState.PlayerTurn;
-                combatUI.EnableInput(true);
+                combatUI.EnableInput(showCombatControls);
             }
             else
             {
@@ -241,12 +400,39 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
         private IEnumerator ResolveAI(EntityController entity)
         {
             isResolving = true;
+
+            // 🔥 EARLY EXIT if combat already ended
+            if (state == CombatState.Resolving || state == CombatState.Inactive)
+            {
+                isResolving = false;
+                yield break;
+            }
+
             var target = ChooseTarget(entity);
             var ability = entity.ChooseBestCombatAbility(target);
 
             UseAbility(entity, target, ability);
 
+            while (awaitingPlayerDecision)
+            {
+                yield return null;
+
+                // 🔥 ALSO GUARD HERE
+                if (state == CombatState.Resolving || state == CombatState.Inactive)
+                {
+                    isResolving = false;
+                    yield break;
+                }
+            }
+
             yield return new WaitForSeconds(actionDelay);
+
+            // 🔥 FINAL GUARD before applying effects
+            if (state == CombatState.Resolving || state == CombatState.Inactive)
+            {
+                isResolving = false;
+                yield break;
+            }
 
             entity.ProcessTurnEndEffects();
 
@@ -288,7 +474,33 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
             combatUI.EnableInput(false);
             UseAbility(player, target, ability);
 
+            while (awaitingPlayerDecision)
+            {
+                yield return null;
+
+                if (state == CombatState.Resolving || state == CombatState.Inactive)
+                {
+                    isResolving = false;
+                    yield break;
+                }
+            }
+
+            if (playerCancelledAction)
+            {
+                playerCancelledAction = false;
+                isResolving = false;
+                BeginTurn(player);
+                yield break;
+            }
+
             yield return new WaitForSeconds(actionDelay);
+
+            // 🔥 CRITICAL GUARD
+            if (state == CombatState.Resolving || state == CombatState.Inactive)
+            {
+                isResolving = false;
+                yield break;
+            }
 
             player.ProcessTurnEndEffects();
             isResolving = false;
@@ -366,21 +578,40 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
         {
             state = CombatState.Inactive;
             combatUI.Hide();
+
+            var outcome = resolutionData.Outcome;
             var snapshot = combatants.ToList();
+            var player = resolutionData.PlayerSide.First();
+            var npc = resolutionData.EnemySide.First();
 
-            GameDatabase.Instance.Player.ResetControlMode(overrideDeath: false);
+            player.ResetControlMode(overrideDeath: false);
 
-            GameEventBus.Publish<CombatRewardEvent>(
-                new CombatRewardEvent(
+            GameEventBus.Publish<RewardEvent>(
+                new RewardEvent(
                     this,
                     GameDatabase.Instance.Player,
-                    resolutionData.Experience,
-                    resolutionData.FameDelta,
-                    resolutionData.RespectDelta,
-                    resolutionData.ReputationDelta,
-                    resolutionData.GoldReward,
+                    resolutionData.Reward,
                     Time.frameCount));
             
+            switch (outcome)
+            {
+                case CombatOutcome.PlayerVictory_EnemyAlive:
+                case CombatOutcome.PlayerVictory_EnemyKilled:
+                    player.OnCombatVictory(resolutionData);
+                    npc?.OnCombatDefeat(resolutionData);
+                    break;
+
+                case CombatOutcome.PlayerDefeated:
+                    player.OnCombatDefeat(resolutionData);
+                    npc?.OnCombatVictory(resolutionData);
+                    break;
+
+                case CombatOutcome.PlayerKilled:
+                    player.OnCombatDefeat(resolutionData);
+                    npc?.OnCombatVictory(resolutionData);
+                    break;
+            }
+
             foreach (var entity in snapshot.Where(e => e.CurrentControlMode == ControlMode.Dead))
             {
                 entity.BeginDespawn();

@@ -26,5 +26,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Extensions
             yield return new WaitUntil(() =>
                 !GameStateSystem.Instance.IsPaused);
         }
+
+        private static IEnumerator WaitForKeyUpThenDoAction(System.Action action)
+        {
+            yield return new WaitUntil(() => !Input.anyKey);
+            action?.Invoke();
+        }
     }
 }

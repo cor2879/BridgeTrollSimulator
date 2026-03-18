@@ -9,20 +9,23 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Events
     {
         public IReactor Entity => (IReactor)Sender;
         public int Amount { get; }
+        public bool IsCrit { get; }
 
         public ResolveChangedEvent(
             IReactor entity,
             int amount,
+            bool isCrit,
             int frame)
             : base(entity, frame)
         {
             Amount = amount;
+            IsCrit = isCrit;
         }
 
         public override string ToString()
         {
             return $"{nameof(ResolveChangedEvent)}::Entity:{Entity.SourceName}" +
-                $"::Amount:{Amount} @ Frame {Frame}";
+                $"::Amount:{Amount}::IsCrit:{IsCrit} @ Frame {Frame}";
         }
     }
 }

@@ -19,7 +19,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 
         public override string ToString()
         {
-            return $"{nameof(CombatStartedEvent)}: {Initiator?.SourceName} vs {Target?.SourceName} @ Frame {Frame}";
+            return $"{nameof(CombatConfirmedEvent)}: {Initiator?.SourceName} vs {Target?.SourceName} @ Frame {Frame}";
         }
     }
 }

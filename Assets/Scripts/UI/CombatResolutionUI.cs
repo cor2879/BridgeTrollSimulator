@@ -50,6 +50,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         public override string SourceName => "CombatResolutionUI";
         public override GameSystemType SystemType => GameSystemType.UI;
+        public override bool IsBlockingUI => true;
 
         private void Awake()
         {
@@ -71,11 +72,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
             outcomeText.text = GetOutcomeText(data.Outcome);
 
-            xpText.text = $"{data.Experience} XP";
-            goldText.text = $"{data.GoldReward} Gold";
-            fameText.text = $"{data.FameDelta} Fame";
-            respectText.text = $"{data.RespectDelta} Respect";
-            reputationText.text = $"{data.ReputationDelta} Reputation";
+            xpText.text = $"{data.Reward.Experience} XP";
+            goldText.text = $"{data.Reward.Gold} Gold";
+            fameText.text = $"{data.Reward.FameDelta} Fame";
+            respectText.text = $"{data.Reward.RespectDelta} Respect";
+            reputationText.text = $"{data.Reward.ReputationDelta} Reputation";
 
             ShowModal(panelRoot);
             awaitingInput = true;

@@ -1,12 +1,25 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Audio;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 {
     public class GoldPopupUI : MonoBehaviour
     {
+        private struct GoldRequest
+        {
+            public int Start;
+            public int End;
+            public int Delta;
+        }
+
         [SerializeField] private TMP_Text currentGoldText;
         [SerializeField] private TMP_Text deltaText;
         [SerializeField] private SpriteRenderer coinImage;
@@ -15,16 +28,46 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
         [SerializeField] private float deltaRiseDuration = 0.5f;
         [SerializeField] private float lingerTime = 0.4f;
 
+        [SerializeField, ReadOnly]
+        private bool isPlaying;
+
+        private readonly Queue<GoldRequest> queue = new();
         private Coroutine activeRoutine;
+        private EntityController entity;
 
         private void Awake()
         {
+            entity = GetComponent<EntityController>();
             gameObject.SetActive(false);
         }
 
         public void Play(int startGold, int endGold, int delta)
         {
-            Debug.Log("Play GoldUI");
+            queue.Enqueue(new GoldRequest
+            {
+                Start = startGold,
+                End = endGold,
+                Delta = delta
+            });
+
+            if (!isPlaying)
+            {
+                ProcessQueue();
+            }
+        }
+
+        public void ProcessQueue()
+        {
+            if (queue.Count == 0)
+            {
+                isPlaying = false;
+                gameObject.SetActive(false);
+                return;
+            }
+
+            isPlaying = true;
+            var request = queue.Dequeue();
+
             if (activeRoutine != null)
                 StopCoroutine(activeRoutine);
 
@@ -33,19 +76,26 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             deltaText.gameObject.SetActive(true);
             deltaText.transform.localPosition = Vector3.zero;
 
-            currentGoldText.text = startGold.ToString();
-            deltaText.text = $"+{delta}";
+            currentGoldText.text = request.Start.ToString();
+            deltaText.text = $"+{request.Delta}";
 
-            activeRoutine = StartCoroutine(AnimateSequence(startGold, endGold));
+            activeRoutine = StartCoroutine(
+                AnimateSequence(request.Start, request.End));
         }
 
         private IEnumerator AnimateSequence(int start, int end)
         {
+            GameEventBus.Publish(
+                new SoundEffectEvent(
+                    entity,
+                    AudioSystem.Library.coins,
+                    Time.frameCount));
+
             yield return StartCoroutine(AnimateDeltaRise());
             yield return StartCoroutine(TypeGoldIncrease(start, end));
             yield return new WaitForSeconds(lingerTime);
 
-            gameObject.SetActive(false);
+            ProcessQueue();
         }
 
         private IEnumerator AnimateDeltaRise()

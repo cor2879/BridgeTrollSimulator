@@ -88,3 +88,67 @@ MonoBehaviour:
     - You argue in fragments.
     - Support your claim.
     - That is incomplete.
+  leaveDialog:
+  - This bridge is beneath me.
+  - I will not indulge this barbarism.
+  - I shall seek a civilized route.
+  - What a tedious encounter.
+  - This conversation is over.
+  attackDialog:
+  - Ignorant brute!
+  - You mistake patience for weakness.
+  - Prepare to be corrected.
+  - I will dismantle you.
+  - Very well. Enlightenment by force.
+  greetDialog:
+  - Greetings, creature.
+  - What curious architecture.
+  - Ah. A troll.
+  - Fascinating.
+  - Let us proceed with reason.
+  agreeDialog:
+  - A rational proposal.
+  - Proceed.
+  - Very well.
+  - I will entertain this.
+  - Acceptable.
+  payTollDialog:
+  - A vulgar system, but effective.
+  - Very well. Take it.
+  - Consider this a transaction.
+  - A minor inconvenience.
+  - Let us conclude this matter.
+  socialDuelVictoryDialog:
+  - Predictable.
+  - As expected.
+  - Reason prevails.
+  - You see the logic.
+  - An obvious conclusion.
+  - The correct outcome.
+  - Naturally.
+  - Argument settled.
+  - A trivial debate.
+  - You learned something.
+  surrenderDialog:
+  - Very well.
+  - I concede.
+  - An unfortunate outcome.
+  - This debate is concluded.
+  - You have your victory.
+  - A regrettable result.
+  - I withdraw.
+  - Take the toll.
+  - A temporary setback.
+  - Consider yourself fortunate.
+  acceptSurrenderDialog:
+  - "A wise concession. You\u2019ve learned something today."
+  - At last, reason prevails.
+  - "I accept. Consider this\u2026 educational."
+  - Good. Even you can recognize defeat.
+  - A rational conclusion. How refreshing.
+  denySurrenderDialog:
+  - No. The lesson is not yet complete.
+  - You will endure the full consequences.
+  - "I haven\u2019t proven my point yet."
+  - This demonstration requires a proper conclusion.
+  - "You don\u2019t get to escape the lesson now."

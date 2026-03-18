@@ -39,6 +39,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         public override string SourceName => nameof(CombatPreSummaryUI);
         public override GameSystemType SystemType => GameSystemType.UI;
+        public override bool IsBlockingUI => true;
 
         private void Awake()
         {

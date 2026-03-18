@@ -88,3 +88,67 @@ MonoBehaviour:
     - "You\u2019re stretching."
     - "I don\u2019t see it."
     - Needs work.
+  leaveDialog:
+  - Not worth the coin.
+  - Find another fool to rob.
+  - "I\u2019ve wasted enough time here."
+  - Keep your cursed bridge.
+  - "Bah. I\u2019ll cross elsewhere."
+  attackDialog:
+  - Stand aside, troll!
+  - Move, or I move you.
+  - "I\u2019ve slain worse than you."
+  - "You\u2019ll regret this toll."
+  - Steel solves everything.
+  greetDialog:
+  - Bridge troll, eh?
+  - "Let\u2019s make this quick."
+  - Name your price, troll.
+  - Another bridge, another shakedown.
+  - State your business.
+  agreeDialog:
+  - "Fine. Let\u2019s settle this."
+  - You have my attention.
+  - Speak your terms.
+  - Very well.
+  - Go on.
+  payTollDialog:
+  - Take it and be done.
+  - Gold well spent.
+  - Here. Now let me pass.
+  - Cheaper than a fight.
+  - "A fair toll\u2026 I suppose."
+  socialDuelVictoryDialog:
+  - Thought so.
+  - "We\u2019re done here."
+  - "I\u2019ll be on my way."
+  - Told you.
+  - Step aside.
+  - Smart choice.
+  - Business concluded.
+  - Good decision, troll.
+  - No toll today.
+  - Pleasure doing business.
+  surrenderDialog:
+  - Fine. You win.
+  - The bridge is yours.
+  - "I\u2019ll pay."
+  - Enough. I yield.
+  - "You\u2019ve made your point."
+  - No need for more blood.
+  - Take the toll.
+  - Smart troll.
+  - You fought well.
+  - Not worth dying for.
+  acceptSurrenderDialog:
+  - Smart choice. Live to spend another day.
+  - Good. Saves me the trouble.
+  - Drop your pride. Keep your life.
+  - "ine. You\u2019re not worth the extra effort."
+  - "Walk away. We\u2019re done here."
+  denySurrenderDialog:
+  - "Too late. Should\u2019ve thought of that sooner."
+  - No deal. I finish what I start.
+  - "You don\u2019t get to quit now."
+  - "I\u2019m not paid to show mercy."
+  - "Stand up. This isn\u2019t over."

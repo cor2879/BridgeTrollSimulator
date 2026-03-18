@@ -29,6 +29,13 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Combat
         public bool IsOffensive => isOffensive;
         public IReadOnlyList<AbilitySynergy> FollowUpSynergies => followUpSynergies;
 
+        public virtual bool TryExecuteSpecial(
+            EntityController initiator,
+            EntityController target)
+        {
+            return false;    
+        }
+        
         public virtual bool CanExecute(EntityController initiator)
         {
             return initiator.CanExecute(this);

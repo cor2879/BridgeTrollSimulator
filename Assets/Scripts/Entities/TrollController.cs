@@ -1,9 +1,14 @@
+using System.Linq;
+
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Components;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.InputHandling;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Interfaces;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel;
 using UnityEngine;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
@@ -12,12 +17,61 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
     {
         public override ControlMode DefaultControlMode => ControlMode.FreeRoam;
 
+        #region Initialization
+
+        protected virtual void OnEnable()
+        {
+            GameEventBus.Subscribe<LeaveEvent>(OnLeave);
+        } 
+
+        protected virtual void OnDisable()
+        {
+            GameEventBus.Unsubscribe<LeaveEvent>(OnLeave);
+        }
+
         protected override void Awake()
         {
             base.Awake();
             this.inputSource = new KeyboardInputSource();
             this.entityType = EntityType.Troll;
         }
+
+        #endregion
+
+        #region EventHandlers
+
+        private void OnLeave(LeaveEvent evt)
+        {
+            if (CurrentControlMode != ControlMode.Encounter)
+            {
+                return;
+            }
+
+            if (evt.Sender is NpcController npc)
+            {
+                SetControlMode(DefaultControlMode);
+            }
+        }
+
+        public override void OnCombatVictory(CombatResolutionData data)
+        {
+        }
+
+        public override void OnCombatDefeat(CombatResolutionData data)
+        {
+            AllowToPass(data.EnemySide.First());
+        }
+
+        public override void OnSocialDuelVictory(SocialDuelResolutionData data)
+        {
+        }
+
+        public override void OnSocialDuelLoss(SocialDuelResolutionData data)
+        {
+            AllowToPass(data.Npc);
+        }
+
+        #endregion
 
         protected override void ProcessInput()
         {
@@ -107,15 +161,43 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         private void HandleTollPaidEvent(TollPaidEvent evt)
         {
             AddGold(evt.Amount);
-            GameEventBus.Publish(new AllowToPassEvent(
-                this,
-                evt.Initiator,
-                Time.frameCount));
+
+            RestoreResolve(maxResolve / 10);
+            var npc = evt.Initiator as NpcController;
+
+            if (npc.DemandComponent.HasDemands)
+            {
+                npc.DemandComponent.ResolveNextDemand(npc);
+                return;
+            }
+            else
+            {
+                AllowToPass(npc);
+            }
         }
 
         private void HandleLevelUp(LevelUpEvent levelUp)
         {
             Debug.Log($"Level Up received: {levelUp}");
         }
+
+        public void AllowToPass(IReceiver npc)
+        {
+            GameEventBus.Publish(new AllowToPassEvent(
+                this,
+                npc,
+                Time.frameCount));
+            SetControlMode(DefaultControlMode);
+        }
+
+        #region IReactor
+
+        public override void AcceptSurrender(IReactor opponent, ITargetedEvent evt)
+        {}
+
+        public override void DenySurrender(IReactor opponent, ITargetedEvent evt)
+        {}
+
+        #endregion
     }
 }

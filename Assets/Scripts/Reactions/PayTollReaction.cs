@@ -2,6 +2,7 @@ using UnityEngine;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Demands.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog.Events;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions
@@ -46,10 +47,12 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions
             if (evt is not TollDemandedEvent tollEvt)
                 return;
 
-            if (actor is not EntityController npc)
+            if (actor is not IResolver npc)
+            {
                 return;
+            }
 
-            npc.PayToll(opponent, tollEvt.Amount);
+            npc.DemandComponent.ResolveNextDemand(npc);
         }
     }
 }

@@ -1,11 +1,20 @@
 using UnityEngine;
+using System.Collections;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameStateManagement;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Interfaces;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Scenarios;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Rewards;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Abilities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Events;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Interfaces;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Phases;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Rewards.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.UI;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel
@@ -43,17 +52,23 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel
         #region Serialized Fields
 
         [SerializeField] private SocialDuelUI duelUI;
+        [SerializeField] private SocialDuelIntroUI introUI;
+        [SerializeField] private SocialDuelPreSummaryUI preSummaryUI;
+        [SerializeField] private SocialDuelResolutionUI resolutionUI;
 
         #endregion
 
         #region Private State
 
+        private ISocialDuelPhase currentPhase;
         private SocialDuelState state = SocialDuelState.Inactive;
         private SocialDuelContext context;
 
         private SpeechBubbleUI activeBubble;
 
+        [SerializeField, ReadOnly]
         private EntityController currentAttacker;
+        [SerializeField, ReadOnly]
         private EntityController currentDefender;
         private SocialExchangeOutcome pendingOutcome;
 
@@ -75,16 +90,39 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel
 
         #endregion
 
+        #region Public Properties
+
+        public SocialDuelUI UI => duelUI;
+        public SocialDuelIntroUI IntroUI => introUI;
+        public SocialDuelPreSummaryUI PreSummaryUI => preSummaryUI;
+        public SocialDuelResolutionUI ResolutionUI => resolutionUI;
+
+        #endregion
+
         #region Initialization
 
         private void OnEnable()
         {
             GameEventBus.Subscribe<SocialDuelStartedEvent>(OnSocialDuelStarted);
+            GameEventBus.Subscribe<SocialDuelConfirmedEvent>(OnSocialDuelConfirmed);
+            GameEventBus.Subscribe<SocialDuelPreSummaryConfirmedEvent>(OnSocialDuelPreSummaryConfirmed);
+            GameEventBus.Subscribe<SocialDuelEndedEvent>(OnSocialDuelEnded);
+            GameEventBus.Subscribe<SocialDuelResolutionCompletedEvent>(OnSocialDuelResolutionCompleted);
+            GameEventBus.Subscribe<ConcedeSocialDuelEvent>(OnConcededSocialDuel);
+            GameEventBus.Subscribe<SocialDuelSurrenderAcceptedEvent>(OnSocialDuelSurrenderAccepted);
+            GameEventBus.Subscribe<SocialDuelSurrenderDeniedEvent>(OnSocialDuelSurrenderDenied);
         }
 
         private void OnDisable()
         {
             GameEventBus.Unsubscribe<SocialDuelStartedEvent>(OnSocialDuelStarted);
+            GameEventBus.Unsubscribe<SocialDuelConfirmedEvent>(OnSocialDuelConfirmed);
+            GameEventBus.Unsubscribe<SocialDuelPreSummaryConfirmedEvent>(OnSocialDuelPreSummaryConfirmed);
+            GameEventBus.Unsubscribe<SocialDuelEndedEvent>(OnSocialDuelEnded);
+            GameEventBus.Unsubscribe<SocialDuelResolutionCompletedEvent>(OnSocialDuelResolutionCompleted);
+            GameEventBus.Unsubscribe<ConcedeSocialDuelEvent>(OnConcededSocialDuel);
+            GameEventBus.Unsubscribe<SocialDuelSurrenderAcceptedEvent>(OnSocialDuelSurrenderAccepted);
+            GameEventBus.Unsubscribe<SocialDuelSurrenderDeniedEvent>(OnSocialDuelSurrenderDenied);
         }
 
         #endregion
@@ -98,8 +136,75 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel
 
             var player = initiator.IsPlayerControlled ? initiator : target;
             var npc = initiator.IsPlayerControlled ? target : initiator;
+            
+            context = new SocialDuelContext(player, npc);
+
+            SetPhase(SocialDuelPhaseBase.GetInstance<SocialDuelIntroPhase>());
+        }
+
+        private void OnSocialDuelConfirmed(SocialDuelConfirmedEvent evt)
+        {
+            if (context == null)
+            {
+                return;
+            }
+
+            SetPhase(SocialDuelPhaseBase.GetInstance<SocialDuelPreSummaryPhase>());
+        }
+
+        private void OnSocialDuelPreSummaryConfirmed(SocialDuelPreSummaryConfirmedEvent evt)
+        {
+            var initiator = evt.Initiator as EntityController;
+            var target = evt.Target as EntityController;
+
+            var player = initiator.IsPlayerControlled ? initiator : target;
+            var npc = initiator.IsPlayerControlled ? target : initiator;
 
             StartDuel(player, npc);
+        }
+
+        private void OnSocialDuelEnded(SocialDuelEndedEvent evt)
+        {
+            SetPhase(SocialDuelPhaseBase.GetInstance<SocialDuelPostSummaryPhase>());
+        }
+
+        private void OnSocialDuelResolutionCompleted(SocialDuelResolutionCompletedEvent evt)
+        {
+            var data = evt.Data;
+
+            FinalizeDuel(data);
+        }
+
+        private void OnConcededSocialDuel(ConcedeSocialDuelEvent evt)
+        {
+            var initiator = evt.Initiator as EntityController;
+            var target = evt.Target as EntityController;
+
+            if (initiator == null || target == null)
+                return;
+
+            // Only resolve reactions if player initiated
+            if (!initiator.IsPlayerControlled)
+                return;
+
+            ResolveSurrenderReaction(initiator, target, evt); 
+        }
+
+        private void OnSocialDuelSurrenderAccepted(SocialDuelSurrenderAcceptedEvent evt)
+        {
+            var winner = evt.Initiator as EntityController;
+            var loser = evt.Target as EntityController;
+
+            var outcome = winner.IsPlayerControlled ?
+                SocialDuelOutcome.PlayerVictory :
+                SocialDuelOutcome.NpcVictory;
+
+            EndDuel(outcome);
+        }
+
+        private void OnSocialDuelSurrenderDenied(SocialDuelSurrenderDeniedEvent evt)
+        {
+            BeginPlayerTurn();
         }
 
         #endregion
@@ -108,58 +213,39 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel
 
         public void StartDuel(EntityController player, EntityController npc)
         {
-            context = new SocialDuelContext(player, npc);
-
             duelUI.Initialize(context);
             duelUI.Show();
 
-            state = SocialDuelState.PlayerTurn;
-            duelUI.EnableInput(true);
+            currentAttacker = player;
+            currentDefender = npc;
+
+            SetPhase(SocialDuelPhaseBase
+                .GetInstance<SocialDuelExchangePhase>());
         }
 
-        public void PlayerUseAbility(SocialAbility ability)
+        public void HandleAbility(SocialAbility ability)
         {
-            if (state != SocialDuelState.PlayerTurn || ability == null)
-                return;
-
-            duelUI.EnableInput(false);
-
-            currentAttacker = context.Player;
-            currentDefender = context.Npc;
-
-            pendingOutcome = ability.ResolveExchange(currentAttacker, currentDefender);
-
-            ApplyOutcome(currentAttacker, currentDefender, pendingOutcome);
-
-            if (CheckForEnd())
-                return;
-
-            ShowAttackerLine(ability);
-            context.LastSkillUsed = ability.GoverningSkill;
-
-            GameEventBus.Publish(
-                new SocialActionAttemptedEvent(
-                    currentAttacker,
-                    currentDefender,
-                    ability.AbilityName,
-                    pendingOutcome.Result <= SocialExchangeResult.WeakSuccess,
-                    Time.frameCount));
+            currentPhase?.OnAbilityChosen(ability);
         }
 
         #endregion
 
         #region Exchange Flow
 
-        private void ShowAttackerLine(SocialAbility ability)
+        public void ShowAttackerLine(
+            EntityController attacker,
+            SocialAbility ability, 
+            SocialExchangeOutcome outcome)
         {
+            pendingOutcome = outcome;
             exchangePhase = SocialExchangePhase.AttackerLine;
 
-            string line = ability.GetPlayerLine(pendingOutcome);
+            string line = ability.GetPlayerLine(outcome);
 
-            currentAttacker.SpeechBubble.Show(
+            attacker.SpeechBubble.Show(
                 line);
 
-            SetActiveSpeaker(currentAttacker);
+            SetActiveSpeaker(attacker);
         }
 
         private void ShowDefenderResponse()
@@ -167,12 +253,12 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel
             exchangePhase = SocialExchangePhase.DefenderResponse;
 
             int resolve = currentDefender == context.Player
-                ? context.PlayerCurrentResolve
-                : context.NpcCurrentResolve;
+                ? context.Player.Resolve
+                : context.Npc.Resolve;
 
             int maxResolve = currentDefender == context.Player
-                ? context.PlayerMaxResolve
-                : context.NpcMaxResolve;
+                ? context.Player.MaxResolve
+                : context.Npc.MaxResolve;
 
             string response = currentDefender.GetSocialResponse(
                 pendingOutcome,
@@ -201,15 +287,28 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel
 
         private void CompleteTurn()
         {
+            StartCoroutine(CompleteTurnRoutine());
+        }
+
+        private IEnumerator CompleteTurnRoutine()
+        {
             exchangePhase = SocialExchangePhase.None;
 
+            yield return new WaitUntil(() => duelUI.Busy == 0);
+
             if (CheckForEnd())
-                return;
+            {
+                yield break;
+            }
 
             if (state == SocialDuelState.PlayerTurn)
+            {
                 BeginNpcTurn();
+            }
             else
+            {
                 BeginPlayerTurn();
+            }
         }
 
         #endregion
@@ -236,22 +335,39 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel
             currentAttacker = context.Npc;
             currentDefender = context.Player;
 
-            pendingOutcome = ability.ResolveExchange(currentAttacker, currentDefender);
+            if (!ability.TryExecuteSpecial(currentAttacker, currentDefender))
+            {
+                pendingOutcome = ability.ResolveExchange(currentAttacker, currentDefender);
 
-            ApplyOutcome(currentAttacker, currentDefender, pendingOutcome);
+                ApplyOutcome(currentAttacker, currentDefender, pendingOutcome);
 
-            if (CheckForEnd())
-                return;
+                if (CheckForEnd())
+                    return;
 
-            ShowAttackerLine(ability);
-            context.LastSkillUsed = ability.GoverningSkill;
+                ShowAttackerLine(currentAttacker, ability, pendingOutcome);
+                context.LastSkillUsed = ability.GoverningSkill;
+            }
         }
 
         #endregion
 
         #region Resolve & Outcome
 
-        private void ApplyOutcome(
+        private void ResolveSurrenderReaction(
+            EntityController player,
+            EntityController npc,
+            ConcedeSocialDuelEvent evt)
+        {
+            var chosen = ReactionResolver.Resolve(
+                SurrenderScenario.Instance,
+                npc, 
+                player,
+                evt);
+
+            chosen.Execute(npc, player, evt);
+        }
+
+        public void ApplyOutcome(
             EntityController attacker,
             EntityController defender,
             SocialExchangeOutcome outcome)
@@ -262,22 +378,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel
 
             var target = outcome.DamageSelf ? attacker : defender;
 
-            if (target == context.Player)
-            {
-                context.PlayerCurrentResolve -= outcome.ResolveAmount;
-                duelUI.AnimateResolveChange(context.Player, context.PlayerCurrentResolve);
-            }
-            else
-            {
-                context.NpcCurrentResolve -= outcome.ResolveAmount;
-                duelUI.AnimateResolveChange(context.Npc, context.NpcCurrentResolve);
-            }
-
-            GameEventBus.Publish(
-                new ResolveChangedEvent(
-                    target,
-                    -outcome.ResolveAmount,
-                    Time.frameCount));
+            target.TakeResolveDamage(outcome.ResolveAmount, outcome.IsCritical);
+            duelUI.AnimateResolveChange(target, target.Resolve);
 
             // -------------------------
             // 2️⃣ Momentum Adjustment
@@ -301,21 +403,55 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel
             // Weak results do not affect momentum
         }
 
-        private bool CheckForEnd()
+        public bool CheckForEnd()
         {
-            if (context.NpcCurrentResolve <= 0)
+            if (context.Npc.Resolve <= 0)
             {
-                EndDuel(SocialDuelOutcome.PlayerVictory);
+                StartCoroutine(EndDuelRoutine(SocialDuelOutcome.PlayerVictory));
                 return true;
             }
 
-            if (context.PlayerCurrentResolve <= 0)
+            if (context.Player.Resolve <= 0)
             {
-                EndDuel(SocialDuelOutcome.NpcVictory);
+                StartCoroutine(EndDuelRoutine(SocialDuelOutcome.NpcVictory));
                 return true;
             }
 
             return false;
+        }
+
+        private IEnumerator EndDuelRoutine(SocialDuelOutcome outcome)
+        {
+            yield return new WaitUntil(() => duelUI.Busy == 0);
+
+            EndDuel(outcome);
+        }
+
+        private RewardBundle CalculateRewards(SocialDuelOutcome outcome)
+        {
+            if (outcome != SocialDuelOutcome.PlayerVictory)
+            {
+                return RewardBundle.Empty;
+            }
+
+            var experience = (context.Npc.ExperienceReward / 2) * context.Npc.Level;
+
+            return new RewardBundle(
+                experience: experience,
+                gold: Random.Range(1, 5),
+                fameDelta: 1,
+                respectDelta: 1,
+                reputationDelta: 0,
+                resolve: context.Player.MaxResolve / 2);
+        }
+
+        private void StartCombat(SocialDuelResolutionData data)
+        {
+            GameEventBus.Publish(
+                new CombatStartedEvent(
+                    data.Player,
+                    data.Npc,
+                    Time.frameCount));
         }
 
         #endregion
@@ -346,6 +482,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel
             ClearActiveSpeaker();
             AdvanceExchange();
         }
+        
 
         #endregion
 
@@ -359,7 +496,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel
                 return null;
 
             float resolvePercent =
-                (float)context.NpcCurrentResolve / context.NpcMaxResolve;
+                (float)context.Npc.Resolve / context.Npc.MaxResolve;
 
             SocialAbility bestChoice = abilities[0];
             int bestScore = int.MinValue;
@@ -423,29 +560,65 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel
         {
             ClearActiveSpeaker();
 
-            context.Player.SpeechBubble.Hide();
-            context.Npc.SpeechBubble.Hide();
-
             state = SocialDuelState.Completed;
             duelUI.Hide();
 
-            switch (outcome)
+            var reward = CalculateRewards(outcome);
+            context.Resolution = new SocialDuelResolutionData(
+                context.Player,
+                context.Npc,
+                outcome,
+                reward);
+
+            Debug.Log($"{nameof(EndDuel)}::reward:{reward}");
+            GameEventBus.Publish(
+                new SocialDuelEndedEvent(this, outcome, Time.frameCount));
+        }
+
+        private void FinalizeDuel(SocialDuelResolutionData data)
+        {
+            SetPhase(null);
+
+            var player = data.Player as TrollController;
+            var npc = data.Npc as NpcController;
+
+            switch (data.Outcome)
             {
                 case SocialDuelOutcome.PlayerVictory:
-                    Debug.Log("Player wins social duel.");
+                    player.OnSocialDuelVictory(data);
+                    npc.OnSocialDuelLoss(data);
                     break;
-
                 case SocialDuelOutcome.NpcVictory:
-                    Debug.Log("NPC wins social duel.");
+                    player.OnSocialDuelLoss(data);
+                    npc.OnSocialDuelVictory(data);
                     break;
-
                 case SocialDuelOutcome.Escalation:
-                    Debug.Log("Escalates to combat.");
+                    StartCombat(data);
                     break;
             }
 
+            state = SocialDuelState.Inactive;
+            GameDatabase.Instance.Player.ResetControlMode(overrideDeath: false);
+
             GameEventBus.Publish(
-                new SocialDuelEndedEvent(this, outcome, Time.frameCount));
+                new RewardEvent(
+                    this,
+                    data.Player,
+                    data.Reward,
+                    Time.frameCount));
+
+            context = null;
+        }
+
+        #endregion
+
+        #region Phase Management
+
+        public void SetPhase(ISocialDuelPhase phase)
+        {
+            currentPhase?.Exit();
+            currentPhase = phase;
+            currentPhase?.Enter(this, context);
         }
 
         #endregion
