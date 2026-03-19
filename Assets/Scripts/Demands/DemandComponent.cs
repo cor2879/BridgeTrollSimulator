@@ -23,6 +23,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Demands
 
         public void ResolveNextDemand(IResolver resolver)
         {
+            Debug.Log($"{nameof(DemandComponent)}::{nameof(ResolveNextDemand)}::DemandCount:{demands.Count}");
+
             if (demands.Count == 0)
             {
                 return;

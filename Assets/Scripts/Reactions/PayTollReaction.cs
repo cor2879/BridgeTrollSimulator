@@ -44,6 +44,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions
             IReceiver opponent,
             ITargetedEvent evt)
         {
+            Debug.Log($"{nameof(PayTollReaction)}::{nameof(Execute)}");
             if (evt is not TollDemandedEvent tollEvt)
                 return;
 

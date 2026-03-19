@@ -78,15 +78,15 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
         private void OnEnable()
         {
             GameEventBus.Subscribe<DialogStartedEvent>(OnDialogStarted);
-            GameEventBus.Subscribe<TollDemandedEvent>(OnTollDemanded);
-            GameEventBus.Subscribe<RefusePassageEvent>(OnRefusedPassage);
+            // GameEventBus.Subscribe<TollDemandedEvent>(OnTollDemanded);
+            // GameEventBus.Subscribe<RefusePassageEvent>(OnRefusedPassage);
         }
 
         private void OnDisable()
         {
             GameEventBus.Unsubscribe<DialogStartedEvent>(OnDialogStarted);
-            GameEventBus.Unsubscribe<TollDemandedEvent>(OnTollDemanded);
-            GameEventBus.Unsubscribe<RefusePassageEvent>(OnRefusedPassage);
+            // GameEventBus.Unsubscribe<TollDemandedEvent>(OnTollDemanded);
+            // GameEventBus.Unsubscribe<RefusePassageEvent>(OnRefusedPassage);
         }
 
         #endregion
@@ -101,6 +101,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
             runtimeStack.Clear();
         }
 
+        /*
         private void OnTollDemanded(TollDemandedEvent evt)
         {
             var player = evt.Initiator;
@@ -131,6 +132,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 
             reaction.Execute(npc, player, evt);
         }
+        */
 
         #endregion
 

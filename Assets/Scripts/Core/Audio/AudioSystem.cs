@@ -10,7 +10,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Audio
 {
     public class AudioSystem : MonoBehaviour
     {
-        public static AudioSystem Instance { get; private set; }
+        private static AudioSystem _instance;
 
         [Header("Sources")]
         [SerializeField] private AudioSource musicSource;
@@ -26,15 +26,28 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Audio
 
         public static AudioLibrary Library => Instance.library;
 
+        public static AudioSystem Instance 
+        { 
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = FindFirstObjectByType<AudioSystem>();
+                }
+
+                return _instance;
+            }
+        }
+
         private void Awake()
         {
-            if (Instance != null && Instance != this)
+            if (_instance != null && _instance != this)
             {
                 Destroy(gameObject);
                 return;
             }
 
-            Instance = this;
+            _instance = this;
             DontDestroyOnLoad(gameObject);
         }
 

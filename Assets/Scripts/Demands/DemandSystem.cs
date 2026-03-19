@@ -3,6 +3,9 @@ using UnityEngine;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Demands.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Demands.Interfaces;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Interfaces;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Scenarios;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Demands
 {
@@ -28,6 +31,16 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Demands
             var demand = new GoldDemand(player, evt.Amount);
 
             npc.DemandComponent.AddDemand(demand);
+
+            var scenario = DemandTollScenario.Instance;
+
+            var reaction = ReactionResolver.Resolve(
+                scenario,
+                npc,
+                player,
+                evt);
+            
+            reaction.Execute(npc, player, evt);
         }
 
         private void OnRefusedPassage(RefusePassageEvent evt)
@@ -38,6 +51,15 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Demands
             var demand = new LeaveDemand(player);
             
             npc.DemandComponent.AddDemand(demand);
+
+            var scenario = RefusePassageScenario.Instance;
+            var reaction = ReactionResolver.Resolve(
+                scenario,
+                npc,
+                player,
+                evt);
+
+            reaction.Execute(npc, player, evt);
         }
     }
 }
