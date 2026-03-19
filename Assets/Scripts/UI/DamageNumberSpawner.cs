@@ -1,6 +1,7 @@
 using UnityEngine;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Feedback.Events;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 {
@@ -13,32 +14,32 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         private void OnEnable()
         {
-            GameEventBus.Subscribe<DamageTakenEvent>(OnDamageTaken);
+            GameEventBus.Subscribe<FloatingTextEvent>(OnFloatingText);
         }
 
         private void OnDisable()
         {
-            GameEventBus.Unsubscribe<DamageTakenEvent>(OnDamageTaken);
+            GameEventBus.Unsubscribe<FloatingTextEvent>(OnFloatingText);
         }
 
-        private void OnDamageTaken(DamageTakenEvent evt)
+        private void OnFloatingText(FloatingTextEvent evt)
         {
-            var combatUI = ((EntityController)evt.Sender).CombatUI;
+            var combatUI = ((EntityController)evt.Target).CombatUI;
 
             if (combatUI == null)
             {
                 return;
             }
 
-            Spawn(combatUI.Transform, evt.Amount, evt.IsCrit);
+            Spawn(combatUI.Transform, evt.Amount, evt.IsCrit, evt.Color);
         }
 
-        private void Spawn(Transform parent, int amount, bool isCrit)
+        private void Spawn(Transform parent, int amount, bool isCrit, Color color)
         {
             GameObject obj = Instantiate(damageNumberPrefab, parent);
             obj.transform.localPosition = Vector3.zero;
 
-            obj.GetComponent<DamageNumber>().Initialize(amount, isCrit);
+            obj.GetComponent<DamageNumber>().Initialize(amount, isCrit, color);
         }
     }
 }

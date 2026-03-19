@@ -13,7 +13,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.MonoBehaviours
 
     using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
     using OldSchoolGames.BridgeTrollSimulator.Scripts.Components;
-    using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Feedback;
+    using OldSchoolGames.BridgeTrollSimulator.Scripts.Effects;
     using OldSchoolGames.BridgeTrollSimulator.Scripts.Interfaces;
     using Unity.Cinemachine;
 

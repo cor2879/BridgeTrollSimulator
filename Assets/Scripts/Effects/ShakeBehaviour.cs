@@ -7,7 +7,7 @@
 
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 
-namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Feedback
+namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Effects
 {
     /// <summary>
     /// Defines a behaviour that allows the camera to shake.

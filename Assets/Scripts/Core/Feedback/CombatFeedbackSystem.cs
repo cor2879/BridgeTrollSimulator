@@ -3,9 +3,12 @@ using UnityEngine;
 
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Effects;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Feedback.Events;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Feedback
 {
+    // This class is deprecated
     public class CombatFeedbackSystem : MonoBehaviour
     {
         [SerializeField]
@@ -13,6 +16,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Feedback
 
         private void OnEnable()
         {
+            Debug.Log($"{nameof(CombatFeedbackSystem)} was loaded but this class is deprecated.  Use FeedbackSystem instead.");
             GameEventBus.Subscribe<DamageTakenEvent>(OnDamageTaken);
             GameEventBus.Subscribe<EntityDiedEvent>(OnEntityDied);
         }

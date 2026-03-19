@@ -2,13 +2,13 @@ using UnityEngine;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Feedback.Events;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Effects
 {
     [RequireComponent(typeof(EntityController))]
     public class FlashEffect : MonoBehaviour
     {
-        [SerializeField] private float flashDuration = 0.15f;
         [SerializeField] private Color flashColor = new Color(1f, 0.3f, 0.3f);
 
         private EntityController entity;
@@ -27,23 +27,23 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Effects
 
         private void OnEnable()
         {
-            GameEventBus.Subscribe<DamageTakenEvent>(OnDamageTaken);
+            GameEventBus.Subscribe<FlashEvent>(OnFlash);
         }
 
         private void OnDisable()
         {
-            GameEventBus.Unsubscribe<DamageTakenEvent>(OnDamageTaken);
+            GameEventBus.Unsubscribe<FlashEvent>(OnFlash);
         }
 
-        private void OnDamageTaken(DamageTakenEvent evt)
+        private void OnFlash(FlashEvent evt)
         {
-            if (evt.Sender as EntityController != entity)
+            if (evt.Target as EntityController != entity)
                 return;
 
-            StartFlash();
+            StartFlash(evt.Color, evt.Duration);
         }
 
-        private void StartFlash()
+        private void StartFlash(Color color, float duration = 0.15f)
         {
             if (!isFlashing)
             {
@@ -51,8 +51,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Effects
                 isFlashing = true;
             }
 
-            spriteRenderer.color = flashColor;
-            flashEndTime = Time.time + flashDuration;
+            spriteRenderer.color = color;
+            flashEndTime = Time.time + duration;
         }
 
         private void Update()

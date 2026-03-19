@@ -974,6 +974,9 @@ MonoBehaviour:
   combatants: []
   currentTurnIndex: 0
   roundNumber: 1
+  awaitingPlayerDecision: 0
+  playerCancelledAction: 0
+  showCombatControls: 1
 --- !u!114 &364316233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1017,19 +1020,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c2f364dfd4134d3dbee2438542855de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameState.GameStateController
---- !u!114 &364316241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 364316227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a36f6ecfb3594cb5bd9e8041a2181ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Feedback.CombatFeedbackSystem
-  cameraShake: {fileID: 1730858199}
 --- !u!114 &364316244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1054,6 +1044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64a22c2f06b28230db7bd41b22861f89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Systems.GoldFeedbackSystem
+  cameraShake: {fileID: 1730858199}
 --- !u!114 &364316248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5802,9 +5793,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3357592020530091363, guid: 4dcaa2ee42d31430c9f846773bfa35f3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 364316237}
-    - targetCorrespondingSourceObject: {fileID: 3357592020530091363, guid: 4dcaa2ee42d31430c9f846773bfa35f3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 364316241}
     - targetCorrespondingSourceObject: {fileID: 3357592020530091363, guid: 4dcaa2ee42d31430c9f846773bfa35f3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 364316244}

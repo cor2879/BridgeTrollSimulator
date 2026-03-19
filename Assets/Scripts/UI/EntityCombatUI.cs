@@ -14,6 +14,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
         [SerializeField]
         private TMP_Text staminaText;
         [SerializeField]
+        private GameObject statsContainer;
+        [SerializeField]
         private Canvas combatUIPanel;
         
         private EntityController entity;
@@ -52,7 +54,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         public void SetActive(bool active)
         {
-            combatUIPanel.gameObject.SetActive(active);
+            statsContainer.gameObject.SetActive(active);
         }
 
         public void OnCombatConfirmed(CombatConfirmedEvent evt)

@@ -53,26 +53,12 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Audio
 
         private void OnEnable()
         {
-            GameEventBus.Subscribe<DamageTakenEvent>(OnDamage);
-            GameEventBus.Subscribe<DefendEvent>(OnDefend);
             GameEventBus.Subscribe<SoundEffectEvent>(OnSoundEffect);
         }
 
         private void OnDisable()
         {
-            GameEventBus.Unsubscribe<DamageTakenEvent>(OnDamage);
-            GameEventBus.Unsubscribe<DefendEvent>(OnDefend);
             GameEventBus.Unsubscribe<SoundEffectEvent>(OnSoundEffect);
-        }
-
-        private void OnDamage(DamageTakenEvent evt)
-        {
-            PlaySFX(evt.IsCrit ? library.crit : library.attack);
-        }
-
-        private void OnDefend(DefendEvent evt)
-        {
-            PlaySFX(library.defend);    
         }
 
         private void OnSoundEffect(SoundEffectEvent evt)

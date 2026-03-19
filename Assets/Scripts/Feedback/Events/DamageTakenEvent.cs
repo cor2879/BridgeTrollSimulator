@@ -1,19 +1,19 @@
+using UnityEngine;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 
-namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
+namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Feedback.Events
 {
     public class DamageTakenEvent : GameEvent
     {
         public int Amount { get; }
-
         public bool IsCrit { get; }
 
         public DamageTakenEvent(
             IEventSource sender,
             int amount,
-            int frame,
             bool isCrit = false)
-            : base(sender, frame)
+            : base(sender, Time.frameCount)
         {
             this.Amount = amount;
             this.IsCrit = isCrit;
@@ -21,7 +21,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 
         public override string ToString()
         {
-            return $"{nameof(DamageTakenEvent)}::Initiator:{Sender.SourceName}::Amount:{Amount}::IsCrit:{IsCrit} @ Frame {Frame}";
+            return $"{nameof(DamageTakenEvent)}::Initiator:{Sender.SourceName}" +
+                $"::Amount:{Amount}::IsCrit:{IsCrit} @ Frame {Frame}";
         }
     }
 }

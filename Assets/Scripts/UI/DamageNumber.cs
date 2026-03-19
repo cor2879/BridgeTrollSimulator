@@ -11,21 +11,29 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
         private CanvasGroup canvasGroup;
         private TMP_Text text;
         private float timer;
+        private Vector3 drift;
 
-        public void Initialize(int amount, bool isCrit)
+        public void Initialize(int amount, bool isCrit, Color color)
         {
             text = GetComponent<TMP_Text>();
             canvasGroup = GetComponent<CanvasGroup>();
 
             text.text = amount > 0 ? $"-{amount}" : amount.ToString();
+            text.color = color;
+
             var localScale = text.transform.localScale;
             text.transform.localScale = isCrit ? localScale * 1.5f : localScale;
+        }
+
+        private void Awake()
+        {
+            drift = new Vector3(Random.Range(-0.3f, 0.3f), 1f, 0f);
         }
 
         private void Update()
         {
             // Float upward
-            transform.position += Vector3.up * moveSpeed * Time.deltaTime;
+            transform.position += drift * moveSpeed * Time.deltaTime;
 
             // Fade out
             timer += Time.deltaTime;

@@ -19,6 +19,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Audio
         public AudioClip armorBreak;
         public AudioClip defend;
         public AudioClip crit;
+        public AudioClip breakResolve;
 
         [Header("World Sounds")]
         public AudioClip coins;

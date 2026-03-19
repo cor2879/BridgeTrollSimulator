@@ -20,6 +20,7 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.CharacterSkills;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.CharacterStats;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.Personalities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.StatusEffects;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Feedback.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.InputHandling;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Rewards;
@@ -721,7 +722,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         {
             this.CurrentHealth -= amount;
             GameEventBus.Publish(
-                new DamageTakenEvent(this, amount, Time.frameCount, isCrit));
+                new DamageTakenEvent(this, amount, isCrit));
 
             AudioSystem.Instance.PlaySFX(hurtSfx);
 
@@ -744,6 +745,22 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
                     delta,
                     isCrit,
                     Time.frameCount));
+
+            if (amount > 0)
+            {
+                GameEventBus.Publish(
+                    new ResolveDamageTakenEvent(
+                        this,
+                        amount,
+                        isCrit));
+            }
+
+            if (oldResolve > 0 && Resolve <= 0)
+            {
+                GameEventBus.Publish(
+                    new ResolveBrokenEvent(
+                        this));
+            }
         }
 
         public virtual void Die()
