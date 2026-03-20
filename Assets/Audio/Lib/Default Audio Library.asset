@@ -45,5 +45,11 @@ MonoBehaviour:
   armorBreak: {fileID: 8300000, guid: 04dbe86f219ed480ea297ea689929c8e, type: 3}
   defend: {fileID: 8300000, guid: 43952d8e72f8df1cf9799a347b24ea6a, type: 3}
   crit: {fileID: 8300000, guid: c3542b6d0bcdb4485bf558c3bd7bbd99, type: 3}
+  playerResolveDamage: {fileID: 8300000, guid: 720f3f355f39a26dea9658f033db351a, type: 3}
+  playerResolveDamageCrit: {fileID: 8300000, guid: 683f707499df0b20886d0cfd00da01b2, type: 3}
+  resolveDamage: {fileID: 8300000, guid: e107f9f4af6f14122af3a660b4cfb82a, type: 3}
+  resolveDamageCrit: {fileID: 8300000, guid: 6d5d59efc52b147c2b7ab76eb0dd72f0, type: 3}
+  playerBreakResolve: {fileID: 8300000, guid: a24f162b999de7a4aa2eb9e12ac71e1d, type: 3}
+  breakResolve: {fileID: 8300000, guid: e6d3e49e4e2e14beb814c33e56da54d1, type: 3}
   coins: {fileID: 8300000, guid: 08a223d45addd4809967d80c9720fadf, type: 3}
   buttonClick: {fileID: 8300000, guid: e64dda1306cd342019ec10bd36a3f0b8, type: 3}

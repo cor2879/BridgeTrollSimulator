@@ -138,13 +138,26 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Feedback
                     FeedbackColors.Resolve, 
                     0.15f));
 
-            GameEventBus.Publish(
-                new SoundEffectEvent(
-                    this,
-                    isCrit ? 
-                        AudioSystem.Library.crit :
-                        AudioSystem.Library.attack,
-                    Time.frameCount));
+            if (target.IsPlayerControlled)
+            {
+                GameEventBus.Publish(
+                    new SoundEffectEvent(
+                        this,
+                        isCrit ? 
+                            AudioSystem.Library.playerResolveDamageCrit :
+                            AudioSystem.Library.playerResolveDamage,
+                        Time.frameCount));
+            }
+            else
+            {
+                GameEventBus.Publish(
+                    new SoundEffectEvent(
+                        this,
+                        isCrit ? 
+                            AudioSystem.Library.resolveDamageCrit :
+                            AudioSystem.Library.resolveDamage,
+                        Time.frameCount));
+            }
         }
 
         private void OnResolveBroken(ResolveBrokenEvent evt)
@@ -152,18 +165,21 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Feedback
             StartCoroutine(DoHitStop(0.25f));
 
             cameraShake?.StartShake(0.4f, 0.4f);
+            var entity = evt.Sender as IReceiver;
 
             GameEventBus.Publish(
                 new FlashEvent(
                     this,
-                    evt.Sender as IReceiver,
+                    entity,
                     Color.magenta,
                     0.25f));
 
             GameEventBus.Publish(
                 new SoundEffectEvent(
                     this,
-                    AudioSystem.Library.breakResolve,
+                    entity.IsPlayerControlled ? 
+                        AudioSystem.Library.playerBreakResolve :
+                        AudioSystem.Library.breakResolve,
                     Time.frameCount));
         }
 
