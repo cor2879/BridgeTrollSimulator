@@ -4,9 +4,10 @@ using System.Linq;
 using UnityEngine;
 
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 
-namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Combat
+namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Combat.Abilities
 {
     public abstract class Ability : ScriptableObject
     {
@@ -18,6 +19,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Combat
         protected float baseScore = 8f;
         [SerializeField]
         protected float damageMultiplier = 1f;
+        [SerializeField]
+        protected AbilityExecutionStrategy executionStrategy;
         [SerializeField]
         private List<AbilitySynergy> followUpSynergies = new();
         [SerializeField, ReadOnly]
@@ -33,11 +36,21 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Combat
             EntityController initiator,
             EntityController target)
         {
+            if (executionStrategy != null)
+            {
+                return executionStrategy.Evaluate(initiator, target, this);
+            }
+
             return false;    
         }
         
         public virtual bool CanExecute(EntityController initiator)
         {
+            if (executionStrategy != null)
+            {
+                return executionStrategy.Evaluate(initiator, target, this);
+            }
+            
             return initiator.CanExecute(this);
         }
 
