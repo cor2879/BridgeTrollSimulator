@@ -1,5 +1,5 @@
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel;
-using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Abilities;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Interfaces
 {

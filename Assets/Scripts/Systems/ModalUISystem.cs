@@ -116,5 +116,15 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 
             confirmationDialogUI.Show(message, onYes, onNo);
         }
+
+        public void CancelConfirmationDialog()
+        {
+            if (confirmationDialogUI == null)
+            {
+                return;
+            }
+
+            confirmationDialogUI.Cancel();
+        }
     }
 }

@@ -1,4 +1,5 @@
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.Personalities;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Interfaces
 {
@@ -12,6 +13,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Interfaces
         float Aggression { get; }
         int Charisma { get; }
         bool IsPlayerControlled { get; }
+        Personality Personality { get; }
 
         void AcceptSurrender(IReactor opponent, ITargetedEvent evt);
         void DenySurrender(IReactor oppoenent, ITargetedEvent evt);

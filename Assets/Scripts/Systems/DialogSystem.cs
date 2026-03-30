@@ -78,15 +78,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
         private void OnEnable()
         {
             GameEventBus.Subscribe<DialogStartedEvent>(OnDialogStarted);
-            // GameEventBus.Subscribe<TollDemandedEvent>(OnTollDemanded);
-            // GameEventBus.Subscribe<RefusePassageEvent>(OnRefusedPassage);
         }
 
         private void OnDisable()
         {
             GameEventBus.Unsubscribe<DialogStartedEvent>(OnDialogStarted);
-            // GameEventBus.Unsubscribe<TollDemandedEvent>(OnTollDemanded);
-            // GameEventBus.Unsubscribe<RefusePassageEvent>(OnRefusedPassage);
         }
 
         #endregion
@@ -100,39 +96,6 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 
             runtimeStack.Clear();
         }
-
-        /*
-        private void OnTollDemanded(TollDemandedEvent evt)
-        {
-            var player = evt.Initiator;
-            var npc = evt.Target;
-
-            var scenario = DemandTollScenario.Instance;
-
-            var reaction = ReactionResolver.Resolve(
-                scenario,
-                npc,
-                player,
-                evt);
-            
-            reaction.Execute(npc, player, evt);
-        }
-
-        private void OnRefusedPassage(RefusePassageEvent evt)
-        {
-            var player = evt.Initiator;
-            var npc = evt.Target;
-
-            var scenario = RefusePassageScenario.Instance;
-            var reaction = ReactionResolver.Resolve(
-                scenario,
-                npc,
-                player,
-                evt);
-
-            reaction.Execute(npc, player, evt);
-        }
-        */
 
         #endregion
 
@@ -227,11 +190,39 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 
         public void GoBack()
         {
+            Debug.Log($"{nameof(DialogSystem)}::{nameof(GoBack)}::RuntimeStack.Count:{runtimeStack.Count}");
+
             if (runtimeStack.Count <= 1)
+            {
+                StartDialog(currentInitiator, currentTarget);
                 return;
+            }
+
+            Debug.Log($"{nameof(DialogSystem)}::{nameof(GoBack)}::RuntimeStack.Count:{runtimeStack.Count}");
 
             runtimeStack.Pop();
             RenderRuntimeNode(runtimeStack.Peek());
+        }
+
+        private void StartDialog(EntityController initiator, EntityController target)
+        {
+            GameEventBus.Publish(
+                new DialogStartedEvent(
+                    DialogSystem.Instance.DefaultEncounterNode,
+                    initiator,
+                    target,
+                    Time.frameCount));
+        }
+
+        private void ExitDialog()
+        {
+            runtimeStack.Clear();
+
+            GameEventBus.Publish(
+                new DialogEndedEvent(
+                    currentInitiator,
+                    currentTarget,
+                    Time.frameCount));
         }
 
         private void RenderRuntimeNode(RuntimeDialogNode node)

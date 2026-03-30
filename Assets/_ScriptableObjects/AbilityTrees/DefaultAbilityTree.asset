@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee255581eac6146918ba99595ac2f51c, type: 3}
+  m_Name: DefaultAbilityTree
+  m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Trees.AbilityTree
+  id: default
+  tiers:
+  - tierId: 0
+    name: Tier 0
+    nodes:
+    - id: attack
+      tier: 0
+      treeId: default
+      ability: {fileID: 11400000, guid: 102ed56bd98af4825b1c601cfeefe255, type: 2}
+      requirements: []
+    - id: defend
+      tier: 0
+      treeId: default
+      ability: {fileID: 11400000, guid: 0f2a774ec420649479a12f6406435bb6, type: 2}
+      requirements: []
+    - id: concede
+      tier: 0
+      treeId: default
+      ability: {fileID: 11400000, guid: 2cb1cfbf8dfbf4db8bfca64a5d3ffac2, type: 2}
+      requirements: []
+    requirements: []
+  references:
+    version: 2
+    RefIds: []

@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
@@ -31,7 +33,20 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             this.player = player;
             ClearAbilityButtons();
 
-            foreach (var ability in player.Abilities)
+            var abilities = player.ActiveAbilities
+                .Where(a => a.Name != "Concede")
+                .OrderBy(a => a.StaminaCost)
+                .ToList();
+            
+            var concede = player.ActiveAbilities
+                .FirstOrDefault(a => a.Name == "Concede");
+
+            if (concede != null)
+            {
+                abilities.Add(concede);
+            }
+
+            foreach (var ability in abilities)
             {
                 Debug.Log(ability.Name);
                 CreateAbilityButton(player, ability);

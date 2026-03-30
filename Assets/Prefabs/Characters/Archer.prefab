@@ -18,6 +18,8 @@ GameObject:
   - component: {fileID: 6094743984625508775}
   - component: {fileID: -2327925837760242086}
   - component: {fileID: 6498258604593169300}
+  - component: {fileID: 2883225987095144748}
+  - component: {fileID: -1602925803200171646}
   m_Layer: 8
   m_Name: Archer
   m_TagString: NPC
@@ -221,7 +223,8 @@ MonoBehaviour:
   size: 2
   experience: 0
   totalExperience: 0
-  progressionPoints: 0
+  statProgressionPoints: 0
+  abilityProgressionPoints: 0
   experienceReward: 100
   fame: 5
   respect: 5
@@ -261,9 +264,9 @@ MonoBehaviour:
   momentum: 0
   faction: 2
   abilities:
-  - {fileID: 11400000, guid: f03ee2b4f24c941e5b17e2b9b28d15d7, type: 2}
-  - {fileID: 11400000, guid: 3538289a4c24b460680814b748f4d78c, type: 2}
-  - {fileID: 11400000, guid: 43c62434ad8004932a9f77e00b5a0378, type: 2}
+  - {fileID: 11400000, guid: 102ed56bd98af4825b1c601cfeefe255, type: 2}
+  - {fileID: 11400000, guid: 0f2a774ec420649479a12f6406435bb6, type: 2}
+  - {fileID: 11400000, guid: 5c37635191987425fb85719f57222759, type: 2}
   - {fileID: 11400000, guid: 2cb1cfbf8dfbf4db8bfca64a5d3ffac2, type: 2}
   socialAbilities: []
   socialResponseProfile:
@@ -408,6 +411,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f2809ea5417473197d88232c151bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Demands.DemandComponent
+--- !u!114 &2883225987095144748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4825716358332868103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cc462cc5966746f1bb9930df70656e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.Components.MovementStabilityComponent
+  entity: {fileID: 0}
+  rb: {fileID: 0}
+  stuckThresholdTime: 0.5
+  minMovementThreshold: 0.001
+  nudgeAmount: 0.05
+  reapplyVelocity: 1
+--- !u!114 &-1602925803200171646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4825716358332868103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93dbe1a6b0bab4fb5bd5b2916cb4c43e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Components.AbilityComponent
+  trees:
+  - abilityTreeId: combat
 --- !u!1 &5796269734137418723
 GameObject:
   m_ObjectHideFlags: 0

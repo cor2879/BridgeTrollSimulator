@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35519c0e0b3b3436999cad8f54e990f3, type: 3}
+  m_Name: VenomStrikeAbility
+  m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Ability
+  executionStrategyTypeName: OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Strategies.AttackExecutionStrategy
+  abilityName: Venom Strike
+  description: A powerful poison strike that inflicts highly virulent poison on the
+    target for several turns.
+  canExecuteExhausted: 0
+  rarity: 1
+  staminaCost: 6
+  staminaRestore: 0
+  baseScore: 12
+  damageMultiplier: 0.8
+  defenseIgnorePercent: 0
+  requirements: []
+  effects:
+  - effectTypeName: OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.StatusEffects.PoisonEffect
+    target: 0
+    stackingType: 0
+    duration: 4
+    magnitude: 4
+    soundEffect: {fileID: 8300000, guid: f03dae79e0bf04f58a0408366e8a8330, type: 3}
+  followUpSynergies:
+  - ability: {fileID: 11400000, guid: 6e0f2fab0f2434925b192972d0f28f38, type: 2}
+    bonusScore: 4
+  isOffensive: 1
+  references:
+    version: 2
+    RefIds: []

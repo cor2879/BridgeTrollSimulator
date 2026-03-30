@@ -3,6 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Components;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Enums;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Interfaces;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.StatusEffects;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Trees;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat.Enums;
@@ -19,7 +25,6 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.CharacterSkills;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.CharacterStats;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.Personalities;
-using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.StatusEffects;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Feedback.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.InputHandling;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Interfaces;
@@ -40,7 +45,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Collider2D))]
     public abstract class EntityController 
-        : MonoBehaviour, IReceiver, IEncounterable
+        : MonoBehaviour, IReceiver, IEncounterable, IActor
     {
         protected Animator animator;
         protected Rigidbody2D rb;
@@ -79,7 +84,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         [SerializeField]
         private int totalExperience;
         [SerializeField]
-        private int progressionPoints;
+        private int statProgressionPoints;
+        [SerializeField]
+        private int abilityProgressionPoints;
         [SerializeField]
         private int experienceReward;
         [SerializeField]
@@ -139,13 +146,15 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         [SerializeField]
         protected CombatFaction faction;
         [SerializeField]
-        protected Ability[] abilities;
-        [SerializeField]
         protected SocialAbility[] socialAbilities;
         [SerializeField]
         protected SocialResponseProfile socialResponseProfile;
         [SerializeField]
         protected Personality personality;
+        [SerializeField, ReadOnly]
+        private bool isSurrendering;
+
+        private AbilityComponent _abilityComponent;
 
         #endregion
 
@@ -218,6 +227,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         public Sprite VictorySprite => victorySprite;
         public Sprite DefeatedSprite => defeatedSprite;
         public Sprite DeadSprite => deadSprite;
+        public float MoveSpeed => moveSpeed;
+        public bool IsSurrendering { get => isSurrendering; protected set => isSurrendering = value; }
 
         #region Stats
 
@@ -265,7 +276,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         public int MaxHealth => maxHealth;
         public int Experience { get => experience; private set => experience = value; }
         public int TotalExperience { get => totalExperience; private set => totalExperience = value; }
-        public int ProgressionPoints => progressionPoints;
+        public int StatProgressionPoints => statProgressionPoints;
+        public int AbilityProgressionPoints => abilityProgressionPoints;
         public int ExperienceReward => experienceReward;
         public int Fame => fame;
         public int Respect => respect;
@@ -298,10 +310,23 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         public bool IsFacingRight => facingRight;
         public int Momentum => momentum;
         public int MaxResolve => maxResolve;
-        public Ability[] Abilities => abilities;
+        public IReadOnlyCollection<Ability> ActiveAbilities  => AbilityComponent.ActiveAbilities;
         public SocialAbility[] SocialAbilities => socialAbilities;
         public Personality Personality { get =>  personality; private set => personality = value; }
         public List<StatusEffect> ActiveEffects => activeEffects;
+
+        public AbilityComponent AbilityComponent
+        {
+            get
+            {
+                if (_abilityComponent == null)
+                {
+                    _abilityComponent = GetComponent<AbilityComponent>();
+                }
+
+                return _abilityComponent;
+            }
+        }
 
         #endregion
 
@@ -349,6 +374,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         public virtual void ConcedeCombat(IReceiver opponent)
         {
+            IsSurrendering = true;
             GameEventBus.Publish(
                 new ConcedeCombatEvent(
                     this,
@@ -359,6 +385,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         public virtual void ConcedeSocialDuel(IReceiver opponent)
         {
+            IsSurrendering = true;
             GameEventBus.Publish(
                 new ConcedeSocialDuelEvent(
                     this,
@@ -391,6 +418,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             }
 
             RecalculateDerivedStats();
+            InitializeDefaultAbilities();
             currentHealth = maxHealth;
             currentResolve = maxResolve;
         }
@@ -436,6 +464,51 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             {
                 goldPopupUI.SetActive(false);
             }
+        }
+
+        private void InitializeDefaultAbilities()
+        {
+            const string defaultTreeId = "default";
+            var tree = AbilityTreeService.GetTree(defaultTreeId);
+
+            if (tree == null)
+            {
+                Debug.LogError("Defaultability tree not registered!");
+                return;
+            }
+
+            var instance = AbilityComponent.GetTree(defaultTreeId);
+
+            if (instance == null)
+            {
+                instance = new EntityAbilityTree(defaultTreeId);
+                AbilityComponent.AddTree(instance);
+            }
+
+            foreach (var tier in tree.Tiers)
+            {
+                if (tier?.nodes == null)
+                {
+                    continue;
+                }
+
+                foreach (var node in tier.nodes)
+                {
+                    if (node?.ability == null)
+                    {
+                        continue;
+                    }
+
+                    if (!instance.HasAbility(node))
+                    {
+                        instance.AddAbility(node.tier, node.ability);
+                        AbilityComponent.AddActiveAbility(node.ability);
+                    }
+                }
+            }
+
+            Debug.Log($"{Name} initialized with abilities: " +
+                string.Join(", ", AbilityComponent.ActiveAbilities.Select(a => a.Name)));
         }
 
         #endregion
@@ -507,7 +580,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             Debug.Log($"{Name} : ControlMode : {mode}");
         }
 
-        public void ResetControlMode(bool overrideDeath = false)
+        public virtual void ResetControlMode(bool overrideDeath = false)
         {
             if (CurrentControlMode != ControlMode.Dead ||
                 overrideDeath)
@@ -617,6 +690,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         public void BeginDespawn()
         {
+            Debug.Log($"{SourceName}::BeginDespawn");
             CleanupUI();
             StartCoroutine(DespawnAfterDelay(0.5f));
             GameEventBus.Publish(
@@ -680,7 +754,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         public virtual bool CanExecute(Ability ability)
         {
-            return CurrentStamina >= ability.StaminaCost;
+            return CurrentStamina >= ability.StaminaCost ||
+                ability.CanExecuteExhausted;
         }
 
         public virtual int DeductGold(int amount)
@@ -783,12 +858,55 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             }
             
             GameEventBus.Publish(
-                new StaminaDamageTakenEvent(this, amount, Time.frameCount));
+                new StaminaDamageTakenEvent(this, amount));
         }
 
-        public virtual void RestoreStamina(int amount)
+        public virtual void RestoreStamina(int amount, bool isCrit = false)
         {
             CurrentStamina = Math.Min(maxStamina, CurrentStamina + amount);
+
+            GameEventBus.Publish(
+                new StaminaRestoredEvent(this, amount, isCrit));
+        }
+
+        public virtual void RestoreHealth(int amount, bool isCrit = false)
+        {
+            CurrentHealth = Math.Min(MaxHealth, CurrentHealth + amount);
+
+            GameEventBus.Publish(
+                new HealthRestoredEvent(this, amount, isCrit));
+        }
+
+        public virtual void RemoveStatusEffect<TStatusEffect>()
+            where TStatusEffect : StatusEffect
+        {
+            if (activeEffects == null || activeEffects.Count == 0)
+                return;
+
+            for (int i = activeEffects.Count - 1; i >= 0; i--)
+            {
+                var effect = activeEffects[i];
+
+                if (effect is TStatusEffect)
+                {
+                    effect.OnExpire(this);
+                    activeEffects.RemoveAt(i);
+                }
+            }
+        }
+
+        public virtual void RemoveStatusEffects(Func<StatusEffect, bool> predicate)
+        {
+            for (var i = activeEffects.Count - 1; i >= 0; i--)
+            {
+                var effect = activeEffects[i];
+
+                if (predicate(effect))
+                {
+                    effect.OnExpire(this);
+                    activeEffects.RemoveAt(i);
+                }
+            }
         }
 
         public void Defend()
@@ -826,17 +944,12 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             return temporaryCritBonus;
         }
 
-        public void ApplyDefenseDebuff(int amount, int duration)
-        {
-            ActiveEffects.Add(new ArmorBreakEffect(amount, duration));
-        }
-
         public virtual Ability ChooseCombatAbility()
         {
             var staminaRatio = (float)CurrentStamina / MaxStamina;
             var defendProbability = 1f - staminaRatio;
 
-            foreach (var ability in Abilities)
+            foreach (var ability in ActiveAbilities)
             {
                 if (!ability.IsOffensive)
                 {
@@ -847,12 +960,12 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
                 }
             }
 
-            var offensiveAbilities = Abilities.Where(a => a.IsOffensive).ToList();
+            var offensiveAbilities = ActiveAbilities.Where(a => a.IsOffensive).ToList();
 
             if (offensiveAbilities.Count > 0)
                 return offensiveAbilities[UnityEngine.Random.Range(0, offensiveAbilities.Count)];
 
-            return Abilities[0];
+            return ActiveAbilities.ElementAt(0);
         }
 
         public virtual int GetInitiativeModifier()
@@ -877,7 +990,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
             #endif
 
-            foreach (var ability in Abilities)
+            foreach (var ability in ActiveAbilities)
             {
                 var baseScore = ability.Evaluate(this, target);
                 var randomFactor = UnityEngine.Random.Range(-2f, 2f);
@@ -953,6 +1066,16 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             {
                 HandleLevelUpConfirmed(levelUp);
             }
+
+            if (evt is CombatSurrenderAcceptedEvent surrenderAccepted)
+            {
+                HandleSurrenderAccepted(surrenderAccepted);
+            }
+
+            if (evt is CombatSurrenderDeniedEvent surrenderDenied)
+            {
+                HandleSurrenderDenied(surrenderDenied);
+            }
         }
 
         public void AddFame(int amount)
@@ -970,8 +1093,40 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             reputation = Mathf.Clamp(reputation + amount, -100, 100);
         }
 
-        protected virtual void HandleLevelUpConfirmed(LevelUpConfirmedEvent levelUp)
+        protected virtual void HandleSurrenderAccepted(CombatSurrenderAcceptedEvent evt)
         {
+            IsSurrendering = false;
+        }
+
+        protected virtual void HandleSurrenderDenied(CombatSurrenderDeniedEvent evt)
+        {
+            IsSurrendering = false;
+        }
+
+        protected virtual void HandleLevelUpConfirmed(LevelUpConfirmedEvent evt)
+        {
+            if (evt.Target as EntityController != this)
+            {
+                return;
+            }
+
+            foreach (var kvp in evt.StatAllocations)
+            {
+                for (var i = 0; i < kvp.Value; i++)
+                {
+                    baseStats.Add(kvp.Key, 1);
+                }
+            }
+
+            ConsumeStatProgressionPoints(evt.StatAllocations.Values.Sum());
+
+            foreach (var node in evt.SelectedAbilities)
+            {
+                AbilityTreeService.Unlock(node, this);
+                AbilityComponent.AddActiveAbility(node.ability);
+                ConsumeAbilityPoint();
+            }
+            
             ApplyLevelUpBenefits();
         }
 
@@ -979,10 +1134,41 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         #region Status Effect Management
 
-        public void AddStatusEffect(StatusEffect effect)
+        public void AddStatusEffect(StatusEffect newEffect, EffectStackingType stackingType)
         {
-            activeEffects.Add(effect);
-            effect.OnApply(this);
+            var existing = activeEffects
+                .FirstOrDefault(e => e.EffectId == newEffect.EffectId);
+
+            if (existing == null)
+            {
+                activeEffects.Add(newEffect);
+                newEffect.OnApply(this);
+                return;
+            }
+
+            switch (stackingType)
+            {
+                case EffectStackingType.Refresh:
+                    existing.Refresh(newEffect);
+                    break;
+
+                case EffectStackingType.Stack:
+                    activeEffects.Add(newEffect);
+                    newEffect.OnApply(this);
+                    break;
+
+                case EffectStackingType.Replace:
+                    existing.OnExpire(this);
+                    activeEffects.Remove(existing);
+
+                    activeEffects.Add(newEffect);
+                    newEffect.OnApply(this);
+                    break;
+
+                case EffectStackingType.Ignore:
+                    // do nothing
+                    break;
+            }
         }
 
         public void ProcessTurnStartEffects()
@@ -1021,7 +1207,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         public bool HasAbility(Ability ability)
         {
-            return Abilities.Contains(ability);
+            return ActiveAbilities.Contains(ability);
         }
 
         public void PrimeAbility(AbilitySynergy synergy)
@@ -1077,15 +1263,18 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
                 ApplyPerLevelGrowth();
 
-                int pointsGranted = 1; // for now, fixed
-                progressionPoints += pointsGranted;
+                int statPointsGranted = 1; // for now, fixed
+                int abilityPointsGranted = 1;
+                statProgressionPoints += statPointsGranted;
+                abilityProgressionPoints += abilityPointsGranted;
 
                 GameEventBus.Publish(
                     new LevelUpEvent(
                         this,
                         this,
                         Level,
-                        pointsGranted,
+                        statPointsGranted,
+                        abilityPointsGranted,
                         Time.frameCount));
             }
         }
@@ -1126,20 +1315,33 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
                 new EntityStatsRecalculatedEvent(this, Time.frameCount));
         }
 
-        public bool TrySpendPoint(StatType stat)
+        public bool TrySpendStatPoint(StatType stat)
         {
-            if (progressionPoints <= 0)
+            if (statProgressionPoints <= 0)
                 return false;
 
             baseStats.Add(stat, 1);
-            progressionPoints--;
+            statProgressionPoints--;
 
             return true;
         }
 
-        public void ConsumeProgressionPoints(int amount)
+        public void ConsumeStatProgressionPoints(int amount)
         {
-            progressionPoints -= amount;
+            statProgressionPoints -= amount;
+        }
+
+        public void AddAbilityPoints(int amount)
+        {
+            abilityProgressionPoints += amount;
+        }
+
+        public void ConsumeAbilityPoint()
+        {
+            if (abilityProgressionPoints > 0)
+            {
+                abilityProgressionPoints--;
+            }
         }
 
         #endregion

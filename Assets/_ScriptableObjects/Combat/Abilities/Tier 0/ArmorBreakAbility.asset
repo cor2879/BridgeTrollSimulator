@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35519c0e0b3b3436999cad8f54e990f3, type: 3}
+  m_Name: ArmorBreakAbility
+  m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Ability
+  executionStrategyTypeName: OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Strategies.AttackExecutionStrategy
+  abilityName: Smash
+  description: Slightly reduces target defense for the next turn.
+  canExecuteExhausted: 0
+  rarity: 0
+  staminaCost: 5
+  staminaRestore: 0
+  baseScore: 15
+  damageMultiplier: 0.7
+  defenseIgnorePercent: 0
+  requirements: []
+  effects:
+  - effectTypeName: OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.StatusEffects.ArmorBreakEffect
+    target: 0
+    stackingType: 0
+    duration: 2
+    magnitude: 2
+    soundEffect: {fileID: 8300000, guid: 04dbe86f219ed480ea297ea689929c8e, type: 3}
+  followUpSynergies:
+  - ability: {fileID: 11400000, guid: 102ed56bd98af4825b1c601cfeefe255, type: 2}
+    bonusScore: 10
+  - ability: {fileID: 11400000, guid: f9dd00c9720864b5da2a7234c28ca3c7, type: 2}
+    bonusScore: 10
+  isOffensive: 1
+  references:
+    version: 2
+    RefIds: []

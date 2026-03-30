@@ -1,9 +1,9 @@
 using UnityEngine;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel;
-using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Abilities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Interfaces;
 
@@ -39,7 +39,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Phases
             {
                 return;
             }
-            
+
             var outcome = ability.ResolveExchange(attacker, defender);
 
             System.ApplyOutcome(attacker, defender, outcome);
@@ -56,7 +56,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Phases
                 new SocialActionAttemptedEvent(
                     attacker,
                     defender,
-                    ability.AbilityName,
+                    ability.Name,
                     outcome.Result <= SocialExchangeResult.WeakSuccess,
                     Time.frameCount));            
         }

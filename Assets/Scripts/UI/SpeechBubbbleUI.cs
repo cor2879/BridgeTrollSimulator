@@ -78,6 +78,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         public event Action OnAdvanceRequested;
 
+#region Initialization and Destroy
+
         private void Awake()
         {
             rectTransform = GetComponent<RectTransform>();
@@ -112,6 +114,13 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
             Advance();
         }
+
+        private void OnDestroy()
+        {
+            CleanupModal();
+        }
+
+#endregion
 
 #region Public API
 
@@ -398,6 +407,17 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             }
 
             StartCoroutine(DelayedStartTyping());
+        }
+
+        private void CleanupModal()
+        {
+            if (ModalUISystem.Instance != null)
+            {
+                ModalUISystem.Instance.CloseModal(this);
+            }
+
+            speechQueue.Clear();
+            isShowing = false;
         }
 
         #endregion

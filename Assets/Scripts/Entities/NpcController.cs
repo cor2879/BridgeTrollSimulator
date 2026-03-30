@@ -185,6 +185,40 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             DemandComponent.Clear();
         }
 
+        public override void ResetControlMode(bool overrideDeath = false)
+        {
+            if (CanResetControlMode())
+            {
+                base.ResetControlMode(overrideDeath);
+
+                HandlePostReset();
+            }
+        }
+
+        private void HandlePostReset()
+        {
+            switch (CurrentControlMode)
+            {
+                case ControlMode.Npc:
+                case ControlMode.Passing:
+                case ControlMode.Leaving:
+                    WakeAndResumeMovement();
+                    break;
+            }
+        }
+
+        private void WakeAndResumeMovement()
+        {
+            rb.WakeUp();
+        }
+
+        private bool CanResetControlMode()
+        {
+            return !(CurrentControlMode == ControlMode.Combat ||
+                CurrentControlMode == ControlMode.Passing ||
+                CurrentControlMode == ControlMode.Leaving);
+        }
+
         #region IReactor
 
         public override void AcceptSurrender(IReactor opponent, ITargetedEvent evt)

@@ -4,8 +4,9 @@
  *  copyright (c) 2019 Old School Games
  **************************************************/
 
-namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Utilities
+namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Extensions
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -25,6 +26,16 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Utilities
         public static bool IsNullOrEmpty<T>(this IEnumerable<T> collection)
         {
             return collection == null || !collection.Any();
+        }
+
+        public static T GetRandom<T>(this IEnumerable<T> collection)
+        {
+            if (!(collection?.Any() ?? false))
+            {
+                throw new InvalidOperationException("Attempted to retrieve from a null or empty collection.");
+            }
+
+            return collection.ElementAt(UnityEngine.Random.Range(0, collection.Count()));
         }
     }
 }

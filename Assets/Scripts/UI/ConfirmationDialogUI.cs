@@ -38,6 +38,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             ShowModal(panel);
         }
 
+        public void Cancel()
+        {
+            OnNoClicked();
+        }
+
         private void OnYesClicked()
         {
             HideModal(panel);

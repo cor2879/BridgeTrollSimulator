@@ -121,8 +121,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.Personalities
 
             foreach (var bias in defensiveBiases)
             {
-                if (bias.stat == stat)
-                    return bias.modifier;
+                if (bias.baseStat == stat)
+                    return bias.flatAmount;
             }
 
             return 0;

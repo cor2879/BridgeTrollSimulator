@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
@@ -9,7 +10,6 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Scenarios;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Rewards;
-using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Abilities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Phases;

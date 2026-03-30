@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Events;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.StatusEffects;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Audio;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
@@ -36,6 +38,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Feedback
             GameEventBus.Subscribe<EntityDiedEvent>(OnEntityDied);
             GameEventBus.Subscribe<ResolveDamageTakenEvent>(OnResolveDamageTaken);
             GameEventBus.Subscribe<ResolveBrokenEvent>(OnResolveBroken);
+            GameEventBus.Subscribe<StatusEffectAppliedEvent>(OnStatusEffectApplied);
         }
 
         private void OnDisable()
@@ -46,6 +49,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Feedback
             GameEventBus.Unsubscribe<EntityDiedEvent>(OnEntityDied);
             GameEventBus.Unsubscribe<ResolveDamageTakenEvent>(OnResolveDamageTaken);
             GameEventBus.Unsubscribe<ResolveBrokenEvent>(OnResolveBroken);
+            GameEventBus.Unsubscribe<StatusEffectAppliedEvent>(OnStatusEffectApplied);
         }
 
         #endregion
@@ -180,6 +184,15 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Feedback
                     entity.IsPlayerControlled ? 
                         AudioSystem.Library.playerBreakResolve :
                         AudioSystem.Library.breakResolve,
+                    Time.frameCount));
+        }
+
+        private void OnStatusEffectApplied(StatusEffectAppliedEvent evt)
+        {
+            GameEventBus.Publish(
+                new SoundEffectEvent(
+                    this,
+                    evt.SoundEffect,
                     Time.frameCount));
         }
 

@@ -56,7 +56,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 
         private void OnDialogEnded(DialogEndedEvent evt)
         {
-            GameDatabase.Instance.Player.ResetControlMode();
+            var initiator = evt.Initiator as EntityController;
+            var target = evt.Target as EntityController;
+
+            initiator.ResetControlMode();
+            target.ResetControlMode();         
         }
 
 #endregion

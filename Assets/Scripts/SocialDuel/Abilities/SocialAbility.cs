@@ -7,8 +7,8 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Utilities;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Abilities
 {
-    [CreateAssetMenu(menuName = "BridgeTroll/Social/Abilities/SocialAbility")]
-    public class SocialAbility : ScriptableObject
+    [CreateAssetMenu(menuName = "BridgeTroll/Abilities/LegacySocialAbility")]
+    public class LegacySocialAbility : ScriptableObject
     {
         [SerializeField] private string abilityName;
         [SerializeField] private Sprite icon;

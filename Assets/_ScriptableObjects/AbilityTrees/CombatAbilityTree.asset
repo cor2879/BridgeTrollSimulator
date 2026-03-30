@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee255581eac6146918ba99595ac2f51c, type: 3}
+  m_Name: CombatAbilityTree
+  m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Trees.AbilityTree
+  id: combat
+  tiers:
+  - tierId: 0
+    name: Tier 0
+    nodes:
+    - id: poisonStrike
+      tier: 0
+      treeId: combat
+      ability: {fileID: 11400000, guid: 6e0f2fab0f2434925b192972d0f28f38, type: 2}
+      requirements: []
+    - id: smash
+      tier: 0
+      treeId: combat
+      ability: {fileID: 11400000, guid: 5c37635191987425fb85719f57222759, type: 2}
+      requirements: []
+    requirements: []
+  - tierId: 1
+    name: Tier 1
+    nodes:
+    - id: curePoison
+      tier: 1
+      treeId: combat
+      ability: {fileID: 11400000, guid: fc55f92e10db741f6b0334d6946fdbcf, type: 2}
+      requirements: []
+    - id: guardUp
+      tier: 1
+      treeId: combat
+      ability: {fileID: 11400000, guid: 506a47c432c48400b9f87c74e316d7b7, type: 2}
+      requirements: []
+    - id: powerStrike
+      tier: 1
+      treeId: combat
+      ability: {fileID: 11400000, guid: f9dd00c9720864b5da2a7234c28ca3c7, type: 2}
+      requirements: []
+    - id: regen
+      tier: 1
+      treeId: combat
+      ability: {fileID: 11400000, guid: bb2855a07a06f4ca596f8647cfa1ae7a, type: 2}
+      requirements: []
+    - id: secondWind
+      tier: 1
+      treeId: combat
+      ability: {fileID: 11400000, guid: 2c376aa269f5e431c9a1ad84207acb1b, type: 2}
+      requirements: []
+    requirements:
+    - rid: 4451867852130222174
+  - tierId: 2
+    name: Tier 2
+    nodes:
+    - id: heavySmash
+      tier: 2
+      treeId: combat
+      ability: {fileID: 11400000, guid: 76150f065c7e84d0581bbbcb4281f402, type: 2}
+      requirements: []
+    - id: intimidate
+      tier: 2
+      treeId: combat
+      ability: {fileID: 11400000, guid: d7feaf7210b0e4f8b8bf3dccfdc19f19, type: 2}
+      requirements: []
+    - id: venomStrike
+      tier: 2
+      treeId: combat
+      ability: {fileID: 11400000, guid: ea3afbe163af94faea7b77aa5567388c, type: 2}
+      requirements: []
+    requirements:
+    - rid: 4451867852130222174
+  references:
+    version: 2
+    RefIds:
+    - rid: 4451867852130222174
+      type: {class: TierUnlockRequirement, ns: OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Requirements, asm: Assembly-CSharp}
+      data:
+        requiredCount: 2
+        tierOffset: -1

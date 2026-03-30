@@ -1,4 +1,6 @@
 using UnityEngine;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.CharacterSkills;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities.CharacterStats;
@@ -8,12 +10,12 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Utilities;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Abilities
 {
-    [CreateAssetMenu(menuName = "BridgeTroll/Social/Abilities/Concede")]
+    [CreateAssetMenu(menuName = "BridgeTroll/Abilities/Social/SocialConcede")]
     public class ConcedeSocialAbility : SocialAbility
     {
         public override bool TryExecuteSpecial(
-            EntityController initiator,
-            EntityController target)
+            IActor initiator,
+            IActor target)
         {
             SocialDuelSystem.Instance.UI.EnableInput(false);
 

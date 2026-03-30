@@ -50,13 +50,17 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         private void UpdateNotification(EntityController player)
         {
-            if (player.ProgressionPoints <= 0)
+            if (player.StatProgressionPoints <= 0 &&
+                player.AbilityProgressionPoints <= 0)
             {
                 panel.SetActive(false);
                 return;
             }
 
-            messageText.text = $"LEVEL UP! ({player.ProgressionPoints} points available)";
+            messageText.text = $"LEVEL UP!\n({player.StatProgressionPoints} Stat  point" +
+                $"{(player.StatProgressionPoints == 1 ? string.Empty : "s")} and " +
+                $"{player.AbilityProgressionPoints} Ability point" +
+                $"{(player.AbilityProgressionPoints == 1 ? string.Empty : "s")} available)";
             ShowModal(panel);
             awaitingInput = true;
         }

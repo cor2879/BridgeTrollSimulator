@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat.Enums;
@@ -128,6 +130,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
             GameStateSystem.Instance.SetState(GameState.Combat);
             ModalUISystem.Instance.OpenModal(this);
             AudioSystem.Instance.PlayCombatMusic();
+            showCombatControls = true;
         }
 
         private void OnCombatConfirmed(CombatConfirmedEvent evt)
@@ -275,14 +278,17 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
                 text,
                 onYes: () =>
                 {
-                    npc.DemandComponent.AddDemand(evt.Concession);
-                    showCombatControls = true;
-                    GameEventBus.Publish(
-                        new CombatSurrenderAcceptedEvent(player, npc, Time.frameCount));
+                    if (npc != null && npc.CurrentControlMode != ControlMode.Dead)
+                    {
+                        npc.DemandComponent.AddDemand(evt.Concession);
+                        combatUI.EnableInput(false);
+                        GameEventBus.Publish(
+                            new CombatSurrenderAcceptedEvent(player, npc, Time.frameCount));
+                    }
                 },
                 onNo: () =>
                 {
-                    showCombatControls = true;
+                    showCombatControls = npc != null && npc.CurrentControlMode != ControlMode.Dead;
                     GameEventBus.Publish(
                         new CombatSurrenderDeniedEvent(player, npc, Time.frameCount));
                     BeginTurn(player as EntityController);
@@ -524,6 +530,17 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 
             var combatant = GetCurrentCombatant();
             combatant.ProcessTurnStartEffects();
+
+            if (CheckCombatEnd())
+            {
+                return;
+            }
+
+            if (combatant.CurrentHealth <= 0)
+            {
+                return;
+            }
+
             BeginTurn(combatant);
         }
 
@@ -564,6 +581,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 
         private void EndCombat(CombatOutcome combatOutcome)
         {
+            ModalUISystem.Instance.CancelConfirmationDialog();
+            combatUI.Hide();
+
             state = CombatState.Resolving;
 
             GameEventBus.Publish(

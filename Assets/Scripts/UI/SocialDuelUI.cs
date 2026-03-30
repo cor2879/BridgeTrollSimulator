@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel;
-using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Abilities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Systems;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.UI.Interfaces;
 
@@ -104,7 +104,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
                 var label = button.GetComponentInChildren<TMP_Text>();
                 if (label != null)
-                    label.text = capturedAbility.AbilityName;
+                    label.text = capturedAbility.Name;
 
                 button.onClick.AddListener(() =>
                 {

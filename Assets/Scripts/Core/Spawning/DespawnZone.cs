@@ -9,6 +9,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Spawning
     {
         private void OnTriggerEnter2D(Collider2D other)
         {
+            Debug.Log("DespawnZone Encounter");
+            
             if (!other.TryGetComponent<EntityController>(out var entity))
             {
                 return;
