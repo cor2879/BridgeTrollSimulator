@@ -8,28 +8,27 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Interfaces;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Events
 {
-    public class StatusEffectAppliedEvent : GameEvent, ITargetedEvent
+    public class StatusEffectTickEvent : GameEvent
     {
-        public IActor Initiator => (IActor)Sender;
-        public IActor Target { get; }
-        IReceiver ITargetedEvent.Target => Target;
+        public IActor Target => (IActor)Sender;
         public EffectDefinition Effect { get; }
+        public int Value { get; }
 
-        public StatusEffectAppliedEvent(
-            IActor initiator,
+        public StatusEffectTickEvent(
             IActor target,
-            EffectDefinition effect)
-            : base(initiator, Time.frameCount)
+            EffectDefinition effect,
+            int value)
+            : base(target, Time.frameCount)
         {
-            Target = target;
             Effect = effect;
+            Value = value;
         } 
 
         public override string ToString()
         {
-            return $"{nameof(StatusEffectAppliedEvent)}::Initiator:{Sender.SourceName}" +
+            return $"{nameof(StatusEffectTickEvent)}" +
                 $"::Target:{Target.SourceName}::Effect:{Effect}" +
-                $" @ Frame {Frame}";
+                $"::Value:{Value} @ Frame {Frame}";
         }
     }
 }

@@ -13,12 +13,12 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
         private float timer;
         private Vector3 drift;
 
-        public void Initialize(int amount, bool isCrit, Color color)
+        public void Initialize(string value, bool isCrit, Color color)
         {
             text = GetComponent<TMP_Text>();
             canvasGroup = GetComponent<CanvasGroup>();
 
-            text.text = amount > 0 ? $"-{amount}" : amount.ToString();
+            text.text = value;
             text.color = color;
 
             var localScale = text.transform.localScale;

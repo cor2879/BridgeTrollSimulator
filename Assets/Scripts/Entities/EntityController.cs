@@ -855,10 +855,13 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             else
             {
                 this.CurrentStamina -= amount;
+
+                if (amount > 0)
+                {
+                    GameEventBus.Publish(
+                        new StaminaDamageTakenEvent(this, amount));
+                }
             }
-            
-            GameEventBus.Publish(
-                new StaminaDamageTakenEvent(this, amount));
         }
 
         public virtual void RestoreStamina(int amount, bool isCrit = false)
@@ -907,6 +910,16 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
                     activeEffects.RemoveAt(i);
                 }
             }
+        }
+
+        public virtual void ClearStatusEffects()
+        {
+            foreach (var effect in activeEffects)
+            {
+                effect.OnExpire(this);
+            }
+
+            activeEffects.Clear();
         }
 
         public void Defend()

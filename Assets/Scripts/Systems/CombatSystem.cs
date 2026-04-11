@@ -399,51 +399,14 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
             else
             {
                 state = CombatState.ResolvingEnemyAction;
-                StartCoroutine(ResolveAI(entity));
-            }
-        }
-
-        private IEnumerator ResolveAI(EntityController entity)
-        {
-            isResolving = true;
-
-            // 🔥 EARLY EXIT if combat already ended
-            if (state == CombatState.Resolving || state == CombatState.Inactive)
-            {
-                isResolving = false;
-                yield break;
-            }
-
-            var target = ChooseTarget(entity);
-            var ability = entity.ChooseBestCombatAbility(target);
-
-            UseAbility(entity, target, ability);
-
-            while (awaitingPlayerDecision)
-            {
-                yield return null;
-
-                // 🔥 ALSO GUARD HERE
-                if (state == CombatState.Resolving || state == CombatState.Inactive)
+                // StartCoroutine(ResolveAI(entity));
+                StartCoroutine(ResolveTurnPipeline(entity, () =>
                 {
-                    isResolving = false;
-                    yield break;
-                }
+                    var target = ChooseTarget(entity);
+                    var ability = entity.ChooseBestCombatAbility(target);
+                    UseAbility(entity, target, ability);
+                }));
             }
-
-            yield return new WaitForSeconds(actionDelay);
-
-            // 🔥 FINAL GUARD before applying effects
-            if (state == CombatState.Resolving || state == CombatState.Inactive)
-            {
-                isResolving = false;
-                yield break;
-            }
-
-            entity.ProcessTurnEndEffects();
-
-            isResolving = false;
-            AdvanceTurn();
         }
 
         private EntityController ChooseTarget(EntityController attacker)
@@ -467,50 +430,15 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
                 return;
             }
 
-            StartCoroutine(ResolvePlayerTurn(ability));
-        }
-
-        private IEnumerator ResolvePlayerTurn(Ability ability)
-        {
-            isResolving = true;
-
             var player = GameDatabase.Instance.Player;
-            var target = ChooseTarget(player);
-
-            combatUI.EnableInput(false);
-            UseAbility(player, target, ability);
-
-            while (awaitingPlayerDecision)
+            // StartCoroutine(ResolvePlayerTurn(ability));
+            StartCoroutine(ResolveTurnPipeline(player, () =>
             {
-                yield return null;
+                combatUI.EnableInput(false);
 
-                if (state == CombatState.Resolving || state == CombatState.Inactive)
-                {
-                    isResolving = false;
-                    yield break;
-                }
-            }
-
-            if (playerCancelledAction)
-            {
-                playerCancelledAction = false;
-                isResolving = false;
-                BeginTurn(player);
-                yield break;
-            }
-
-            yield return new WaitForSeconds(actionDelay);
-
-            // 🔥 CRITICAL GUARD
-            if (state == CombatState.Resolving || state == CombatState.Inactive)
-            {
-                isResolving = false;
-                yield break;
-            }
-
-            player.ProcessTurnEndEffects();
-            isResolving = false;
-            AdvanceTurn();
+                var target = ChooseTarget(player);
+                UseAbility(player, target, ability);
+            }));
         }
 
         private void AdvanceTurn()
@@ -641,5 +569,142 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
             initiativeOrder.Clear();
             ModalUISystem.Instance.CloseModal(this);
         }
+
+        #region Coroutines
+
+        private IEnumerator ResolveAI(EntityController entity)
+        {
+            isResolving = true;
+
+            // 🔥 EARLY EXIT if combat already ended
+            if (state == CombatState.Resolving || state == CombatState.Inactive)
+            {
+                isResolving = false;
+                yield break;
+            }
+
+            var target = ChooseTarget(entity);
+            var ability = entity.ChooseBestCombatAbility(target);
+
+            UseAbility(entity, target, ability);
+
+            while (awaitingPlayerDecision)
+            {
+                yield return null;
+
+                // 🔥 ALSO GUARD HERE
+                if (state == CombatState.Resolving || state == CombatState.Inactive)
+                {
+                    isResolving = false;
+                    yield break;
+                }
+            }
+
+            yield return new WaitForSeconds(actionDelay);
+
+            // 🔥 FINAL GUARD before applying effects
+            if (state == CombatState.Resolving || state == CombatState.Inactive)
+            {
+                isResolving = false;
+                yield break;
+            }
+
+            entity.ProcessTurnEndEffects();
+
+            isResolving = false;
+            AdvanceTurn();
+        }
+
+        private IEnumerator ResolvePlayerTurn(Ability ability)
+        {
+            isResolving = true;
+
+            var player = GameDatabase.Instance.Player;
+            var target = ChooseTarget(player);
+
+            combatUI.EnableInput(false);
+            UseAbility(player, target, ability);
+
+            while (awaitingPlayerDecision)
+            {
+                yield return null;
+
+                if (state == CombatState.Resolving || state == CombatState.Inactive)
+                {
+                    isResolving = false;
+                    yield break;
+                }
+            }
+
+            if (playerCancelledAction)
+            {
+                playerCancelledAction = false;
+                isResolving = false;
+                BeginTurn(player);
+                yield break;
+            }
+
+            yield return new WaitForSeconds(actionDelay);
+
+            // 🔥 CRITICAL GUARD
+            if (state == CombatState.Resolving || state == CombatState.Inactive)
+            {
+                isResolving = false;
+                yield break;
+            }
+
+            player.ProcessTurnEndEffects();
+            isResolving = false;
+            AdvanceTurn();
+        }
+
+        private IEnumerator ResolveTurnPipeline(EntityController entity, System.Action action)
+        {
+            isResolving = true;
+
+            // --- PHASE 1: ACTION ---
+            action?.Invoke();
+
+            while (awaitingPlayerDecision)
+            {
+                yield return null;
+
+                if (state == CombatState.Resolving || state == CombatState.Inactive)
+                {
+                    isResolving = false;
+                    yield break;
+                }
+            }
+
+            yield return new WaitForSeconds(actionDelay);
+
+            if (state == CombatState.Resolving || state == CombatState.Inactive)
+            {
+                isResolving = false;
+                yield break;
+            }
+
+            // --- 🔥 CRITICAL: SEPARATE FRAME ---
+            yield return null;
+
+            // --- PHASE 2: TURN END EFFECTS ---
+            entity.ProcessTurnEndEffects();
+
+            // Give effects time to breathe
+            yield return new WaitForSeconds(0.25f);
+
+            if (state == CombatState.Resolving || state == CombatState.Inactive)
+            {
+                isResolving = false;
+                yield break;
+            }
+
+            // --- PHASE 3: ADVANCE TURN ---
+            AdvanceTurn();
+
+            isResolving = false;
+        }
+
+        #endregion
     }
 }

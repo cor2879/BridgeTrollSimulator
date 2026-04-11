@@ -15,8 +15,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.StatusEffects
             DerivedStatType stat,
             int flatAmount,
             float percentAmount,
-            int duration)
-            : base(0, duration) // magnitude unused here
+            int duration,
+            EffectDefinition definition)
+            : base(0, duration, definition) // magnitude unused here
         {
             this.stat = stat;
             this.flatAmount = flatAmount;

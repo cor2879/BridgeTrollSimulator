@@ -39,6 +39,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Feedback
             GameEventBus.Subscribe<ResolveDamageTakenEvent>(OnResolveDamageTaken);
             GameEventBus.Subscribe<ResolveBrokenEvent>(OnResolveBroken);
             GameEventBus.Subscribe<StatusEffectAppliedEvent>(OnStatusEffectApplied);
+            GameEventBus.Subscribe<StatusEffectTickEvent>(OnStatusEffectTick);
+            GameEventBus.Subscribe<HealthRestoredEvent>(OnHealthRestored);
+            GameEventBus.Subscribe<ResolveRestoredEvent>(OnResolveRestored);
+            GameEventBus.Subscribe<StaminaDamageTakenEvent>(OnStaminaDamageTaken);
+            GameEventBus.Subscribe<StaminaRestoredEvent>(OnStaminaRestoredEvent);
         }
 
         private void OnDisable()
@@ -50,6 +55,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Feedback
             GameEventBus.Unsubscribe<ResolveDamageTakenEvent>(OnResolveDamageTaken);
             GameEventBus.Unsubscribe<ResolveBrokenEvent>(OnResolveBroken);
             GameEventBus.Unsubscribe<StatusEffectAppliedEvent>(OnStatusEffectApplied);
+            GameEventBus.Unsubscribe<StatusEffectTickEvent>(OnStatusEffectTick);
+            GameEventBus.Unsubscribe<HealthRestoredEvent>(OnHealthRestored);
+            GameEventBus.Unsubscribe<ResolveRestoredEvent>(OnResolveRestored);
+            GameEventBus.Unsubscribe<StaminaDamageTakenEvent>(OnStaminaDamageTaken);
+            GameEventBus.Unsubscribe<StaminaRestoredEvent>(OnStaminaRestoredEvent);
         }
 
         #endregion
@@ -80,15 +90,15 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Feedback
                 new FloatingTextEvent(
                     this,
                     target,
-                    evt.Amount,
-                    FeedbackColors.Damage,
+                    $"-{evt.Amount}",
+                    FeedbackColors.HealthDamage,
                     evt.IsCrit));
 
             GameEventBus.Publish(
                 new FlashEvent(
                     this,
                     target,
-                    FeedbackColors.Damage,
+                    FeedbackColors.HealthDamage,
                     0.15f));
 
             GameEventBus.Publish(
@@ -131,7 +141,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Feedback
                 new FloatingTextEvent(
                     this,
                     target,
-                    evt.Amount,
+                    $"-{evt.Amount}",
                     FeedbackColors.Resolve,
                     evt.IsCrit));
 
@@ -189,14 +199,126 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Feedback
 
         private void OnStatusEffectApplied(StatusEffectAppliedEvent evt)
         {
+            var effects = evt.Effect;
+
             GameEventBus.Publish(
                 new SoundEffectEvent(
                     this,
-                    evt.SoundEffect,
+                    effects.SoundEffect,
                     Time.frameCount));
+
+            GameEventBus.Publish(
+                new FlashEvent(
+                    this,
+                    evt.Target,
+                    effects.FeedbackColor,
+                    effects.FlashDuration));
+        }
+
+        public void OnStatusEffectTick(StatusEffectTickEvent evt)
+        {
+            var effects = evt.Effect;
+
+            if (effects.PlaySoundOnTick && effects.SoundEffect != null)
+            {
+                GameEventBus.Publish(
+                    new SoundEffectEvent(
+                        this,
+                        effects.SoundEffect,
+                        Time.frameCount));
+            }
+
+            if (effects.FlashOnTick && effects.FlashTarget)
+            {
+                GameEventBus.Publish(
+                    new FlashEvent(
+                        this,
+                        evt.Target,
+                        effects.FeedbackColor,
+                        effects.FlashDuration));
+            }
+        }
+
+        private void OnHealthRestored(HealthRestoredEvent evt)
+        {
+            var target = evt.Sender as IReceiver;
+
+            GameEventBus.Publish(
+                new FloatingTextEvent(
+                    this,
+                    target,
+                    $"+{evt.Amount}",
+                    FeedbackColors.HealthRestore,
+                    evt.IsCrit));        
+        }
+
+        private void OnResolveRestored(ResolveRestoredEvent evt)
+        {
+            var target = evt.Sender as IReceiver;
+
+            GameEventBus.Publish(
+                new FloatingTextEvent(
+                    this,
+                    target,
+                    $"+{evt.Amount}",
+                    FeedbackColors.Resolve,
+                    evt.IsCrit));
+        }
+
+        private void OnStaminaDamageTaken(StaminaDamageTakenEvent evt)
+        {
+            var target = evt.Sender as IReceiver;
+
+            GameEventBus.Publish(
+                new FloatingTextEvent(
+                    this,
+                    target,
+                    $"-{evt.Amount}",
+                    FeedbackColors.Stamina,
+                    evt.IsCrit));
+        }
+
+        private void OnStaminaRestoredEvent(StaminaRestoredEvent evt)
+        {
+            var target = evt.Sender as IReceiver;
+
+            GameEventBus.Publish(
+                new FloatingTextEvent(
+                    this,
+                    target,
+                    $"+{evt.Amount}",
+                    FeedbackColors.Stamina,
+                    evt.IsCrit));
         }
 
         #endregion
+
+        private void HandleEffects(EffectDefinition effects, IReceiver target)
+        {
+            if (effects == null)
+            {
+                return;
+            }
+
+            if (effects.PlaySoundOnTick && effects.SoundEffect != null)
+            {
+                GameEventBus.Publish(
+                    new SoundEffectEvent(
+                        this,
+                        effects.SoundEffect,
+                        Time.frameCount));
+            }
+
+            if (effects.FlashOnTick && effects.FlashTarget)
+            {
+                GameEventBus.Publish(
+                    new FlashEvent(
+                        this,
+                        target,
+                        effects.FeedbackColor,
+                        effects.FlashDuration));
+            }
+        }
 
         private IEnumerator DoHitStop(float duration)
         {

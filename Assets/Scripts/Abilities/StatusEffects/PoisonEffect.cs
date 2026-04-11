@@ -4,8 +4,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.StatusEffects
 {
     public class PoisonEffect : StatusEffect
     {
-        public PoisonEffect(int magnitude, int duration)
-            : base(magnitude, duration)
+        public PoisonEffect(int magnitude, int duration, EffectDefinition definition)
+            : base(magnitude, duration, definition)
         { }
 
         public override void OnTurnEnd(IActor entity)

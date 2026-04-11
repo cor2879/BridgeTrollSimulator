@@ -104,11 +104,13 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         public override void OnCombatVictory(CombatResolutionData data)
         {
             ClearDemands();
+            ClearStatusEffects();
             SpeechBubble.Show(Personality.GetSocialDuelVictoryDialog());
         }
 
         public override void OnCombatDefeat(CombatResolutionData data)
         {
+            ClearStatusEffects();
             if (CurrentControlMode != ControlMode.Dead)
             {
                 SpeechBubble.Show(Personality.GetSurrenderDialog());
@@ -119,11 +121,13 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         public override void OnSocialDuelVictory(SocialDuelResolutionData data)
         {
             ClearDemands();
+            ClearStatusEffects();
             SpeechBubble.Show(Personality.GetSocialDuelVictoryDialog());
         }
 
         public override void OnSocialDuelLoss(SocialDuelResolutionData data)
         {
+            ClearStatusEffects();
             SpeechBubble.Show(Personality.GetSurrenderDialog());
             DemandComponent.ResolveDemands(this);
         }

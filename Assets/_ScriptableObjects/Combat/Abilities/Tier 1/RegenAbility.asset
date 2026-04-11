@@ -29,7 +29,15 @@ MonoBehaviour:
     stackingType: 0
     duration: 3
     magnitude: 3
+    appliedText: '{target} begins to recover health'
+    tickText: '{target} recovers {amount} health'
+    expiredText: '{target} is no longer recovering health'
     soundEffect: {fileID: 8300000, guid: 5a7ef7d60ec094e83b4064fba9beef55, type: 3}
+    feedbackColor: {r: 0.911431, g: 0.9528302, b: 0.5348434, a: 1}
+    flashTarget: 1
+    flashDuration: 0.15
+    flashOnTick: 1
+    playSoundOnTick: 1
   followUpSynergies:
   - ability: {fileID: 11400000, guid: 506a47c432c48400b9f87c74e316d7b7, type: 2}
     bonusScore: 4

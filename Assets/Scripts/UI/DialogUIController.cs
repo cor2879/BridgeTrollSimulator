@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Events;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Interfaces;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.StatusEffects;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
@@ -76,6 +79,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             GameEventBus.Subscribe<TollPaidEvent>(OnTollPaid);
             GameEventBus.Subscribe<TollRefusedEvent>(OnTollRefused);
             GameEventBus.Subscribe<SystemMessageEvent>(OnSystemMessage);
+            GameEventBus.Subscribe<StatusEffectAppliedEvent>(OnStatusEffectApplied);
+            GameEventBus.Subscribe<StatusEffectTickEvent>(OnStatusEffectTick);
+            GameEventBus.Subscribe<StatusEffectExpiredEvent>(OnStatusEffectExpired);
         }
 
         private void OnDisable()
@@ -89,6 +95,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             GameEventBus.Unsubscribe<TollPaidEvent>(OnTollPaid);
             GameEventBus.Unsubscribe<TollRefusedEvent>(OnTollRefused);
             GameEventBus.Unsubscribe<SystemMessageEvent>(OnSystemMessage);
+            GameEventBus.Unsubscribe<StatusEffectAppliedEvent>(OnStatusEffectApplied);
+            GameEventBus.Unsubscribe<StatusEffectTickEvent>(OnStatusEffectTick);
+            GameEventBus.Unsubscribe<StatusEffectExpiredEvent>(OnStatusEffectExpired);
         }
 
         #endregion
@@ -173,6 +182,65 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
         private void OnSystemMessage(SystemMessageEvent evt)
         {
             AppendLine(evt.Sender.SourceName, evt.Message, true);
+        }
+
+        private void OnStatusEffectApplied(StatusEffectAppliedEvent evt)
+        {
+            Debug.Log(evt);
+            if (!string.IsNullOrEmpty(evt.Effect.AppliedText))
+            {
+                var text = EffectTextFormatter.Format(
+                    evt.Effect.AppliedText,
+                    evt.Target,
+                    evt.Effect.Magnitude);
+
+                if (!string.IsNullOrEmpty(text))
+                {
+                    AppendLine(
+                        "System",
+                        text,
+                        type: true);    
+                }  
+            }   
+        }
+
+        private void OnStatusEffectTick(StatusEffectTickEvent evt)
+        {
+            if (!string.IsNullOrEmpty(evt.Effect.TickText))
+            {
+                var text = EffectTextFormatter.Format(
+                    evt.Effect.TickText,
+                    evt.Target,
+                    evt.Effect.Magnitude);
+
+                if (!string.IsNullOrEmpty(text))
+                {
+                    AppendLine(
+                        "System",
+                        text,
+                        type: true);    
+                } 
+            }
+        }
+
+        private void OnStatusEffectExpired(StatusEffectExpiredEvent evt)
+        {
+            Debug.Log(evt);
+            if (!string.IsNullOrEmpty(evt.Effect.ExpiredText))
+            {
+                var text = EffectTextFormatter.Format(
+                    evt.Effect.ExpiredText,
+                    evt.Target,
+                    evt.Effect.Magnitude);
+
+                if (!string.IsNullOrEmpty(text))
+                {
+                    AppendLine(
+                        "System",
+                        text,
+                        type: true);    
+                } 
+            }
         }
 
         #endregion

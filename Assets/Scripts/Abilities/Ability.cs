@@ -137,8 +137,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities
                     new StatusEffectAppliedEvent(
                         initiator,
                         recipient,
-                        statusEffect,
-                        factory.SoundEffect));
+                        factory));
             }            
         }
 

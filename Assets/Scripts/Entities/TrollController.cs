@@ -55,19 +55,23 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         public override void OnCombatVictory(CombatResolutionData data)
         {
+            ClearStatusEffects();
         }
 
         public override void OnCombatDefeat(CombatResolutionData data)
         {
+            ClearStatusEffects();
             AllowToPass(data.EnemySide.First());
         }
 
         public override void OnSocialDuelVictory(SocialDuelResolutionData data)
         {
+            ClearStatusEffects();
         }
 
         public override void OnSocialDuelLoss(SocialDuelResolutionData data)
         {
+            ClearStatusEffects();
             AllowToPass(data.Npc);
         }
 

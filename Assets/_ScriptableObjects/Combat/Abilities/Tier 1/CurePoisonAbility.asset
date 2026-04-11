@@ -29,7 +29,15 @@ MonoBehaviour:
     stackingType: 0
     duration: 0
     magnitude: 0
+    appliedText: '{target}''s poison is cured'
+    tickText: 
+    expiredText: 
     soundEffect: {fileID: 8300000, guid: d3451471db5fb4e9cb04a19c833e1aa1, type: 3}
+    feedbackColor: {r: 0.96559197, g: 0.9716981, b: 0.68293875, a: 1}
+    flashTarget: 1
+    flashDuration: 0.15
+    flashOnTick: 0
+    playSoundOnTick: 0
   followUpSynergies: []
   isOffensive: 0
   references:

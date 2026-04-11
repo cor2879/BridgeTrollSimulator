@@ -69,8 +69,6 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Combat
                 target.TakeDamage(finalDamage, isCritical);
             }
 
-            ability.ApplySecondaryEffects(initiator, target);
-
             var critText = isCritical ? " (CRITICAL!)" : "";
             var exhaustedText = exhausted ? " (EXHAUSTED)" : "";
             initiator.ConsumePrimeBonus(ability);
@@ -81,6 +79,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Combat
                     (finalDamage > 0 ? $" and deals {finalDamage} damage to {target.Name}." : ""),
                     eventSource,
                     Time.frameCount));
+
+            ability.ApplySecondaryEffects(initiator, target);
         }
     }
 }

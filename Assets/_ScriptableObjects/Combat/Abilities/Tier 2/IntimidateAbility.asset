@@ -30,7 +30,15 @@ MonoBehaviour:
     stackingType: 0
     duration: 2
     magnitude: 3
+    appliedText: '{target} is intimidated! Attacks are weakened'
+    tickText: '{target}''s attacks are still weakened'
+    expiredText: '{target} is no longer intimidated'
     soundEffect: {fileID: 8300000, guid: d2da3d352fc8045fca95aff7489ac247, type: 3}
+    feedbackColor: {r: 0.241665, g: 0.15512636, b: 0.3962264, a: 1}
+    flashTarget: 1
+    flashDuration: 0.15
+    flashOnTick: 0
+    playSoundOnTick: 0
   followUpSynergies:
   - ability: {fileID: 11400000, guid: 506a47c432c48400b9f87c74e316d7b7, type: 2}
     bonusScore: 6

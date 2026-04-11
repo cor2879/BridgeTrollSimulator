@@ -4,11 +4,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.StatusEffects
 {
     public class StaminaRestoreEffect : StatusEffect
     {
-        public StaminaRestoreEffect(int magnitude, int duration)
-            : base(magnitude, duration)
+        public StaminaRestoreEffect(int magnitude, int duration, EffectDefinition definition)
+            : base(magnitude, duration, definition)
         { }
 
-        public override void OnTurnStart(IActor actor)
+        public override void OnTurnEnd(IActor actor)
         {
             actor.RestoreStamina(Magnitude);
         }

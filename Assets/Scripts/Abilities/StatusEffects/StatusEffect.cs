@@ -1,4 +1,7 @@
+using UnityEngine;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Interfaces;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.StatusEffects
 {
@@ -6,12 +9,14 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.StatusEffects
     {
         public int RemainingTurns { get; protected set; }
         public int Magnitude { get; protected set; }
+        protected EffectDefinition Definition { get; }
         public virtual string EffectId => GetType().FullName;
 
-        public StatusEffect(int magnitude, int duration)
+        public StatusEffect(int magnitude, int duration, EffectDefinition definition)
         {
             RemainingTurns = duration;
             Magnitude = magnitude;
+            Definition = definition;
         }
 
         public virtual void OnApply(IActor entity) { }
@@ -20,7 +25,14 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.StatusEffects
 
         public virtual void OnTurnEnd(IActor entity) { }
 
-        public virtual void OnExpire(IActor entity) { }
+        public virtual void OnExpire(IActor entity)
+        {
+            GameEventBus.Publish(
+                new StatusEffectExpiredEvent(
+                    entity,
+                    Definition,
+                    Magnitude));
+        }
 
         public virtual int ModifyAttack(int baseValue) => baseValue;
         public virtual int ModifyDefense(int baseValue) => baseValue;
@@ -43,6 +55,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.StatusEffects
             }
             
             RemainingTurns--;
+
+            GameEventBus.Publish(
+                new StatusEffectTickEvent(entity, Definition, Magnitude));
 
             if (RemainingTurns <= 0)
             {

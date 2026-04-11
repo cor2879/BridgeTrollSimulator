@@ -8,20 +8,20 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Feedback.Events
     public class FloatingTextEvent : GameEvent, ITargetedEvent
     {
         public IReceiver Target { get; }
-        public int Amount { get; }
+        public string Text { get; }
         public bool IsCrit { get; }
         public Color Color { get; }
 
         public FloatingTextEvent(
             IEventSource sender,
             IReceiver target,
-            int amount,
+            string text,
             Color color,
             bool isCrit = false)
             : base(sender, Time.frameCount)
         {
             Target = target;
-            Amount = amount;
+            Text = text;
             Color = color;
             IsCrit = isCrit;
         }
@@ -29,7 +29,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Feedback.Events
         public override string ToString()
         {
             return $"{nameof(FloatingTextEvent)}::Initiator:{Sender.SourceName}" +
-                $"::Target:{Target.SourceName}::Amount:{Amount}::IsCrit:{IsCrit}" +
+                $"::Target:{Target.SourceName}::Text:\"{Text}\"::IsCrit:{IsCrit}" +
                 $"::Color:{Color} @ Frame {Frame}";
         }
     }

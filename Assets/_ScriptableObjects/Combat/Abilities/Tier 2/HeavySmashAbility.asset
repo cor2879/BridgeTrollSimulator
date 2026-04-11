@@ -30,6 +30,11 @@ MonoBehaviour:
     duration: 3
     magnitude: 4
     soundEffect: {fileID: 8300000, guid: 04dbe86f219ed480ea297ea689929c8e, type: 3}
+    feedbackColor: {r: 0.18867922, g: 0.027589884, b: 0.027589884, a: 1}
+    flashTarget: 1
+    flashDuration: 0.15
+    flashOnTick: 0
+    playSoundOnTick: 0
   followUpSynergies:
   - ability: {fileID: 11400000, guid: f9dd00c9720864b5da2a7234c28ca3c7, type: 2}
     bonusScore: 10

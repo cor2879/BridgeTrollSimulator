@@ -29,7 +29,15 @@ MonoBehaviour:
     stackingType: 0
     duration: 3
     magnitude: 2
+    appliedText: '{target} is poisoned!'
+    tickText: '{target} takes {amount} poison damage'
+    expiredText: '{target} is no longer poisoned'
     soundEffect: {fileID: 8300000, guid: f03dae79e0bf04f58a0408366e8a8330, type: 3}
+    feedbackColor: {r: 0.13029547, g: 0.4528302, b: 0.14642604, a: 1}
+    flashTarget: 1
+    flashDuration: 0.15
+    flashOnTick: 1
+    playSoundOnTick: 1
   followUpSynergies:
   - ability: {fileID: 11400000}
     bonusScore: 5

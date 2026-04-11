@@ -29,7 +29,15 @@ MonoBehaviour:
     stackingType: 0
     duration: 3
     magnitude: 2
+    appliedText: '{target} begins to recover stamina'
+    tickText: '{target} recovers {amount} stamina'
+    expiredText: '{target} is no longer recovering stamina'
     soundEffect: {fileID: 8300000, guid: e2f1f4c987111449f950276a2e9889fa, type: 3}
+    feedbackColor: {r: 0.8382926, g: 0.6127626, b: 0.9622642, a: 1}
+    flashTarget: 1
+    flashDuration: 0.15
+    flashOnTick: 1
+    playSoundOnTick: 1
   followUpSynergies:
   - ability: {fileID: 11400000, guid: 5c37635191987425fb85719f57222759, type: 2}
     bonusScore: 8
