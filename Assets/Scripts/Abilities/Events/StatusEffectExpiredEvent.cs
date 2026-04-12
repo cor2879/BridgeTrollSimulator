@@ -8,9 +8,10 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Interfaces;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Events
 {
-    public class StatusEffectExpiredEvent : GameEvent
+    public class StatusEffectExpiredEvent : GameEvent, ITargetedEvent
     {
         public IActor Target => (IActor)Sender;
+        IReceiver ITargetedEvent.Target => Target;
         public EffectDefinition Effect { get; }
         public int Value { get; }
 

@@ -38,6 +38,10 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.StatusEffects
         private AudioClip soundEffect;
         [SerializeField]
         private Color feedbackColor = Color.white;
+        [SerializeField]
+        private Sprite icon;
+        [SerializeField]
+        private Color iconColor = Color.white;
         [SerializeField] 
         private bool flashTarget = true;
         [SerializeField] 
@@ -55,6 +59,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.StatusEffects
         public int Duration => duration;
         public AudioClip SoundEffect => soundEffect;
         public Color FeedbackColor => feedbackColor;
+        public Sprite Icon => icon;
+        public Color IconColor => iconColor;
         public bool FlashTarget => flashTarget;
         public float FlashDuration => flashDuration;
         public bool FlashOnTick => flashOnTick;

@@ -29,8 +29,13 @@ MonoBehaviour:
     stackingType: 0
     duration: 3
     magnitude: 4
+    appliedText: '{target}''s defense is reduced!'
+    tickText: '{target}''s defense is still reduced!'
+    expiredText: '{target}''s defense returns to normal'
     soundEffect: {fileID: 8300000, guid: 04dbe86f219ed480ea297ea689929c8e, type: 3}
     feedbackColor: {r: 0.18867922, g: 0.027589884, b: 0.027589884, a: 1}
+    icon: {fileID: 7223968407062105823, guid: 3ddcb0ad7e9f44e54827ca86d061c86f, type: 3}
+    iconColor: {r: 1, g: 1, b: 1, a: 1}
     flashTarget: 1
     flashDuration: 0.15
     flashOnTick: 0

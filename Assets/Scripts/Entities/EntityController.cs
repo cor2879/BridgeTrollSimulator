@@ -6,6 +6,7 @@ using System.Text;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Components;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Enums;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.StatusEffects;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Trees;
@@ -1065,29 +1066,34 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         public virtual void Receive<TEvent>(TEvent evt) where TEvent : ITargetedEvent
         {
-            if (evt is RewardEvent rewardEvent)
+            switch (evt)
             {
-                AddExperience(rewardEvent.Reward.Experience);
-                AddFame(rewardEvent.Reward.FameDelta);
-                AddRespect(rewardEvent.Reward.RespectDelta);
-                AddReputation(rewardEvent.Reward.ReputationDelta);
-                AddGold(rewardEvent.Reward.Gold);
-                RestoreResolve(rewardEvent.Reward.Resolve);
-            }
-
-            if (evt is LevelUpConfirmedEvent levelUp)
-            {
-                HandleLevelUpConfirmed(levelUp);
-            }
-
-            if (evt is CombatSurrenderAcceptedEvent surrenderAccepted)
-            {
-                HandleSurrenderAccepted(surrenderAccepted);
-            }
-
-            if (evt is CombatSurrenderDeniedEvent surrenderDenied)
-            {
-                HandleSurrenderDenied(surrenderDenied);
+                case RewardEvent rewardEvent:
+                    AddExperience(rewardEvent.Reward.Experience);
+                    AddFame(rewardEvent.Reward.FameDelta);
+                    AddRespect(rewardEvent.Reward.RespectDelta);
+                    AddReputation(rewardEvent.Reward.ReputationDelta);
+                    AddGold(rewardEvent.Reward.Gold);
+                    RestoreResolve(rewardEvent.Reward.Resolve);
+                    break;
+                case LevelUpConfirmedEvent levelUp:
+                    HandleLevelUpConfirmed(levelUp);
+                    break;
+                case CombatSurrenderAcceptedEvent surrenderAccepted:
+                    HandleSurrenderAccepted(surrenderAccepted);
+                    break;
+                case CombatSurrenderDeniedEvent surrenderDenied:
+                    HandleSurrenderDenied(surrenderDenied);
+                    break;
+                case StatusEffectAppliedEvent statusEffectApplied:
+                    HandleStatusEffectApplied(statusEffectApplied);
+                    break;
+                case StatusEffectTickEvent statusEffectTick:
+                    HandleStatusEffectTick(statusEffectTick);
+                    break;
+                case StatusEffectExpiredEvent statusEffectExpired:
+                    HandleStatusEffectExpired(statusEffectExpired);
+                    break;
             }
         }
 
@@ -1141,6 +1147,21 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             }
             
             ApplyLevelUpBenefits();
+        }
+
+        protected virtual void HandleStatusEffectApplied(StatusEffectAppliedEvent evt)
+        {
+            entityCombatUI?.OnEffectApplied(evt);
+        }
+
+        protected virtual void HandleStatusEffectTick(StatusEffectTickEvent evt)
+        {
+            entityCombatUI?.OnEffectTicked(evt);
+        }
+
+        protected virtual void HandleStatusEffectExpired(StatusEffectExpiredEvent evt)
+        {
+            entityCombatUI?.OnEffectExpired(evt);
         }
 
         #endregion

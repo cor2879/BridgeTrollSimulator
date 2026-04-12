@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: 340606f7444294fea8b67d7f84c06aa9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2999424899960336597
+    second: RPG status effect icons set_0
+  - first:
+      213: 2325060129919859221
+    second: RPG status effect icons set_1
+  - first:
+      213: 8194061948471829664
+    second: RPG status effect icons set_2
+  - first:
+      213: -8267279384849478362
+    second: RPG status effect icons set_3
+  - first:
+      213: 8203754300124507463
+    second: RPG status effect icons set_4
+  - first:
+      213: 250086446428151752
+    second: RPG status effect icons set_5
+  - first:
+      213: 9025764842897748195
+    second: RPG status effect icons set_6
+  - first:
+      213: -5414790930621338102
+    second: RPG status effect icons set_7
+  - first:
+      213: -5638254640753236497
+    second: RPG status effect icons set_8
+  - first:
+      213: -1849483936300523192
+    second: RPG status effect icons set_9
+  - first:
+      213: -546914180230869325
+    second: RPG status effect icons set_10
+  - first:
+      213: -5968668848457256323
+    second: RPG status effect icons set_11
+  - first:
+      213: -9085551603923471050
+    second: RPG status effect icons set_12
+  - first:
+      213: 1463113589950399384
+    second: RPG status effect icons set_13
+  - first:
+      213: -7137626887470315620
+    second: RPG status effect icons set_14
+  - first:
+      213: 7111016750444685915
+    second: RPG status effect icons set_15
+  - first:
+      213: -7213704938877674877
+    second: RPG status effect icons set_16
+  - first:
+      213: 3838468676072278430
+    second: RPG status effect icons set_17
+  - first:
+      213: -1834326421388851026
+    second: RPG status effect icons set_18
+  - first:
+      213: -2847595841004746063
+    second: RPG status effect icons set_19
+  - first:
+      213: 4315272687277106353
+    second: RPG status effect icons set_20
+  - first:
+      213: -1613294325801908322
+    second: RPG status effect icons set_21
+  - first:
+      213: -5262373832721897802
+    second: RPG status effect icons set_22
+  - first:
+      213: -2046790114594000027
+    second: RPG status effect icons set_23
+  - first:
+      213: 86911583740661421
+    second: RPG status effect icons set_24
+  - first:
+      213: 7398552784897898513
+    second: RPG status effect icons set_25
+  - first:
+      213: 6576298972723135027
+    second: RPG status effect icons set_26
+  - first:
+      213: -6411996849702420128
+    second: RPG status effect icons set_27
+  - first:
+      213: 4533234334871347203
+    second: RPG status effect icons set_28
+  - first:
+      213: 5599109078994680235
+    second: RPG status effect icons set_29
+  - first:
+      213: -6977095586317607427
+    second: RPG status effect icons set_30
+  - first:
+      213: 4564591446298395425
+    second: RPG status effect icons set_31
+  - first:
+      213: 2785208853592201807
+    second: RPG status effect icons set_32
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RPG status effect icons set_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 592
+        width: 256
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d0f89c0e0910a920800000000000000
+      internalID: 2999424899960336597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPG status effect icons set_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 592
+        width: 256
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51afb459ed5444020800000000000000
+      internalID: 2325060129919859221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPG status effect icons set_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 592
+        width: 256
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a4653a9de727b170800000000000000
+      internalID: 8194061948471829664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPG status effect icons set_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 592
+        width: 256
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62d032f8339b44d80800000000000000
+      internalID: -8267279384849478362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPG status effect icons set_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 296
+        width: 256
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74d2183121799d170800000000000000
+      internalID: 8203754300124507463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPG status effect icons set_5
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 296
+        width: 256
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cf5d7a4c4c787300800000000000000
+      internalID: 250086446428151752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPG status effect icons set_6
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 296
+        width: 256
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e03127dd45f14d70800000000000000
+      internalID: 9025764842897748195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPG status effect icons set_7
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 296
+        width: 256
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0eee4f565ccad4b0800000000000000
+      internalID: -5414790930621338102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPG status effect icons set_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe5a4b8e645e0c1b0800000000000000
+      internalID: -5638254640753236497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPG status effect icons set_9
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 841240fa8205556e0800000000000000
+      internalID: -1849483936300523192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPG status effect icons set_10
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3be07b46378f868f0800000000000000
+      internalID: -546914180230869325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RPG status effect icons set_11
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d72f3c14e470b2da0800000000000000
+      internalID: -5968668848457256323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 54df0f919f14c4e92b9230805b26708e
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":256.0,"y":296.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      RPG status effect icons set_0: 2999424899960336597
+      RPG status effect icons set_1: 2325060129919859221
+      RPG status effect icons set_10: -546914180230869325
+      RPG status effect icons set_11: -5968668848457256323
+      RPG status effect icons set_2: 8194061948471829664
+      RPG status effect icons set_3: -8267279384849478362
+      RPG status effect icons set_4: 8203754300124507463
+      RPG status effect icons set_5: 250086446428151752
+      RPG status effect icons set_6: 9025764842897748195
+      RPG status effect icons set_7: -5414790930621338102
+      RPG status effect icons set_8: -5638254640753236497
+      RPG status effect icons set_9: -1849483936300523192
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

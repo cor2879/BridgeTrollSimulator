@@ -35,6 +35,8 @@ MonoBehaviour:
     expiredText: '{target} is no longer intimidated'
     soundEffect: {fileID: 8300000, guid: d2da3d352fc8045fca95aff7489ac247, type: 3}
     feedbackColor: {r: 0.241665, g: 0.15512636, b: 0.3962264, a: 1}
+    icon: {fileID: -1045874472153473862, guid: 3ddcb0ad7e9f44e54827ca86d061c86f, type: 3}
+    iconColor: {r: 1, g: 1, b: 1, a: 1}
     flashTarget: 1
     flashDuration: 0.15
     flashOnTick: 0
