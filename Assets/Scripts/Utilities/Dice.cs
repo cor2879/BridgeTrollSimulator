@@ -8,5 +8,21 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Utilities
         {
             return Random.Range(1, 21);
         }
+
+        public static int RollDice(DiceType diceType, int count)
+        {
+            if (diceType == DiceType.None)
+            {
+                return 0;
+            }
+            
+            var total = 0;
+            var ceiling = (int)diceType;
+
+            for (var i = 0; i < count; i++)
+            {
+                total += Random.Range(1, ceiling);
+            }
+        }
     }
 }
