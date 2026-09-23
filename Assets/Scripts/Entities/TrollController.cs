@@ -15,6 +15,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 {
     public class TrollController : EntityController
     {
+        [SerializeField]
+        private MobileInputSource mobileInputSource;
+
         public override ControlMode DefaultControlMode => ControlMode.FreeRoam;
 
         #region Initialization
@@ -32,7 +35,13 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
         protected override void Awake()
         {
             base.Awake();
-            this.inputSource = new KeyboardInputSource();
+
+            var keyboardInput = new KeyboardInputSource();
+
+            this.inputSource = mobileInputSource != null
+                ? new CombinedInputSource(keyboardInput, mobileInputSource)
+                : keyboardInput;
+
             this.entityType = EntityType.Troll;
         }
 
