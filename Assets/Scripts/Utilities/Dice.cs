@@ -11,18 +11,18 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Utilities
 
         public static int RollDice(DiceType diceType, int count)
         {
-            if (diceType == DiceType.None)
+            if (diceType != DiceType.None)
             {
-                return 0;
-            }
-            
-            var total = 0;
-            var ceiling = (int)diceType;
+                var total = 0;
+                var ceiling = (int)diceType;
 
-            for (var i = 0; i < count; i++)
-            {
-                total += Random.Range(1, ceiling);
+                for (var i = 0; i < count; i++)
+                {
+                    total += Random.Range(1, ceiling);
+                }
             }
+        
+            return 0;
         }
     }
 }

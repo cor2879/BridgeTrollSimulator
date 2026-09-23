@@ -415,7 +415,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
             
             if (this.goldPopupUI != null)
             {
-                this.goldPopupUI.SetActive(false);
+                this.goldPopupUI.SetVisualsActive(false);
             }
 
             RecalculateDerivedStats();
@@ -463,7 +463,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
             if (goldPopupUI != null)
             {
-                goldPopupUI.SetActive(false);
+                goldPopupUI.SetVisualsActive(false);
             }
         }
 
