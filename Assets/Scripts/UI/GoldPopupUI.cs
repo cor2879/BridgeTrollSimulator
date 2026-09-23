@@ -37,8 +37,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         private void Awake()
         {
-            entity = GetComponent<EntityController>();
-            gameObject.SetActive(false);
+            entity = GetComponentInParent<EntityController>();
+            SetVisualsActive(false);
         }
 
         public void Play(int startGold, int endGold, int delta)
@@ -61,7 +61,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             if (queue.Count == 0)
             {
                 isPlaying = false;
-                gameObject.SetActive(false);
+                SetVisualsActive(false);
                 return;
             }
 
@@ -71,7 +71,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             if (activeRoutine != null)
                 StopCoroutine(activeRoutine);
 
-            gameObject.SetActive(true);
+            SetVisualsActive(true);
 
             deltaText.gameObject.SetActive(true);
             deltaText.transform.localPosition = Vector3.zero;
@@ -79,6 +79,12 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             currentGoldText.text = request.Start.ToString();
             deltaText.text = $"+{request.Delta}";
 
+            Debug.Log(
+                $"GoldPopupUI before coroutine: " +
+                $"activeSelf={gameObject.activeSelf}, " +
+                $"activeInHierarchy={gameObject.activeInHierarchy}, " +
+                $"parentActive={transform.parent.gameObject.activeInHierarchy}");
+                
             activeRoutine = StartCoroutine(
                 AnimateSequence(request.Start, request.End));
         }
@@ -139,9 +145,15 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             currentGoldText.text = end.ToString();
         }
 
-        public void SetActive(bool active)
+        public void SetVisualsActive(bool active)
         {
-            this.gameObject.SetActive(active);
+            currentGoldText.gameObject.SetActive(active);
+            coinImage.gameObject.SetActive(active);
+
+            if (!active)
+            {
+                deltaText.gameObject.SetActive(false);
+            }
         }
     }
 }
