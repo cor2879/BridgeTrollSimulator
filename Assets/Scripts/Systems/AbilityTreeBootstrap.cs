@@ -10,10 +10,21 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
     {
         [SerializeField] private List<AbilityTree> trees;
 
-        private void Awake()
+        private void OnEnable()
         {
+            if (trees == null)
+            {
+                return;
+            }
+
             foreach (var tree in trees)
             {
+                if (tree == null)
+                {
+                    Debug.LogWarning("AbilityTreeBootstrap contains a null AbilityTree reference.");
+                    continue;
+                }
+
                 AbilityTreeService.Register(tree);
                 Debug.Log($"Registered AbilityTree {tree.Id}");
             }
