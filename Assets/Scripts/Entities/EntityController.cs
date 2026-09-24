@@ -503,6 +503,10 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
                     if (!instance.HasAbility(node))
                     {
                         instance.AddAbility(node.tier, node.ability);
+                    }
+
+                    if (!AbilityComponent.ActiveAbilities.Contains(node.ability))
+                    {
                         AbilityComponent.AddActiveAbility(node.ability);
                     }
                 }
@@ -994,6 +998,24 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
         public Ability ChooseBestCombatAbility(EntityController target)
         {
+            if (target == null)
+            {
+                Debug.LogError($"{Name} cannot choose a combat ability because the target is null.");
+                return null;
+            }
+
+            if (ActiveAbilities.Count == 0)
+            {
+                Debug.LogWarning($"{Name} has no active abilities. Reinitializing defaults.");
+                InitializeDefaultAbilities();
+            }
+
+            if (ActiveAbilities.Count == 0)
+            {
+                Debug.LogError($"{Name} still has no active abilities after initialization.");
+                return null;
+            }
+
             Ability bestAbility = null;
             var bestScore = float.MinValue;
 
@@ -1004,7 +1026,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Entities
 
             #endif
 
-            foreach (var ability in ActiveAbilities)
+            foreach (var ability in ActiveAbilities.Where(a => a != null))
             {
                 var baseScore = ability.Evaluate(this, target);
                 var randomFactor = UnityEngine.Random.Range(-2f, 2f);
