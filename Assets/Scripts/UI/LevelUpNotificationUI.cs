@@ -6,6 +6,7 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameStateManagement;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Platform;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Systems;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
@@ -14,6 +15,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
     {
         [SerializeField] private GameObject panel;
         [SerializeField] private TMP_Text messageText;
+        [SerializeField] private TMP_Text hintText;
 
         private bool awaitingInput = false;
 
@@ -33,11 +35,31 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
                 return;
             }
 
-            if (Input.GetKeyDown(KeyCode.L))
+            var keyboardPressed = Input.GetKeyDown(KeyCode.L);
+
+            var mobilePressed =
+                PlatformManager.UsesMobileTouchControls &&
+                (
+                    Input.GetMouseButtonDown(0) ||
+                    (Input.touchCount > 0 &&
+                    Input.GetTouch(0).phase == TouchPhase.Began)
+                );
+
+            if (keyboardPressed || mobilePressed)
             {
-                awaitingInput = false;
-                OpenLevelUpScreen();
+                Continue();
             }
+        }
+
+        public void Continue()
+        {
+            if (!awaitingInput)
+            {
+                return;
+            }
+
+            awaitingInput = false;
+            OpenLevelUpScreen();
         }
 
         public void Show(EntityController target)

@@ -131,6 +131,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayButton
       objectReference: {fileID: 0}
+    - target: {fileID: 427024515791514809, guid: b58a10e77430c44d48a6c3d47b9d0e32, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 427024515791514809, guid: b58a10e77430c44d48a6c3d47b9d0e32, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 427024515791514809, guid: b58a10e77430c44d48a6c3d47b9d0e32, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2050952305}
+    - target: {fileID: 427024515791514809, guid: b58a10e77430c44d48a6c3d47b9d0e32, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 427024515791514809, guid: b58a10e77430c44d48a6c3d47b9d0e32, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 427024515791514809, guid: b58a10e77430c44d48a6c3d47b9d0e32, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: OldSchoolGames.BridgeTrollSimulator.Scripts.UI.StartScreenUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 427024515791514809, guid: b58a10e77430c44d48a6c3d47b9d0e32, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 834813117424272971, guid: b58a10e77430c44d48a6c3d47b9d0e32, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3939,7 +3967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.85882354}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4352,7 +4380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7802203420047327518, guid: eb4c57224e8f34d89b0aab2ed56e3c48, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8944318039796410121, guid: eb4c57224e8f34d89b0aab2ed56e3c48, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5820,6 +5848,7 @@ GameObject:
   - component: {fileID: 1931539556}
   - component: {fileID: 1931539558}
   - component: {fileID: 1931539559}
+  - component: {fileID: 1931539560}
   m_Layer: 5
   m_Name: GameplayUIRoot
   m_TagString: Untagged
@@ -5926,6 +5955,18 @@ MonoBehaviour:
   abilityContainer: {fileID: 802191823}
   abilityButtonPrefab: {fileID: 2750930884611139049, guid: a312a846eb9654fd99071b717986944a, type: 3}
   isVisible: 0
+--- !u!114 &1931539560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931539554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b30a00b2dbac1c0fbf7e43ed763a0e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.InputHandling.MobileInputSource
 --- !u!1 &1935664127
 GameObject:
   m_ObjectHideFlags: 0
@@ -7950,7 +7991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7802203420047327518, guid: eb4c57224e8f34d89b0aab2ed56e3c48, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8944318039796410121, guid: eb4c57224e8f34d89b0aab2ed56e3c48, type: 3}
       propertyPath: m_AnchorMax.x
