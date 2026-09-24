@@ -6,11 +6,22 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Trees;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 {
+    [DefaultExecutionOrder(-10000)]
     public class AbilityTreeBootstrap : MonoBehaviour
     {
         [SerializeField] private List<AbilityTree> trees;
 
+        private void Awake()
+        {
+            RegisterTrees();
+        }
+
         private void OnEnable()
+        {
+            RegisterTrees();
+        }
+
+        private void RegisterTrees()
         {
             if (trees == null)
             {
@@ -22,6 +33,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
                 if (tree == null)
                 {
                     Debug.LogWarning("AbilityTreeBootstrap contains a null AbilityTree reference.");
+                    continue;
+                }
+
+                if (AbilityTreeService.GetTree(tree.Id) == tree)
+                {
                     continue;
                 }
 
