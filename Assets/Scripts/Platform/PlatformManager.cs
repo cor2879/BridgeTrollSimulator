@@ -57,6 +57,47 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Platform
         /// </value>
         public static PlatformManager Instance { get; private set; }
 
+#if UNITY_WEBGL && !UNITY_EDITOR
+        private static bool? usesMobileTouchControls;
+
+        [System.Runtime.InteropServices.DllImport("__Internal")]
+        private static extern int OldSkool_IsMobileTouchBrowser();
+#endif
+
+        /// <summary>
+        /// Gets whether this runtime should present touch-first controls.
+        /// Native iOS always uses touch controls. WebGL asks the browser
+        /// whether it is running on a mobile touch device.
+        /// </summary>
+        public static bool UsesMobileTouchControls
+        {
+            get
+            {
+#if UNITY_IOS
+                return true;
+#elif UNITY_WEBGL && !UNITY_EDITOR
+                if (!usesMobileTouchControls.HasValue)
+                {
+                    try
+                    {
+                        usesMobileTouchControls = OldSkool_IsMobileTouchBrowser() == 1;
+                    }
+                    catch (Exception exception)
+                    {
+                        Debug.LogWarning(
+                            $"Unable to query the WebGL mobile browser state: {exception.Message}");
+
+                        usesMobileTouchControls = Application.isMobilePlatform;
+                    }
+                }
+
+                return usesMobileTouchControls.Value;
+#else
+                return false;
+#endif
+            }
+        }
+
         public static string UserName
         {
             get
