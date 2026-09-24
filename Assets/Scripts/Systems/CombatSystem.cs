@@ -90,12 +90,13 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 
         private void Awake()
         {
-            dispositionResolver = new MatrixDispositionResolver(
-                GameDatabase.Instance.Dispositions);
+            InitializeDispositionResolver();
         }
 
         private void OnEnable()
         {
+            InitializeDispositionResolver();
+
             GameEventBus.Subscribe<CombatStartedEvent>(OnCombatStarted);
             GameEventBus.Subscribe<CombatConfirmedEvent>(OnCombatConfirmed);
             GameEventBus.Subscribe<CombatPreSummaryConfirmedEvent>(OnCombatPreSummaryConfirmed);
@@ -114,6 +115,28 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
             GameEventBus.Unsubscribe<CombatResolutionCompletedEvent>(OnCombatResolutionCompleted);
             GameEventBus.Unsubscribe<CombatSurrenderAcceptedEvent>(OnCombatSurrenderAccepted);
             GameEventBus.Unsubscribe<ConcedeCombatEvent>(OnConcededCombat);
+        }
+
+        private void InitializeDispositionResolver()
+        {
+            var database = GameDatabase.Instance;
+
+            if (database == null)
+            {
+                Debug.LogError("CombatSystem: GameDatabase instance not found.");
+                dispositionResolver = null;
+                return;
+            }
+
+            if (database.Dispositions == null)
+            {
+                Debug.LogError("CombatSystem: DispositionMatrix is not assigned on GameDatabase.");
+                dispositionResolver = null;
+                return;
+            }
+
+            dispositionResolver = new MatrixDispositionResolver(
+                database.Dispositions);
         }
 
         #endregion
@@ -411,8 +434,27 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Systems
 
         private EntityController ChooseTarget(EntityController attacker)
         {
-            return combatants
+            if (attacker == null)
+            {
+                Debug.LogError("CombatSystem.ChooseTarget called with a null attacker.");
+                return null;
+            }
+
+            if (dispositionResolver == null)
+            {
+                InitializeDispositionResolver();
+            }
+
+            if (dispositionResolver == null)
+            {
+                Debug.LogError("CombatSystem cannot choose a target because no disposition resolver is available.");
+                return null;
+            }
+
+            return combatants?
                 .Where(e =>
+                    e != null &&
+                    e != attacker &&
                     e.CurrentHealth > 0 &&
                     dispositionResolver.IsHostile(attacker.Faction, e.Faction))
                 .FirstOrDefault();
