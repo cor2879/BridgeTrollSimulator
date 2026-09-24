@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 using UnityEngine;
-=======
-sing UnityEngine;
->>>>>>> origin/main
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.InputHandling
 {
@@ -11,13 +7,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.InputHandling
         private readonly IInputSource primary;
         private readonly IInputSource secondary;
 
-<<<<<<< HEAD
-        public CombinedInputSource(IInputSource primary, IInputSource secondary)
-=======
         public CombinedInputSource(
             IInputSource primary,
             IInputSource secondary)
->>>>>>> origin/main
         {
             this.primary = primary;
             this.secondary = secondary;
@@ -77,8 +69,4 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.InputHandling
                    (secondary?.DiePressed() ?? false);
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/main
