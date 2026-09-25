@@ -1,6 +1,7 @@
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Platform;
 using UnityEngine;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
@@ -15,6 +16,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         private void Start()
         {
+            WebGLDiagnostics.Trace($"StartScreen.Start rootNull={startScreenRoot == null}");
+
             if (startScreenRoot != null)
             {
                 startScreenRoot.SetActive(true);
@@ -28,6 +31,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         public void Play()
         {
+            WebGLDiagnostics.Trace("StartScreen.Play invoked.");
+
             GameEventBus.Publish(
                 new ResumeRequestEvent(
                     this,
@@ -37,6 +42,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
             {
                 startScreenRoot.SetActive(false);
             }
+
+            WebGLDiagnostics.SnapshotUI("after StartScreen.Play");
         }
     }
 }
