@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: dcac23ccc14d34187a37582d9da7a1f5, type: 3}
   m_Name: Troll.Toll.0
-  m_EditorClassIdentifier: Assembly-CSharp:OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog:DialogNode
+  m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog.DialogNode
   SpeakerRole: 0
   Text: A toll is a toll, and this bridge has a Troll.  Therefore you must pay the
     toll!
