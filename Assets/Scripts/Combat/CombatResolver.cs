@@ -14,6 +14,24 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Combat
             Ability ability,
             IEventSource eventSource)
         {
+            if (initiator == null)
+            {
+                Debug.LogError("CombatResolver.ResolveAbility called with a null initiator.");
+                return;
+            }
+
+            if (target == null)
+            {
+                Debug.LogError($"CombatResolver.ResolveAbility: {initiator.Name} has no valid target.");
+                return;
+            }
+
+            if (ability == null)
+            {
+                Debug.LogError($"CombatResolver.ResolveAbility: {initiator.Name} has no ability to execute.");
+                return;
+            }
+
             if (!ability.CanExecute(initiator))
             {
                 GameEventBus.Publish(

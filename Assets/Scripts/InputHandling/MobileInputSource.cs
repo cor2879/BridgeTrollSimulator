@@ -4,11 +4,17 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.InputHandling
 {
     public class MobileInputSource : MonoBehaviour, IInputSource
     {
-        private float horizontal;
+        private bool leftPressed;
+        private bool rightPressed;
 
         public float GetHorizontal()
         {
-            return horizontal;
+            if (leftPressed == rightPressed)
+            {
+                return 0f;
+            }
+
+            return leftPressed ? -1f : 1f;
         }
 
         public float GetVertical()
@@ -16,22 +22,34 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.InputHandling
             return 0f;
         }
 
-        public void SetHorizontal(float value)
+        public void PressHorizontal(float direction)
         {
-            horizontal = Mathf.Clamp(value, -1f, 1f);
+            if (direction < 0f)
+            {
+                leftPressed = true;
+            }
+            else if (direction > 0f)
+            {
+                rightPressed = true;
+            }
         }
 
-        public void ReleaseHorizontal(float value)
+        public void ReleaseHorizontal(float direction)
         {
-            if (Mathf.Approximately(horizontal, value))
+            if (direction < 0f)
             {
-                horizontal = 0f;
+                leftPressed = false;
+            }
+            else if (direction > 0f)
+            {
+                rightPressed = false;
             }
         }
 
         private void OnDisable()
         {
-            horizontal = 0f;
+            leftPressed = false;
+            rightPressed = false;
         }
 
         public bool AttackPressed() => false;

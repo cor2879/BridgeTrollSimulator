@@ -14,6 +14,7 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Policies;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Platform;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.SocialDuel.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Systems;
@@ -70,6 +71,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         private void OnEnable()
         {
+            WebGLDiagnostics.Trace(
+                $"DialogUI.OnEnable panelNull={panel == null} choicesNull={choiceContainer == null} active={gameObject.activeInHierarchy}");
+
             GameEventBus.Subscribe<DialogStartedEvent>(OnDialogStarted);
             GameEventBus.Subscribe<CombatStartedEvent>(OnCombatStarted);
             GameEventBus.Subscribe<CombatLogEvent>(OnCombatLog);
@@ -106,6 +110,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         private void OnDialogStarted(DialogStartedEvent evt)
         {
+            WebGLDiagnostics.Trace(
+                $"DialogUI.OnDialogStarted rootNull={evt.RootNode == null} initiator={evt.Initiator?.SourceName} target={evt.Target?.SourceName}");
+
             if (evt.RootNode == null)
             {
                 Debug.LogWarning("DialogStartedEvent received with null RootNode.");
@@ -392,6 +399,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         private void ClearChoices()
         {
+            WebGLDiagnostics.Trace(
+                $"DialogUI.ClearChoices containerActive={choiceContainer != null && choiceContainer.activeSelf}");
+
             foreach (Transform child in choiceContainer.transform)
                 Destroy(child.gameObject);
 
@@ -421,9 +431,14 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         private void ShowRenderable(IDialogRenderable renderable)
         {
+            WebGLDiagnostics.Trace(
+                $"DialogUI.ShowRenderable type={renderable?.GetType().Name} text='{renderable?.Text}' options={renderable?.Options?.Count ?? 0}");
+
             currentRenderable = renderable;
 
             panel.SetActive(true);
+            WebGLDiagnostics.Trace(
+                $"DialogUI panel activeSelf={panel.activeSelf} activeHierarchy={panel.activeInHierarchy}");
             ClearChoices();
 
             if (!string.IsNullOrWhiteSpace(renderable.Text))
@@ -459,15 +474,21 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         private void RenderOptions(List<GeneratedOption> options)
         {
+            WebGLDiagnostics.Trace($"DialogUI.RenderOptions count={options?.Count ?? 0}");
+
             if (options == null || options.Count == 0)
                 return;
 
             choiceContainer.SetActive(true);
+            WebGLDiagnostics.Trace(
+                $"DialogUI choices activeSelf={choiceContainer.activeSelf} activeHierarchy={choiceContainer.activeInHierarchy}");
             ModalUISystem.Instance.OpenModal(this);
 
             foreach (var option in options)
             {
                 var buttonObj = Instantiate(choiceButtonPrefab, choiceContainer.transform);
+                WebGLDiagnostics.Trace(
+                    $"DialogUI created option '{option.Label}' objectActive={buttonObj.activeInHierarchy}");
                 var buttonText = buttonObj.GetComponentInChildren<TMP_Text>();
                 buttonText.text = option.Label;
 

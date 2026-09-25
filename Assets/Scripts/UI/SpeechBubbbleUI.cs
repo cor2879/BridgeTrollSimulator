@@ -11,6 +11,7 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Dialog.Enums;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Platform;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Systems;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.UI.Interfaces;
@@ -82,6 +83,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         private void Awake()
         {
+            WebGLDiagnostics.Trace(
+                $"SpeechBubble.Awake object={name} entityNull={entity == null} imageNull={bubbleImage == null} textNull={text == null}");
+
             rectTransform = GetComponent<RectTransform>();
             originalScale = transform.localScale;
             baseOffset = transform.localPosition;
@@ -143,6 +147,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
                         SpeechBubbleMode mode = SpeechBubbleMode.Modal,
                         float duration = 2f)
         {
+            WebGLDiagnostics.Trace(
+                $"SpeechBubble.Show entity={entity?.SourceName} activeSelf={gameObject.activeSelf} activeHierarchy={gameObject.activeInHierarchy} text='{value}'");
+
             speechQueue.Enqueue(new SpeechRequest
             {
                 Text = value,
@@ -348,6 +355,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         private void ProcessQueue()
         {
+            WebGLDiagnostics.Trace(
+                $"SpeechBubble.ProcessQueue entity={entity?.SourceName} queue={speechQueue.Count} blocking={ModalUISystem.Instance?.IsBlockingWorldUI} activeSelf={gameObject.activeSelf}");
+
             if (waitRoutine != null)
             {
                 return;
@@ -383,6 +393,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         private void DisplaySpeech(SpeechRequest request)
         {
+            WebGLDiagnostics.Trace(
+                $"SpeechBubble.DisplaySpeech entity={entity?.SourceName} mode={request.Mode} duration={request.Duration}");
+
             isShowing = true;
 
             fullText = request.Text;
@@ -390,6 +403,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
             transform.localScale = Vector3.zero;
             gameObject.SetActive(true);
+
+            WebGLDiagnostics.Trace(
+                $"SpeechBubble activated entity={entity?.SourceName} activeHierarchy={gameObject.activeInHierarchy} scale={transform.localScale} size={rectTransform.rect.size}");
 
             if (popRoutine != null)
             {

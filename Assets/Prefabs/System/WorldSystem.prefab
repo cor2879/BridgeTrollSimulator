@@ -57,4 +57,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5bcff2d5cca64b6b808b63c5686e42b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OldSchoolGames.BridgeTrollSimulator.Scripts.Systems.DialogSystem
-  defaultEncounterDialog: {fileID: 0}
+  defaultEncounterNode: {fileID: 11400000, guid: c4d5a9b12c7444843850bf40aeb9d4ea, type: 2}
+  dialogPanel: {fileID: 0}

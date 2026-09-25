@@ -16,15 +16,40 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Components
 
         private Dictionary<string, EntityAbilityTree> _lookup;
 
-        public IReadOnlyCollection<Ability> ActiveAbilities => activeAbilities;
+        public IReadOnlyCollection<Ability> ActiveAbilities
+        {
+            get
+            {
+                activeAbilities ??= new HashSet<Ability>();
+                return activeAbilities;
+            }
+        }
 
         private void Awake()
         {
+            EnsureCollections();
             BuildLookup();
+        }
+
+        private void OnEnable()
+        {
+            EnsureCollections();
+
+            if (_lookup == null)
+            {
+                BuildLookup();
+            }
+        }
+
+        private void EnsureCollections()
+        {
+            trees ??= new List<EntityAbilityTree>();
+            activeAbilities ??= new HashSet<Ability>();
         }
 
         private void BuildLookup()
         {
+            EnsureCollections();
             _lookup = new Dictionary<string, EntityAbilityTree>();
 
             foreach (var tree in trees)
@@ -52,22 +77,37 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities.Components
             if (tree == null || string.IsNullOrEmpty(tree.TreeId))
                 return;
 
-            trees.Add(tree);
+            EnsureCollections();
 
-            if (_lookup != null)
+            var existing = GetTree(tree.TreeId);
+
+            if (existing == null)
             {
-                _lookup[tree.TreeId] = tree;
+                trees.Add(tree);
             }
+
+            _lookup[tree.TreeId] = tree;
         }
 
         public bool HasAbility(AbilityNode node)
         {
+            if (node == null)
+            {
+                return false;
+            }
+
             var tree = GetTree(node.treeId);
             return tree != null && tree.HasAbility(node);
         }
 
         public void AddActiveAbility(Ability ability)
         {
+            if (ability == null)
+            {
+                return;
+            }
+
+            activeAbilities ??= new HashSet<Ability>();
             activeAbilities.Add(ability);
         }
     }

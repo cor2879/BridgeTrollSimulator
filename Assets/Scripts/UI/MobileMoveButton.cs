@@ -1,7 +1,6 @@
+using OldSchoolGames.BridgeTrollSimulator.Scripts.InputHandling;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
-using OldSchoolGames.BridgeTrollSimulator.Scripts.InputHandling;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 {
@@ -19,7 +18,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            inputSource?.SetHorizontal(direction);
+            inputSource?.PressHorizontal(direction);
         }
 
         public void OnPointerUp(PointerEventData eventData)

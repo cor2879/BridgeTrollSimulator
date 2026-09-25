@@ -1,4 +1,4 @@
-sing UnityEngine;
+using UnityEngine;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.InputHandling
 {
