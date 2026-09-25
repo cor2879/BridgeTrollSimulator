@@ -72,6 +72,11 @@ jobs:
           WEBGL_ROOT="$(dirname "$INDEX_FILE")"
           cp -a "$WEBGL_ROOT"/. site/
 
+          # Replace Unity's stock wrapper with the mobile-safe wrapper proven
+          # in Hunt the Muglump. The WebGL payload itself remains unchanged.
+          cp .github/webgl-template/index.html site/index.html
+          cp .github/webgl-template/style.css site/TemplateData/style.css
+
           touch site/.nojekyll
           test -f site/index.html
           test -d site/Build
