@@ -1,0 +1,27 @@
+name: Trigger Bridge Troll WebGL Pages Deploy
+
+on:
+  release:
+    types:
+      - published
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy published WebGL release from main
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        shell: bash
+        run: |
+          gh workflow run deploy-webgl-pages.yml \
+            --repo "$GH_REPO" \
+            --ref main \
+            -f tag="$RELEASE_TAG"
