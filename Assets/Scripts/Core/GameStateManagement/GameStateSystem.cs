@@ -3,6 +3,7 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Enums;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Platform;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameStateManagement
 {
@@ -89,11 +90,13 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.GameStateManagement
         public void Pause()
         {
             this.IsPaused = true;
+            WebGLDiagnostics.Trace($"GameState.Pause -> state={CurrentState}");
         }
 
         public void Resume()
         {
             this.IsPaused = false;
+            WebGLDiagnostics.Trace($"GameState.Resume -> state={CurrentState}");
         }
 
         public bool Is(GameState state) => currentState == state;
