@@ -5,6 +5,7 @@ using UnityEngine;
 
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Interfaces;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Reactions.Interfaces;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Platform;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 {
@@ -46,6 +47,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Core.Events
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
             Debug.Log($"[Event] {gameEvent}");
 #endif
+            WebGLDiagnostics.Trace($"Event -> {typeof(T).Name}: {gameEvent}");
 
             var type = typeof(T);
 
