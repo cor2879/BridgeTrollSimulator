@@ -21,6 +21,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Platform
         private readonly Queue<string> entries = new Queue<string>();
         private string displayText = string.Empty;
         private bool expanded = true;
+        private Vector2 scrollPosition;
+        private bool scrollToBottom;
 #endif
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
@@ -103,6 +105,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Platform
             }
 
             SnapshotNamedObject("GameplayUIRoot");
+            SnapshotNamedObject("DialogPanel");
+            SnapshotNamedObject("DialogButtonContainer");
             SnapshotNamedObject("CombatButtonContainer");
             SnapshotNamedObject("StartScreen");
 #endif
@@ -189,6 +193,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Platform
             }
 
             displayText = builder.ToString();
+            scrollToBottom = true;
         }
 
         private static void SnapshotNamedObject(string objectName)
@@ -234,11 +239,12 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Platform
             GUI.depth = -10000;
 
             const float margin = 8f;
-            const float buttonWidth = 150f;
             const float buttonHeight = 34f;
+            const float toggleWidth = 150f;
+            const float snapshotWidth = 110f;
 
             if (GUI.Button(
-                new Rect(Screen.width - buttonWidth - margin, margin, buttonWidth, buttonHeight),
+                new Rect(Screen.width - toggleWidth - margin, margin, toggleWidth, buttonHeight),
                 expanded ? "Hide Diagnostics" : "Show Diagnostics"))
             {
                 expanded = !expanded;
@@ -249,14 +255,52 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Platform
                 return;
             }
 
-            var width = Mathf.Max(320f, Screen.width * 0.72f);
-            var height = Mathf.Min(620f, Screen.height * 0.55f);
+            if (GUI.Button(
+                new Rect(Screen.width - toggleWidth - snapshotWidth - (margin * 2f), margin, snapshotWidth, buttonHeight),
+                "Snapshot UI"))
+            {
+                SnapshotUI("manual");
+            }
+
+            var width = Mathf.Max(320f, Screen.width * 0.78f);
+            var height = Mathf.Min(620f, Screen.height * 0.62f);
             var panel = new Rect(margin, margin, width, height);
 
             GUI.Box(panel, GUIContent.none);
+
+            var viewRect = new Rect(
+                panel.x + 8f,
+                panel.y + buttonHeight + 12f,
+                panel.width - 16f,
+                panel.height - buttonHeight - 20f);
+
+            var style = new GUIStyle(GUI.skin.textArea)
+            {
+                wordWrap = true
+            };
+
+            var contentWidth = Mathf.Max(280f, viewRect.width - 24f);
+            var contentHeight = Mathf.Max(
+                viewRect.height,
+                style.CalcHeight(new GUIContent(displayText), contentWidth) + 12f);
+
+            if (scrollToBottom)
+            {
+                scrollPosition.y = contentHeight;
+                scrollToBottom = false;
+            }
+
+            scrollPosition = GUI.BeginScrollView(
+                viewRect,
+                scrollPosition,
+                new Rect(0f, 0f, contentWidth, contentHeight));
+
             GUI.TextArea(
-                new Rect(panel.x + 8f, panel.y + 8f, panel.width - 16f, panel.height - 16f),
-                displayText);
+                new Rect(0f, 0f, contentWidth, contentHeight),
+                displayText,
+                style);
+
+            GUI.EndScrollView();
         }
 #endif
     }
