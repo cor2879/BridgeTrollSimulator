@@ -9,6 +9,7 @@ using OldSchoolGames.BridgeTrollSimulator.Scripts.Abilities;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Attributes;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Combat;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Entities;
+using OldSchoolGames.BridgeTrollSimulator.Scripts.Platform;
 using OldSchoolGames.BridgeTrollSimulator.Scripts.Systems;
 
 namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
@@ -28,6 +29,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         public void Initialize(CombatSystem system, EntityController player)
         {
+            WebGLDiagnostics.Trace(
+                $"CombatUI.Initialize player={player?.Name} containerNull={abilityContainer == null} prefabNull={abilityButtonPrefab == null}");
+
             EnableInput(false);
             combatSystem = system;
             this.player = player;
@@ -93,6 +97,9 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
 
         public void EnableInput(bool enabled)
         {
+            WebGLDiagnostics.Trace(
+                $"CombatUI.EnableInput enabled={enabled} buttons={abilityButtons.Count} visible={isVisible} containerActive={abilityContainer != null && abilityContainer.activeSelf}");
+
             foreach (var (button, ability) in abilityButtons)
             {
                 button.interactable = enabled && ability.CanExecute(player);
@@ -118,6 +125,8 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.UI
         private IEnumerator PopIn()
         {
             abilityContainer.SetActive(true);
+            WebGLDiagnostics.Trace(
+                $"CombatUI.PopIn activeHierarchy={abilityContainer.activeInHierarchy} scale={abilityContainer.transform.localScale}");
 
             float duration = 0.35f;
             float timer = 0f;
