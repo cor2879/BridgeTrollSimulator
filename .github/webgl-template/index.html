@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, viewport-fit=cover, user-scalable=no">
+    <meta name="theme-color" content="#000000">
+    <title>Bridge Troll Simulator</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+  </head>
+  <body>
+    <div id="unity-container" class="unity-desktop">
+      <canvas id="unity-canvas" width="960" height="600" tabindex="-1"></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty"><div id="unity-progress-bar-full"></div></div>
+      </div>
+      <div id="unity-warning"></div>
+      <div id="unity-landscape-hint" role="status" aria-live="polite" hidden>
+        <span class="unity-phone-icon" aria-hidden="true"></span>
+        <span>Rotate your phone to landscape</span>
+      </div>
+      <button id="unity-fullscreen-button" type="button" aria-label="Enter fullscreen" title="Enter fullscreen" hidden></button>
+    </div>
+
+    <script>
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      var warningBanner = document.querySelector("#unity-warning");
+      var landscapeHint = document.querySelector("#unity-landscape-hint");
+
+      var isIPhone = /iPhone|iPod/i.test(navigator.userAgent);
+      var immersiveMode = false;
+
+      function updateViewportSize() {
+        var viewport = window.visualViewport;
+        var width = viewport ? viewport.width : window.innerWidth;
+        var height = viewport ? viewport.height : window.innerHeight;
+        document.documentElement.style.setProperty("--viewport-width", width + "px");
+        document.documentElement.style.setProperty("--viewport-height", height + "px");
+      }
+
+      function updateLandscapeHint() {
+        var showHint = isIPhone && immersiveMode && window.matchMedia("(orientation: portrait)").matches;
+        landscapeHint.hidden = !showHint;
+      }
+
+      function setImmersiveMode(active) {
+        immersiveMode = active;
+        document.documentElement.classList.toggle("unity-immersive", active);
+        document.body.classList.toggle("unity-immersive", active);
+        fullscreenButton.classList.toggle("is-active", active);
+        fullscreenButton.setAttribute("aria-label", active ? "Exit fullscreen" : "Enter fullscreen");
+        fullscreenButton.setAttribute("title", active ? "Exit fullscreen" : "Enter fullscreen");
+        updateViewportSize();
+        updateLandscapeHint();
+
+        if (active) {
+          window.scrollTo(0, 1);
+          canvas.focus({ preventScroll: true });
+        }
+      }
+
+      updateViewportSize();
+
+      window.addEventListener("resize", function() {
+        updateViewportSize();
+        updateLandscapeHint();
+      });
+
+      window.addEventListener("orientationchange", function() {
+        setTimeout(function() {
+          updateViewportSize();
+          updateLandscapeHint();
+        }, 250);
+      });
+
+      if (window.visualViewport) {
+        window.visualViewport.addEventListener("resize", updateViewportSize);
+        window.visualViewport.addEventListener("scroll", updateViewportSize);
+      }
+
+      document.addEventListener("fullscreenchange", function() {
+        if (!document.fullscreenElement && immersiveMode) {
+          setImmersiveMode(false);
+        }
+      });
+
+      function unityShowBanner(msg, type) {
+        function updateBannerVisibility() {
+          warningBanner.style.display = warningBanner.children.length ? "block" : "none";
+        }
+
+        var div = document.createElement("div");
+        div.innerHTML = msg;
+        warningBanner.appendChild(div);
+
+        if (type === "error") div.style = "background: red; padding: 10px;";
+        else {
+          if (type === "warning") div.style = "background: yellow; padding: 10px;";
+          setTimeout(function() {
+            warningBanner.removeChild(div);
+            updateBannerVisibility();
+          }, 5000);
+        }
+
+        updateBannerVisibility();
+      }
+
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/BridgeTrollSimulator.0.1.1-WebGL.loader.js";
+      var config = {
+        arguments: [],
+        dataUrl: buildUrl + "/BridgeTrollSimulator.0.1.1-WebGL.data.unityweb",
+        frameworkUrl: buildUrl + "/BridgeTrollSimulator.0.1.1-WebGL.framework.js.unityweb",
+        codeUrl: buildUrl + "/BridgeTrollSimulator.0.1.1-WebGL.wasm.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Old Skool Games and Software",
+        productName: "Bridge Troll Simulator",
+        productVersion: "0.1.1",
+        showBanner: unityShowBanner
+      };
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        container.className = "unity-mobile";
+        canvas.className = "unity-mobile";
+      }
+
+      loadingBar.style.display = "block";
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = function() {
+        createUnityInstance(canvas, config, function(progress) {
+          progressBarFull.style.width = 100 * progress + "%";
+        }).then(function(unityInstance) {
+          loadingBar.style.display = "none";
+          fullscreenButton.hidden = false;
+
+          fullscreenButton.onclick = async function() {
+            if (immersiveMode || document.fullscreenElement) {
+              if (document.fullscreenElement && document.exitFullscreen) {
+                await document.exitFullscreen();
+              }
+              setImmersiveMode(false);
+              return;
+            }
+
+            if (isIPhone || !container.requestFullscreen) {
+              setImmersiveMode(true);
+              return;
+            }
+
+            try {
+              await container.requestFullscreen();
+              setImmersiveMode(true);
+            } catch (_) {
+              unityInstance.SetFullscreen(1);
+              setImmersiveMode(true);
+            }
+
+            if (screen.orientation && screen.orientation.lock) {
+              try {
+                await screen.orientation.lock("landscape");
+              } catch (_) {}
+            }
+          };
+        }).catch(function(message) {
+          alert(message);
+        });
+      };
+
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>
