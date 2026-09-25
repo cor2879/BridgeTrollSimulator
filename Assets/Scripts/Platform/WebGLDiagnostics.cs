@@ -15,6 +15,7 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Platform
     public sealed class WebGLDiagnostics : MonoBehaviour
     {
         private const int MaximumEntries = 32;
+        private const bool DiagnosticsEnabled = false;
         private static WebGLDiagnostics instance;
 
 #if UNITY_WEBGL && !UNITY_EDITOR
@@ -29,6 +30,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Platform
         private static void Initialize()
         {
 #if UNITY_WEBGL && !UNITY_EDITOR
+            if (!DiagnosticsEnabled)
+            {
+                return;
+            }
+
             if (instance != null)
             {
                 return;
@@ -47,6 +53,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Platform
         public static void Trace(string message)
         {
 #if UNITY_WEBGL && !UNITY_EDITOR
+            if (!DiagnosticsEnabled)
+            {
+                return;
+            }
+
             EnsureInstance();
 
             if (instance == null)
@@ -62,6 +73,11 @@ namespace OldSchoolGames.BridgeTrollSimulator.Scripts.Platform
         public static void SnapshotUI(string reason)
         {
 #if UNITY_WEBGL && !UNITY_EDITOR
+            if (!DiagnosticsEnabled)
+            {
+                return;
+            }
+
             EnsureInstance();
 
             if (instance == null)
