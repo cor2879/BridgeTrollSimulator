@@ -112,16 +112,16 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/BridgeTrollSimulator.0.1.1-WebGL.loader.js";
+      var loaderUrl = buildUrl + "/__LOADER_FILE__";
       var config = {
         arguments: [],
-        dataUrl: buildUrl + "/BridgeTrollSimulator.0.1.1-WebGL.data.unityweb",
-        frameworkUrl: buildUrl + "/BridgeTrollSimulator.0.1.1-WebGL.framework.js.unityweb",
-        codeUrl: buildUrl + "/BridgeTrollSimulator.0.1.1-WebGL.wasm.unityweb",
+        dataUrl: buildUrl + "/__DATA_FILE__",
+        frameworkUrl: buildUrl + "/__FRAMEWORK_FILE__",
+        codeUrl: buildUrl + "/__WASM_FILE__",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Old Skool Games and Software",
         productName: "Bridge Troll Simulator",
-        productVersion: "0.1.1",
+        productVersion: "__PRODUCT_VERSION__",
         showBanner: unityShowBanner
       };
 
