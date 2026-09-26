@@ -65,35 +65,10 @@ jobs:
           WEBGL_ROOT="$(dirname "$INDEX_FILE")"
           cp -a "$WEBGL_ROOT"/. site/
 
-          # Replace Unity's stock wrapper with the mobile-safe wrapper proven
-          # in Hunt the Muglump. The WebGL payload itself remains unchanged.
-          cp .github/webgl-template/index.html site/index.html
+          # Preserve Unity's generated index.html exactly. This keeps the
+          # loader/config contract identical to the locally tested build.
+          # Only replace the stylesheet with our mobile-safe sizing rules.
           cp .github/webgl-template/style.css site/TemplateData/style.css
-
-          LOADER_FILE="$(find site/Build -maxdepth 1 -type f -name '*.loader.js' -printf '%f\n' | head -n 1)"
-          DATA_FILE="$(find site/Build -maxdepth 1 -type f -name '*.data.unityweb' -printf '%f\n' | head -n 1)"
-          FRAMEWORK_FILE="$(find site/Build -maxdepth 1 -type f -name '*.framework.js.unityweb' -printf '%f\n' | head -n 1)"
-          WASM_FILE="$(find site/Build -maxdepth 1 -type f -name '*.wasm.unityweb' -printf '%f\n' | head -n 1)"
-          PRODUCT_VERSION="${RELEASE_TAG#webgl-}"
-
-          if [[ -z "$LOADER_FILE" || -z "$DATA_FILE" || -z "$FRAMEWORK_FILE" || -z "$WASM_FILE" ]]; then
-            echo "Could not resolve one or more Unity WebGL build files." >&2
-            find site/Build -maxdepth 1 -type f -printf '%f\n' >&2
-            exit 1
-          fi
-
-          sed -i \
-            -e "s|__LOADER_FILE__|$LOADER_FILE|g" \
-            -e "s|__DATA_FILE__|$DATA_FILE|g" \
-            -e "s|__FRAMEWORK_FILE__|$FRAMEWORK_FILE|g" \
-            -e "s|__WASM_FILE__|$WASM_FILE|g" \
-            -e "s|__PRODUCT_VERSION__|$PRODUCT_VERSION|g" \
-            site/index.html
-
-          echo "Loader: $LOADER_FILE"
-          echo "Data: $DATA_FILE"
-          echo "Framework: $FRAMEWORK_FILE"
-          echo "Wasm: $WASM_FILE"
 
           touch site/.nojekyll
           test -f site/index.html
